@@ -1,0 +1,887 @@
+[
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-building-type",
+      "issuer": "urn:hwm:subject:designer",
+      "issued_at": "2026-07-18T10:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:building:renovation-fixture",
+        "predicate": "rdf:type",
+        "object": "bot:Building"
+      },
+      "scope": { "household_id": "urn:hwm:household:fixture-004" },
+      "epistemic_basis": { "mode": "planned", "method": "architect design import" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-design-import",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-context:renovation-base-r2",
+          "context_kind": "base_design",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-bedroom-type",
+      "issuer": "urn:hwm:subject:designer",
+      "issued_at": "2026-07-18T10:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:space:planned-bedroom",
+        "predicate": "rdf:type",
+        "object": "bot:Space"
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "architect design import" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-design-import",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-context:renovation-base-r2",
+          "context_kind": "base_design",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:building-has-planned-bedroom",
+      "issuer": "urn:hwm:subject:designer",
+      "issued_at": "2026-07-18T10:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:building:renovation-fixture",
+        "predicate": "bot:hasSpace",
+        "object": "urn:hwm:space:planned-bedroom"
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "architect design import" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-design-import",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-context:renovation-base-r2",
+          "context_kind": "base_design",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-reading-zone-type",
+      "issuer": "urn:hwm:subject:designer",
+      "issued_at": "2026-07-18T10:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:zone:planned-reading",
+        "predicate": "rdf:type",
+        "object": ["bot:Zone", "sosa:FeatureOfInterest"]
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "architect design import" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-design-import",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-context:renovation-base-r2",
+          "context_kind": "base_design",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-reading-slot-type",
+      "issuer": "urn:hwm:subject:designer",
+      "issued_at": "2026-07-18T10:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:slot:planned-reading-light",
+        "predicate": "rdf:type",
+        "object": "hwm:FunctionalSlot"
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "design intent" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-design-import",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-context:renovation-base-r2",
+          "context_kind": "base_design",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-reading-requirement",
+      "issuer": "urn:hwm:subject:homeowner",
+      "issued_at": "2026-07-18T10:02:00Z",
+      "proposition": {
+        "subject": "urn:hwm:zone:planned-reading",
+        "predicate": "hwm-effect:minimumRequirement",
+        "object": {
+          "property": "saref:Light",
+          "threshold": { "value": 300, "unit": "lx" },
+          "comparator": ">="
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"],
+        "purposes": ["hwm:purpose:reading"]
+      },
+      "epistemic_basis": { "mode": "declared", "method": "explicit user requirement" },
+      "profiles": [{ "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-requirement-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:candidate-product-model-type",
+      "issuer": "urn:hwm:subject:catalog-adapter",
+      "issued_at": "2026-07-18T10:03:00Z",
+      "proposition": {
+        "subject": "urn:product-model:synthetic-reading-luminaire-a",
+        "predicate": "rdf:type",
+        "object": "schema:ProductModel"
+      },
+      "scope": { "household_id": "urn:hwm:household:fixture-004" },
+      "epistemic_basis": { "mode": "declared", "method": "vendor catalog import" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-catalog-import",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:candidate-product-maximum-power",
+      "issuer": "urn:hwm:subject:catalog-adapter",
+      "issued_at": "2026-07-18T10:03:00Z",
+      "proposition": {
+        "subject": "urn:product-model:synthetic-reading-luminaire-a",
+        "predicate": "saref:hasPower",
+        "object": { "value": 12, "unit": "W", "kind": "maximum" }
+      },
+      "scope": { "household_id": "urn:hwm:household:fixture-004" },
+      "epistemic_basis": { "mode": "declared", "method": "vendor catalog import" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-catalog-import",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:product-model-candidate-for-slot",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:04:00Z",
+      "proposition": {
+        "subject": "urn:product-model:synthetic-reading-luminaire-a",
+        "predicate": "hwm-planning:candidateFor",
+        "object": "urn:hwm:slot:planned-reading-light"
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "design option selection" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-option-a-declaration",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-a",
+          "context_kind": "design_option",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-mounting-for-option",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:04:00Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-a",
+        "predicate": "hwm-planning:mountingPlan",
+        "object": {
+          "function_position_id": "urn:hwm:slot:planned-reading-light",
+          "product_model_id": "urn:product-model:synthetic-reading-luminaire-a",
+          "space_id": "urn:hwm:space:planned-bedroom",
+          "position": { "x": 0.9, "y": 1.0, "z": 1.65, "unit": "m" },
+          "orientation": { "yaw": 0, "pitch": -35, "roll": 0, "unit": "deg" }
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "design option selection" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-option-a-declaration",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-a",
+          "context_kind": "design_option",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-circuit-reserved-load",
+      "issuer": "urn:hwm:subject:electrical-designer",
+      "issued_at": "2026-07-18T10:05:00Z",
+      "proposition": {
+        "subject": "urn:hwm:planned-circuit:bedroom-lighting",
+        "predicate": "hwm-planning:reservedLoad",
+        "object": {
+          "compatibility_projection": "planned_load_allocation",
+          "allocation_id": "urn:hwm:electrical-allocation:bedroom-reading-light",
+          "quantity_role": "planned_load_allocation",
+          "quantity": { "kind": "active_power", "value": 100, "unit": "W" },
+          "applies_to_function_position_id": "urn:hwm:slot:planned-reading-light",
+          "assessment_use": "catalog_screening_only",
+          "not_evidence_of": [
+            "installed_load",
+            "estimated_maximum_demand",
+            "design_current",
+            "current_carrying_capacity",
+            "protection_coordination",
+            "installation_verification",
+            "jurisdictional_compliance"
+          ]
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "planned", "method": "electrical design revision design-r2" },
+      "profiles": [{ "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-electrical-plan",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-context:renovation-base-r2",
+          "context_kind": "base_design",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-option-simulated-effect",
+      "issuer": "urn:hwm:subject:simulation-adapter",
+      "issued_at": "2026-07-18T10:06:00Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-a",
+        "predicate": "hwm-effect:predictsOutcome",
+        "object": {
+          "when": {
+            "action_type": "hwm-planning:SetLevel",
+            "parameters": { "level_percent": 100 }
+          },
+          "affected_feature_id": "urn:hwm:zone:planned-reading",
+          "property": "saref:Light",
+          "expected_range": { "minimum": 320, "maximum": 380, "unit": "lx" },
+          "context_claim_ids": [
+            "urn:hwm:claim:planned-mounting-for-option",
+            "urn:hwm:claim:candidate-product-maximum-power"
+          ],
+          "observation_window_seconds": 0,
+          "measurement_procedure": "urn:hwm:procedure:synthetic-lighting-simulation-v1",
+          "tolerance": { "value": 0, "unit": "lx" },
+          "uncertainty": { "kind": "bounded_interval", "confidence": 0.7 },
+          "model_version": "sim-fixture-1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": ["urn:hwm:space:planned-bedroom"]
+      },
+      "epistemic_basis": { "mode": "simulated", "method": "synthetic ray simulation", "confidence": 0.7 },
+      "profiles": [{ "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:renovation-option-a-lighting-simulation",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-a",
+          "context_kind": "design_option",
+          "revision": "design-r2"
+        }
+      }
+    },
+    "evidence_links": [
+      {
+        "link_id": "urn:hwm:evidence-link:renovation-simulation-support",
+        "relation": "supports",
+        "record_id": "urn:hwm:record:renovation-option-a-lighting-simulation",
+        "asserted_by": "urn:hwm:subject:simulation-adapter",
+        "created_at": "2026-07-18T10:06:00Z",
+        "extensions": {}
+      }
+    ],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:candidate-product-model-b-type",
+      "issuer": "urn:hwm:subject:catalog-adapter",
+      "issued_at": "2026-07-18T10:03:00Z",
+      "proposition": {
+        "subject": "urn:product-model:synthetic-reading-luminaire-b",
+        "predicate": "rdf:type",
+        "object": "schema:ProductModel"
+      },
+      "epistemic_basis": {
+        "mode": "declared",
+        "method": "synthetic product catalog import"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-catalog-import",
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004"
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ],
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:candidate-product-b-maximum-power",
+      "issuer": "urn:hwm:subject:catalog-adapter",
+      "issued_at": "2026-07-18T10:03:00Z",
+      "proposition": {
+        "subject": "urn:product-model:synthetic-reading-luminaire-b",
+        "predicate": "saref:hasPower",
+        "object": {
+          "value": 8,
+          "unit": "W",
+          "kind": "maximum"
+        }
+      },
+      "epistemic_basis": {
+        "mode": "declared",
+        "method": "synthetic product catalog import"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-catalog-import",
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004"
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ],
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:option-a-derived-from-base",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:04:00Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-a",
+        "predicate": "prov:wasDerivedFrom",
+        "object": "urn:hwm:design-context:renovation-base-r2"
+      },
+      "epistemic_basis": {
+        "mode": "planned",
+        "method": "design branch derivation"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-a-declaration",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-a",
+          "context_kind": "design_option",
+          "revision": "option-a-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:option-b-derived-from-base",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:04:30Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-b",
+        "predicate": "prov:wasDerivedFrom",
+        "object": "urn:hwm:design-context:renovation-base-r2"
+      },
+      "epistemic_basis": {
+        "mode": "planned",
+        "method": "design branch derivation"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-b-declaration",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-b",
+          "context_kind": "design_option",
+          "revision": "option-b-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:product-model-b-candidate-for-slot",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:04:30Z",
+      "proposition": {
+        "subject": "urn:product-model:synthetic-reading-luminaire-b",
+        "predicate": "hwm-planning:candidateFor",
+        "object": "urn:hwm:slot:planned-reading-light"
+      },
+      "epistemic_basis": {
+        "mode": "planned",
+        "method": "design option selection"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-b-declaration",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-b",
+          "context_kind": "design_option",
+          "revision": "option-b-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-mounting-for-option-b",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:04:30Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-b",
+        "predicate": "hwm-planning:mountingPlan",
+        "object": {
+          "function_position_id": "urn:hwm:slot:planned-reading-light",
+          "product_model_id": "urn:product-model:synthetic-reading-luminaire-b",
+          "space_id": "urn:hwm:space:planned-bedroom",
+          "position": {
+            "x": 0.9,
+            "y": 1,
+            "z": 1.65,
+            "unit": "m"
+          },
+          "orientation": {
+            "yaw": 0,
+            "pitch": -35,
+            "roll": 0,
+            "unit": "deg"
+          }
+        }
+      },
+      "epistemic_basis": {
+        "mode": "planned",
+        "method": "design option selection"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-b-declaration",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-b",
+          "context_kind": "design_option",
+          "revision": "option-b-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:planned-option-b-simulated-effect",
+      "issuer": "urn:hwm:subject:simulation-adapter",
+      "issued_at": "2026-07-18T10:06:30Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-b",
+        "predicate": "hwm-effect:predictsOutcome",
+        "object": {
+          "when": {
+            "action_type": "hwm-planning:SetLevel",
+            "parameters": {
+              "level_percent": 100
+            }
+          },
+          "affected_feature_id": "urn:hwm:zone:planned-reading",
+          "property": "saref:Light",
+          "expected_range": {
+            "minimum": 245,
+            "maximum": 285,
+            "unit": "lx"
+          },
+          "context_claim_ids": [
+            "urn:hwm:claim:planned-mounting-for-option-b",
+            "urn:hwm:claim:candidate-product-b-maximum-power"
+          ],
+          "observation_window_seconds": 0,
+          "measurement_procedure": "urn:hwm:procedure:synthetic-lighting-simulation-v1",
+          "tolerance": {
+            "value": 0,
+            "unit": "lx"
+          },
+          "uncertainty": {
+            "kind": "bounded_interval",
+            "confidence": 0.7
+          },
+          "model_version": "sim-fixture-1"
+        }
+      },
+      "epistemic_basis": {
+        "mode": "simulated",
+        "method": "synthetic ray simulation",
+        "confidence": 0.7
+      },
+      "profiles": [
+        {
+          "id": "hwm:simple-action-effect",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ],
+      "creation_record_id": "urn:hwm:record:renovation-option-b-lighting-simulation",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-b",
+          "context_kind": "design_option",
+          "revision": "option-b-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      }
+    },
+    "evidence_links": [
+      {
+        "link_id": "urn:hwm:evidence-link:renovation-option-b-simulation-support",
+        "relation": "supports",
+        "record_id": "urn:hwm:record:renovation-option-b-lighting-simulation",
+        "asserted_by": "urn:hwm:subject:simulation-adapter",
+        "created_at": "2026-07-18T10:06:30Z",
+        "extensions": {}
+      }
+    ],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:option-a-requirement-status",
+      "issuer": "urn:hwm:subject:simulation-adapter",
+      "issued_at": "2026-07-18T10:06:00Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-a",
+        "predicate": "hwm-planning:requirementStatus",
+        "object": {
+          "requirement_claim_id": "urn:hwm:claim:planned-reading-requirement",
+          "status": "satisfied",
+          "basis_claim_id": "urn:hwm:claim:planned-option-simulated-effect"
+        }
+      },
+      "epistemic_basis": {
+        "mode": "inferred",
+        "method": "threshold evaluation over simulated interval"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-a-lighting-simulation",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-a",
+          "context_kind": "design_option",
+          "revision": "option-a-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:option-b-requirement-status",
+      "issuer": "urn:hwm:subject:simulation-adapter",
+      "issued_at": "2026-07-18T10:06:30Z",
+      "proposition": {
+        "subject": "urn:hwm:design-option:reading-light-b",
+        "predicate": "hwm-planning:requirementStatus",
+        "object": {
+          "requirement_claim_id": "urn:hwm:claim:planned-reading-requirement",
+          "status": "not_satisfied",
+          "basis_claim_id": "urn:hwm:claim:planned-option-b-simulated-effect"
+        }
+      },
+      "epistemic_basis": {
+        "mode": "inferred",
+        "method": "threshold evaluation over simulated interval"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-b-lighting-simulation",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:design-option:reading-light-b",
+          "context_kind": "design_option",
+          "revision": "option-b-r1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:comparison-recommends-option-a",
+      "issuer": "urn:hwm:subject:design-agent",
+      "issued_at": "2026-07-18T10:07:00Z",
+      "proposition": {
+        "subject": "urn:hwm:comparison:reading-light-a-vs-b-1",
+        "predicate": "hwm-planning:recommends",
+        "object": "urn:hwm:design-option:reading-light-a"
+      },
+      "epistemic_basis": {
+        "mode": "inferred",
+        "method": "explicit cross-branch comparison"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-option-comparison",
+      "extensions": {
+        "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#designContext": {
+          "context_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+          "context_kind": "comparison",
+          "revision": "comparison-r1",
+          "input_context_ids": [
+            "urn:hwm:design-option:reading-light-a",
+            "urn:hwm:design-option:reading-light-b"
+          ]
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004",
+        "space_ids": [
+          "urn:hwm:space:planned-bedroom"
+        ]
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ]
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:homeowner-selects-option-a",
+      "issuer": "urn:hwm:subject:homeowner",
+      "issued_at": "2026-07-18T10:08:00Z",
+      "proposition": {
+        "subject": "urn:hwm:subject:homeowner",
+        "predicate": "hwm-planning:selectedOption",
+        "object": {
+          "design_option_id": "urn:hwm:design-option:reading-light-a",
+          "comparison_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+          "effect": "planning_preference_only"
+        }
+      },
+      "epistemic_basis": {
+        "mode": "declared",
+        "method": "explicit user selection"
+      },
+      "creation_record_id": "urn:hwm:record:renovation-homeowner-selection",
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-004"
+      },
+      "profiles": [
+        {
+          "id": "hwm:renovation-planning",
+          "version": "0.1.0-fixture",
+          "required": true
+        }
+      ],
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  }
+]

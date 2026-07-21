@@ -1,0 +1,17 @@
+{
+  "assessment_id":"synthetic-local-learning-routing",
+  "sources":[{"ref":"../../outcomes/v0.1/example-usage-evidence.json","sha256":"57ed03d6318aeaadd7cadd73717c6bd822b0068cba7d70571201fbae5b5ce0fc","standing":"admitted","lineage_ref":"urn:hwm:lineage:synthetic-usage-fixture"}],
+  "source_scope":{"household_or_population":"one synthetic household fixture","unit":"synthetic deployment controller","coverage":"one controller; no person or real household inference","time_window":"2026-07-01 through 2026-07-07"},
+  "destination":"household_instance_candidate",
+  "proposition":"The same synthetic household may consider a candidate interaction-frequency Claim for fixture testing.",
+  "purpose":"local fixture candidate evaluation only",
+  "permissions":{"source_use":"allowed","boundary_crossing":"not_required","logging":"denied","retention":"allowed","training":"not_requested","model_update_release":"not_requested","onward_disclosure":"not_requested"},
+  "method":"same-scope candidate routing without generalization",
+  "generalization":{"transport_status":"not evaluated","population_frame":"same synthetic household only","denominator_status":"not applicable","dependence_status":"one controller lineage","validation_status":"local candidate only","distribution_status":"not evaluated","confounder_limits":"usage does not establish preference, benefit or stable pattern"},
+  "privacy":{"qualification":"local synthetic fixture","linkage_risk":"not evaluated for real data","membership_risk":"no real membership data","output_review":"candidate must still pass Model Contribution Admission"},
+  "as_of":"2026-07-19T00:00:00Z",
+  "routing_result":"household_candidate_eligible",
+  "downstream_status":"not_started",
+  "limitations":["synthetic fixture","candidate is not a fact, rule, default, population result or specification change"],
+  "must_not_infer":["candidate_admitted","candidate_published","household_fact","rule_activated","product_default","population_support","specification_change","training_permission","model_deployed","household_trust","access","action_authority"]
+}

@@ -1,0 +1,58 @@
+{
+  "contract": "hwm:ClaimEnvelope",
+  "contract_version": "0.1.0",
+  "claim": {
+    "claim_id": "urn:hwm:claim:resident-a-sleep-episode-2026-07-19-r1",
+    "issuer": "urn:hwm:agent:household-context-resolver",
+    "issued_at": "2026-07-19T22:16:00Z",
+    "proposition": {
+      "subject": "urn:hwm:person:resident-a",
+      "predicate": "https://saref.etsi.org/saref4ehaw/hasActivity",
+      "object": {
+        "episode_ref": "urn:hwm:episode:resident-a-sleep-2026-07-19",
+        "kind_ref": "urn:hwm:activity-kind:sleeping-in-bed",
+        "participant_refs": ["urn:hwm:person:resident-a"],
+        "space_refs": ["urn:hwm:space:bedroom-a"]
+      }
+    },
+    "valid_time": {"from": "2026-07-19T22:12:00Z"},
+    "scope": {
+      "household_id": "urn:hwm:household:fixture-situation-001",
+      "space_ids": ["urn:hwm:space:bedroom-a"],
+      "purposes": ["urn:hwm:purpose:night-comfort-eligibility"]
+    },
+    "epistemic_basis": {
+      "mode": "inferred",
+      "method": "urn:hwm:procedure:multimodal-sleep-recognition-v1",
+      "confidence": 0.91
+    },
+    "profiles": [
+      {"id": "hwm:core", "version": "0.1.0", "required": true},
+      {"id": "https://homeworldmodel.org/spec/profiles/situational-context/v0.1", "version": "0.1.0-fixture", "required": true}
+    ],
+    "creation_record_id": "urn:hwm:record:sleep-inference-2026-07-19T22:16:00Z",
+    "extensions": {
+      "external_activity_type": "https://saref.etsi.org/saref4ehaw/Activity",
+      "temporal_model": "http://www.w3.org/2006/time#Interval"
+    }
+  },
+  "evidence_links": [
+    {
+      "link_id": "urn:hwm:evidence-link:sleep-bedroom-presence",
+      "relation": "supports",
+      "record_id": "urn:hwm:record:bedroom-presence-window-2026-07-19T22:12:00Z",
+      "asserted_by": "urn:hwm:agent:household-context-resolver",
+      "created_at": "2026-07-19T22:16:00Z",
+      "extensions": {"origin_id": "urn:hwm:evidence-origin:bedroom-presence-sensor-window-1"}
+    },
+    {
+      "link_id": "urn:hwm:evidence-link:sleep-resident-attestation",
+      "relation": "confirms",
+      "record_id": "urn:hwm:record:resident-a-sleep-attestation-2026-07-19",
+      "asserted_by": "urn:hwm:person:resident-a",
+      "created_at": "2026-07-19T22:18:00Z",
+      "extensions": {"origin_id": "urn:hwm:evidence-origin:resident-a-attestation-1"}
+    }
+  ],
+  "extensions": {}
+}

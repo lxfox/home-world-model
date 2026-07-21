@@ -1,0 +1,8 @@
+{
+  "proposal_id":"hwm-example-clarify-evidence-language",
+  "proposal_revision":1,
+  "reviews":[
+    {"review_id":"review-editorial-1","reviewer_ref":"urn:hwm:reviewer:project-editor","position":"support","scope":"editorial and model boundary","conflict_disclosure":"same project","rationale":"The clarification prevents an unsupported adoption inference.","evidence_refs":["interop/challenges/base-exchange-v0.1/EVIDENCE-PORTFOLIO.md"],"objections":[]},
+    {"review_id":"review-dissent-1","reviewer_ref":"urn:hwm:reviewer:project-dissent-fixture","position":"object","scope":"wording","conflict_disclosure":"same project","rationale":"Would prefer a shorter formulation.","evidence_refs":[],"objections":[{"objection_id":"objection-wording-1","class":"alternative_design","statement":"Use a shorter sentence."}]}
+  ]
+}

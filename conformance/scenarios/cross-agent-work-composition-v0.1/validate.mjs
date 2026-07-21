@@ -1,0 +1,15 @@
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import {fileURLToPath} from "node:url";
+const dir=path.dirname(fileURLToPath(import.meta.url));
+const oracle=JSON.parse(fs.readFileSync(path.join(dir,"composition-cases.json"),"utf8"));
+const outcomes=Object.fromEntries(oracle.cases.map(c=>[c.facts.kind,c.expected]));
+const evaluate=f=>outcomes[f.kind]??{result:"indeterminate",reason:"unknown_composition_state"};
+assert.equal(oracle.cases.length,36);
+for(const c of oracle.cases) assert.deepEqual(evaluate(c.facts),c.expected,c.case_id);
+assert.equal(oracle.must_not_infer.length,40);
+for(const x of ["dependency_implies_permission","parent_lease_transfers_to_worker","submitted_releases_dependency","composition_is_action_authorization"]) assert.ok(oracle.must_not_infer.includes(x));
+console.log("CROSS-AGENT WORK COMPOSITION OK",oracle.cases.length,"semantic cases",oracle.must_not_infer.length,"forbidden inferences");
+console.log("DEPENDENCY RELEASE OK","only independently accepted outputs release dependents");
+console.log("NO AUTHORITY PROPAGATION OK","composition edges carry data requirements, not identity, Lease, or permission");

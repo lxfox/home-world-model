@@ -1,0 +1,65 @@
+{
+  "contract": "hwm:ActionTrace",
+  "contract_version": "0.1.0",
+  "trace_id": "urn:hwm:trace:set-level-60",
+  "trace_revision": 1,
+  "household_id": "urn:hwm:household:fixture-001",
+  "generated_at": "2026-07-18T08:05:13Z",
+  "known_through": "2026-07-18T08:05:12Z",
+  "based_on_view_id": "urn:hwm:view:before-set-level-60",
+  "intent": {
+    "intent_id": "urn:hwm:intent:make-reading-zone-ready",
+    "requested_by": "urn:hwm:subject:resident-001",
+    "goal_claim_ids": ["urn:hwm:claim:reading-zone-requirement"]
+  },
+  "proposal": {
+    "proposal_id": "urn:hwm:proposal:set-level-60",
+    "proposed_by": "urn:hwm:subject:planner-agent-001",
+    "action": {
+      "action_type": "matter:MoveToLevel",
+      "target_endpoint_id": "urn:hwm:endpoint:matter-lamp-001",
+      "parameters": { "level_percent": 60 }
+    },
+    "effect_claim_ids": ["urn:hwm:claim:set-level-60-effect"]
+  },
+  "authorization": {
+    "decision": "allowed",
+    "authority_epoch": 7,
+    "record_id": "urn:hwm:record:authorization-001",
+    "policy_ids": ["urn:hwm:policy:resident-light-control"]
+  },
+  "execution": {
+    "status": "dispatched",
+    "dispatch_record_id": "urn:hwm:record:dispatch-001",
+    "acknowledgement": {
+      "status": "acknowledged",
+      "record_id": "urn:hwm:record:acknowledgement-001"
+    },
+    "reason_codes": ["authorization_allowed"]
+  },
+  "observation_record_ids": ["urn:hwm:record:observation-295-lux"],
+  "effect_assessments": [
+    {
+      "effect_claim_id": "urn:hwm:claim:set-level-60-effect",
+      "status": "consistent",
+      "observation_record_ids": ["urn:hwm:record:observation-295-lux"],
+      "reason_codes": ["observation_within_expected_range"]
+    }
+  ],
+  "goal_evaluations": [
+    {
+      "goal_claim_id": "urn:hwm:claim:reading-zone-requirement",
+      "status": "not_satisfied",
+      "observation_record_ids": ["urn:hwm:record:observation-295-lux"],
+      "reason_codes": ["observation_below_minimum"]
+    }
+  ],
+  "resource_assessments": [],
+  "user_attestation_record_ids": ["urn:hwm:record:user-attestation-too-dim"],
+  "recovery_record_ids": [],
+  "extensions": {
+    "https://example.org/hwm/roundtrip-sentinel": {
+      "must_survive": true
+    }
+  }
+}

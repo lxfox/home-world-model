@@ -1,0 +1,59 @@
+{
+  "contract": "hwm-impact:CoveragePolicyDocument",
+  "contract_version": "0.1.0-fixture",
+  "document_id": "urn:hwm:impact-policy:household-7",
+  "household_id": "urn:hwm:household:discussion-home",
+  "authority_id": "urn:hwm:authority:discussion-home",
+  "authority_epoch": 7,
+  "issued_at": "2026-07-19T08:00:00Z",
+  "policy_combining_strategy": "only_one_applicable",
+  "coverage_rules": [
+    {
+      "rule_id": "shared-comfort-four-channels",
+      "action_types": ["SetZoneTemperature"],
+      "purposes": ["shared_comfort"],
+      "effect_domains": ["thermal", "privacy", "resource", "control"],
+      "space_scope": { "mode": "listed", "values": ["urn:hwm:space:shared-bedroom"] },
+      "risk_levels": ["moderate"],
+      "maximum_horizon_seconds": 3600,
+      "required_channels": [
+        { "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1", "maximum_report_age_seconds": 900, "extensions": {} },
+        { "channel_id": "privacy_data", "procedure_id": "urn:hwm:procedure:privacy-impact-v1", "maximum_report_age_seconds": 900, "extensions": {} },
+        { "channel_id": "shared_resource", "procedure_id": "urn:hwm:procedure:resource-impact-v1", "maximum_report_age_seconds": 900, "extensions": {} },
+        { "channel_id": "control_interest", "procedure_id": "urn:hwm:procedure:control-impact-v1", "maximum_report_age_seconds": 900, "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "extensions": {}
+    },
+    {
+      "rule_id": "ambiguous-a",
+      "action_types": ["AmbiguousAction"],
+      "purposes": ["test_only"],
+      "effect_domains": ["thermal"],
+      "space_scope": { "mode": "all", "values": [] },
+      "risk_levels": ["low"],
+      "maximum_horizon_seconds": 3600,
+      "required_channels": [
+        { "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1", "maximum_report_age_seconds": 900, "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "extensions": {}
+    },
+    {
+      "rule_id": "ambiguous-b",
+      "action_types": ["AmbiguousAction"],
+      "purposes": ["test_only"],
+      "effect_domains": ["thermal"],
+      "space_scope": { "mode": "all", "values": [] },
+      "risk_levels": ["low"],
+      "maximum_horizon_seconds": 3600,
+      "required_channels": [
+        { "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1", "maximum_report_age_seconds": 900, "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "extensions": {}
+    }
+  ],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "fixture-only" },
+  "extensions": {}
+}

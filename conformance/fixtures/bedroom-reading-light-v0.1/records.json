@@ -1,0 +1,97 @@
+[
+  {
+    "record_id": "urn:hwm:record:setup-declaration",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:homeowner",
+    "recorded_at": "2026-07-18T08:00:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:functional-slot-type",
+        "urn:hwm:claim:asset-fulfills-slot",
+        "urn:hwm:claim:endpoint-exposes-asset",
+        "urn:hwm:claim:reading-zone-requirement"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:effect-model-declaration",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:commissioning-agent",
+    "recorded_at": "2026-07-18T08:01:00Z",
+    "payload": {
+      "claim_ids": ["urn:hwm:claim:set-level-60-effect"],
+      "source": "commissioning sample"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:authorization-001",
+    "record_type": "authorization",
+    "attributed_to": "urn:hwm:authority:fixture-001",
+    "recorded_at": "2026-07-18T08:05:01Z",
+    "payload": {
+      "proposal_id": "urn:hwm:proposal:set-level-60",
+      "decision": "allowed",
+      "authority_epoch": 7,
+      "policy_ids": ["urn:hwm:policy:resident-light-control"]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:dispatch-001",
+    "record_type": "action",
+    "attributed_to": "urn:hwm:subject:execution-gateway",
+    "recorded_at": "2026-07-18T08:05:02Z",
+    "payload": {
+      "action_type": "matter:MoveToLevel",
+      "target_endpoint_id": "urn:hwm:endpoint:matter-lamp-001",
+      "parameters": { "level_percent": 60 }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:acknowledgement-001",
+    "record_type": "action",
+    "attributed_to": "urn:hwm:endpoint:matter-lamp-001",
+    "recorded_at": "2026-07-18T08:05:03Z",
+    "payload": {
+      "dispatch_record_id": "urn:hwm:record:dispatch-001",
+      "status": "acknowledged"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:observation-295-lux",
+    "record_type": "observation",
+    "attributed_to": "urn:hwm:subject:lux-sensor-001",
+    "recorded_at": "2026-07-18T08:05:09Z",
+    "observed_at": "2026-07-18T08:05:08Z",
+    "procedure": "urn:hwm:procedure:reading-zone-lux-v1",
+    "payload": {
+      "feature_of_interest": "urn:hwm:zone:bedroom-reading",
+      "property": "saref:Light",
+      "result": { "value": 295, "unit": "lx" }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:user-attestation-too-dim",
+    "record_type": "attestation",
+    "attributed_to": "urn:hwm:subject:resident-001",
+    "recorded_at": "2026-07-18T08:05:12Z",
+    "payload": {
+      "about_trace_id": "urn:hwm:trace:set-level-60",
+      "stance": "rejected",
+      "statement": "too_dim_for_reading"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  }
+]

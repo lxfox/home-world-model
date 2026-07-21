@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/routine-instantiation/v0.1/routine-state.schema.json",
+  "title": "HWM Routine Activation State v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "state_id", "routine_id", "state_revision", "previous_state_binding", "routine_definition_binding", "assessed_at", "authority_epoch", "activation_status", "activation_decision_binding", "transition_record_binding", "related_routine_bindings", "proof", "extensions"],
+  "properties": {
+    "contract": {"const": "hwm-routine:ActivationState"},
+    "contract_version": {"const": "0.1.0-fixture"},
+    "state_id": {"type": "string", "minLength": 1},
+    "routine_id": {"type": "string", "minLength": 1},
+    "state_revision": {"type": "integer", "minimum": 1},
+    "previous_state_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]},
+    "routine_definition_binding": {"$ref": "#/$defs/RoutineBinding"},
+    "assessed_at": {"type": "string", "format": "date-time"},
+    "authority_epoch": {"type": "integer", "minimum": 0},
+    "activation_status": {"enum": ["proposed", "active", "paused", "retired", "superseded", "indeterminate"]},
+    "activation_decision_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]},
+    "transition_record_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]},
+    "related_routine_bindings": {"type": "array", "items": {"$ref": "#/$defs/RoutineBinding"}},
+    "proof": {"$ref": "#/$defs/Proof"},
+    "extensions": {"type": "object", "additionalProperties": true}
+  },
+  "$defs": {
+    "DigestBinding": {
+      "type": "object",
+      "required": ["artifact_id", "digest_algorithm", "canonicalization", "digest"],
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "digest_algorithm": {"const": "sha-256"},
+        "canonicalization": {"const": "RFC8785"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "RoutineBinding": {
+      "type": "object",
+      "required": ["routine_id", "definition_revision", "digest_algorithm", "canonicalization", "digest"],
+      "properties": {
+        "routine_id": {"type": "string", "minLength": 1},
+        "definition_revision": {"type": "integer", "minimum": 1},
+        "digest_algorithm": {"const": "sha-256"},
+        "canonicalization": {"const": "RFC8785"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method", "value"],
+      "properties": {
+        "mode": {"enum": ["unsigned_fixture", "signature"]},
+        "verification_method": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"type": "object", "properties": {"state_revision": {"const": 1}}, "required": ["state_revision"]},
+      "then": {"type": "object", "properties": {"previous_state_binding": {"type": "null"}}},
+      "else": {"type": "object", "properties": {"previous_state_binding": {"$ref": "#/$defs/DigestBinding"}}}
+    }
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,262 @@
+{
+  "artifact": "hwm-standing:OracleCases",
+  "version": "0.1.0-fixture",
+  "cases": [
+    {
+      "case_id": "resident-firsthand-visible-change-admitted",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident", "urn:hwm:role:household-observer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:00:00Z", "evidence_kind": "interaction_attestation", "relation": "confirms",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:firsthand-visible-change"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["objective_illuminance_value", "goal_satisfied", "global_actor_trust"]
+    },
+    {
+      "case_id": "visitor-explicit-observer-role-admitted",
+      "request": {
+        "actor_id": "urn:hwm:person:visitor-a", "actor_role_ids": ["urn:hwm:role:household-observer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:01:00Z", "evidence_kind": "interaction_attestation", "relation": "refutes",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:firsthand-visible-change"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["visitor_has_global_household_authority", "negated_claim_exists"]
+    },
+    {
+      "case_id": "resident-visible-experience-not-objective-lux",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident", "urn:hwm:role:household-observer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:02:00Z", "evidence_kind": "interaction_attestation", "relation": "confirms",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:bedroom-lux-312", "predicate": "hwm-measurement:illuminanceValue", "subject_id": "urn:hwm:zone:bedroom-reading-plane", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["target_predicate_not_granted"] },
+      "must_not_infer": ["objective_illuminance_value", "resident_incompetent_for_all_claims"]
+    },
+    {
+      "case_id": "resident-self-preference-admitted",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:03:00Z", "evidence_kind": "household_attestation", "relation": "confirms",
+        "purpose": "personal-comfort-planning", "target": { "claim_id": "urn:hwm:claim:resident-a-temperature-preference", "predicate": "hwm-preference:preferredRange", "subject_id": "urn:hwm:person:resident-a", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:preference-questionnaire-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:self-preference"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["shared_household_preference", "action_authorized"]
+    },
+    {
+      "case_id": "resident-cannot-define-another-resident-preference",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:04:00Z", "evidence_kind": "household_attestation", "relation": "confirms",
+        "purpose": "personal-comfort-planning", "target": { "claim_id": "urn:hwm:claim:resident-b-temperature-preference", "predicate": "hwm-preference:preferredRange", "subject_id": "urn:hwm:person:resident-b", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:preference-questionnaire-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["target_subject_scope_mismatch"] },
+      "must_not_infer": ["resident_b_preference", "resident_a_globally_untrusted"]
+    },
+    {
+      "case_id": "household-admin-role-does-not-imply-electrical-standing",
+      "request": {
+        "actor_id": "urn:hwm:person:admin-a", "actor_role_ids": ["urn:hwm:role:household-admin"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:05:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "electrical-installation-review", "target": { "claim_id": "urn:hwm:claim:electrical-review", "predicate": "hwm-electrical:inspectionOutcome", "subject_id": "urn:hwm:installation:home-a", "space_ids": ["urn:hwm:space:whole-home"] },
+        "procedure_id": "urn:hwm:procedure:electrical-inspection-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["no_matching_principal"] },
+      "must_not_infer": ["electrical_compliance", "admin_is_global_truth_authority"]
+    },
+    {
+      "case_id": "calibrated-lux-sensor-observation-admitted",
+      "request": {
+        "actor_id": "urn:hwm:sensor:lux-meter-1", "actor_role_ids": [],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:06:00Z", "evidence_kind": "sensor_observation", "relation": "supports",
+        "purpose": "commissioning-photometry", "target": { "claim_id": "urn:hwm:claim:bedroom-lux-312", "predicate": "hwm-measurement:illuminanceValue", "subject_id": "urn:hwm:zone:bedroom-reading-plane", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:calibrated-lux-measurement-v1", "direct_experience": false, "question_bound": false, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:bedroom-lux-meter"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["measurement_true", "requirement_satisfied", "sensor_trusted_for_other_properties"]
+    },
+    {
+      "case_id": "lux-sensor-wrong-procedure-excluded",
+      "request": {
+        "actor_id": "urn:hwm:sensor:lux-meter-1", "actor_role_ids": [],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:07:00Z", "evidence_kind": "sensor_observation", "relation": "supports",
+        "purpose": "commissioning-photometry", "target": { "claim_id": "urn:hwm:claim:bedroom-lux-312", "predicate": "hwm-measurement:illuminanceValue", "subject_id": "urn:hwm:zone:bedroom-reading-plane", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:uncalibrated-phone-reading", "direct_experience": false, "question_bound": false, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["procedure_not_granted"] },
+      "must_not_infer": ["objective_illuminance_value", "sensor_invalid_for_all_procedures"]
+    },
+    {
+      "case_id": "device-acknowledgement-admitted-only-for-execution-trace",
+      "request": {
+        "actor_id": "urn:hwm:endpoint:night-light-1", "actor_role_ids": [],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:08:00Z", "evidence_kind": "device_acknowledgement", "relation": "supports",
+        "purpose": "execution-tracing", "target": { "claim_id": "urn:hwm:claim:night-light-ack", "predicate": "hwm-action:commandAcknowledged", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:matter-command-ack", "direct_experience": false, "question_bound": false, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:endpoint-acknowledgement"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["physical_effect_observed", "goal_satisfied", "user_acceptance"]
+    },
+    {
+      "case_id": "device-acknowledgement-not-physical-observation",
+      "request": {
+        "actor_id": "urn:hwm:endpoint:night-light-1", "actor_role_ids": [],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:09:00Z", "evidence_kind": "device_acknowledgement", "relation": "supports",
+        "purpose": "execution-tracing", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:matter-command-ack", "direct_experience": false, "question_bound": false, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["target_predicate_not_granted"] },
+      "must_not_infer": ["physical_effect_observed", "device_untrusted_for_acknowledgement"]
+    },
+    {
+      "case_id": "installer-position-check-admitted",
+      "request": {
+        "actor_id": "urn:hwm:person:installer-a", "actor_role_ids": ["urn:hwm:role:commissioning-installer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:10:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "installation-commissioning", "target": { "claim_id": "urn:hwm:claim:night-light-position", "predicate": "hwm-install:installedAtPlannedPosition", "subject_id": "urn:hwm:asset:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:position-check-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:installer-position-check"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["electrical_compliance", "household_acceptance", "installation_perfect"]
+    },
+    {
+      "case_id": "installer-position-role-not-photometric-standing",
+      "request": {
+        "actor_id": "urn:hwm:person:installer-a", "actor_role_ids": ["urn:hwm:role:commissioning-installer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:11:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "installation-commissioning", "target": { "claim_id": "urn:hwm:claim:bedroom-lux-312", "predicate": "hwm-measurement:illuminanceValue", "subject_id": "urn:hwm:zone:bedroom-reading-plane", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:position-check-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["target_predicate_not_granted"] },
+      "must_not_infer": ["objective_illuminance_value", "installer_globally_unqualified"]
+    },
+    {
+      "case_id": "current-in-jurisdiction-professional-credential-admitted",
+      "request": {
+        "actor_id": "urn:hwm:person:reviewer-a", "actor_role_ids": ["urn:hwm:role:electrical-reviewer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:12:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "electrical-installation-review", "target": { "claim_id": "urn:hwm:claim:electrical-review", "predicate": "hwm-electrical:inspectionOutcome", "subject_id": "urn:hwm:installation:home-a", "space_ids": ["urn:hwm:space:whole-home"] },
+        "procedure_id": "urn:hwm:procedure:electrical-inspection-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ",
+        "credentials": [{ "credential_id": "urn:vc:reviewer-a-electrical", "credential_type": "urn:credential-type:electrical-inspection", "issuer": "urn:issuer:fixture-accreditation-body", "verification_status": "verified", "credential_status": "active", "valid_from": "2026-01-01T00:00:00Z", "expires_at": "2027-01-01T00:00:00Z", "jurisdictions": ["CN-GD-SZ"] }]
+      },
+      "expected": { "standing_status": "admitted", "matched_grant_ids": ["urn:hwm:standing-grant:electrical-inspection-shenzhen"], "reason_codes": ["matching_standing_grant"] },
+      "must_not_infer": ["inspection_claim_true", "all_codes_satisfied", "credential_valid_for_other_jurisdictions"]
+    },
+    {
+      "case_id": "expired-professional-credential-excluded",
+      "request": {
+        "actor_id": "urn:hwm:person:reviewer-a", "actor_role_ids": ["urn:hwm:role:electrical-reviewer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:13:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "electrical-installation-review", "target": { "claim_id": "urn:hwm:claim:electrical-review", "predicate": "hwm-electrical:inspectionOutcome", "subject_id": "urn:hwm:installation:home-a", "space_ids": ["urn:hwm:space:whole-home"] },
+        "procedure_id": "urn:hwm:procedure:electrical-inspection-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ",
+        "credentials": [{ "credential_id": "urn:vc:reviewer-a-electrical-old", "credential_type": "urn:credential-type:electrical-inspection", "issuer": "urn:issuer:fixture-accreditation-body", "verification_status": "verified", "credential_status": "active", "valid_from": "2025-01-01T00:00:00Z", "expires_at": "2026-01-01T00:00:00Z", "jurisdictions": ["CN-GD-SZ"] }]
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["qualification_expired"] },
+      "must_not_infer": ["electrical_compliance", "reviewer_never_qualified"]
+    },
+    {
+      "case_id": "professional-credential-wrong-jurisdiction-excluded",
+      "request": {
+        "actor_id": "urn:hwm:person:reviewer-a", "actor_role_ids": ["urn:hwm:role:electrical-reviewer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:14:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "electrical-installation-review", "target": { "claim_id": "urn:hwm:claim:electrical-review", "predicate": "hwm-electrical:inspectionOutcome", "subject_id": "urn:hwm:installation:home-a", "space_ids": ["urn:hwm:space:whole-home"] },
+        "procedure_id": "urn:hwm:procedure:electrical-inspection-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ",
+        "credentials": [{ "credential_id": "urn:vc:reviewer-a-electrical-other", "credential_type": "urn:credential-type:electrical-inspection", "issuer": "urn:issuer:fixture-accreditation-body", "verification_status": "verified", "credential_status": "active", "valid_from": "2026-01-01T00:00:00Z", "expires_at": "2027-01-01T00:00:00Z", "jurisdictions": ["CN-GD-GZ"] }]
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["qualification_jurisdiction_mismatch"] },
+      "must_not_infer": ["credential_false", "reviewer_globally_unqualified"]
+    },
+    {
+      "case_id": "credential-status-unavailable-is-indeterminate",
+      "request": {
+        "actor_id": "urn:hwm:person:reviewer-a", "actor_role_ids": ["urn:hwm:role:electrical-reviewer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:15:00Z", "evidence_kind": "professional_attestation", "relation": "confirms",
+        "purpose": "electrical-installation-review", "target": { "claim_id": "urn:hwm:claim:electrical-review", "predicate": "hwm-electrical:inspectionOutcome", "subject_id": "urn:hwm:installation:home-a", "space_ids": ["urn:hwm:space:whole-home"] },
+        "procedure_id": "urn:hwm:procedure:electrical-inspection-v1", "direct_experience": false, "question_bound": true, "jurisdiction": "CN-GD-SZ",
+        "credentials": [{ "credential_id": "urn:vc:reviewer-a-electrical", "credential_type": "urn:credential-type:electrical-inspection", "issuer": "urn:issuer:fixture-accreditation-body", "verification_status": "verified", "credential_status": "unavailable", "valid_from": "2026-01-01T00:00:00Z", "expires_at": "2027-01-01T00:00:00Z", "jurisdictions": ["CN-GD-SZ"] }]
+      },
+      "expected": { "standing_status": "indeterminate", "matched_grant_ids": [], "reason_codes": ["qualification_status_unavailable"] },
+      "must_not_infer": ["credential_active", "credential_revoked", "electrical_compliance"]
+    },
+    {
+      "case_id": "evidence-use-denied-before-standing",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident", "urn:hwm:role:household-observer"],
+        "identity_status": "verified", "evidence_use_decision": "denied", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:16:00Z", "evidence_kind": "interaction_attestation", "relation": "confirms",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["evidence_use_not_authorized"] },
+      "must_not_infer": ["record_does_not_exist", "resident_statement_false"]
+    },
+    {
+      "case_id": "identity-binding-unavailable-is-indeterminate",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident", "urn:hwm:role:household-observer"],
+        "identity_status": "unavailable", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:17:00Z", "evidence_kind": "interaction_attestation", "relation": "confirms",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "indeterminate", "matched_grant_ids": [], "reason_codes": ["identity_binding_unavailable"] },
+      "must_not_infer": ["identity_verified", "identity_invalid", "statement_false"]
+    },
+    {
+      "case_id": "standing-policy-epoch-stale-is-excluded",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident", "urn:hwm:role:household-observer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 8,
+        "decision_time": "2026-07-19T08:18:00Z", "evidence_kind": "interaction_attestation", "relation": "confirms",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["standing_policy_epoch_stale"] },
+      "must_not_infer": ["prior_grant_still_active", "statement_false"]
+    },
+    {
+      "case_id": "verifier-behind-standing-policy-is-indeterminate",
+      "request": {
+        "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident", "urn:hwm:role:household-observer"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 6,
+        "decision_time": "2026-07-19T08:19:00Z", "evidence_kind": "interaction_attestation", "relation": "confirms",
+        "purpose": "commissioning-visible-effect", "target": { "claim_id": "urn:hwm:claim:night-light-visible-change", "predicate": "hwm-effect:visibleOutputChange", "subject_id": "urn:hwm:endpoint:night-light-1", "space_ids": ["urn:hwm:space:bedroom"] },
+        "procedure_id": "urn:hwm:procedure:bound-action-challenge", "direct_experience": true, "question_bound": true, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "indeterminate", "matched_grant_ids": [], "reason_codes": ["verifier_authority_state_behind"] },
+      "must_not_infer": ["grant_active", "grant_revoked"]
+    },
+    {
+      "case_id": "missing-standing-grant-fails-closed",
+      "request": {
+        "actor_id": "urn:hwm:agent:planner-1", "actor_role_ids": ["urn:hwm:role:agent"],
+        "identity_status": "verified", "evidence_use_decision": "allowed", "verifier_epoch": 7,
+        "decision_time": "2026-07-19T08:20:00Z", "evidence_kind": "agent_inference", "relation": "confirms",
+        "purpose": "electrical-installation-review", "target": { "claim_id": "urn:hwm:claim:electrical-review", "predicate": "hwm-electrical:inspectionOutcome", "subject_id": "urn:hwm:installation:home-a", "space_ids": ["urn:hwm:space:whole-home"] },
+        "procedure_id": "urn:hwm:procedure:llm-review", "direct_experience": false, "question_bound": false, "jurisdiction": "CN-GD-SZ", "credentials": []
+      },
+      "expected": { "standing_status": "excluded", "matched_grant_ids": [], "reason_codes": ["no_matching_principal"] },
+      "must_not_infer": ["agent_self_elevated", "electrical_compliance", "agent_globally_untrusted"]
+    }
+  ]
+}

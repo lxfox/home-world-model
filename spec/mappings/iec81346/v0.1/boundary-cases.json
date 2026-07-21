@@ -1,0 +1,56 @@
+{
+  "artifact": "hwm:Iec81346BoundaryCases",
+  "version": "0.1.0",
+  "status": "mapping_candidate",
+  "normative_language": "en",
+  "cases": [
+    {
+      "case_id": "function-position-persists-across-asset-replacement",
+      "facts": ["function_position_fp1", "asset_a_realizes_fp1_until_t1", "asset_b_realizes_fp1_from_t1"],
+      "must_preserve": ["fp1_identity", "asset_a_identity", "asset_b_identity", "realization_intervals"],
+      "must_not_infer": ["asset_a_same_as_asset_b"]
+    },
+    {
+      "case_id": "endpoint-replacement-does-not-replace-function-position",
+      "facts": ["asset_a_realizes_fp1", "endpoint_e1_replaced_by_e2"],
+      "must_preserve": ["fp1_identity", "asset_a_identity", "e1_identity", "e2_identity"],
+      "must_not_infer": ["asset_replaced", "function_position_replaced"]
+    },
+    {
+      "case_id": "active-realization-can-fail-requirement",
+      "facts": ["asset_a_realizes_fp1", "goal_evaluation_failed"],
+      "must_preserve": ["realization_binding", "failed_goal_evaluation"],
+      "must_not_infer": ["realization_binding_false"]
+    },
+    {
+      "case_id": "candidate-model-is-not-realization",
+      "facts": ["product_model_m1_considered_in_plan_for_fp1"],
+      "must_preserve": ["planning_context", "product_model_identity", "fp1_identity"],
+      "must_not_infer": ["asset_owned", "asset_installed", "realization_binding", "compatibility_proved"]
+    },
+    {
+      "case_id": "reference-designation-is-not-serial-or-model-id",
+      "facts": ["fp1_has_reference_designation", "asset_a_has_serial_id", "model_m1_has_catalog_id"],
+      "must_preserve": ["fp1_identity", "asset_a_identity", "model_m1_identity"],
+      "must_not_infer": ["reference_designation_same_as_serial_id", "reference_designation_same_as_catalog_id"]
+    },
+    {
+      "case_id": "two-assets-can-contribute-to-one-function-position",
+      "facts": ["asset_a_realizes_fp1", "asset_b_realizes_fp1"],
+      "must_preserve": ["two_realization_bindings", "fp1_identity"],
+      "must_not_infer": ["asset_a_same_as_asset_b", "cardinality_exactly_one"]
+    },
+    {
+      "case_id": "one-asset-can-contribute-to-two-function-positions",
+      "facts": ["asset_a_realizes_fp1", "asset_a_realizes_fp2"],
+      "must_preserve": ["two_function_position_identities", "two_realization_bindings"],
+      "must_not_infer": ["fp1_same_as_fp2"]
+    },
+    {
+      "case_id": "realization-does-not-prove-endpoint-or-commissioning",
+      "facts": ["asset_a_realizes_fp1"],
+      "must_preserve": ["realization_binding"],
+      "must_not_infer": ["endpoint_reachable", "commissioning_passed", "goal_satisfied", "user_accepted"]
+    }
+  ]
+}

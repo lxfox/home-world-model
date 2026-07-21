@@ -1,0 +1,17 @@
+{
+  "contract":"hwm:HouseholdManifest",
+  "contract_version":"0.1.0",
+  "package_id":"urn:hwm:package:base-only-v0.1",
+  "household_id":"urn:hwm:household:base-only-fixture",
+  "created_at":"2026-07-19T00:00:00Z",
+  "profiles":[
+    {"id":"hwm:core","version":"0.1.0","required":true},
+    {"id":"hwm:authority","version":"0.1.0","required":true}
+  ],
+  "authority":{"authority_id":"urn:hwm:authority:base-only-fixture","epoch":1},
+  "resources":[
+    {"id":"claims.json","media_type":"application/json","role":"claims","integrity":{"algorithm":"sha-256","digest":"37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"}},
+    {"id":"records.json","media_type":"application/json","role":"records","integrity":{"algorithm":"sha-256","digest":"37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"}}
+  ],
+  "extensions":{}
+}

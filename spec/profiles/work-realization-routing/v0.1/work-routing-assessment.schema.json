@@ -1,0 +1,47 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/work-realization-routing/v0.1/work-routing-assessment.schema.json",
+  "title":"HWM Work Routing Assessment v0.1",
+  "type":"object",
+  "required":["contract","contract_version","assessment_id","household_id","purpose","assessed_at","as_of","authority_epoch","world_view_binding","intent_definition_binding","intent_state_binding","routing_policy_claim_binding","intent_commitment_status","realization_scope_refs","occurrence_kind","work_shape","existing_task_status","target_resolution","policy_resolution","result","reason_codes","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-work-routing:Assessment"},
+    "contract_version":{"const":"0.1.0-fixture"},
+    "assessment_id":{"type":"string","minLength":1},
+    "household_id":{"type":"string","minLength":1},
+    "purpose":{"type":"string","minLength":1},
+    "assessed_at":{"type":"string","format":"date-time"},
+    "as_of":{"type":"string","format":"date-time"},
+    "authority_epoch":{"type":"integer","minimum":0},
+    "world_view_binding":{"$ref":"#/$defs/Binding"},
+    "intent_definition_binding":{"$ref":"#/$defs/Binding"},
+    "intent_state_binding":{"$ref":"#/$defs/Binding"},
+    "routing_policy_claim_binding":{"$ref":"#/$defs/Binding"},
+    "intent_commitment_status":{"enum":["adopted","proposed","suspended","retracted","superseded","indeterminate"]},
+    "realization_scope_refs":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "occurrence_kind":{"enum":["one_off","routine_occurrence","reactive_occurrence"]},
+    "work_shape":{"$ref":"#/$defs/WorkShape"},
+    "existing_task_status":{"enum":["none","open_exact_scope","terminal_exact_scope","other_scope","indeterminate"]},
+    "target_resolution":{"$ref":"#/$defs/Resolution"},
+    "policy_resolution":{"$ref":"#/$defs/Resolution"},
+    "result":{"enum":["direct_proposal_eligible","task_required","indeterminate"]},
+    "reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "proof":{"$ref":"#/$defs/Proof"},
+    "extensions":{"type":"object","additionalProperties":true}
+  },
+  "allOf":[
+    {"if":{"properties":{"result":{"enum":["direct_proposal_eligible","task_required"]}}},"then":{"properties":{"intent_commitment_status":{"const":"adopted"},"target_resolution":{"$ref":"#/$defs/Qualified"},"policy_resolution":{"$ref":"#/$defs/Qualified"}}}},
+    {"if":{"properties":{"result":{"const":"direct_proposal_eligible"}}},"then":{"properties":{"occurrence_kind":{"enum":["one_off","reactive_occurrence"]},"existing_task_status":{"enum":["none","terminal_exact_scope","other_scope"]},"work_shape":{"$ref":"#/$defs/DirectShape"}}}},
+    {"if":{"properties":{"occurrence_kind":{"const":"routine_occurrence"}}},"then":{"properties":{"result":{"const":"task_required"}}}},
+    {"if":{"properties":{"existing_task_status":{"const":"open_exact_scope"}}},"then":{"properties":{"result":{"const":"task_required"}}}}
+  ],
+  "$defs":{
+    "Binding":{"type":"object","required":["artifact_id","content_scope","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"content_scope":{"enum":["artifact","claim_body"]},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "Resolution":{"type":"object","required":["resolution_id","availability_status","epistemic_status","freshness_status","temporal_status"],"properties":{"resolution_id":{"type":"string","minLength":1},"availability_status":{"enum":["available","not_observed","source_unavailable","access_denied"]},"epistemic_status":{"enum":["accepted","contested","unknown","not_verified","not_evaluated"]},"freshness_status":{"enum":["current","stale","not_applicable","unknown"]},"temporal_status":{"enum":["in_effect","not_yet_in_effect","expired","unbounded","mixed","indeterminate"]}},"additionalProperties":false},
+    "Qualified":{"allOf":[{"$ref":"#/$defs/Resolution"},{"type":"object","properties":{"availability_status":{"const":"available"},"epistemic_status":{"const":"accepted"},"freshness_status":{"enum":["current","not_applicable"]},"temporal_status":{"enum":["in_effect","unbounded"]}}}]},
+    "WorkShape":{"type":"object","required":["proposal_count_bound","retry_or_resume","asynchronous_wait","external_dependency","handoff_or_delegation","durable_progress","independent_exit_criteria","split_merge_or_reopen","policy_audit_requires_task"],"properties":{"proposal_count_bound":{"enum":["one","multiple","unknown"]},"retry_or_resume":{"enum":["not_required","required","indeterminate"]},"asynchronous_wait":{"enum":["not_required","required","indeterminate"]},"external_dependency":{"enum":["not_required","required","indeterminate"]},"handoff_or_delegation":{"enum":["not_required","required","indeterminate"]},"durable_progress":{"enum":["not_required","required","indeterminate"]},"independent_exit_criteria":{"enum":["not_required","required","indeterminate"]},"split_merge_or_reopen":{"enum":["not_required","required","indeterminate"]},"policy_audit_requires_task":{"enum":["not_required","required","indeterminate"]}},"additionalProperties":false},
+    "DirectShape":{"allOf":[{"$ref":"#/$defs/WorkShape"},{"type":"object","properties":{"proposal_count_bound":{"const":"one"},"retry_or_resume":{"const":"not_required"},"asynchronous_wait":{"const":"not_required"},"external_dependency":{"const":"not_required"},"handoff_or_delegation":{"const":"not_required"},"durable_progress":{"const":"not_required"},"independent_exit_criteria":{"const":"not_required"},"split_merge_or_reopen":{"const":"not_required"},"policy_audit_requires_task":{"const":"not_required"}}}]},
+    "Proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,251 @@
+{
+  "artifact": "hwm:EpistemicAdmissionAndCorrectionCases",
+  "version": "0.1.0",
+  "status": "executable_adversarial_fixture",
+  "normative_language": "en",
+  "cases": [
+    {
+      "case_id": "model-hypothesis-is-not-yet-accepted",
+      "as_of": "2026-07-19T09:00:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"}],
+      "evidence": [],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom"], "evidence_record_ids": [], "reason_codes": ["admission_path_incomplete"]},
+      "must_not_infer": ["global_fact", "observed_geometry"]
+    },
+    {
+      "case_id": "visual-observation-alone-does-not-satisfy-household-policy",
+      "as_of": "2026-07-19T09:10:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"}],
+      "evidence": [{"record_id": "urn:record:camera-frame-1", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-1", "episode_id": "urn:episode:visual-review-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null}],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom"], "evidence_record_ids": ["urn:record:camera-frame-1"], "reason_codes": ["admission_path_incomplete"]},
+      "must_not_infer": ["household_confirmation", "exact_pose"]
+    },
+    {
+      "case_id": "visual-and-exact-household-confirmation-admit-spatial-claim",
+      "as_of": "2026-07-19T09:20:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:camera-frame-1", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-1", "episode_id": "urn:episode:visual-review-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-confirms-bedroom", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-a-response-1", "episode_id": "urn:episode:visual-review-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "accepted", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom"], "evidence_record_ids": ["urn:record:camera-frame-1", "urn:record:resident-confirms-bedroom"], "reason_codes": ["admission_path_satisfied"]},
+      "must_not_infer": ["exact_pose", "asset_identity_verified", "all_purpose_truth"]
+    },
+    {
+      "case_id": "visual-support-plus-user-refutation-is-contested-with-one-candidate",
+      "as_of": "2026-07-19T09:30:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:camera-frame-1", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-1", "episode_id": "urn:episode:visual-review-2", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-refutes-bedroom", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "refutes", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-a-response-2", "episode_id": "urn:episode:visual-review-2", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "contested", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom"], "evidence_record_ids": ["urn:record:camera-frame-1", "urn:record:resident-refutes-bedroom"], "reason_codes": ["positive_and_refuting_evidence"]},
+      "must_not_infer": ["night_light_not_in_bedroom", "second_candidate_claim"]
+    },
+    {
+      "case_id": "user-denial-without-positive-evidence-does-not-create-negation",
+      "as_of": "2026-07-19T09:35:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"}],
+      "evidence": [{"record_id": "urn:record:resident-refutes-bedroom", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "refutes", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-a-response-2", "episode_id": "urn:episode:visual-review-2", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}],
+      "expected": {"epistemic_status": "unknown", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom"], "evidence_record_ids": ["urn:record:resident-refutes-bedroom"], "reason_codes": ["refutation_without_alternative"]},
+      "must_not_infer": ["negated_claim", "correct_location"]
+    },
+    {
+      "case_id": "action-acknowledgement-alone-does-not-prove-physical-effect",
+      "as_of": "2026-07-19T10:00:00Z",
+      "query": {"subject": "urn:endpoint:night-light", "predicate": "sosa:actsOn", "claim_kind": "endpoint_zone_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:interactive-commissioning-v1",
+        "accepted_paths": [{"requirements": [{"kind": "action_acknowledgement", "minimum_distinct_origins": 1}, {"kind": "interaction_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:endpoint-affects-bedroom-light", "issued_at": "2026-07-19T09:50:00Z", "object": "urn:zone:bedroom-visible-light", "epistemic_basis": "inferred"}],
+      "evidence": [{"record_id": "urn:record:endpoint-ack-1", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "supports", "evidence_kind": "action_acknowledgement", "origin_id": "urn:origin:endpoint-ack-1", "episode_id": "urn:episode:night-light-challenge-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null}],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "current_objects": ["urn:zone:bedroom-visible-light"], "history_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "evidence_record_ids": ["urn:record:endpoint-ack-1"], "reason_codes": ["admission_path_incomplete"]},
+      "must_not_infer": ["physical_effect_observed", "user_saw_light", "goal_satisfied"]
+    },
+    {
+      "case_id": "bound-interaction-confirmation-admits-narrow-effect-association",
+      "as_of": "2026-07-19T10:05:00Z",
+      "query": {"subject": "urn:endpoint:night-light", "predicate": "sosa:actsOn", "claim_kind": "endpoint_zone_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:interactive-commissioning-v1",
+        "accepted_paths": [{"requirements": [{"kind": "action_acknowledgement", "minimum_distinct_origins": 1}, {"kind": "interaction_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:endpoint-affects-bedroom-light", "issued_at": "2026-07-19T09:50:00Z", "object": "urn:zone:bedroom-visible-light", "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:endpoint-ack-1", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "supports", "evidence_kind": "action_acknowledgement", "origin_id": "urn:origin:endpoint-ack-1", "episode_id": "urn:episode:night-light-challenge-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-saw-light-1", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "confirms", "evidence_kind": "interaction_attestation", "origin_id": "urn:origin:resident-a-response-3", "episode_id": "urn:episode:night-light-challenge-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "accepted", "current_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "current_objects": ["urn:zone:bedroom-visible-light"], "history_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "evidence_record_ids": ["urn:record:endpoint-ack-1", "urn:record:resident-saw-light-1"], "reason_codes": ["admission_path_satisfied"]},
+      "must_not_infer": ["exact_asset_identity", "exact_luminaire_pose", "illuminance_requirement_satisfied", "repeatable_causality_under_all_contexts"]
+    },
+    {
+      "case_id": "ambiguous-answer-is-not-a-confirmation",
+      "as_of": "2026-07-19T10:10:00Z",
+      "query": {"subject": "urn:endpoint:night-light", "predicate": "sosa:actsOn", "claim_kind": "endpoint_zone_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:interactive-commissioning-v1",
+        "accepted_paths": [{"requirements": [{"kind": "action_acknowledgement", "minimum_distinct_origins": 1}, {"kind": "interaction_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:endpoint-affects-bedroom-light", "issued_at": "2026-07-19T09:50:00Z", "object": "urn:zone:bedroom-visible-light", "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:endpoint-ack-2", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "supports", "evidence_kind": "action_acknowledgement", "origin_id": "urn:origin:endpoint-ack-2", "episode_id": "urn:episode:night-light-challenge-2", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-says-yes-to-ambiguous-it", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "confirms", "evidence_kind": "interaction_attestation", "origin_id": "urn:origin:resident-a-response-4", "episode_id": "urn:episode:night-light-challenge-2", "authorized": true, "valid": true, "scope_match": true, "question_bound": false}
+      ],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "current_objects": ["urn:zone:bedroom-visible-light"], "history_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "evidence_record_ids": ["urn:record:endpoint-ack-2"], "reason_codes": ["unbound_attestation_ignored", "admission_path_incomplete"]},
+      "must_not_infer": ["user_confirmed_target_proposition"]
+    },
+    {
+      "case_id": "evidence-from-different-challenge-episodes-cannot-be-joined",
+      "as_of": "2026-07-19T10:15:00Z",
+      "query": {"subject": "urn:endpoint:night-light", "predicate": "sosa:actsOn", "claim_kind": "endpoint_zone_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:interactive-commissioning-v1",
+        "accepted_paths": [{"requirements": [{"kind": "action_acknowledgement", "minimum_distinct_origins": 1}, {"kind": "interaction_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:endpoint-affects-bedroom-light", "issued_at": "2026-07-19T09:50:00Z", "object": "urn:zone:bedroom-visible-light", "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:endpoint-ack-3", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "supports", "evidence_kind": "action_acknowledgement", "origin_id": "urn:origin:endpoint-ack-3", "episode_id": "urn:episode:night-light-challenge-3", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-saw-light-other-episode", "target_claim_id": "urn:claim:endpoint-affects-bedroom-light", "relation": "confirms", "evidence_kind": "interaction_attestation", "origin_id": "urn:origin:resident-a-response-5", "episode_id": "urn:episode:night-light-challenge-4", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "current_objects": ["urn:zone:bedroom-visible-light"], "history_claim_ids": ["urn:claim:endpoint-affects-bedroom-light"], "evidence_record_ids": ["urn:record:endpoint-ack-3", "urn:record:resident-saw-light-other-episode"], "reason_codes": ["admission_path_incomplete"]},
+      "must_not_infer": ["cross_episode_causal_confirmation"]
+    },
+    {
+      "case_id": "scope-mismatched-confirmation-cannot-promote-more-specific-claim",
+      "as_of": "2026-07-19T10:20:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "ifc:objectPlacement", "claim_kind": "exact_pose"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:exact-pose-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-exact-pose", "issued_at": "2026-07-19T10:00:00Z", "object": {"x": 0.42, "y": 1.80, "z": 0.35, "unit": "m"}, "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:camera-pose-estimate", "target_claim_id": "urn:claim:night-light-exact-pose", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-5", "episode_id": "urn:episode:pose-review-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-confirms-room-only", "target_claim_id": "urn:claim:night-light-exact-pose", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-a-response-6", "episode_id": "urn:episode:pose-review-1", "authorized": true, "valid": true, "scope_match": false, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:night-light-exact-pose"], "current_objects": [{"x": 0.42, "y": 1.80, "z": 0.35, "unit": "m"}], "history_claim_ids": ["urn:claim:night-light-exact-pose"], "evidence_record_ids": ["urn:record:camera-pose-estimate"], "reason_codes": ["evidence_scope_mismatch", "admission_path_incomplete"]},
+      "must_not_infer": ["exact_pose_confirmed_from_room_confirmation"]
+    },
+    {
+      "case_id": "two-derived-reports-from-one-frame-count-as-one-origin",
+      "as_of": "2026-07-19T10:25:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "ifc:objectPlacement", "claim_kind": "exact_pose"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:two-origin-pose-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 2}], "same_episode": false, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-exact-pose", "issued_at": "2026-07-19T10:00:00Z", "object": {"x": 0.42, "y": 1.80, "z": 0.35, "unit": "m"}, "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:vision-model-a-pose", "target_claim_id": "urn:claim:night-light-exact-pose", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-5", "episode_id": "urn:episode:pose-review-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:vision-model-b-pose", "target_claim_id": "urn:claim:night-light-exact-pose", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-5", "episode_id": "urn:episode:pose-review-1", "authorized": true, "valid": true, "scope_match": true, "question_bound": null}
+      ],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:night-light-exact-pose"], "current_objects": [{"x": 0.42, "y": 1.80, "z": 0.35, "unit": "m"}], "history_claim_ids": ["urn:claim:night-light-exact-pose"], "evidence_record_ids": ["urn:record:vision-model-a-pose", "urn:record:vision-model-b-pose"], "reason_codes": ["admission_path_incomplete"]},
+      "must_not_infer": ["two_independent_observations"]
+    },
+    {
+      "case_id": "qualified-correction-supersedes-current-view-without-erasing-history",
+      "as_of": "2026-07-19T11:00:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [
+        {"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"},
+        {"claim_id": "urn:claim:night-light-in-corridor", "issued_at": "2026-07-19T10:40:00Z", "object": "urn:space:corridor", "epistemic_basis": "declared", "supersedes_claim_id": "urn:claim:night-light-in-bedroom"}
+      ],
+      "evidence": [
+        {"record_id": "urn:record:camera-old", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-old", "episode_id": "urn:episode:old-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-old", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-old", "episode_id": "urn:episode:old-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": true},
+        {"record_id": "urn:record:camera-correction", "target_claim_id": "urn:claim:night-light-in-corridor", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-correction", "episode_id": "urn:episode:correction-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-correction", "target_claim_id": "urn:claim:night-light-in-corridor", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-correction", "episode_id": "urn:episode:correction-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": true},
+        {"record_id": "urn:record:resident-refutes-old", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "refutes", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-correction", "episode_id": "urn:episode:correction-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "accepted", "current_claim_ids": ["urn:claim:night-light-in-corridor"], "current_objects": ["urn:space:corridor"], "history_claim_ids": ["urn:claim:night-light-in-bedroom", "urn:claim:night-light-in-corridor"], "evidence_record_ids": ["urn:record:camera-correction", "urn:record:resident-correction"], "reason_codes": ["qualified_superseding_claim"]},
+      "must_not_infer": ["old_claim_deleted", "history_rewritten"]
+    },
+    {
+      "case_id": "unqualified-correction-cannot-hide-qualified-current-claim",
+      "as_of": "2026-07-19T11:05:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [
+        {"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"},
+        {"claim_id": "urn:claim:night-light-in-corridor", "issued_at": "2026-07-19T10:40:00Z", "object": "urn:space:corridor", "epistemic_basis": "inferred", "supersedes_claim_id": "urn:claim:night-light-in-bedroom"}
+      ],
+      "evidence": [
+        {"record_id": "urn:record:camera-old", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-old", "episode_id": "urn:episode:old-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-old", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-old", "episode_id": "urn:episode:old-review", "authorized": true, "valid": true, "scope_match": true, "question_bound": true},
+        {"record_id": "urn:record:camera-correction-only", "target_claim_id": "urn:claim:night-light-in-corridor", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-correction-only", "episode_id": "urn:episode:correction-review-2", "authorized": true, "valid": true, "scope_match": true, "question_bound": null}
+      ],
+      "expected": {"epistemic_status": "accepted", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom", "urn:claim:night-light-in-corridor"], "evidence_record_ids": ["urn:record:camera-old", "urn:record:resident-old"], "reason_codes": ["admission_path_satisfied"]},
+      "must_not_infer": ["unverified_supersession_effective"]
+    },
+    {
+      "case_id": "two-qualified-unsuperseded-locations-remain-contested",
+      "as_of": "2026-07-19T11:10:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [
+        {"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"},
+        {"claim_id": "urn:claim:night-light-in-corridor", "issued_at": "2026-07-19T10:40:00Z", "object": "urn:space:corridor", "epistemic_basis": "declared"}
+      ],
+      "evidence": [
+        {"record_id": "urn:record:camera-a", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-a", "episode_id": "urn:episode:review-a", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-a", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-a", "episode_id": "urn:episode:review-a", "authorized": true, "valid": true, "scope_match": true, "question_bound": true},
+        {"record_id": "urn:record:camera-b", "target_claim_id": "urn:claim:night-light-in-corridor", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-b", "episode_id": "urn:episode:review-b", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:resident-b", "target_claim_id": "urn:claim:night-light-in-corridor", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:resident-b", "episode_id": "urn:episode:review-b", "authorized": true, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "contested", "current_claim_ids": ["urn:claim:night-light-in-bedroom", "urn:claim:night-light-in-corridor"], "current_objects": ["urn:space:bedroom", "urn:space:corridor"], "history_claim_ids": ["urn:claim:night-light-in-bedroom", "urn:claim:night-light-in-corridor"], "evidence_record_ids": ["urn:record:camera-a", "urn:record:camera-b", "urn:record:resident-a", "urn:record:resident-b"], "reason_codes": ["multiple_qualified_objects"]},
+      "must_not_infer": ["resolver_selected_arbitrary_winner"]
+    },
+    {
+      "case_id": "unauthorized-attestation-cannot-change-view",
+      "as_of": "2026-07-19T11:15:00Z",
+      "query": {"subject": "urn:asset:night-light", "predicate": "bot:hasSpace", "claim_kind": "spatial_association"},
+      "policy": {
+        "policy_id": "urn:hwm:resolver-policy:spatial-confirmation-v1",
+        "accepted_paths": [{"requirements": [{"kind": "visual_observation", "minimum_distinct_origins": 1}, {"kind": "household_attestation", "minimum_distinct_origins": 1}], "same_episode": true, "minimum_total_distinct_origins": 2}]
+      },
+      "claims": [{"claim_id": "urn:claim:night-light-in-bedroom", "issued_at": "2026-07-19T08:00:00Z", "object": "urn:space:bedroom", "epistemic_basis": "inferred"}],
+      "evidence": [
+        {"record_id": "urn:record:camera-frame-9", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "supports", "evidence_kind": "visual_observation", "origin_id": "urn:origin:camera-frame-9", "episode_id": "urn:episode:visual-review-9", "authorized": true, "valid": true, "scope_match": true, "question_bound": null},
+        {"record_id": "urn:record:visitor-confirms", "target_claim_id": "urn:claim:night-light-in-bedroom", "relation": "confirms", "evidence_kind": "household_attestation", "origin_id": "urn:origin:visitor-response", "episode_id": "urn:episode:visual-review-9", "authorized": false, "valid": true, "scope_match": true, "question_bound": true}
+      ],
+      "expected": {"epistemic_status": "not_verified", "current_claim_ids": ["urn:claim:night-light-in-bedroom"], "current_objects": ["urn:space:bedroom"], "history_claim_ids": ["urn:claim:night-light-in-bedroom"], "evidence_record_ids": ["urn:record:camera-frame-9"], "reason_codes": ["unauthorized_evidence_ignored", "admission_path_incomplete"]},
+      "must_not_infer": ["visitor_has_household_authority"]
+    }
+  ]
+}

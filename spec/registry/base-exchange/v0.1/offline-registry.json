@@ -1,0 +1,199 @@
+{
+  "registry_id": "https://homeworldmodel.org/spec/registry/base-exchange/v0.1",
+  "version": "0.1.0",
+  "conformance_set_ref": "sha256:ea2ecdd3f35cd7fe0ba3ef144821e3b15c827b3fb2176736a73e916d92a37ee2",
+  "entries": [
+    {
+      "uri": "https://homeworldmodel.org/spec/conformance-sets/base-exchange/v0.1",
+      "path": "spec/conformance-sets/base-exchange/v0.1/conformance-set.json",
+      "media_type": "application/json",
+      "role": "conformance_set",
+      "size": 1935,
+      "sha256": "ea2ecdd3f35cd7fe0ba3ef144821e3b15c827b3fb2176736a73e916d92a37ee2"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/conformance-sets/base-exchange/v0.1/composition-assessment",
+      "path": "spec/conformance-sets/base-exchange/v0.1/composition-assessment.json",
+      "media_type": "application/json",
+      "role": "composition_assessment",
+      "size": 2397,
+      "sha256": "b4575e7a062de667ee394ab6a7c8ddeab7877ea0d6112e8935261e2e2d824fb6"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/conformance-sets/base-exchange/v0.1/descriptors/authority.profile.json",
+      "path": "spec/conformance-sets/base-exchange/v0.1/authority.profile.json",
+      "media_type": "application/json",
+      "role": "profile_descriptor",
+      "size": 1554,
+      "sha256": "3f9b4e07aa75bbc69f679a27268a4ab77c156ea9f86d9f5caa3aa01a12dd363e"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/conformance-sets/base-exchange/v0.1/descriptors/core.profile.json",
+      "path": "spec/conformance-sets/base-exchange/v0.1/core.profile.json",
+      "media_type": "application/json",
+      "role": "profile_descriptor",
+      "size": 1564,
+      "sha256": "feee5381a3f9a1a0dc46b335e7248fa01dfdac1d16088b66238ee7adb46de943"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/conformance-sets/base-exchange/v0.1/descriptors/ro-crate.profile.json",
+      "path": "spec/conformance-sets/base-exchange/v0.1/ro-crate.profile.json",
+      "media_type": "application/json",
+      "role": "profile_descriptor",
+      "size": 1042,
+      "sha256": "8dfdaa14e14f2ee889b0683309871b6a3183609b4ca4f7ff53995f9873c0ecc1"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1",
+      "path": "docs/00_context/home-world-model-core-v0.1.md",
+      "media_type": "text/markdown",
+      "role": "normative_document",
+      "size": 28894,
+      "sha256": "ffb2d045b16c442dde05efbfa4d08147429aa8d36225ad75b10f924c95091c27"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/action-trace.schema.json",
+      "path": "spec/core/v0.1/schema/action-trace.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 8107,
+      "sha256": "941e52e45c6a5379480b52c2adb156cd53cf9b957aaf2d5d492fb09e634c6ac6"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/claim-envelope.schema.json",
+      "path": "spec/core/v0.1/schema/claim-envelope.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 3828,
+      "sha256": "1549b0fd5134a44d75e6180d3aff2817d4fca7eb124141ddd9dfb0c1c97ead14"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/claim-set.schema.json",
+      "path": "spec/core/v0.1/schema/claim-set.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 252,
+      "sha256": "9f7a53e03749412c35afabba7fcbf4b78f6b2ec3ccda0d1bf73160c5bef05abe"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/common.schema.json",
+      "path": "spec/core/v0.1/schema/common.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 2220,
+      "sha256": "4529fcf51758eaa08cae63cde6c487d6bca1ed216c6f9d821f406519a1a2a190"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/household-manifest.schema.json",
+      "path": "spec/core/v0.1/schema/household-manifest.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 2175,
+      "sha256": "be70448f7d4571ac8f998fbef0dcd8723db40cb44f0016ffc6aa5f2e3f7cf7fc"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/record-set.schema.json",
+      "path": "spec/core/v0.1/schema/record-set.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 246,
+      "sha256": "4ab30fababb40ec6c87da50c002f6019d5d138b8615befee886b857b0c2eae73"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/record.schema.json",
+      "path": "spec/core/v0.1/schema/record.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 1265,
+      "sha256": "1dc221536b60a860dcaa3a24de724d2fde41c32af6895b9308545d76852982b1"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/core/v0.1/schema/world-view.schema.json",
+      "path": "spec/core/v0.1/schema/world-view.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 9134,
+      "sha256": "08e3c9822b2e256087c907f8976958e3f9bb161e592903322ee92830707dc31a"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/authority/v0.1",
+      "path": "spec/profiles/authority/v0.1/README.md",
+      "media_type": "text/markdown",
+      "role": "normative_document",
+      "size": 13046,
+      "sha256": "534475e87eb72be2c2721ad142c765b77a7f68a6cf89c502a3726574d310052a"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-lease.schema.json",
+      "path": "spec/profiles/authority/v0.1/authority-lease.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 266,
+      "sha256": "73d012d9e66761abb15104fe8bd37769e5781c0f956f538d2fe7187a22bd746d"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-profile.schema.json",
+      "path": "spec/profiles/authority/v0.1/authority-profile.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 8665,
+      "sha256": "3779514800f37f83242be2d5a8e05822637ebdb18167e1d4fa1d407a407fa321"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-trust-root.schema.json",
+      "path": "spec/profiles/authority/v0.1/authority-trust-root.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 5772,
+      "sha256": "81d8358fc72fc721a314f41b041759ac97b39b4949710334019829723c0e62e5"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/profile-composition-conformance/v0.1",
+      "path": "spec/profiles/profile-composition-conformance/v0.1/README.md",
+      "media_type": "text/markdown",
+      "role": "normative_document",
+      "size": 9022,
+      "sha256": "07b4777dac6223f41da3fad8f5e519c7dcdfbf7fc59a61d6e9c653b486690e7f"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/profile-composition-conformance/v0.1/composition-assessment.schema.json",
+      "path": "spec/profiles/profile-composition-conformance/v0.1/composition-assessment.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 1646,
+      "sha256": "82721375e928e2a3933eb676aa68dc10a299709b66f01c10f2c79d0c4a0055a1"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/profile-composition-conformance/v0.1/conformance-set.schema.json",
+      "path": "spec/profiles/profile-composition-conformance/v0.1/conformance-set.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 2093,
+      "sha256": "b82b2d900ae8288c23042533813905f2d8e9d8bd5dcdaea1a01eaf824ea8598f"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/profile-composition-conformance/v0.1/profile-descriptor.schema.json",
+      "path": "spec/profiles/profile-composition-conformance/v0.1/profile-descriptor.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 2136,
+      "sha256": "652f7016b047d47403ddefab5277c2df7400c39d45bf861251766835e837dc73"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/ro-crate/v0.1",
+      "path": "spec/profiles/ro-crate/v0.1/README.md",
+      "media_type": "text/markdown",
+      "role": "normative_document",
+      "size": 7967,
+      "sha256": "d381bdb50c01bf1b79d0c793ae94b7b3733b5d0c3d276d6d5e871b652078bc7f"
+    },
+    {
+      "uri": "https://homeworldmodel.org/spec/profiles/ro-crate/v0.1/hwm-ro-crate-profile.schema.json",
+      "path": "spec/profiles/ro-crate/v0.1/hwm-ro-crate-profile.schema.json",
+      "media_type": "application/schema+json",
+      "role": "json_schema",
+      "size": 3745,
+      "sha256": "cae4093541b62ce88a87e826f397155663f61731a688db8eead8768b49b04b44"
+    }
+  ]
+}

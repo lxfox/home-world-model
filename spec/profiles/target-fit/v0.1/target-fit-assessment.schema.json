@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/target-fit/v0.1/target-fit-assessment.schema.json",
+  "title": "HWM Target Fit Assessment v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "assessment_id", "household_id", "purpose", "assessed_at", "as_of", "authority_epoch", "epistemic_basis", "world_view_binding", "target_claim_binding", "evaluation_specification_claim_binding", "applicability_assessment_binding", "target_resolution", "specification_resolution", "applicability_result", "aggregation_operator", "evaluation_coverage", "criterion_results", "result", "experience_status", "reason_codes", "proof", "extensions"],
+  "properties": {
+    "contract": {"const": "hwm-target-fit:Assessment"},
+    "contract_version": {"const": "0.1.0-fixture"},
+    "assessment_id": {"type": "string", "minLength": 1},
+    "household_id": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "assessed_at": {"type": "string", "format": "date-time"},
+    "as_of": {"type": "string", "format": "date-time"},
+    "authority_epoch": {"type": "integer", "minimum": 0},
+    "epistemic_basis": {"enum": ["current_observed", "historical_observed", "predicted", "simulated", "counterfactual"]},
+    "world_view_binding": {"$ref": "#/$defs/DigestBinding"},
+    "target_claim_binding": {"$ref": "#/$defs/DigestBinding"},
+    "evaluation_specification_claim_binding": {"$ref": "#/$defs/DigestBinding"},
+    "applicability_assessment_binding": {"$ref": "#/$defs/DigestBinding"},
+    "target_resolution": {"$ref": "#/$defs/ResolutionQualification"},
+    "specification_resolution": {"$ref": "#/$defs/ResolutionQualification"},
+    "applicability_result": {"enum": ["applicable", "not_applicable", "indeterminate"]},
+    "aggregation_operator": {"enum": ["all_required", "any_sufficient", "report_partial"]},
+    "evaluation_coverage": {"enum": ["complete", "decisive_subset", "partial"]},
+    "criterion_results": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/CriterionResult"}},
+    "result": {"enum": ["satisfied", "partially_satisfied", "not_satisfied", "indeterminate"]},
+    "experience_status": {"enum": ["not_evaluated", "accepted", "rejected", "indeterminate"]},
+    "experience_assessment_bindings": {"type": "array", "items": {"$ref": "#/$defs/DigestBinding"}, "uniqueItems": true},
+    "reason_codes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "proof": {"$ref": "#/$defs/Proof"},
+    "extensions": {"type": "object", "additionalProperties": true}
+  },
+  "allOf": [
+    {"if": {"properties": {"applicability_result": {"enum": ["not_applicable", "indeterminate"]}}}, "then": {"properties": {"result": {"const": "indeterminate"}}}},
+    {"if": {"properties": {"result": {"enum": ["satisfied", "partially_satisfied", "not_satisfied"]}}}, "then": {"properties": {"applicability_result": {"const": "applicable"}, "target_resolution": {"$ref": "#/$defs/QualifiedResolution"}, "specification_resolution": {"$ref": "#/$defs/QualifiedResolution"}}}},
+    {"if": {"properties": {"experience_status": {"const": "not_evaluated"}}}, "then": {"properties": {"experience_assessment_bindings": {"type": "array", "maxItems": 0}}}},
+    {"if": {"properties": {"experience_status": {"enum": ["accepted", "rejected"]}}}, "then": {"required": ["experience_assessment_bindings"], "properties": {"experience_assessment_bindings": {"type": "array", "minItems": 1}}}},
+    {
+      "if": {"properties": {"result": {"const": "partially_satisfied"}}},
+      "then": {
+        "properties": {
+          "aggregation_operator": {"const": "report_partial"},
+          "evaluation_coverage": {"const": "complete"},
+          "criterion_results": {
+            "type": "array",
+            "contains": {
+              "type": "object",
+              "properties": {"result": {"const": "met"}},
+              "required": ["result"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "DigestBinding": {"type": "object", "required": ["artifact_id", "content_scope", "digest_algorithm", "canonicalization", "digest"], "properties": {"artifact_id": {"type": "string", "minLength": 1}, "content_scope": {"enum": ["artifact", "claim_body"]}, "digest_algorithm": {"const": "sha-256"}, "canonicalization": {"const": "RFC8785"}, "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}, "additionalProperties": false},
+    "ResolutionQualification": {"type": "object", "required": ["resolution_id", "candidate_claim_ids", "availability_status", "epistemic_status", "freshness_status", "temporal_status"], "properties": {"resolution_id": {"type": "string", "minLength": 1}, "candidate_claim_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}, "availability_status": {"enum": ["available", "not_observed", "source_unavailable", "access_denied"]}, "epistemic_status": {"enum": ["accepted", "contested", "unknown", "not_verified", "not_evaluated"]}, "freshness_status": {"enum": ["current", "stale", "not_applicable", "unknown"]}, "temporal_status": {"enum": ["in_effect", "not_yet_in_effect", "expired", "unbounded", "mixed", "indeterminate"]}}, "additionalProperties": false},
+    "QualifiedResolution": {"allOf": [{"$ref": "#/$defs/ResolutionQualification"}, {"type": "object", "properties": {"availability_status": {"const": "available"}, "epistemic_status": {"const": "accepted"}, "freshness_status": {"enum": ["current", "not_applicable"]}, "temporal_status": {"enum": ["in_effect", "unbounded"]}}}]},
+    "CriterionResult": {"type": "object", "required": ["criterion_id", "required", "feature_of_interest", "property", "procedure", "unit", "phenomenon_time", "freshness_status", "input_binding", "decision_rule", "target_interval", "observed_interval", "result", "reason_codes"], "properties": {"criterion_id": {"type": "string", "minLength": 1}, "required": {"type": "boolean"}, "feature_of_interest": {"type": "string", "minLength": 1}, "property": {"type": "string", "minLength": 1}, "procedure": {"type": "string", "minLength": 1}, "unit": {"type": "string", "minLength": 1}, "phenomenon_time": {"type": "string", "format": "date-time"}, "freshness_status": {"enum": ["current", "stale", "unknown"]}, "input_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]}, "decision_rule": {"const": "interval_containment_v0.1"}, "target_interval": {"$ref": "#/$defs/Interval"}, "observed_interval": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/Interval"}]}, "result": {"enum": ["met", "not_met", "indeterminate"]}, "reason_codes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}}, "allOf": [{"if": {"properties": {"result": {"enum": ["met", "not_met"]}}}, "then": {"properties": {"freshness_status": {"const": "current"}, "input_binding": {"$ref": "#/$defs/DigestBinding"}, "observed_interval": {"$ref": "#/$defs/Interval"}}}}], "additionalProperties": false},
+    "Interval": {"type": "object", "required": ["minimum", "maximum", "lower_closed", "upper_closed"], "properties": {"minimum": {"type": "number"}, "maximum": {"type": "number"}, "lower_closed": {"const": true}, "upper_closed": {"const": true}}, "additionalProperties": false},
+    "Proof": {"type": "object", "required": ["mode", "verification_method", "value"], "properties": {"mode": {"enum": ["unsigned_fixture", "jws", "cose", "vc"]}, "verification_method": {"type": "string", "minLength": 1}, "value": {"type": "string", "minLength": 1}}, "additionalProperties": false}
+  },
+  "additionalProperties": false
+}

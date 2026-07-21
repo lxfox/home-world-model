@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/contextual-applicability/v0.1/applicability-assessment.schema.json",
+  "title": "HWM Contextual Applicability Assessment v0.1",
+  "type": "object",
+  "required": [
+    "contract",
+    "contract_version",
+    "assessment_id",
+    "household_id",
+    "purpose",
+    "assessed_at",
+    "as_of",
+    "authority_epoch",
+    "world_view_binding",
+    "target_claim_binding",
+    "rule_claim_binding",
+    "target_resolution",
+    "rule_resolution",
+    "operator",
+    "evaluation_coverage",
+    "condition_results",
+    "result",
+    "decision_basis",
+    "conflict_status",
+    "conflict_assessment_bindings",
+    "reason_codes",
+    "proof",
+    "extensions"
+  ],
+  "properties": {
+    "contract": {"const": "hwm-applicability:Assessment"},
+    "contract_version": {"const": "0.1.0-fixture"},
+    "assessment_id": {"type": "string", "minLength": 1},
+    "household_id": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "assessed_at": {"type": "string", "format": "date-time"},
+    "as_of": {"type": "string", "format": "date-time"},
+    "authority_epoch": {"type": "integer", "minimum": 0},
+    "world_view_binding": {"$ref": "#/$defs/DigestBinding"},
+    "target_claim_binding": {"$ref": "#/$defs/DigestBinding"},
+    "rule_claim_binding": {"$ref": "#/$defs/DigestBinding"},
+    "target_resolution": {"$ref": "#/$defs/ResolutionQualification"},
+    "rule_resolution": {"$ref": "#/$defs/ResolutionQualification"},
+    "operator": {"enum": ["all_of", "any_of", "unconditional"]},
+    "evaluation_coverage": {"enum": ["complete", "decisive_subset", "partial"]},
+    "condition_results": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/ConditionResult"}
+    },
+    "result": {"enum": ["applicable", "not_applicable", "indeterminate"]},
+    "decision_basis": {"enum": ["applicable_conditions", "target_time", "condition_logic", "insufficient_evidence"]},
+    "conflict_status": {"enum": ["not_evaluated", "none", "present", "indeterminate"]},
+    "conflict_assessment_bindings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/DigestBinding"},
+      "uniqueItems": true
+    },
+    "reason_codes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "proof": {"$ref": "#/$defs/Proof"},
+    "extensions": {"type": "object", "additionalProperties": true}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"operator": {"const": "unconditional"}}},
+      "then": {
+        "properties": {
+          "evaluation_coverage": {"const": "complete"},
+          "condition_results": {"type": "array", "maxItems": 0}
+        }
+      },
+      "else": {"properties": {"condition_results": {"type": "array", "minItems": 1}}}
+    },
+    {
+      "if": {"properties": {"conflict_status": {"const": "present"}}},
+      "then": {"properties": {"conflict_assessment_bindings": {"type": "array", "minItems": 1}}}
+    },
+    {
+      "if": {"properties": {"conflict_status": {"enum": ["not_evaluated", "none"]}}},
+      "then": {"properties": {"conflict_assessment_bindings": {"type": "array", "maxItems": 0}}}
+    },
+    {
+      "if": {"properties": {"result": {"const": "applicable"}}},
+      "then": {
+        "properties": {
+          "decision_basis": {"const": "applicable_conditions"},
+          "target_resolution": {"$ref": "#/$defs/QualifiedResolution"},
+          "rule_resolution": {"$ref": "#/$defs/QualifiedResolution"}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"operator": {"const": "all_of"}}},
+            "then": {
+              "properties": {
+                "evaluation_coverage": {"const": "complete"},
+                "condition_results": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {"type": "object", "properties": {"observed_result": {"const": "satisfied"}}}
+                }
+              }
+            }
+          },
+          {
+            "if": {"properties": {"operator": {"const": "any_of"}}},
+            "then": {
+              "properties": {
+                "evaluation_coverage": {"enum": ["complete", "decisive_subset"]},
+                "condition_results": {
+                  "type": "array",
+                  "contains": {"type": "object", "properties": {"observed_result": {"const": "satisfied"}}, "required": ["observed_result"]}
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"result": {"const": "not_applicable"}}},
+      "then": {
+        "properties": {"decision_basis": {"enum": ["target_time", "condition_logic"]}},
+        "oneOf": [
+          {
+            "properties": {
+              "decision_basis": {"const": "target_time"},
+              "target_resolution": {
+                "type": "object",
+                "properties": {
+                  "availability_status": {"const": "available"},
+                  "epistemic_status": {"const": "accepted"},
+                  "temporal_status": {"enum": ["not_yet_in_effect", "expired"]}
+                }
+              }
+            }
+          },
+          {
+            "properties": {
+              "decision_basis": {"const": "condition_logic"},
+              "operator": {"enum": ["all_of", "any_of"]},
+              "target_resolution": {"$ref": "#/$defs/QualifiedResolution"},
+              "rule_resolution": {"$ref": "#/$defs/QualifiedResolution"}
+            },
+            "allOf": [
+              {
+                "if": {"properties": {"operator": {"const": "all_of"}}},
+                "then": {
+                  "properties": {
+                    "evaluation_coverage": {"enum": ["complete", "decisive_subset"]},
+                    "condition_results": {
+                      "type": "array",
+                      "contains": {"type": "object", "properties": {"observed_result": {"const": "not_satisfied"}}, "required": ["observed_result"]}
+                    }
+                  }
+                }
+              },
+              {
+                "if": {"properties": {"operator": {"const": "any_of"}}},
+                "then": {
+                  "properties": {
+                    "evaluation_coverage": {"const": "complete"},
+                    "condition_results": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {"type": "object", "properties": {"observed_result": {"const": "not_satisfied"}}}
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "if": {"properties": {"result": {"const": "indeterminate"}}},
+      "then": {"properties": {"decision_basis": {"const": "insufficient_evidence"}}}
+    }
+  ],
+  "$defs": {
+    "DigestBinding": {
+      "type": "object",
+      "required": ["artifact_id", "content_scope", "digest_algorithm", "canonicalization", "digest"],
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "content_scope": {"enum": ["artifact", "claim_body"]},
+        "digest_algorithm": {"const": "sha-256"},
+        "canonicalization": {"const": "RFC8785"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "ResolutionQualification": {
+      "type": "object",
+      "required": ["resolution_id", "candidate_claim_ids", "availability_status", "epistemic_status", "freshness_status", "temporal_status"],
+      "properties": {
+        "resolution_id": {"type": "string", "minLength": 1},
+        "candidate_claim_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "availability_status": {"enum": ["available", "not_observed", "source_unavailable", "access_denied"]},
+        "epistemic_status": {"enum": ["accepted", "contested", "unknown", "not_verified", "not_evaluated"]},
+        "freshness_status": {"enum": ["current", "stale", "not_applicable", "unknown"]},
+        "temporal_status": {"enum": ["in_effect", "not_yet_in_effect", "expired", "unbounded", "mixed", "indeterminate"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"availability_status": {"enum": ["not_observed", "source_unavailable", "access_denied"]}}},
+          "then": {
+            "properties": {
+              "candidate_claim_ids": {"type": "array", "maxItems": 0},
+              "epistemic_status": {"const": "not_evaluated"},
+              "freshness_status": {"enum": ["not_applicable", "unknown"]},
+              "temporal_status": {"const": "indeterminate"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"epistemic_status": {"enum": ["accepted", "contested", "not_verified"]}}},
+          "then": {"properties": {"candidate_claim_ids": {"type": "array", "minItems": 1}}}
+        }
+      ],
+      "additionalProperties": false
+    },
+    "QualifiedResolution": {
+      "allOf": [
+        {"$ref": "#/$defs/ResolutionQualification"},
+        {
+          "type": "object",
+          "properties": {
+            "availability_status": {"const": "available"},
+            "epistemic_status": {"const": "accepted"},
+            "freshness_status": {"enum": ["current", "not_applicable"]},
+            "temporal_status": {"enum": ["in_effect", "unbounded"]}
+          }
+        }
+      ]
+    },
+    "ConditionResult": {
+      "type": "object",
+      "required": ["condition_id", "query_binding", "basis_kind", "basis_binding", "observed_result", "reason_codes"],
+      "properties": {
+        "condition_id": {"type": "string", "minLength": 1},
+        "query_binding": {"$ref": "#/$defs/DigestBinding"},
+        "basis_kind": {"type": "string", "minLength": 1},
+        "basis_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]},
+        "observed_result": {"enum": ["satisfied", "not_satisfied", "indeterminate"]},
+        "reason_codes": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"observed_result": {"enum": ["satisfied", "not_satisfied"]}}},
+          "then": {"properties": {"basis_binding": {"$ref": "#/$defs/DigestBinding"}}}
+        }
+      ],
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method", "value"],
+      "properties": {
+        "mode": {"enum": ["unsigned_fixture", "jws", "cose", "vc"]},
+        "verification_method": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

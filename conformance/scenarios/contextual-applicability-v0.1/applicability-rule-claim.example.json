@@ -1,0 +1,44 @@
+{
+  "contract": "hwm:ClaimEnvelope",
+  "contract_version": "0.1.0",
+  "claim": {
+    "claim_id": "urn:hwm:claim:resident-a-sleep-temperature-applicability-rule",
+    "issuer": "urn:hwm:person:resident-a",
+    "issued_at": "2026-07-19T20:01:00Z",
+    "proposition": {
+      "subject": "urn:hwm:claim:resident-a-sleep-temperature-preference",
+      "predicate": "https://homeworldmodel.org/spec/profiles/contextual-applicability/v0.1#qualifiedBy",
+      "object": {
+        "operator": "all_of",
+        "conditions": [
+          {
+            "condition_id": "urn:hwm:condition:resident-a-sleeping-in-bedroom-a",
+            "query_binding": {
+              "artifact_id": "urn:hwm:situation-query:resident-a-sleeping-in-bedroom-a",
+              "content_scope": "artifact",
+              "digest_algorithm": "sha-256",
+              "canonicalization": "RFC8785",
+              "digest": "9ef4ed01b415c012703f556d19ea6cf9f96df08288a8a2977badd249e8db82ae"
+            },
+            "expected_result": "satisfied",
+            "subject_alignment": "same_subject"
+          }
+        ]
+      }
+    },
+    "valid_time": {"from": "2026-07-19T20:01:00Z"},
+    "scope": {
+      "household_id": "urn:hwm:household:fixture-situation-001",
+      "space_ids": ["urn:hwm:space:bedroom-a"],
+      "purposes": ["urn:hwm:purpose:night-comfort-eligibility"]
+    },
+    "epistemic_basis": {"mode": "declared"},
+    "profiles": [
+      {"id": "https://homeworldmodel.org/spec/profiles/contextual-applicability/v0.1", "version": "0.1.0-fixture", "required": true}
+    ],
+    "creation_record_id": "urn:hwm:record:resident-a-sleep-temperature-applicability-rule",
+    "extensions": {}
+  },
+  "evidence_links": [],
+  "extensions": {}
+}

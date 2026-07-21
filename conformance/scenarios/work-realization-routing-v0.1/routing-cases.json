@@ -1,0 +1,31 @@
+{
+  "cases":[
+    {"case_id":"one-atomic-proposal","facts":{},"expected":{"result":"direct_proposal_eligible","reason":"one_bounded_proposal_no_durable_identity_required"}},
+    {"case_id":"multiple-proposals","facts":{"proposal_count":"multiple"},"expected":{"result":"task_required","reason":"multiple_proposals_require_lineage"}},
+    {"case_id":"retry-required","facts":{"retry":"required"},"expected":{"result":"task_required","reason":"retry_or_resume_requires_lineage"}},
+    {"case_id":"resume-required","facts":{"resume":"required"},"expected":{"result":"task_required","reason":"retry_or_resume_requires_lineage"}},
+    {"case_id":"async-wait","facts":{"wait":"required"},"expected":{"result":"task_required","reason":"asynchronous_wait_requires_lineage"}},
+    {"case_id":"external-dependency","facts":{"dependency":"required"},"expected":{"result":"task_required","reason":"external_dependency_requires_lineage"}},
+    {"case_id":"agent-handoff","facts":{"handoff":"required"},"expected":{"result":"task_required","reason":"handoff_or_delegation_requires_lineage"}},
+    {"case_id":"durable-progress","facts":{"progress":"required"},"expected":{"result":"task_required","reason":"durable_progress_requires_lineage"}},
+    {"case_id":"independent-exit-criteria","facts":{"exit":"required"},"expected":{"result":"task_required","reason":"independent_exit_criteria_require_lineage"}},
+    {"case_id":"split-merge-reopen","facts":{"structure":"required"},"expected":{"result":"task_required","reason":"split_merge_or_reopen_requires_lineage"}},
+    {"case_id":"audit-requires-task","facts":{"audit":"required"},"expected":{"result":"task_required","reason":"policy_audit_requires_task"}},
+    {"case_id":"routine-occurrence","facts":{"occurrence":"routine_occurrence"},"expected":{"result":"task_required","reason":"routine_occurrence_requires_task"}},
+    {"case_id":"open-exact-task","facts":{"existing_task":"open_exact_scope"},"expected":{"result":"task_required","reason":"existing_exact_task_cannot_be_bypassed"}},
+    {"case_id":"persistent-intent-atomic-correction","facts":{"lifecycle":"persistent"},"expected":{"result":"direct_proposal_eligible","reason":"one_bounded_proposal_no_durable_identity_required"}},
+    {"case_id":"transient-intent-with-wait","facts":{"lifecycle":"transient","wait":"required"},"expected":{"result":"task_required","reason":"asynchronous_wait_requires_lineage"}},
+    {"case_id":"intent-not-adopted","facts":{"intent":"proposed"},"expected":{"result":"indeterminate","reason":"intent_not_adopted"}},
+    {"case_id":"policy-missing","facts":{"policy":"not_observed"},"expected":{"result":"indeterminate","reason":"routing_policy_not_observed"}},
+    {"case_id":"policy-contested","facts":{"policy":"contested"},"expected":{"result":"indeterminate","reason":"routing_policy_contested"}},
+    {"case_id":"scope-mismatch","facts":{"scope":"mismatch"},"expected":{"result":"indeterminate","reason":"realization_scope_mismatch"}},
+    {"case_id":"world-view-stale","facts":{"view":"stale"},"expected":{"result":"indeterminate","reason":"world_view_not_current"}},
+    {"case_id":"work-shape-unknown","facts":{"retry":"indeterminate"},"expected":{"result":"indeterminate","reason":"work_shape_indeterminate"}},
+    {"case_id":"existing-task-unknown","facts":{"existing_task":"indeterminate"},"expected":{"result":"indeterminate","reason":"existing_task_status_indeterminate"}},
+    {"case_id":"agent-says-simple","facts":{"agent_label":"simple","policy":"not_observed"},"expected":{"result":"indeterminate","reason":"routing_policy_not_observed"}},
+    {"case_id":"direct-failure-does-not-retry","facts":{"prior_direct":"failed"},"expected":{"result":"direct_proposal_eligible","reason":"prior_direct_outcome_does_not_create_retry"}},
+    {"case_id":"newly-discovered-retry","facts":{"prior_direct":"failed","retry":"required"},"expected":{"result":"task_required","reason":"retry_or_resume_requires_lineage"}},
+    {"case_id":"authority-epoch-stale","facts":{"epoch":"stale"},"expected":{"result":"indeterminate","reason":"authority_epoch_stale"}}
+  ],
+  "must_not_infer":["adopted_intent_always_creates_task","persistent_intent_always_requires_task","transient_intent_always_direct","agent_simple_label_allows_direct","model_confidence_selects_route","latency_selects_route","token_count_selects_route","missing_policy_defaults_direct","direct_route_skips_plan_reasoning","direct_route_skips_impact_assessment","direct_route_skips_coordination","direct_route_authorizes_proposal","direct_route_authorizes_action","task_required_materializes_task","task_materialization_creates_proposal","routine_occurrence_routes_direct","open_task_can_be_bypassed","direct_failure_creates_automatic_retry","direct_failure_means_intent_failed","new_work_shape_rewrites_old_assessment"]
+}

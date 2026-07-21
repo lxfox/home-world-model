@@ -1,0 +1,152 @@
+{
+  "profile": "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1",
+  "contract_version": "0.1.0-fixture",
+  "cases": [
+    {
+      "case_id": "current-base-dependency-ready",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [
+        {"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"}
+      ],
+      "output_candidates": [
+        {"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}
+      ],
+      "expected": {"context_status": "ready", "root_base_context_id": "urn:hwm:base:r2", "admitted_current_output_ids": ["urn:hwm:simulation:a-r1"], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1"], "reason_codes": []}
+    },
+    {
+      "case_id": "missing-base-derivation-link",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:orphan", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "invalid_context", "root_base_context_id": null, "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:orphan"], "reason_codes": ["missing_base_derivation"]}
+    },
+    {
+      "case_id": "linked-base-context-missing",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [{"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"}],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "indeterminate", "root_base_context_id": "urn:hwm:base:r2", "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1"], "reason_codes": ["base_context_unavailable"]}
+    },
+    {
+      "case_id": "base-source-unavailable",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "source_unavailable", "epistemic_status": "not_evaluated", "freshness_status": "unknown", "temporal_status": "indeterminate", "applicability_status": "not_available", "reason_codes": ["design_repository_offline"]}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [{"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"}],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "indeterminate", "root_base_context_id": "urn:hwm:base:r2", "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1"], "reason_codes": ["base_source_unavailable"]}
+    },
+    {
+      "case_id": "base-access-denied",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "access_denied", "epistemic_status": "not_evaluated", "freshness_status": "not_applicable", "temporal_status": "indeterminate", "applicability_status": "not_available", "reason_codes": ["purpose_not_permitted"]}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [{"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"}],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "indeterminate", "root_base_context_id": "urn:hwm:base:r2", "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1"], "reason_codes": ["base_access_denied"]}
+    },
+    {
+      "case_id": "base-payload-deleted-with-tombstone",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "source_unavailable", "epistemic_status": "not_evaluated", "freshness_status": "unknown", "temporal_status": "indeterminate", "applicability_status": "not_available", "reason_codes": ["source_payload_deleted", "tombstone_retained"]}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [{"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"}],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "indeterminate", "root_base_context_id": "urn:hwm:base:r2", "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1"], "reason_codes": ["base_payload_deleted"]}
+    },
+    {
+      "case_id": "superseded-base-is-historical-only",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r3",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "stale", "temporal_status": "expired", "applicability_status": "out_of_scope", "reason_codes": ["superseded_by_base_r3"]}},
+        {"context_id": "urn:hwm:base:r3", "context_kind": "base_design", "revision": "base-r3", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "stale", "temporal_status": "expired", "applicability_status": "out_of_scope", "reason_codes": ["derived_from_superseded_base"]}}
+      ],
+      "lineage_edges": [
+        {"derived_context_id": "urn:hwm:base:r3", "predicate": "prov:wasRevisionOf", "source_context_id": "urn:hwm:base:r2"},
+        {"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"}
+      ],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "historical_only", "root_base_context_id": "urn:hwm:base:r2", "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1"], "reason_codes": ["derived_from_noncurrent_base"]}
+    },
+    {
+      "case_id": "explicit-rebase-regenerates-output",
+      "target_context_id": "urn:hwm:design-option:a-r2",
+      "current_base_context_id": "urn:hwm:base:r3",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "stale", "temporal_status": "expired", "applicability_status": "out_of_scope", "reason_codes": ["superseded_by_base_r3"]}},
+        {"context_id": "urn:hwm:base:r3", "context_kind": "base_design", "revision": "base-r3", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "stale", "temporal_status": "expired", "applicability_status": "out_of_scope", "reason_codes": ["revised_by_option_a_r2"]}},
+        {"context_id": "urn:hwm:design-option:a-r2", "context_kind": "design_option", "revision": "option-a-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [
+        {"derived_context_id": "urn:hwm:base:r3", "predicate": "prov:wasRevisionOf", "source_context_id": "urn:hwm:base:r2"},
+        {"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"},
+        {"derived_context_id": "urn:hwm:design-option:a-r2", "predicate": "prov:wasRevisionOf", "source_context_id": "urn:hwm:design-option:a-r1"},
+        {"derived_context_id": "urn:hwm:design-option:a-r2", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r3"}
+      ],
+      "output_candidates": [
+        {"output_id": "urn:hwm:simulation:a-r1", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]},
+        {"output_id": "urn:hwm:simulation:a-r2", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r2", "revision": "option-a-r2"}]}
+      ],
+      "expected": {"context_status": "ready", "root_base_context_id": "urn:hwm:base:r3", "admitted_current_output_ids": ["urn:hwm:simulation:a-r2"], "package_preserved_output_ids": ["urn:hwm:simulation:a-r1", "urn:hwm:simulation:a-r2"], "reason_codes": ["historical_output_not_carried_forward"]}
+    },
+    {
+      "case_id": "multiple-base-derivations",
+      "target_context_id": "urn:hwm:design-option:a-r1",
+      "current_base_context_id": "urn:hwm:base:r2",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r2", "context_kind": "base_design", "revision": "base-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:base:other", "context_kind": "base_design", "revision": "base-other", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [
+        {"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r2"},
+        {"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:other"}
+      ],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:ambiguous", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r1", "revision": "option-a-r1"}]}],
+      "expected": {"context_status": "invalid_context", "root_base_context_id": null, "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:ambiguous"], "reason_codes": ["multiple_base_derivations"]}
+    },
+    {
+      "case_id": "revision-cycle",
+      "target_context_id": "urn:hwm:design-option:a-r2",
+      "current_base_context_id": "urn:hwm:base:r3",
+      "contexts": [
+        {"context_id": "urn:hwm:base:r3", "context_kind": "base_design", "revision": "base-r3", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r1", "context_kind": "design_option", "revision": "option-a-r1", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable", "reason_codes": []}},
+        {"context_id": "urn:hwm:design-option:a-r2", "context_kind": "design_option", "revision": "option-a-r2", "resolution": {"availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable", "reason_codes": []}}
+      ],
+      "lineage_edges": [
+        {"derived_context_id": "urn:hwm:design-option:a-r2", "predicate": "prov:wasDerivedFrom", "source_context_id": "urn:hwm:base:r3"},
+        {"derived_context_id": "urn:hwm:design-option:a-r2", "predicate": "prov:wasRevisionOf", "source_context_id": "urn:hwm:design-option:a-r1"},
+        {"derived_context_id": "urn:hwm:design-option:a-r1", "predicate": "prov:wasRevisionOf", "source_context_id": "urn:hwm:design-option:a-r2"}
+      ],
+      "output_candidates": [{"output_id": "urn:hwm:simulation:cycle", "input_context_bindings": [{"context_id": "urn:hwm:design-option:a-r2", "revision": "option-a-r2"}]}],
+      "expected": {"context_status": "integrity_conflict", "root_base_context_id": null, "admitted_current_output_ids": [], "package_preserved_output_ids": ["urn:hwm:simulation:cycle"], "reason_codes": ["revision_cycle"]}
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "contract": "hwm:WorldView",
+  "contract_version": "0.1.0",
+  "view_id": "urn:hwm:view:night-light-spatial-contested",
+  "household_id": "urn:hwm:household:fixture-005",
+  "requester": "urn:hwm:agent:commissioning-assistant",
+  "purpose": "urn:hwm:purpose:spatial-commissioning",
+  "generated_at": "2026-07-19T09:30:01Z",
+  "as_of": "2026-07-19T09:30:00Z",
+  "known_through": "2026-07-19T09:30:00Z",
+  "freshness": {"maximum_age_seconds": 300, "status": "current"},
+  "coverage": {
+    "entity_refs": ["urn:asset:night-light", "urn:space:bedroom"],
+    "claim_kinds": ["bot:hasSpace"]
+  },
+  "authority_epoch": 1,
+  "profiles": [
+    {"id": "hwm:core", "version": "0.1.0", "required": true},
+    {"id": "hwm:interactive-evidence", "version": "0.1.0-fixture", "required": true}
+  ],
+  "resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:night-light-space",
+      "subject": "urn:asset:night-light",
+      "predicate": "bot:hasSpace",
+      "availability_status": "available",
+      "epistemic_status": "contested",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:night-light-in-bedroom",
+          "object": "urn:space:bedroom",
+          "claim_ids": ["urn:claim:night-light-in-bedroom"],
+          "evidence_record_ids": ["urn:record:camera-frame-1", "urn:record:resident-refutes-bedroom"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["positive_and_refuting_evidence"]
+    }
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "urn:hwm:conflict:night-light-space-refuted",
+      "claim_ids": ["urn:claim:night-light-in-bedroom"],
+      "evidence_record_ids": ["urn:record:resident-refutes-bedroom"],
+      "reason_code": "positive_and_refuting_evidence"
+    }
+  ],
+  "limitations": [
+    {"code": "no_alternative_location_claim", "description": "The refutation contests the bedroom candidate but does not assert another location."}
+  ],
+  "extensions": {}
+}

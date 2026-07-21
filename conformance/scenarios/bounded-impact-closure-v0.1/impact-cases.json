@@ -1,0 +1,267 @@
+{
+  "artifact": "hwm-impact:OracleCases",
+  "artifact_version": "0.1.0-fixture",
+  "base_requests": {
+    "shared-comfort": {
+      "policy_id": "urn:hwm:impact-policy:household-7",
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T12:00:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+        "revision": 1,
+        "action_type": "SetZoneTemperature",
+        "purpose": "shared_comfort",
+        "effect_domains": ["thermal", "privacy", "resource", "control"],
+        "space_ids": ["urn:hwm:space:shared-bedroom"],
+        "risk_level": "moderate",
+        "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" }
+      },
+      "report_record_ids": ["thermal-current", "privacy-current", "resource-current", "control-current"]
+    }
+  },
+  "report_records": {
+    "thermal-current": {
+      "report_id": "urn:hwm:impact-report:thermal-current",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:55:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel",
+      "impact_entries": [
+        { "impact_id": "impact-human-a-thermal", "channel_id": "physical_exposure", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:resident-a", "basis_ids": ["urn:hwm:effect:bedroom-air-temperature"] },
+        { "impact_id": "impact-pet-thermal", "channel_id": "physical_exposure", "entity_kind": "pet", "impact_status": "possible", "affected_entity_ref": "urn:hwm:subject:cat-1", "basis_ids": ["urn:hwm:effect:bedroom-air-temperature"] }
+      ],
+      "limitations": [], "extensions": {}
+    },
+    "privacy-current": {
+      "report_id": "urn:hwm:impact-report:privacy-current",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "privacy_data", "procedure_id": "urn:hwm:procedure:privacy-impact-v1",
+      "assessed_at": "2026-07-19T11:56:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel",
+      "impact_entries": [
+        { "impact_id": "impact-opaque-privacy-c", "channel_id": "privacy_data", "entity_kind": "opaque_subject", "impact_status": "material", "opaque_subject_handle": "urn:hwm:opaque:authority-7:9f2", "basis_ids": ["urn:hwm:processing:occupancy-inference"] }
+      ],
+      "limitations": ["identity_withheld_by_authority"], "extensions": {}
+    },
+    "resource-current": {
+      "report_id": "urn:hwm:impact-report:resource-current",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "shared_resource", "procedure_id": "urn:hwm:procedure:resource-impact-v1",
+      "assessed_at": "2026-07-19T11:57:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel",
+      "impact_entries": [
+        { "impact_id": "impact-shared-circuit", "channel_id": "shared_resource", "entity_kind": "resource", "impact_status": "possible", "affected_entity_ref": "urn:hwm:resource:hvac-circuit-2", "basis_ids": ["urn:hwm:effect:predicted-electric-load"] }
+      ],
+      "limitations": [], "extensions": {}
+    },
+    "control-current": {
+      "report_id": "urn:hwm:impact-report:control-current",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "control_interest", "procedure_id": "urn:hwm:procedure:control-impact-v1",
+      "assessed_at": "2026-07-19T11:58:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel",
+      "impact_entries": [
+        { "impact_id": "impact-human-a-control", "channel_id": "control_interest", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:resident-a", "basis_ids": ["urn:hwm:claim:shared-bedroom-control-interest"] },
+        { "impact_id": "impact-control-b", "channel_id": "control_interest", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:resident-b", "basis_ids": ["urn:hwm:claim:shared-bedroom-control-interest"] }
+      ],
+      "limitations": [], "extensions": {}
+    },
+    "thermal-empty": {
+      "report_id": "urn:hwm:impact-report:thermal-empty",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:55:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "thermal-partial": {
+      "report_id": "urn:hwm:impact-report:thermal-partial",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:55:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "partial",
+      "impact_entries": [{ "impact_id": "impact-human-a-thermal-partial", "channel_id": "physical_exposure", "entity_kind": "person", "impact_status": "possible", "affected_entity_ref": "urn:hwm:subject:resident-a", "basis_ids": ["urn:hwm:effect:uncalibrated-thermal-model"] }],
+      "limitations": ["adjacent_space_model_unavailable"], "extensions": {}
+    },
+    "privacy-unavailable": {
+      "report_id": "urn:hwm:impact-report:privacy-unavailable",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "privacy_data", "procedure_id": "urn:hwm:procedure:privacy-impact-v1",
+      "assessed_at": "2026-07-19T11:56:00Z",
+      "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "unavailable", "impact_entries": [], "limitations": ["access_denied"], "extensions": {}
+    },
+    "thermal-wrong-revision": {
+      "report_id": "urn:hwm:impact-report:thermal-revision-0",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 0,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:55:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "thermal-stale": {
+      "report_id": "urn:hwm:impact-report:thermal-stale",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:30:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "thermal-wrong-procedure": {
+      "report_id": "urn:hwm:impact-report:thermal-wrong-procedure",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:unknown",
+      "assessed_at": "2026-07-19T11:55:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "thermal-future": {
+      "report_id": "urn:hwm:impact-report:thermal-future",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T12:01:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "thermal-short-horizon": {
+      "report_id": "urn:hwm:impact-report:thermal-short-horizon",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:55:00Z", "horizon": { "from": "2026-07-19T12:05:00Z", "to": "2026-07-19T12:25:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "thermal-second-current": {
+      "report_id": "urn:hwm:impact-report:thermal-second-current",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "physical_exposure", "procedure_id": "urn:hwm:procedure:thermal-impact-v1",
+      "assessed_at": "2026-07-19T11:59:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "cost-extra": {
+      "report_id": "urn:hwm:impact-report:cost-extra",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "cost_allocation", "procedure_id": "urn:hwm:procedure:cost-impact-v1",
+      "assessed_at": "2026-07-19T11:59:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel", "impact_entries": [], "limitations": [], "extensions": {}
+    },
+    "privacy-conflicting-id": {
+      "report_id": "urn:hwm:impact-report:privacy-conflicting-id",
+      "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1,
+      "channel_id": "privacy_data", "procedure_id": "urn:hwm:procedure:privacy-impact-v1",
+      "assessed_at": "2026-07-19T11:56:00Z", "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T12:30:00Z" },
+      "coverage_status": "complete_for_channel",
+      "impact_entries": [{ "impact_id": "impact-human-a-thermal", "channel_id": "privacy_data", "entity_kind": "opaque_subject", "impact_status": "material", "opaque_subject_handle": "urn:hwm:opaque:authority-7:conflict", "basis_ids": ["urn:hwm:processing:occupancy-inference"] }],
+      "limitations": [], "extensions": {}
+    }
+  },
+  "cases": [
+    {
+      "case_id": "all-declared-channels-covered", "base_request_id": "shared-comfort", "overrides": {},
+      "expected": { "coverage_status": "complete_for_declared_channels", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "physical_exposure", "privacy_data", "shared_resource"], "missing_channel_ids": [], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal", "impact-opaque-privacy-c", "impact-pet-thermal", "impact-shared-circuit"], "reason_codes": ["declared_channels_complete"] },
+      "must_not_infer": ["globally_complete", "participation_entitlement", "action_authorized", "identity_of_opaque_subject", "pet_can_confirm"]
+    },
+    {
+      "case_id": "privacy-channel-missing", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "physical_exposure", "shared_resource"], "missing_channel_ids": ["privacy_data"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal", "impact-pet-thermal", "impact-shared-circuit"], "reason_codes": ["required_channel_not_covered"] },
+      "must_not_infer": ["no_privacy_subject", "globally_complete"]
+    },
+    {
+      "case_id": "shared-resource-channel-missing", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-current", "privacy-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "physical_exposure", "privacy_data"], "missing_channel_ids": ["shared_resource"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal", "impact-opaque-privacy-c", "impact-pet-thermal"], "reason_codes": ["required_channel_not_covered"] },
+      "must_not_infer": ["resource_unaffected", "action_safe"]
+    },
+    {
+      "case_id": "privacy-report-unavailable", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-current", "privacy-unavailable", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "physical_exposure", "shared_resource"], "missing_channel_ids": ["privacy_data"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal", "impact-pet-thermal", "impact-shared-circuit"], "reason_codes": ["channel_report_unavailable", "required_channel_not_covered"] },
+      "must_not_infer": ["access_denied_means_empty", "no_privacy_subject"]
+    },
+    {
+      "case_id": "physical-report-partial", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-partial", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "privacy_data", "shared_resource"], "missing_channel_ids": ["physical_exposure"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal-partial", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["channel_report_partial", "required_channel_not_covered"] },
+      "must_not_infer": ["unreported_adjacent_space_unaffected", "partial_is_empty"]
+    },
+    {
+      "case_id": "wrong-proposal-revision", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-wrong-revision", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "privacy_data", "shared_resource"], "missing_channel_ids": ["physical_exposure"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["wrong_revision_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["old_revision_carries_forward", "no_physical_impact"]
+    },
+    {
+      "case_id": "stale-report", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-stale", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "privacy_data", "shared_resource"], "missing_channel_ids": ["physical_exposure"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["stale_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["stale_report_is_current", "no_physical_impact"]
+    },
+    {
+      "case_id": "wrong-procedure", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-wrong-procedure", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "privacy_data", "shared_resource"], "missing_channel_ids": ["physical_exposure"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["wrong_procedure_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["procedure_labels_interchangeable", "no_physical_impact"]
+    },
+    {
+      "case_id": "future-report", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-future", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "privacy_data", "shared_resource"], "missing_channel_ids": ["physical_exposure"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["future_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["future_knowledge_available", "no_physical_impact"]
+    },
+    {
+      "case_id": "report-horizon-insufficient", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-short-horizon", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "privacy_data", "shared_resource"], "missing_channel_ids": ["physical_exposure"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["insufficient_horizon_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["partial_horizon_covers_proposal", "outside_horizon_unaffected"]
+    },
+    {
+      "case_id": "duplicate-current-channel-report", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-current", "thermal-second-current", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "indeterminate", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": [], "missing_channel_ids": [], "impact_entry_ids": [], "reason_codes": ["multiple_current_reports_for_channel"] },
+      "must_not_infer": ["choose_newest_silently", "average_reports"]
+    },
+    {
+      "case_id": "no-applicable-policy-rule", "base_request_id": "shared-comfort", "overrides": { "proposal": { "action_type": "OpenUnknownDevice" } },
+      "expected": { "coverage_status": "indeterminate", "matched_rule_ids": [], "covered_channel_ids": [], "missing_channel_ids": [], "impact_entry_ids": [], "reason_codes": ["no_applicable_coverage_rule"] },
+      "must_not_infer": ["coverage_not_required", "action_authorized"]
+    },
+    {
+      "case_id": "multiple-applicable-policy-rules", "base_request_id": "shared-comfort", "overrides": { "proposal": { "action_type": "AmbiguousAction", "purpose": "test_only", "effect_domains": ["thermal"], "risk_level": "low" } },
+      "expected": { "coverage_status": "indeterminate", "matched_rule_ids": ["ambiguous-a", "ambiguous-b"], "covered_channel_ids": [], "missing_channel_ids": [], "impact_entry_ids": [], "reason_codes": ["multiple_applicable_coverage_rules"] },
+      "must_not_infer": ["first_rule_wins", "merge_rules_silently"]
+    },
+    {
+      "case_id": "coverage-policy-epoch-stale", "base_request_id": "shared-comfort", "overrides": { "verifier_epoch": 8 },
+      "expected": { "coverage_status": "indeterminate", "matched_rule_ids": [], "covered_channel_ids": [], "missing_channel_ids": [], "impact_entry_ids": [], "reason_codes": ["coverage_policy_epoch_stale"] },
+      "must_not_infer": ["stale_authority_policy_valid", "action_authorized"]
+    },
+    {
+      "case_id": "verifier-authority-state-behind", "base_request_id": "shared-comfort", "overrides": { "verifier_epoch": 6 },
+      "expected": { "coverage_status": "indeterminate", "matched_rule_ids": [], "covered_channel_ids": [], "missing_channel_ids": [], "impact_entry_ids": [], "reason_codes": ["verifier_authority_state_behind"] },
+      "must_not_infer": ["future_policy_known", "action_authorized"]
+    },
+    {
+      "case_id": "proposal-horizon-exceeds-rule", "base_request_id": "shared-comfort", "overrides": { "proposal": { "horizon": { "from": "2026-07-19T12:00:00Z", "to": "2026-07-19T13:30:00Z" } } },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": [], "missing_channel_ids": ["control_interest", "physical_exposure", "privacy_data", "shared_resource"], "impact_entry_ids": [], "reason_codes": ["proposal_horizon_exceeds_rule"] },
+      "must_not_infer": ["short_horizon_extrapolated", "outside_horizon_unaffected"]
+    },
+    {
+      "case_id": "undeclared-extra-does-not-fill-required", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-current", "resource-current", "control-current", "cost-extra"] },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "physical_exposure", "shared_resource"], "missing_channel_ids": ["privacy_data"], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal", "impact-pet-thermal", "impact-shared-circuit"], "reason_codes": ["undeclared_channel_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["channel_count_substitutes_semantics", "no_privacy_subject"]
+    },
+    {
+      "case_id": "empty-complete-physical-channel", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-empty", "privacy-current", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "complete_for_declared_channels", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": ["control_interest", "physical_exposure", "privacy_data", "shared_resource"], "missing_channel_ids": [], "impact_entry_ids": ["impact-control-b", "impact-human-a-control", "impact-opaque-privacy-c", "impact-shared-circuit"], "reason_codes": ["declared_channels_complete"] },
+      "must_not_infer": ["nobody_affected", "globally_no_physical_effect", "future_horizon_empty"]
+    },
+    {
+      "case_id": "proposal-revision-requires-recomputation", "base_request_id": "shared-comfort", "overrides": { "proposal": { "revision": 2 } },
+      "expected": { "coverage_status": "partial", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": [], "missing_channel_ids": ["control_interest", "physical_exposure", "privacy_data", "shared_resource"], "impact_entry_ids": [], "reason_codes": ["wrong_revision_report_ignored", "required_channel_not_covered"] },
+      "must_not_infer": ["old_revision_carries_forward", "effects_unchanged"]
+    },
+    {
+      "case_id": "impact-identifier-conflict", "base_request_id": "shared-comfort", "overrides": { "report_record_ids": ["thermal-current", "privacy-conflicting-id", "resource-current", "control-current"] },
+      "expected": { "coverage_status": "indeterminate", "matched_rule_ids": ["shared-comfort-four-channels"], "covered_channel_ids": [], "missing_channel_ids": [], "impact_entry_ids": [], "reason_codes": ["conflicting_impact_identifier"] },
+      "must_not_infer": ["same_id_means_same_impact", "merge_cross_channel_impacts"]
+    }
+  ],
+  "model_boundary_cases": [
+    { "case_id": "presence-not-necessary", "kind": "presence_relation", "inputs": { "present": false, "impact_path": true }, "expected": { "impacted": true, "participation_entitlement": "not_evaluated" }, "must_not_infer": ["absence_means_unaffected", "impact_means_confirmation_right"] },
+    { "case_id": "presence-not-sufficient", "kind": "presence_relation", "inputs": { "present": true, "impact_path": false }, "expected": { "impacted": false, "participation_entitlement": "not_evaluated" }, "must_not_infer": ["presence_means_affected", "presence_means_household_member"] },
+    { "case_id": "pet-impact-not-response", "kind": "nonhuman_subject", "inputs": { "entity_kind": "pet", "impact_path": true }, "expected": { "impacted": true, "can_confirm": "not_inferred", "guardian": "not_inferred" }, "must_not_infer": ["pet_can_confirm", "automatic_guardian"] },
+    { "case_id": "future-role-not-current-identity", "kind": "future_role", "inputs": { "entity_kind": "future_role", "impact_path": true }, "expected": { "impacted": true, "current_identity": "not_inferred", "participation_entitlement": "not_evaluated" }, "must_not_infer": ["future_role_is_current_person", "role_grants_vote"] },
+    { "case_id": "opaque-handle-not-identity", "kind": "opaque_subject", "inputs": { "opaque_subject_handle": "urn:hwm:opaque:authority-7:9f2", "impact_path": true }, "expected": { "impacted": true, "identity": "withheld", "participation_entitlement": "not_evaluated" }, "must_not_infer": ["identity_of_opaque_subject", "presence_from_handle", "count_disclosure_safe"] }
+  ]
+}

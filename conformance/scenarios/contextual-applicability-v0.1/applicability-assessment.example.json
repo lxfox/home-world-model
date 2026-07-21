@@ -1,0 +1,82 @@
+{
+  "contract": "hwm-applicability:Assessment",
+  "contract_version": "0.1.0-fixture",
+  "assessment_id": "urn:hwm:applicability-assessment:resident-a-sleep-temperature-2026-07-19T22:20:00Z",
+  "household_id": "urn:hwm:household:fixture-situation-001",
+  "purpose": "urn:hwm:purpose:night-comfort-eligibility",
+  "assessed_at": "2026-07-19T22:20:03Z",
+  "as_of": "2026-07-19T22:20:00Z",
+  "authority_epoch": 12,
+  "world_view_binding": {
+    "artifact_id": "urn:hwm:view:resident-a-night-preference-2026-07-19T22:20:00Z",
+    "content_scope": "artifact",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "076f86562a8a0b09b5d0b77338f76192fc23e3f8e9ee369a293f2eea2b7e6f75"
+  },
+  "target_claim_binding": {
+    "artifact_id": "urn:hwm:claim:resident-a-sleep-temperature-preference",
+    "content_scope": "claim_body",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "c432f65ba755fd2bf793a1bb568b81a66b878e07807b91a70de8ba84d0f4f175"
+  },
+  "rule_claim_binding": {
+    "artifact_id": "urn:hwm:claim:resident-a-sleep-temperature-applicability-rule",
+    "content_scope": "claim_body",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "635b973ceb2f2a3d22b64e7d688eb58eb47c994598cfe961f9775e9e629c450f"
+  },
+  "target_resolution": {
+    "resolution_id": "urn:hwm:resolution:resident-a-sleep-temperature-preference",
+    "candidate_claim_ids": ["urn:hwm:claim:resident-a-sleep-temperature-preference"],
+    "availability_status": "available",
+    "epistemic_status": "accepted",
+    "freshness_status": "current",
+    "temporal_status": "in_effect"
+  },
+  "rule_resolution": {
+    "resolution_id": "urn:hwm:resolution:resident-a-sleep-temperature-applicability-rule",
+    "candidate_claim_ids": ["urn:hwm:claim:resident-a-sleep-temperature-applicability-rule"],
+    "availability_status": "available",
+    "epistemic_status": "accepted",
+    "freshness_status": "current",
+    "temporal_status": "in_effect"
+  },
+  "operator": "all_of",
+  "evaluation_coverage": "complete",
+  "condition_results": [
+    {
+      "condition_id": "urn:hwm:condition:resident-a-sleeping-in-bedroom-a",
+      "query_binding": {
+        "artifact_id": "urn:hwm:situation-query:resident-a-sleeping-in-bedroom-a",
+        "content_scope": "artifact",
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "digest": "9ef4ed01b415c012703f556d19ea6cf9f96df08288a8a2977badd249e8db82ae"
+      },
+      "basis_kind": "hwm-situation:UseAssessment",
+      "basis_binding": {
+        "artifact_id": "urn:hwm:situation-assessment:resident-a-night-context-2026-07-19T22:20:00Z",
+        "content_scope": "artifact",
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "digest": "dfd2ba831ce0f0726ff4c7cf993a0ee4b52dbaec6f67298d5163898ed379657a"
+      },
+      "observed_result": "satisfied",
+      "reason_codes": ["bound_situation_query_satisfied"]
+    }
+  ],
+  "result": "applicable",
+  "decision_basis": "applicable_conditions",
+  "conflict_status": "not_evaluated",
+  "conflict_assessment_bindings": [],
+  "reason_codes": ["accepted_target_and_rule_with_all_conditions_satisfied"],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-contextual-applicability-registry",
+    "value": "fixture:contextual-applicability-assessment-proof"
+  },
+  "extensions": {}
+}

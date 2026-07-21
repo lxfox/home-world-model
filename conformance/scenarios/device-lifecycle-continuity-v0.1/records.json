@@ -1,0 +1,129 @@
+[
+  {
+    "record_id": "urn:hwm:record:lifecycle-initial-declaration",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:installer",
+    "recorded_at": "2026-07-18T08:00:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:lifecycle-slot-type",
+        "urn:hwm:claim:lifecycle-reading-requirement",
+        "urn:hwm:claim:old-asset-fulfills-slot",
+        "urn:hwm:claim:old-asset-exposes-endpoint",
+        "urn:hwm:claim:old-endpoint-effect"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+    "record_type": "revision",
+    "attributed_to": "urn:hwm:subject:installer",
+    "recorded_at": "2026-07-18T09:00:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:new-asset-replaces-old",
+        "urn:hwm:claim:new-asset-fulfills-slot",
+        "urn:hwm:claim:new-asset-exposes-endpoint"
+      ],
+      "reason": "physical_asset_replaced"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:new-lamp-calibration-summary",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:commissioning-agent",
+    "recorded_at": "2026-07-18T09:05:00Z",
+    "payload": {
+      "claim_ids": ["urn:hwm:claim:new-endpoint-effect"],
+      "derived_from_record_id": "urn:hwm:record:raw-calibration-frame-new-lamp",
+      "summary": { "sample_count": 12, "minimum": 320, "maximum": 360, "unit": "lx" }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:raw-calibration-deletion-authorization",
+    "record_type": "authorization",
+    "attributed_to": "urn:hwm:authority:fixture-003",
+    "recorded_at": "2026-07-18T09:09:00Z",
+    "payload": {
+      "decision": "allowed",
+      "target_record_id": "urn:hwm:record:raw-calibration-frame-new-lamp",
+      "purpose": "privacy_minimization",
+      "authority_epoch": 4
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:raw-calibration-tombstone",
+    "record_type": "deletion",
+    "attributed_to": "urn:hwm:subject:retention-controller",
+    "recorded_at": "2026-07-18T09:10:00Z",
+    "payload": {
+      "target_record_id": "urn:hwm:record:raw-calibration-frame-new-lamp",
+      "deletion_category": "payload_deleted",
+      "authorized_by_record_id": "urn:hwm:record:raw-calibration-deletion-authorization",
+      "deleted_at": "2026-07-18T09:10:00Z"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:lifecycle-action-authorization",
+    "record_type": "authorization",
+    "attributed_to": "urn:hwm:authority:fixture-003",
+    "recorded_at": "2026-07-18T09:15:00Z",
+    "payload": {
+      "proposal_id": "urn:hwm:proposal:new-lamp-level-60",
+      "decision": "allowed",
+      "authority_epoch": 4
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:lifecycle-action-dispatch",
+    "record_type": "action",
+    "attributed_to": "urn:hwm:subject:execution-gateway",
+    "recorded_at": "2026-07-18T09:15:01Z",
+    "payload": {
+      "action_type": "matter:MoveToLevel",
+      "target_endpoint_id": "urn:hwm:endpoint:matter-lamp-new",
+      "parameters": { "level_percent": 60 }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:lifecycle-action-acknowledgement",
+    "record_type": "action",
+    "attributed_to": "urn:hwm:endpoint:matter-lamp-new",
+    "recorded_at": "2026-07-18T09:15:03Z",
+    "payload": {
+      "dispatch_record_id": "urn:hwm:record:lifecycle-action-dispatch",
+      "status": "acknowledged"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:lifecycle-late-observation",
+    "record_type": "observation",
+    "attributed_to": "urn:hwm:subject:lux-sensor-lifecycle",
+    "recorded_at": "2026-07-18T09:20:00Z",
+    "observed_at": "2026-07-18T09:15:04Z",
+    "procedure": "urn:hwm:procedure:lifecycle-lux-v1",
+    "payload": {
+      "feature_of_interest": "urn:hwm:zone:lifecycle-reading",
+      "property": "saref:Light",
+      "result": { "value": 330, "unit": "lx" }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  }
+]

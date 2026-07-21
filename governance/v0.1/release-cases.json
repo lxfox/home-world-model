@@ -1,0 +1,17 @@
+{
+  "contract":"hwm-specification-release-gate-v0.1",
+  "cases":[
+    {"case_id":"all-bound-and-verified","facts":{},"expected":"publishable","must_not_infer":["publication_is_adoption"]},
+    {"case_id":"decision-not-accepted","facts":{"decision_not_accepted":true},"expected":"not_publishable","must_not_infer":["proposal_presence_is_acceptance"]},
+    {"case_id":"decision-digest-mismatch","facts":{"decision_digest_mismatch":true},"expected":"not_publishable","must_not_infer":["decision_id_replaces_digest"]},
+    {"case_id":"content-manifest-gap","facts":{"content_manifest_gap":true},"expected":"not_publishable","must_not_infer":["release_name_identifies_bytes"]},
+    {"case_id":"integrity-check-gap","facts":{"integrity_gap":true},"expected":"not_publishable","must_not_infer":["archive_exists_means_integrity_passed"]},
+    {"case_id":"license-check-gap","facts":{"license_gap":true},"expected":"not_publishable","must_not_infer":["repository_license_covers_every_input"]},
+    {"case_id":"canonical-uri-gap","facts":{"canonical_uri_gap":true},"expected":"not_publishable","must_not_infer":["planned_uri_is_published_uri"]},
+    {"case_id":"release-check-gap","facts":{"release_check_gap":true},"expected":"not_publishable","must_not_infer":["accept_is_publication"]},
+    {"case_id":"publisher-disclosure-gap","facts":{"publisher_gap":true},"expected":"not_publishable","must_not_infer":["maintainer_role_is_publisher_authorization"]},
+    {"case_id":"signature-indeterminate","facts":{"signature_gap":true},"expected":"not_publishable","must_not_infer":["signature_reference_is_verified_signature"]},
+    {"case_id":"publication-receipt-gap","facts":{"receipt_gap":true},"expected":"not_publishable","must_not_infer":["upload_intent_is_publication"]},
+    {"case_id":"receipt-manifest-mismatch","facts":{"receipt_manifest_mismatch":true},"expected":"not_publishable","must_not_infer":["nearby_release_is_exact_release"]}
+  ]
+}

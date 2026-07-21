@@ -1,0 +1,20 @@
+{
+  "contract": "hwm-situation:QueryFixture",
+  "query_id": "urn:hwm:situation-query:resident-a-sleeping-in-bedroom-a",
+  "semantics_uri": "https://homeworldmodel.org/spec/profiles/situational-context/v0.1#all-required-current-match",
+  "purpose": "urn:hwm:purpose:night-comfort-eligibility",
+  "subject_refs": ["urn:hwm:person:resident-a"],
+  "predicate_ref": "https://saref.etsi.org/saref4ehaw/hasActivity",
+  "expected_object": {
+    "kind_ref": "urn:hwm:activity-kind:sleeping-in-bed",
+    "space_refs": ["urn:hwm:space:bedroom-a"]
+  },
+  "required_statuses": {
+    "availability": "available",
+    "epistemic": "accepted",
+    "freshness": "current",
+    "temporal": "in_effect"
+  },
+  "evaluation_mode": "all",
+  "extensions": {}
+}

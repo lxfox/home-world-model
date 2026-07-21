@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/restoration/v0.1/restoration-gate.schema.json",
+  "title":"HWM Staged Restoration Gate",
+  "type":"object",
+  "required":["gate_id","response_basis","configurations","remediation","risk_reassessment","risk_disposition","proposal","procedures","authority","stage","routing_result","limitations","must_not_infer"],
+  "properties":{
+    "gate_id":{"type":"string"},
+    "response_basis":{"type":"object","required":["ref","sha256"],"properties":{"ref":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "configurations":{"type":"object","required":["stopped_digest","proposed_digest"],"properties":{"stopped_digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},"proposed_digest":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "remediation":{"type":"object","required":["status","evidence_refs","conflict_disclosure"],"properties":{"status":{"enum":["completed","incomplete","indeterminate","not_evaluated"]},"evidence_refs":{"type":"array","items":{"type":"string"}},"conflict_disclosure":{"type":"string"}},"additionalProperties":false},
+    "risk_reassessment":{"type":"object","required":["status","assessment_ref","population","channels","uncertainty","as_of"],"properties":{"status":{"enum":["reduced_with_limits","not_reduced","indeterminate","not_evaluated"]},"assessment_ref":{"type":"string"},"population":{"type":"string"},"channels":{"type":"array","items":{"type":"string"}},"uncertainty":{"type":"string"},"as_of":{"type":"string","format":"date-time"}},"additionalProperties":false},
+    "risk_disposition":{"type":"object","required":["status","risk_bearer_ref","scope","valid_through","constraints"],"properties":{"status":{"enum":["accepted","not_accepted","acceptance_required","indeterminate"]},"risk_bearer_ref":{"type":"string"},"scope":{"type":"string"},"valid_through":{"type":"string","format":"date-time"},"constraints":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
+    "proposal":{"type":"object","required":["status","proposal_ref","revision"],"properties":{"status":{"enum":["current","missing","stale","indeterminate"]},"proposal_ref":{"type":"string"},"revision":{"type":"string"}},"additionalProperties":false},
+    "procedures":{"type":"object","required":["status","assessment_ref"],"properties":{"status":{"enum":["satisfied","pending","denied","indeterminate"]},"assessment_ref":{"type":"string"}},"additionalProperties":false},
+    "authority":{"type":"object","required":["status","decision_ref","authority_epoch","local_safety"],"properties":{"status":{"enum":["allowed","denied","confirmation_required","requirements_pending","indeterminate","not_evaluated"]},"decision_ref":{"type":"string"},"authority_epoch":{"type":"integer","minimum":0},"local_safety":{"enum":["clear","denied","indeterminate","not_evaluated"]}},"additionalProperties":false},
+    "stage":{"type":"object","required":["stage_id","kind","scope","exposure_budget","observation_gate","rollback","execution_status"],"properties":{"stage_id":{"type":"string"},"kind":{"enum":["diagnostic","canary","limited_capability","bounded_population","full_scope"]},"scope":{"type":"string"},"exposure_budget":{"type":"string"},"observation_gate":{"type":"string"},"rollback":{"type":"string"},"execution_status":{"enum":["stage_not_started","stage_open","stage_passed_with_limits","stage_failed","stage_indeterminate","stage_rolled_back"]}},"additionalProperties":false},
+    "routing_result":{"enum":["not_eligible","remediation_incomplete","risk_reassessment_required","risk_acceptance_required","restoration_proposal_required","procedures_pending","authorized_for_stage","stage_observation_required","expand_stage_eligible","hold_required","rollback_required","closure_eligible","denied","indeterminate"]},
+    "limitations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "additionalProperties":false
+}

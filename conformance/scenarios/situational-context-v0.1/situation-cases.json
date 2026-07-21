@@ -1,0 +1,499 @@
+{
+  "profile": "hwm-situational-context-v0.1",
+  "cases": [
+    {
+      "case_id": "raw-presence-observation-is-evidence",
+      "phase": "representation",
+      "facts": {"artifact": "observation"},
+      "expected": {"representation": "observation_record", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "observation_is_evidence_not_situation"},
+      "must_not_infer": ["sensor_event_is_activity", "motion_event_is_person_presence", "observation_is_accepted_context"]
+    },
+    {
+      "case_id": "scoped-inferred-sleep-is-candidate",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "exact", "space_required": true, "space_scope": "exact", "phenomenon_time": "available", "episode_identity": "correlated", "origin_diversity": "sufficient"},
+      "expected": {"representation": "situation_claim", "view_status": "not_verified", "use_status": "not_evaluated", "reason": "scoped_situation_candidate_requires_resolution"},
+      "must_not_infer": ["inferred_activity_is_fact", "situation_claim_is_current_context"]
+    },
+    {
+      "case_id": "model-confidence-does-not-accept",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "confidence_only": true},
+      "expected": {"representation": "situation_claim", "view_status": "not_verified", "use_status": "not_evaluated", "reason": "model_confidence_does_not_accept_claim"},
+      "must_not_infer": ["model_confidence_is_acceptance", "high_probability_is_household_truth"]
+    },
+    {
+      "case_id": "missing-subject-scope-invalid",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "missing"},
+      "expected": {"representation": "invalid", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "situation_subject_scope_missing"},
+      "must_not_infer": ["unspecified_subject_means_household", "camera_frame_implies_participant_set"]
+    },
+    {
+      "case_id": "required-space-scope-missing-invalid",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "exact", "space_required": true, "space_scope": "missing"},
+      "expected": {"representation": "invalid", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "required_situation_space_scope_missing"},
+      "must_not_infer": ["person_activity_has_implicit_room", "sensor_location_is_activity_location"]
+    },
+    {
+      "case_id": "phenomenon-time-unavailable",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "exact", "phenomenon_time": "missing"},
+      "expected": {"representation": "indeterminate", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "phenomenon_time_unavailable"},
+      "must_not_infer": ["issued_at_is_episode_time", "ingestion_time_is_phenomenon_time"]
+    },
+    {
+      "case_id": "result-time-cannot-substitute-episode-time",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "exact", "phenomenon_time": "result_time_substitution"},
+      "expected": {"representation": "invalid", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "result_time_is_not_episode_time"},
+      "must_not_infer": ["result_time_is_episode_start", "processing_delay_changes_activity_interval"]
+    },
+    {
+      "case_id": "delivery-id-cannot-name-episode",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "exact", "phenomenon_time": "available", "episode_identity": "delivery_id"},
+      "expected": {"representation": "invalid", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "delivery_identity_is_not_episode_identity"},
+      "must_not_infer": ["delivery_id_is_episode_identity", "event_retry_is_new_activity"]
+    },
+    {
+      "case_id": "same-origin-models-not-independent",
+      "phase": "representation",
+      "facts": {"artifact": "situation", "subject_scope": "exact", "phenomenon_time": "available", "episode_identity": "correlated", "origin_diversity": "same_origin_counted_twice"},
+      "expected": {"representation": "indeterminate", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "correlated_evidence_not_independent"},
+      "must_not_infer": ["two_models_are_two_origins", "derived_reports_are_independent_observations"]
+    },
+    {
+      "case_id": "away-mode-is-control-state-claim",
+      "phase": "representation",
+      "facts": {"artifact": "control_mode"},
+      "expected": {"representation": "control_state_claim", "view_status": "not_verified", "use_status": "not_evaluated", "reason": "declared_mode_is_control_state_not_household_reality"},
+      "must_not_infer": ["away_mode_proves_empty_home", "mode_name_is_descriptive_fact"]
+    },
+    {
+      "case_id": "quiet-hours-is-policy-artifact",
+      "phase": "representation",
+      "facts": {"artifact": "policy"},
+      "expected": {"representation": "policy_artifact", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "policy_window_is_not_activity_episode"},
+      "must_not_infer": ["quiet_hours_means_everyone_sleeping", "applicable_policy_is_observed_activity"]
+    },
+    {
+      "case_id": "sleep-forecast-is-prediction",
+      "phase": "representation",
+      "facts": {"artifact": "forecast"},
+      "expected": {"representation": "prediction_claim", "view_status": "not_verified", "use_status": "not_evaluated", "reason": "forecast_is_not_current_activity"},
+      "must_not_infer": ["prediction_is_current_episode", "routine_prior_is_observation"]
+    },
+    {
+      "case_id": "schedule-is-not-episode",
+      "phase": "representation",
+      "facts": {"artifact": "schedule"},
+      "expected": {"representation": "schedule_artifact", "view_status": "not_evaluated", "use_status": "not_evaluated", "reason": "schedule_is_not_activity_episode"},
+      "must_not_infer": ["calendar_event_is_observed_activity", "scheduled_sleep_means_sleeping"]
+    },
+    {
+      "case_id": "accepted-current-exact-sleep-match",
+      "phase": "use",
+      "facts": {},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "accepted_current_in_effect_situation_matches_query"},
+      "must_not_infer": ["situation_match_authorizes_action", "situation_match_creates_task"]
+    },
+    {
+      "case_id": "raw-observation-cannot-satisfy-query",
+      "phase": "use",
+      "facts": {"source_kind": "observation"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "observation_not_resolved_situation_claim"},
+      "must_not_infer": ["sensor_event_is_activity", "raw_event_satisfies_routine_condition"]
+    },
+    {
+      "case_id": "world-view-binding-mismatch",
+      "phase": "use",
+      "facts": {"world_view_binding": "mismatch"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "world_view_binding_mismatch"},
+      "must_not_infer": ["assessment_can_retarget_view", "same_view_id_means_same_content"]
+    },
+    {
+      "case_id": "query-binding-mismatch",
+      "phase": "use",
+      "facts": {"query_binding": "mismatch"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "situation_query_binding_mismatch"},
+      "must_not_infer": ["natural_language_paraphrase_changes_query", "assessment_can_widen_condition"]
+    },
+    {
+      "case_id": "assessment-authority-epoch-stale",
+      "phase": "use",
+      "facts": {"authority_epoch": "stale"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "assessment_authority_epoch_stale"},
+      "must_not_infer": ["old_context_permission_survives_epoch", "stale_epoch_is_denial"]
+    },
+    {
+      "case_id": "verifier-behind-new-authority-state",
+      "phase": "use",
+      "facts": {"authority_epoch": "ahead"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "verifier_authority_state_behind"},
+      "must_not_infer": ["unknown_new_epoch_is_allowed", "higher_epoch_self-authenticates"]
+    },
+    {
+      "case_id": "purpose-mismatch",
+      "phase": "use",
+      "facts": {"purpose": "mismatch"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "world_view_purpose_mismatch"},
+      "must_not_infer": ["accepted_for_one_purpose_is_globally_accepted", "comfort_view_can_feed_security"]
+    },
+    {
+      "case_id": "subject-scope-mismatch",
+      "phase": "use",
+      "facts": {"subject_scope": "mismatch"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "situation_subject_scope_mismatch"},
+      "must_not_infer": ["person_a_activity_applies_to_person_b", "individual_context_is_household_context"]
+    },
+    {
+      "case_id": "space-scope-mismatch",
+      "phase": "use",
+      "facts": {"space_scope": "mismatch"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "situation_space_scope_mismatch"},
+      "must_not_infer": ["sleeping_somewhere_means_sleeping_in_bedroom", "sensor_room_is_person_room"]
+    },
+    {
+      "case_id": "access-denied-is-not-false",
+      "phase": "use",
+      "facts": {"availability": "access_denied", "epistemic": "not_evaluated", "temporal": "indeterminate"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "access_denied_does_not_establish_situation"},
+      "must_not_infer": ["access_denied_means_false", "hidden_person_is_absent", "camera_denial_means_no_activity"]
+    },
+    {
+      "case_id": "not-observed-is-not-false",
+      "phase": "use",
+      "facts": {"availability": "not_observed", "epistemic": "not_evaluated", "temporal": "indeterminate"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "not_observed_does_not_establish_situation"},
+      "must_not_infer": ["no_presence_event_means_absent", "no_motion_means_sleeping"]
+    },
+    {
+      "case_id": "source-unavailable-is-not-false",
+      "phase": "use",
+      "facts": {"availability": "source_unavailable", "epistemic": "not_evaluated", "temporal": "indeterminate"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "source_unavailable_does_not_establish_situation"},
+      "must_not_infer": ["offline_sensor_means_empty_space", "camera_failure_means_no_guest"]
+    },
+    {
+      "case_id": "epistemic-unknown-fails-closed",
+      "phase": "use",
+      "facts": {"epistemic": "unknown"},
+      "expected": {"representation": "not_evaluated", "view_status": "unknown", "use_status": "indeterminate", "reason": "situation_claim_unknown"},
+      "must_not_infer": ["unknown_context_is_false", "unknown_context_is_safe_default"]
+    },
+    {
+      "case_id": "contested-situation-fails-closed",
+      "phase": "use",
+      "facts": {"epistemic": "contested"},
+      "expected": {"representation": "not_evaluated", "view_status": "contested", "use_status": "indeterminate", "reason": "situation_claim_contested"},
+      "must_not_infer": ["highest_confidence_wins_contest", "latest_claim_erases_conflict"]
+    },
+    {
+      "case_id": "not-verified-situation-fails-closed",
+      "phase": "use",
+      "facts": {"epistemic": "not_verified"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_verified", "use_status": "indeterminate", "reason": "situation_claim_not_verified"},
+      "must_not_infer": ["candidate_is_eligible_context", "agent_inference_is_self-verifying"]
+    },
+    {
+      "case_id": "stale-situation-fails-closed",
+      "phase": "use",
+      "facts": {"freshness": "stale"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "situation_evidence_not_current"},
+      "must_not_infer": ["accepted_means_fresh", "open_interval_overrides_staleness"]
+    },
+    {
+      "case_id": "expired-episode-does-not-prove-current-negation",
+      "phase": "use",
+      "facts": {"temporal": "expired"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "situation_not_in_effect_at_query_time"},
+      "must_not_infer": ["expired_sleep_claim_means_awake", "past_absence_means_present"]
+    },
+    {
+      "case_id": "future-episode-does-not-prove-current-state",
+      "phase": "use",
+      "facts": {"temporal": "not_yet_in_effect"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "situation_not_in_effect_at_query_time"},
+      "must_not_infer": ["scheduled_future_episode_is_current", "future_claim_authorizes_preparation"]
+    },
+    {
+      "case_id": "mixed-temporal-candidates-fail-closed",
+      "phase": "use",
+      "facts": {"temporal": "mixed"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "situation_not_in_effect_at_query_time"},
+      "must_not_infer": ["mixed_temporal_status_is_current", "one_current_candidate_hides_expired_candidate"]
+    },
+    {
+      "case_id": "explicit-qualified-contradiction-is-not-satisfied",
+      "phase": "use",
+      "facts": {"qualification": "contradicted"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "not_satisfied", "reason": "accepted_current_claim_explicitly_contradicts_query"},
+      "must_not_infer": ["different_label_is_automatically_contradiction", "not_satisfied_is_access_denied"]
+    },
+    {
+      "case_id": "different-candidate-without-incompatibility-is-unknown",
+      "phase": "use",
+      "facts": {"qualification": "indeterminate"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "candidate_difference_not_declared_contradiction"},
+      "must_not_infer": ["different_activity_labels_are_disjoint", "ontology_silence_is_false"]
+    },
+    {
+      "case_id": "one-person-does-not-cover-household",
+      "phase": "use",
+      "facts": {"coverage": "partial", "subject_scope": "match"},
+      "expected": {"representation": "not_evaluated", "view_status": "unknown", "use_status": "indeterminate", "reason": "subject_coverage_incomplete"},
+      "must_not_infer": ["one_sleeping_person_means_household_sleeping", "one_absent_person_means_all_away"]
+    },
+    {
+      "case_id": "overlapping-person-episodes-remain-scoped",
+      "phase": "use",
+      "facts": {"subject_scope": "match", "coverage": "complete"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "accepted_current_in_effect_situation_matches_query"},
+      "must_not_infer": ["person_b_awake_refutes_person_a_sleeping", "coexisting_episodes_require_one_global_mode"]
+    },
+    {
+      "case_id": "all-away-with-declared-population-closure",
+      "phase": "use",
+      "facts": {"coverage": "complete", "subject_scope": "match"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "accepted_current_in_effect_situation_matches_query"},
+      "must_not_infer": ["population_closure_proves_legal_membership", "all_away_claim_discloses_subject_ids"]
+    },
+    {
+      "case_id": "absence-of-events-does-not-establish-all-away",
+      "phase": "use",
+      "facts": {"availability": "not_observed", "epistemic": "not_evaluated", "temporal": "indeterminate", "coverage": "partial"},
+      "expected": {"representation": "not_evaluated", "view_status": "unknown", "use_status": "indeterminate", "reason": "subject_coverage_incomplete"},
+      "must_not_infer": ["no_presence_event_means_absent", "silence_closes_household_population"]
+    },
+    {
+      "case_id": "unknown-population-closure-is-indeterminate",
+      "phase": "use",
+      "facts": {"coverage": "indeterminate"},
+      "expected": {"representation": "not_evaluated", "view_status": "unknown", "use_status": "indeterminate", "reason": "subject_coverage_indeterminate"},
+      "must_not_infer": ["known_devices_define_all_people", "registered_residents_define_all_occupants"]
+    },
+    {
+      "case_id": "opaque-aggregate-can-qualify-without-identities",
+      "phase": "use",
+      "facts": {"opaque_aggregate": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "authorized_opaque_aggregate_matched_without_identity_disclosure"},
+      "must_not_infer": ["aggregate_discloses_member_count", "opaque_handle_reveals_identity", "aggregate_claim_grants_camera_access"]
+    },
+    {
+      "case_id": "guest-presence-does-not-establish-membership",
+      "phase": "use",
+      "facts": {"guest_presence": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "guest_presence_matched_membership_separate"},
+      "must_not_infer": ["guest_presence_means_membership", "guest_presence_grants_participation_right", "guest_identity_is_known"]
+    },
+    {
+      "case_id": "pet-presence-does-not-establish-human-occupancy",
+      "phase": "use",
+      "facts": {"pet_presence": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "pet_presence_matched_human_occupancy_separate"},
+      "must_not_infer": ["pet_presence_means_human_presence", "pet_activity_is_person_activity", "pet_has_household_authority"]
+    },
+    {
+      "case_id": "away-mode-cannot-answer-actual-occupancy",
+      "phase": "use",
+      "facts": {"source_kind": "control_mode", "query_kind": "actual_presence"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "control_mode_not_actual_occupancy"},
+      "must_not_infer": ["away_mode_proves_empty_home", "armed_alarm_means_no_person_inside"]
+    },
+    {
+      "case_id": "exact-away-mode-state-can-match-mode-query",
+      "phase": "use",
+      "facts": {"source_kind": "control_mode", "query_kind": "control_mode"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "exact_declared_control_state_matched"},
+      "must_not_infer": ["mode_query_is_occupancy_query", "control_state_is_human_activity"]
+    },
+    {
+      "case_id": "quiet-hours-policy-cannot-answer-sleeping",
+      "phase": "use",
+      "facts": {"source_kind": "policy", "query_kind": "activity"},
+      "expected": {"representation": "not_evaluated", "view_status": "not_evaluated", "use_status": "indeterminate", "reason": "policy_applicability_not_activity_truth"},
+      "must_not_infer": ["quiet_hours_means_everyone_sleeping", "policy_effective_time_is_episode_time"]
+    },
+    {
+      "case_id": "prediction-cannot-answer-current-activity",
+      "phase": "use",
+      "facts": {"source_kind": "prediction", "query_kind": "current_activity"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "prediction_not_current_episode"},
+      "must_not_infer": ["prediction_is_current_episode", "high_forecast_probability_is_observation"]
+    },
+    {
+      "case_id": "fresh-open-episode-can-be-current",
+      "phase": "use",
+      "facts": {"temporal": "in_effect", "freshness": "current"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "accepted_current_in_effect_situation_matches_query"},
+      "must_not_infer": ["open_episode_is_permanent", "missing_end_means_infinite_truth"]
+    },
+    {
+      "case_id": "stale-open-episode-not-current",
+      "phase": "use",
+      "facts": {"temporal": "in_effect", "freshness": "stale"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "situation_evidence_not_current"},
+      "must_not_infer": ["open_episode_overrides_freshness", "ongoing_projection_never_expires"]
+    },
+    {
+      "case_id": "closed-episode-matches-historical-as-of",
+      "phase": "use",
+      "facts": {"historical_query": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "historical_as_of_query_matches_closed_episode"},
+      "must_not_infer": ["historical_match_is_current_match", "closed_episode_rewrites_open_view"]
+    },
+    {
+      "case_id": "qualified-correction-produces-new-view",
+      "phase": "use",
+      "facts": {"corrected_claim": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "qualified_correction_changes_new_view_not_history"},
+      "must_not_infer": ["correction_mutates_claim", "new_view_erases_old_view", "episode_boundary_is_overwritten"]
+    },
+    {
+      "case_id": "same-episode-ref-different-body-contested",
+      "phase": "use",
+      "facts": {"epistemic": "contested"},
+      "expected": {"representation": "not_evaluated", "view_status": "contested", "use_status": "indeterminate", "reason": "situation_claim_contested"},
+      "must_not_infer": ["same_episode_ref_means_same_claim", "last_writer_wins_episode", "identifier_proves_identity"]
+    },
+    {
+      "case_id": "situation-match-does-not-activate-routine",
+      "phase": "use",
+      "facts": {"routine_activation_requested": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "situation_qualified_routine_activation_separate"},
+      "must_not_infer": ["situation_match_activates_routine", "recognized_habit_is_active_routine"]
+    },
+    {
+      "case_id": "situation-match-does-not-create-task",
+      "phase": "use",
+      "facts": {"task_creation_requested": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "situation_qualified_task_materialization_separate"},
+      "must_not_infer": ["situation_match_creates_task", "activity_episode_is_task_occurrence"]
+    },
+    {
+      "case_id": "situation-match-does-not-authorize-action",
+      "phase": "use",
+      "facts": {"authorization_requested": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "situation_qualified_action_authorization_separate"},
+      "must_not_infer": ["situation_match_authorizes_action", "sleep_detection_allows_camera_or_device_action"]
+    },
+    {
+      "case_id": "situation-assessment-can-feed-exact-routine-condition",
+      "phase": "use",
+      "facts": {"routine_condition": true},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "satisfied", "reason": "situation_assessment_may_feed_exact_routine_condition"},
+      "must_not_infer": ["condition_satisfied_means_task_materialized", "condition_assessment_is_trigger"]
+    },
+    {
+      "case_id": "anonymous-presence-does-not-establish-identity",
+      "phase": "use",
+      "facts": {"identity_requested": true, "identity_evidence": "unavailable"},
+      "expected": {"representation": "not_evaluated", "view_status": "accepted", "use_status": "indeterminate", "reason": "presence_does_not_establish_identity"},
+      "must_not_infer": ["presence_means_known_identity", "face_detection_is_identity_proof", "occupancy_count_reveals_members"]
+    }
+  ],
+  "model_boundary_cases": [
+    {
+      "case_id": "observation-situation-boundary",
+      "expected": {"observation": "time_bound_evidence_record", "situation": "claim_resolved_for_a_purpose"},
+      "must_not_infer": ["sensor_event_is_activity"]
+    },
+    {
+      "case_id": "phenomenon-result-time-boundary",
+      "expected": {"phenomenon_time": "when_property_applies", "result_time": "when_result_became_available"},
+      "must_not_infer": ["result_time_is_episode_start"]
+    },
+    {
+      "case_id": "episode-identity-boundary",
+      "expected": {"episode_ref": "correlation_handle", "identity": "separately_resolved_claim"},
+      "must_not_infer": ["delivery_id_is_episode_identity", "identifier_proves_identity"]
+    },
+    {
+      "case_id": "activity-habit-boundary",
+      "expected": {"activity_episode": "bounded_occurrence", "observed_pattern": "descriptive_repetition_claim"},
+      "must_not_infer": ["one_episode_is_habit", "habit_is_active_routine"]
+    },
+    {
+      "case_id": "activity-mode-boundary",
+      "expected": {"activity": "descriptive_situation", "mode": "declared_control_state"},
+      "must_not_infer": ["mode_name_is_activity_truth"]
+    },
+    {
+      "case_id": "mode-occupancy-boundary",
+      "expected": {"away_mode": "system_state", "all_away": "coverage_bound_descriptive_claim"},
+      "must_not_infer": ["away_mode_proves_empty_home"]
+    },
+    {
+      "case_id": "policy-situation-boundary",
+      "expected": {"quiet_hours": "applicable_policy_window", "sleeping": "activity_claim"},
+      "must_not_infer": ["quiet_hours_means_everyone_sleeping"]
+    },
+    {
+      "case_id": "forecast-current-boundary",
+      "expected": {"forecast": "prediction_claim", "current_episode": "as_of_descriptive_resolution"},
+      "must_not_infer": ["prediction_is_current_episode"]
+    },
+    {
+      "case_id": "person-household-boundary",
+      "expected": {"person_episode": "subject_scoped", "household_situation": "requires_declared_coverage"},
+      "must_not_infer": ["one_sleeping_person_means_household_sleeping"]
+    },
+    {
+      "case_id": "presence-identity-boundary",
+      "expected": {"presence": "spatial_or_occupancy_claim", "identity": "separate_evidence_and_authority"},
+      "must_not_infer": ["presence_means_known_identity"]
+    },
+    {
+      "case_id": "guest-membership-boundary",
+      "expected": {"guest_presence": "temporary_situation", "household_membership": "separate_relation"},
+      "must_not_infer": ["guest_presence_means_membership"]
+    },
+    {
+      "case_id": "pet-person-boundary",
+      "expected": {"pet_presence": "animal_situation", "human_occupancy": "not_inferred"},
+      "must_not_infer": ["pet_presence_means_human_presence"]
+    },
+    {
+      "case_id": "open-interval-boundary",
+      "expected": {"open_end": "episode_currently_asserted_ongoing", "permanence": "not_established"},
+      "must_not_infer": ["open_episode_is_permanent"]
+    },
+    {
+      "case_id": "confidence-acceptance-boundary",
+      "expected": {"model_confidence": "issuer_metadata", "accepted": "resolver_result"},
+      "must_not_infer": ["model_confidence_is_acceptance"]
+    },
+    {
+      "case_id": "same-origin-boundary",
+      "expected": {"multiple_derivations": "correlated_evidence", "independent_origins": "policy_evaluated"},
+      "must_not_infer": ["two_models_are_two_origins"]
+    },
+    {
+      "case_id": "context-routine-boundary",
+      "expected": {"situation_use": "eligibility_input", "routine_activation": "separate_authority_state"},
+      "must_not_infer": ["situation_match_activates_routine"]
+    },
+    {
+      "case_id": "context-task-boundary",
+      "expected": {"situation_use": "condition_assessment", "task": "separate_materialization_decision"},
+      "must_not_infer": ["situation_match_creates_task"]
+    },
+    {
+      "case_id": "context-authorization-boundary",
+      "expected": {"situation_match": "descriptive_qualification", "authorization": "exact_proposal_permission"},
+      "must_not_infer": ["situation_match_authorizes_action"]
+    },
+    {
+      "case_id": "privacy-absence-boundary",
+      "expected": {"access_denied": "undisclosed", "absent": "not_inferred"},
+      "must_not_infer": ["access_denied_means_false", "no_presence_event_means_absent"]
+    },
+    {
+      "case_id": "global-mode-boundary",
+      "expected": {"household_context": "coexisting_scoped_claims", "global_mode_enum": "rejected_lossy_projection"},
+      "must_not_infer": ["coexisting_episodes_require_one_global_mode"]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/profile-composition-conformance/v0.1/conformance-set.schema.json",
+  "title":"HWM Conformance Set v0.1",
+  "type":"object",
+  "required":["set_id","revision","purpose","audience","exchange_operation","base_exchange_set","profile_locks","required_artifacts","required_roles","minimum_evidence_level","offline_policy","unknown_extension_policy","allowed_degradation","valid_from"],
+  "properties":{
+    "set_id":{"type":"string","minLength":1},
+    "revision":{"type":"integer","minimum":1},
+    "purpose":{"type":"string","minLength":1},
+    "audience":{"type":"string","minLength":1},
+    "exchange_operation":{"type":"string","minLength":1},
+    "base_exchange_set":{"const":"hwm-base-exchange-set-v0.1"},
+    "profile_locks":{"type":"array","minItems":3,"items":{"type":"object","required":["profile_id","version","descriptor_digest"],"properties":{"profile_id":{"type":"string"},"version":{"type":"string"},"descriptor_digest":{"type":"string"}},"additionalProperties":false}},
+    "required_artifacts":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "required_roles":{"type":"array","items":{"type":"object","required":["profile_id","version","role"],"properties":{"profile_id":{"type":"string"},"version":{"type":"string"},"role":{"enum":["preserve","consume","produce","evaluate","procedure_adapter"]}},"additionalProperties":false}},
+    "minimum_evidence_level":{"enum":["self_declared","implementation_tested","independent_implementation_tested","production_observed_for_declared_scope"]},
+    "offline_policy":{"enum":["required","not_required"]},
+    "unknown_extension_policy":{"enum":["preserve","reject"]},
+    "allowed_degradation":{"type":"array","items":{"enum":["read_only_limited","opaque_relay","qualified_mediator_required","refuse_unsupported_operation"]},"uniqueItems":true},
+    "valid_from":{"type":"string","format":"date-time"},
+    "valid_through":{"type":["string","null"],"format":"date-time"}
+  },
+  "additionalProperties":false
+}

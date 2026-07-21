@@ -1,0 +1,215 @@
+{
+  "artifact": "hwm-coordination:OracleCases",
+  "version": "0.1.0-fixture",
+  "base_requests": {
+    "hvac": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T08:15:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+        "revision": 1,
+        "action_type": "hwm-action:SetTemperature",
+        "purpose": "shared-comfort-adjustment",
+        "effect_domains": ["shared-thermal-comfort"],
+        "space_ids": ["urn:hwm:space:shared-bedroom"],
+        "risk_level": "moderate",
+        "emergency_status": "none"
+      },
+      "affected_subjects": {
+        "status": "complete",
+        "procedure_id": "urn:hwm:procedure:declared-shared-room-impact-v1",
+        "subject_ids": ["urn:hwm:person:resident-a", "urn:hwm:person:resident-b"]
+      },
+      "response_record_ids": [],
+      "delegation_ids": [],
+      "local_safety_status": "passed"
+    },
+    "hallway": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T08:15:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:hallway-light-1",
+        "revision": 1,
+        "action_type": "hwm-action:SetOn",
+        "purpose": "routine-hallway-lighting",
+        "effect_domains": ["shared-visual-environment"],
+        "space_ids": ["urn:hwm:space:hallway"],
+        "risk_level": "low",
+        "emergency_status": "none"
+      },
+      "affected_subjects": {
+        "status": "complete",
+        "procedure_id": "urn:hwm:procedure:declared-common-space-impact-v1",
+        "subject_ids": ["urn:hwm:person:resident-a", "urn:hwm:person:resident-b"]
+      },
+      "response_record_ids": [],
+      "delegation_ids": [],
+      "local_safety_status": "passed"
+    },
+    "media": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T08:15:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:living-room-volume-1",
+        "revision": 1,
+        "action_type": "hwm-action:SetVolume",
+        "purpose": "shared-media-playback",
+        "effect_domains": ["shared-acoustic-environment"],
+        "space_ids": ["urn:hwm:space:living-room"],
+        "risk_level": "low",
+        "emergency_status": "none"
+      },
+      "affected_subjects": {
+        "status": "complete",
+        "procedure_id": "urn:hwm:procedure:declared-shared-media-impact-v1",
+        "subject_ids": ["urn:hwm:person:resident-a", "urn:hwm:person:resident-b", "urn:hwm:person:resident-c"]
+      },
+      "response_record_ids": [],
+      "delegation_ids": [],
+      "local_safety_status": "passed"
+    },
+    "emergency": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T08:15:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:emergency-shutoff-1",
+        "revision": 1,
+        "action_type": "hwm-action:EmergencyShutoff",
+        "purpose": "verified-emergency-protection",
+        "effect_domains": ["electrical-hazard-control"],
+        "space_ids": ["urn:hwm:space:whole-home"],
+        "risk_level": "emergency",
+        "emergency_status": "verified"
+      },
+      "affected_subjects": {
+        "status": "complete",
+        "procedure_id": "urn:hwm:procedure:verified-hazard-impact-v1",
+        "subject_ids": ["urn:hwm:person:resident-a", "urn:hwm:person:resident-b"]
+      },
+      "response_record_ids": [],
+      "delegation_ids": [],
+      "local_safety_status": "passed"
+    },
+    "ambiguous_blind": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T08:15:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:blind-ambiguous-1",
+        "revision": 1,
+        "action_type": "hwm-action:SetBlindPosition",
+        "purpose": "ambiguous-policy-test",
+        "effect_domains": ["shared-daylight-environment"],
+        "space_ids": ["urn:hwm:space:living-room"],
+        "risk_level": "moderate",
+        "emergency_status": "none"
+      },
+      "affected_subjects": {
+        "status": "complete",
+        "procedure_id": "urn:hwm:procedure:declared-common-space-impact-v1",
+        "subject_ids": ["urn:hwm:person:resident-a", "urn:hwm:person:resident-b"]
+      },
+      "response_record_ids": [],
+      "delegation_ids": [],
+      "local_safety_status": "passed"
+    },
+    "unknown_action": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T08:15:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:unknown-1",
+        "revision": 1,
+        "action_type": "hwm-action:UnknownSharedAction",
+        "purpose": "unknown-shared-purpose",
+        "effect_domains": ["unknown-shared-effect"],
+        "space_ids": ["urn:hwm:space:living-room"],
+        "risk_level": "moderate",
+        "emergency_status": "none"
+      },
+      "affected_subjects": {
+        "status": "complete",
+        "procedure_id": "urn:hwm:procedure:declared-common-space-impact-v1",
+        "subject_ids": ["urn:hwm:person:resident-a"]
+      },
+      "response_record_ids": [],
+      "delegation_ids": [],
+      "local_safety_status": "passed"
+    }
+  },
+  "response_records": {
+    "a_confirm": { "record_id": "urn:hwm:response:a-confirm", "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-a", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:10:00Z", "authorized": true, "standing_status": "admitted" },
+    "b_confirm": { "record_id": "urn:hwm:response:b-confirm", "actor_id": "urn:hwm:person:resident-b", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-b", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:11:00Z", "authorized": true, "standing_status": "admitted" },
+    "b_reject": { "record_id": "urn:hwm:response:b-reject", "actor_id": "urn:hwm:person:resident-b", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-b", "meaning": "reject", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:11:00Z", "authorized": true, "standing_status": "admitted" },
+    "d_unaffected_confirm": { "record_id": "urn:hwm:response:d-unaffected-confirm", "actor_id": "urn:hwm:person:visitor-d", "actor_role_ids": ["urn:hwm:role:visitor"], "represented_subject_id": "urn:hwm:person:visitor-d", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:12:00Z", "authorized": true, "standing_status": "admitted" },
+    "a_stale": { "record_id": "urn:hwm:response:a-stale", "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-a", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T07:30:00Z", "authorized": true, "standing_status": "admitted" },
+    "a_wrong_revision": { "record_id": "urn:hwm:response:a-wrong-revision", "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-a", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 0, "issued_at": "2026-07-19T08:10:00Z", "authorized": true, "standing_status": "admitted" },
+    "a_unauthorized": { "record_id": "urn:hwm:response:a-unauthorized", "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-a", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:10:00Z", "authorized": false, "standing_status": "admitted" },
+    "a_no_standing": { "record_id": "urn:hwm:response:a-no-standing", "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-a", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:10:00Z", "authorized": true, "standing_status": "excluded" },
+    "agent_for_b": { "record_id": "urn:hwm:response:agent-for-b", "actor_id": "urn:hwm:agent:planner-1", "actor_role_ids": ["urn:hwm:role:agent"], "represented_subject_id": "urn:hwm:person:resident-b", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:11:00Z", "authorized": true, "standing_status": "admitted" },
+    "delegate_for_b": { "record_id": "urn:hwm:response:delegate-for-b", "actor_id": "urn:hwm:person:delegate-c", "actor_role_ids": ["urn:hwm:role:comfort-delegate"], "represented_subject_id": "urn:hwm:person:resident-b", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:11:00Z", "authorized": true, "standing_status": "admitted" },
+    "media_a_confirm": { "record_id": "urn:hwm:response:media-a-confirm", "actor_id": "urn:hwm:person:resident-a", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-a", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:living-room-volume-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:10:00Z", "authorized": true, "standing_status": "admitted" },
+    "media_b_confirm": { "record_id": "urn:hwm:response:media-b-confirm", "actor_id": "urn:hwm:person:resident-b", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-b", "meaning": "confirm", "proposal_id": "urn:hwm:proposal:living-room-volume-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:11:00Z", "authorized": true, "standing_status": "admitted" },
+    "media_c_reject": { "record_id": "urn:hwm:response:media-c-reject", "actor_id": "urn:hwm:person:resident-c", "actor_role_ids": ["urn:hwm:role:resident"], "represented_subject_id": "urn:hwm:person:resident-c", "meaning": "reject", "proposal_id": "urn:hwm:proposal:living-room-volume-1", "proposal_revision": 1, "issued_at": "2026-07-19T08:12:00Z", "authorized": true, "standing_status": "admitted" }
+  },
+  "delegations": {
+    "valid_b_to_c": { "delegation_id": "urn:hwm:delegation:b-to-c", "principal_subject_id": "urn:hwm:person:resident-b", "delegate_actor_id": "urn:hwm:person:delegate-c", "delegate_role_ids": ["urn:hwm:role:comfort-delegate"], "action_types": ["hwm-action:SetTemperature"], "space_ids": ["urn:hwm:space:shared-bedroom"], "not_before": "2026-07-19T08:00:00Z", "expires_at": "2026-07-19T09:00:00Z", "authority_decision": "allowed" },
+    "wrong_role_b_to_c": { "delegation_id": "urn:hwm:delegation:b-to-c-wrong-role", "principal_subject_id": "urn:hwm:person:resident-b", "delegate_actor_id": "urn:hwm:person:delegate-c", "delegate_role_ids": ["urn:hwm:role:general-helper"], "action_types": ["hwm-action:SetTemperature"], "space_ids": ["urn:hwm:space:shared-bedroom"], "not_before": "2026-07-19T08:00:00Z", "expires_at": "2026-07-19T09:00:00Z", "authority_decision": "allowed" }
+  },
+  "coordination_cases": [
+    { "case_id": "all-rule-no-responses-pending", "base_request_id": "hvac", "overrides": {}, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["required_responses_missing"] }, "must_not_infer": ["preferences_false", "action_denied_forever"] },
+    { "case_id": "all-rule-one-of-two-confirmed-pending", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm"], "required_duty_ids": [], "reason_codes": ["required_responses_missing"] }, "must_not_infer": ["majority_consent", "resident_b_preference_false"] },
+    { "case_id": "all-rule-both-confirmed-satisfied", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "b_confirm"] }, "expected": { "coordination_status": "satisfied", "authorization_gate": "continue_policy_evaluation", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm", "urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["response_rule_satisfied"] }, "must_not_infer": ["action_authorized", "preferences_reconciled", "outcome_accepted"] },
+    { "case_id": "blocking-rejection-denies-proposal", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "b_reject"] }, "expected": { "coordination_status": "rejected", "authorization_gate": "denied", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm", "urn:hwm:response:b-reject"], "required_duty_ids": [], "reason_codes": ["blocking_rejection"] }, "must_not_infer": ["resident_b_preference_wins_globally", "future_proposals_denied"] },
+    { "case_id": "unaffected-response-does-not-fill-missing-subject", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "d_unaffected_confirm"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm"], "required_duty_ids": [], "reason_codes": ["unaffected_subject_response_ignored", "required_responses_missing"] }, "must_not_infer": ["visitor_replaces_affected_subject", "visitor_globally_untrusted"] },
+    { "case_id": "stale-response-does-not-carry", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_stale", "b_confirm"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["stale_response_ignored", "required_responses_missing"] }, "must_not_infer": ["permanent_consent", "resident_a_rejected"] },
+    { "case_id": "old-proposal-revision-response-does-not-carry", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_wrong_revision", "b_confirm"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["response_wrong_revision_ignored", "required_responses_missing"] }, "must_not_infer": ["revision_one_consented", "old_response_deleted"] },
+    { "case_id": "unauthorized-response-ignored", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_unauthorized", "b_confirm"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["unauthorized_response_ignored", "required_responses_missing"] }, "must_not_infer": ["response_false", "record_absent"] },
+    { "case_id": "response-without-standing-ignored", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_no_standing", "b_confirm"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["response_standing_not_admitted", "required_responses_missing"] }, "must_not_infer": ["resident_a_globally_incompetent", "response_false"] },
+    { "case_id": "agent-cannot-self-confirm-for-resident", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "agent_for_b"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm"], "required_duty_ids": [], "reason_codes": ["unauthorized_representation_ignored", "required_responses_missing"] }, "must_not_infer": ["agent_represents_resident_b", "agent_self_elevated"] },
+    { "case_id": "explicit-scoped-delegation-counts", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "delegate_for_b"], "delegation_ids": ["valid_b_to_c"] }, "expected": { "coordination_status": "satisfied", "authorization_gate": "continue_policy_evaluation", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm", "urn:hwm:response:delegate-for-b"], "required_duty_ids": [], "reason_codes": ["response_rule_satisfied"] }, "must_not_infer": ["delegate_has_general_authority", "action_authorized"] },
+    { "case_id": "wrong-delegate-role-does-not-count", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "delegate_for_b"], "delegation_ids": ["wrong_role_b_to_c"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm"], "required_duty_ids": [], "reason_codes": ["unauthorized_representation_ignored", "required_responses_missing"] }, "must_not_infer": ["delegation_globally_invalid", "resident_b_confirmed"] },
+    { "case_id": "affected-subject-set-unavailable-indeterminate", "base_request_id": "hvac", "overrides": { "affected_subjects": { "status": "unavailable", "procedure_id": "urn:hwm:procedure:declared-shared-room-impact-v1", "subject_ids": [] } }, "expected": { "coordination_status": "indeterminate", "authorization_gate": "indeterminate", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["affected_subject_set_unavailable"] }, "must_not_infer": ["no_one_affected", "coordination_not_required"] },
+    { "case_id": "multiple-applicable-rules-indeterminate", "base_request_id": "ambiguous_blind", "overrides": {}, "expected": { "coordination_status": "indeterminate", "authorization_gate": "indeterminate", "matched_rule_ids": ["urn:hwm:coordination-rule:ambiguous-blind-a", "urn:hwm:coordination-rule:ambiguous-blind-b"], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["multiple_applicable_coordination_rules"] }, "must_not_infer": ["pick_first_policy", "pick_more_permissive_policy"] },
+    { "case_id": "missing-policy-fails-closed", "base_request_id": "unknown_action", "overrides": {}, "expected": { "coordination_status": "indeterminate", "authorization_gate": "indeterminate", "matched_rule_ids": [], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["no_applicable_coordination_rule"] }, "must_not_infer": ["coordination_not_required", "action_allowed"] },
+    { "case_id": "preauthorized-low-risk-action-needs-no-response", "base_request_id": "hallway", "overrides": {}, "expected": { "coordination_status": "not_required", "authorization_gate": "continue_policy_evaluation", "matched_rule_ids": ["urn:hwm:coordination-rule:hallway-light-preauthorized"], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["coordination_not_required"] }, "must_not_infer": ["action_authorized", "general_household_consent"] },
+    { "case_id": "declared-count-rule-two-confirms-satisfied", "base_request_id": "media", "overrides": { "response_record_ids": ["media_a_confirm", "media_b_confirm", "media_c_reject"] }, "expected": { "coordination_status": "satisfied", "authorization_gate": "continue_policy_evaluation", "matched_rule_ids": ["urn:hwm:coordination-rule:living-room-volume-count-two"], "counted_response_record_ids": ["urn:hwm:response:media-a-confirm", "urn:hwm:response:media-b-confirm", "urn:hwm:response:media-c-reject"], "required_duty_ids": [], "reason_codes": ["response_rule_satisfied"] }, "must_not_infer": ["majority_rule_is_fair", "resident_c_preference_false", "universal_household_vote"] },
+    { "case_id": "declared-count-rule-one-confirm-pending", "base_request_id": "media", "overrides": { "response_record_ids": ["media_a_confirm", "media_c_reject"] }, "expected": { "coordination_status": "pending", "authorization_gate": "confirmation_required", "matched_rule_ids": ["urn:hwm:coordination-rule:living-room-volume-count-two"], "counted_response_record_ids": ["urn:hwm:response:media-a-confirm", "urn:hwm:response:media-c-reject"], "required_duty_ids": [], "reason_codes": ["required_responses_missing"] }, "must_not_infer": ["rejection_blocks_threshold_rule", "action_denied"] },
+    { "case_id": "verified-emergency-bypass-retains-duties", "base_request_id": "emergency", "overrides": {}, "expected": { "coordination_status": "not_required", "authorization_gate": "continue_policy_evaluation", "matched_rule_ids": ["urn:hwm:coordination-rule:verified-emergency-shutoff"], "counted_response_record_ids": [], "required_duty_ids": ["urn:hwm:duty:notify-household-after-stabilization", "urn:hwm:duty:record-emergency-event"], "reason_codes": ["coordination_not_required"] }, "must_not_infer": ["action_authorized", "general_emergency_permission", "preferences_rewritten"] },
+    { "case_id": "unverified-emergency-does-not-match-bypass", "base_request_id": "emergency", "overrides": { "proposal": { "emergency_status": "declared" } }, "expected": { "coordination_status": "indeterminate", "authorization_gate": "indeterminate", "matched_rule_ids": [], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["no_applicable_coordination_rule"] }, "must_not_infer": ["emergency_verified", "bypass_active"] },
+    { "case_id": "unanimous-coordination-cannot-override-local-safety", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "b_confirm"], "local_safety_status": "denied" }, "expected": { "coordination_status": "satisfied", "authorization_gate": "denied", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm", "urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["response_rule_satisfied", "local_safety_denied"] }, "must_not_infer": ["safety_overridden", "dispatch_allowed"] },
+    { "case_id": "safety-unknown-after-coordination-is-indeterminate", "base_request_id": "hvac", "overrides": { "response_record_ids": ["a_confirm", "b_confirm"], "local_safety_status": "indeterminate" }, "expected": { "coordination_status": "satisfied", "authorization_gate": "indeterminate", "matched_rule_ids": ["urn:hwm:coordination-rule:shared-bedroom-hvac-all"], "counted_response_record_ids": ["urn:hwm:response:a-confirm", "urn:hwm:response:b-confirm"], "required_duty_ids": [], "reason_codes": ["response_rule_satisfied", "local_safety_indeterminate"] }, "must_not_infer": ["safety_passed", "action_allowed"] },
+    { "case_id": "stale-coordination-policy-epoch-excluded", "base_request_id": "hvac", "overrides": { "verifier_epoch": 8 }, "expected": { "coordination_status": "indeterminate", "authorization_gate": "indeterminate", "matched_rule_ids": [], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["coordination_policy_epoch_stale"] }, "must_not_infer": ["old_policy_active", "coordination_not_required"] },
+    { "case_id": "verifier-behind-coordination-policy-indeterminate", "base_request_id": "hvac", "overrides": { "verifier_epoch": 6 }, "expected": { "coordination_status": "indeterminate", "authorization_gate": "indeterminate", "matched_rule_ids": [], "counted_response_record_ids": [], "required_duty_ids": [], "reason_codes": ["verifier_authority_state_behind"] }, "must_not_infer": ["policy_active", "policy_revoked"] }
+  ],
+  "model_boundary_cases": [
+    {
+      "case_id": "descriptive-evidence-conflict-is-not-a-vote",
+      "kind": "descriptive_conflict",
+      "inputs": [
+        { "claim_id": "urn:hwm:claim:device-in-bedroom", "subject_id": "urn:hwm:asset:device-1", "predicate": "brick:hasLocation", "object": "urn:hwm:space:bedroom", "standing_status": "admitted" },
+        { "claim_id": "urn:hwm:claim:device-in-corridor", "subject_id": "urn:hwm:asset:device-1", "predicate": "brick:hasLocation", "object": "urn:hwm:space:corridor", "standing_status": "admitted" }
+      ],
+      "expected": { "epistemic_status": "contested", "applicability_status": "not_applicable", "synthetic_household_preference": false, "coordination_required": false },
+      "must_not_infer": ["majority_location", "household_vote_required"]
+    },
+    {
+      "case_id": "different-personal-preferences-are-both-accepted",
+      "kind": "personal_preference_plurality",
+      "inputs": [
+        { "claim_id": "urn:hwm:claim:resident-a-temp", "subject_id": "urn:hwm:person:resident-a", "predicate": "hwm-preference:preferredRange", "object": { "minimum": 22, "maximum": 23 }, "standing_status": "admitted" },
+        { "claim_id": "urn:hwm:claim:resident-b-temp", "subject_id": "urn:hwm:person:resident-b", "predicate": "hwm-preference:preferredRange", "object": { "minimum": 19, "maximum": 20 }, "standing_status": "admitted" }
+      ],
+      "expected": { "epistemic_status": "accepted", "applicability_status": "conflicting", "synthetic_household_preference": false, "coordination_required": true },
+      "must_not_infer": ["one_preference_false", "average_is_household_preference"]
+    },
+    {
+      "case_id": "planner-compromise-is-only-a-proposal",
+      "kind": "planner_compromise",
+      "inputs": [
+        { "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "revision": 1, "value": 21 },
+        { "preference_claim_ids": ["urn:hwm:claim:resident-a-temp", "urn:hwm:claim:resident-b-temp"] }
+      ],
+      "expected": { "epistemic_status": "not_applicable", "applicability_status": "candidate_only", "synthetic_household_preference": false, "coordination_required": true },
+      "must_not_infer": ["consent", "authorization", "preference_reconciliation"]
+    }
+  ]
+}

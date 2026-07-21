@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/physical-asset-onboarding/v0.1/acquisition-event-record.schema.json",
+  "title": "HWM Acquisition Event Record v0.1",
+  "type": "object",
+  "required": ["record_id", "event_kind", "occurred_at", "source", "subject_refs", "proof_refs"],
+  "properties": {
+    "record_id": {"type": "string", "minLength": 1},
+    "event_kind": {"enum": ["order_placed", "seller_accepted", "payment_authorized", "payment_captured", "shipped", "carrier_delivered", "household_received", "inspected", "returned", "refunded", "disposed", "other"]},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "source": {"type": "object", "required": ["system", "origin_id"], "properties": {"system": {"type": "string"}, "origin_id": {"type": "string"}}, "additionalProperties": true},
+    "subject_refs": {"type": "object", "minProperties": 1, "additionalProperties": {"type": ["string", "array", "number", "null"]}},
+    "assertions": {"type": "object", "additionalProperties": true},
+    "proof_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,7 @@
+{
+  "signal_id":"synthetic-uncertain-side-effect-signal",
+  "source_view_ref":"governance/outcomes/v0.1/example-deployment-outcome-view.json",
+  "claim":"A synthetic side-effect report requires review before new risky dispatch.",
+  "standing":"admitted_for_fixture_routing_only",
+  "limitations":["synthetic fixture","does not establish harm or action authority"]
+}

@@ -1,0 +1,413 @@
+{
+  "contract": "hwm-routine:InstantiationOracle",
+  "contract_version": "0.1.0-fixture",
+  "cases": [
+    {
+      "case_id": "genesis-definition-candidate",
+      "phase": "definition",
+      "facts": {"same_id": false, "revision": 1, "same_basis": true, "trigger_spec": true, "template_matches_basis": true},
+      "expected": {"artifact_status": "accepted", "identity_relation": "new_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "genesis_definition_candidate"},
+      "must_not_infer": ["definition_exists_means_active"]
+    },
+    {
+      "case_id": "same-content-definition-replay",
+      "phase": "definition",
+      "facts": {"same_id": true, "revision_delta": 0, "same_content": true},
+      "expected": {"artifact_status": "accepted", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "same_content_replay"},
+      "must_not_infer": ["replay_creates_routine_revision"]
+    },
+    {
+      "case_id": "definition-content-collision",
+      "phase": "definition",
+      "facts": {"same_id": true, "revision_delta": 0, "same_content": false},
+      "expected": {"artifact_status": "integrity_conflict", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "duplicate_revision_different_content"},
+      "must_not_infer": ["last_writer_wins_routine_definition"]
+    },
+    {
+      "case_id": "household-identity-change",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": false, "basis_change": "household"},
+      "expected": {"artifact_status": "invalid", "identity_relation": "new_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "identity_basis_change_requires_new_routine"},
+      "must_not_infer": ["routine_moves_between_households"]
+    },
+    {
+      "case_id": "target-intent-lineage-change",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": false, "basis_change": "target_intent_id"},
+      "expected": {"artifact_status": "invalid", "identity_relation": "new_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "identity_basis_change_requires_new_routine"},
+      "must_not_infer": ["routine_silently_retargets_unrelated_intent"]
+    },
+    {
+      "case_id": "purpose-identity-change",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": false, "basis_change": "purpose"},
+      "expected": {"artifact_status": "invalid", "identity_relation": "new_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "identity_basis_change_requires_new_routine"},
+      "must_not_infer": ["routine_purpose_is_mutable_metadata"]
+    },
+    {
+      "case_id": "scope-identity-change",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": false, "basis_change": "scope"},
+      "expected": {"artifact_status": "invalid", "identity_relation": "new_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "identity_basis_change_requires_new_routine"},
+      "must_not_infer": ["routine_scope_expands_in_place"]
+    },
+    {
+      "case_id": "authorized-trigger-revision",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": true, "revision_delta": 1, "previous": "match", "continuity": "allowed", "change": "trigger_spec", "trigger_spec": true, "template_matches_basis": true},
+      "expected": {"artifact_status": "accepted", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "authorized_routine_revision"},
+      "must_not_infer": ["routine_revision_rewrites_prior_occurrences"]
+    },
+    {
+      "case_id": "authorized-late-policy-revision",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": true, "revision_delta": 1, "previous": "match", "continuity": "allowed", "change": "late_policy", "trigger_spec": true, "template_matches_basis": true},
+      "expected": {"artifact_status": "accepted", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "authorized_routine_revision"},
+      "must_not_infer": ["new_catch_up_policy_applies_retroactively"]
+    },
+    {
+      "case_id": "same-intent-new-exact-revision",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": true, "revision_delta": 1, "previous": "match", "continuity": "allowed", "change": "target_intent_revision", "trigger_spec": true, "template_matches_basis": true},
+      "expected": {"artifact_status": "accepted", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "authorized_routine_revision"},
+      "must_not_infer": ["routine_revision_retargets_existing_task"]
+    },
+    {
+      "case_id": "definition-revision-gap",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": true, "revision_delta": 2},
+      "expected": {"artifact_status": "indeterminate", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "definition_revision_gap"},
+      "must_not_infer": ["missing_routine_revision_is_safe"]
+    },
+    {
+      "case_id": "previous-definition-mismatch",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": true, "revision_delta": 1, "previous": "mismatch"},
+      "expected": {"artifact_status": "invalid", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "previous_definition_digest_mismatch"},
+      "must_not_infer": ["routine_revision_forks_silently"]
+    },
+    {
+      "case_id": "continuity-decision-unavailable",
+      "phase": "definition",
+      "facts": {"same_id": true, "same_basis": true, "revision_delta": 1, "previous": "match", "continuity": "unavailable"},
+      "expected": {"artifact_status": "indeterminate", "identity_relation": "same_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "routine_continuity_decision_unavailable"},
+      "must_not_infer": ["agent_approves_routine_revision"]
+    },
+    {
+      "case_id": "template-does-not-match-identity",
+      "phase": "definition",
+      "facts": {"same_id": false, "revision": 1, "same_basis": true, "trigger_spec": true, "template_matches_basis": false},
+      "expected": {"artifact_status": "invalid", "identity_relation": "new_routine", "activation_status": "not_evaluated", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "task_template_identity_mismatch"},
+      "must_not_infer": ["task_template_can_escape_routine_scope"]
+    },
+
+    {
+      "case_id": "agent-authored-routine-proposed",
+      "phase": "activation",
+      "facts": {"activation": "proposed", "author": "agent", "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "proposed", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "agent_candidate_requires_authority"},
+      "must_not_infer": ["agent_can_self_activate_routine"]
+    },
+    {
+      "case_id": "routine-activation-allowed",
+      "phase": "activation",
+      "facts": {"activation": "active", "decision": "allowed", "definition_binding": "match", "authority_epoch": "current"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "exact_definition_activated"},
+      "must_not_infer": ["routine_activation_authorizes_device_action"]
+    },
+    {
+      "case_id": "routine-activation-confirmation-required",
+      "phase": "activation",
+      "facts": {"activation": "active", "decision": "confirmation_required", "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "proposed", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "routine_activation_confirmation_required"},
+      "must_not_infer": ["confirmation_required_means_active"]
+    },
+    {
+      "case_id": "routine-activation-decision-missing",
+      "phase": "activation",
+      "facts": {"activation": "active", "decision": "missing", "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "indeterminate", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "activation_decision_missing"},
+      "must_not_infer": ["definition_defaults_to_active"]
+    },
+    {
+      "case_id": "routine-paused",
+      "phase": "activation",
+      "facts": {"activation": "paused", "decision": "allowed", "transition": true, "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "paused", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "authorized_activation_transition"},
+      "must_not_infer": ["routine_pause_suspends_target_intent"]
+    },
+    {
+      "case_id": "routine-pause-record-missing",
+      "phase": "activation",
+      "facts": {"activation": "paused", "decision": "allowed", "transition": false, "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "indeterminate", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "activation_transition_record_missing"},
+      "must_not_infer": ["pause_without_audit_record"]
+    },
+    {
+      "case_id": "routine-retired",
+      "phase": "activation",
+      "facts": {"activation": "retired", "decision": "allowed", "transition": true, "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "retired", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "authorized_activation_transition"},
+      "must_not_infer": ["routine_retirement_cancels_existing_tasks"]
+    },
+    {
+      "case_id": "routine-superseded",
+      "phase": "activation",
+      "facts": {"activation": "superseded", "decision": "allowed", "transition": true, "related_count": 1, "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "superseded", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "authorized_routine_supersession"},
+      "must_not_infer": ["superseding_routine_inherits_prior_authorizations"]
+    },
+    {
+      "case_id": "routine-supersession-target-missing",
+      "phase": "activation",
+      "facts": {"activation": "superseded", "decision": "allowed", "transition": true, "related_count": 0, "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "indeterminate", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "superseding_routine_binding_missing"},
+      "must_not_infer": ["unknown_routine_supersession_target"]
+    },
+    {
+      "case_id": "routine-reactivated",
+      "phase": "activation",
+      "facts": {"activation": "active", "prior_activation": "paused", "decision": "allowed", "transition": true, "definition_binding": "match"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "exact_definition_reactivated"},
+      "must_not_infer": ["reactivation_replays_missed_occurrences"]
+    },
+    {
+      "case_id": "activation-definition-binding-mismatch",
+      "phase": "activation",
+      "facts": {"activation": "active", "decision": "allowed", "definition_binding": "mismatch"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "indeterminate", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "routine_definition_binding_mismatch"},
+      "must_not_infer": ["activation_applies_to_other_definition_revision"]
+    },
+    {
+      "case_id": "activation-authority-epoch-stale",
+      "phase": "activation",
+      "facts": {"activation": "active", "decision": "allowed", "definition_binding": "match", "authority_epoch": "stale"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "indeterminate", "decision_status": "not_evaluated", "task_status": "not_evaluated", "reason": "activation_authority_epoch_stale"},
+      "must_not_infer": ["stale_routine_activation_is_current"]
+    },
+
+    {
+      "case_id": "temporal-occurrence-materialized",
+      "phase": "instantiation",
+      "facts": {},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "materialized", "task_status": "created", "reason": "active_routine_materialized_exact_occurrence"},
+      "must_not_infer": ["task_materialization_is_action_dispatch"]
+    },
+    {
+      "case_id": "paused-routine-suppresses-occurrence",
+      "phase": "instantiation",
+      "facts": {"activation": "paused"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "paused", "decision_status": "suppressed", "task_status": "not_created", "reason": "routine_not_active"},
+      "must_not_infer": ["paused_routine_materializes_task"]
+    },
+    {
+      "case_id": "retired-routine-suppresses-occurrence",
+      "phase": "instantiation",
+      "facts": {"activation": "retired"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "retired", "decision_status": "suppressed", "task_status": "not_created", "reason": "routine_not_active"},
+      "must_not_infer": ["retired_routine_reactivates_on_trigger"]
+    },
+    {
+      "case_id": "target-intent-suspended",
+      "phase": "instantiation",
+      "facts": {"commitment": "suspended"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "suppressed", "task_status": "not_created", "reason": "target_intent_not_adopted"},
+      "must_not_infer": ["active_routine_overrides_intent_suspension"]
+    },
+    {
+      "case_id": "target-intent-state-unavailable",
+      "phase": "instantiation",
+      "facts": {"commitment": "unavailable"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "indeterminate", "task_status": "indeterminate", "reason": "target_intent_state_unavailable"},
+      "must_not_infer": ["unknown_intent_state_means_adopted"]
+    },
+    {
+      "case_id": "transient-intent-not-routine-target",
+      "phase": "instantiation",
+      "facts": {"target_lifecycle": "transient"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "invalid", "task_status": "not_created", "reason": "routine_requires_persistent_intent"},
+      "must_not_infer": ["recurrence_makes_transient_intent_persistent"]
+    },
+    {
+      "case_id": "trigger-evidence-unavailable",
+      "phase": "instantiation",
+      "facts": {"trigger_evidence": "unavailable"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "indeterminate", "task_status": "indeterminate", "reason": "trigger_evidence_unavailable"},
+      "must_not_infer": ["scheduler_assumed_to_have_fired"]
+    },
+    {
+      "case_id": "trigger-evidence-not-admitted",
+      "phase": "instantiation",
+      "facts": {"trigger_evidence": "not_admitted"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "indeterminate", "task_status": "not_created", "reason": "trigger_evidence_not_admitted"},
+      "must_not_infer": ["raw_event_is_qualified_trigger"]
+    },
+    {
+      "case_id": "trigger-not-matched",
+      "phase": "instantiation",
+      "facts": {"trigger": "not_matched"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "not_eligible", "task_status": "not_created", "reason": "trigger_not_matched"},
+      "must_not_infer": ["event_presence_means_trigger_match"]
+    },
+    {
+      "case_id": "condition-not-satisfied",
+      "phase": "instantiation",
+      "facts": {"condition": "not_satisfied"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "not_eligible", "task_status": "not_created", "reason": "eligibility_condition_not_satisfied"},
+      "must_not_infer": ["false_condition_is_task_failure"]
+    },
+    {
+      "case_id": "condition-indeterminate",
+      "phase": "instantiation",
+      "facts": {"condition": "indeterminate"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "indeterminate", "task_status": "indeterminate", "reason": "eligibility_condition_indeterminate"},
+      "must_not_infer": ["unknown_condition_is_false", "unknown_condition_is_true"]
+    },
+    {
+      "case_id": "late-occurrence-skipped",
+      "phase": "instantiation",
+      "facts": {"lateness": "expired", "late_policy": "skip"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "expired", "task_status": "not_created", "reason": "occurrence_outside_lateness_policy"},
+      "must_not_infer": ["missed_occurrence_always_catches_up"]
+    },
+    {
+      "case_id": "latest-missed-occurrence-caught-up",
+      "phase": "instantiation",
+      "facts": {"lateness": "accepted_late", "late_policy": "latest_only", "is_latest": true},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "materialized", "task_status": "created", "reason": "active_routine_materialized_exact_occurrence"},
+      "must_not_infer": ["catch_up_changes_original_occurrence_identity"]
+    },
+    {
+      "case_id": "older-missed-occurrence-not-caught-up",
+      "phase": "instantiation",
+      "facts": {"lateness": "accepted_late", "late_policy": "latest_only", "is_latest": false},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "expired", "task_status": "not_created", "reason": "not_latest_catch_up_occurrence"},
+      "must_not_infer": ["latest_only_replays_every_missed_occurrence"]
+    },
+    {
+      "case_id": "bounded-catch-up-limit-exceeded",
+      "phase": "instantiation",
+      "facts": {"lateness": "accepted_late", "late_policy": "bounded_each", "catch_up_within_limit": false},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "expired", "task_status": "not_created", "reason": "catch_up_bound_exceeded"},
+      "must_not_infer": ["unbounded_backlog_materialization"]
+    },
+    {
+      "case_id": "overlap-suppresses-new-occurrence",
+      "phase": "instantiation",
+      "facts": {"overlap": "prior_active", "overlap_policy": "suppress_while_active"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "suppressed", "task_status": "not_created", "reason": "active_predecessor_suppresses_occurrence"},
+      "must_not_infer": ["suppressed_occurrence_is_completed_task"]
+    },
+    {
+      "case_id": "overlap-defers-new-occurrence",
+      "phase": "instantiation",
+      "facts": {"overlap": "prior_active", "overlap_policy": "defer_while_active"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "deferred", "task_status": "not_created", "reason": "active_predecessor_defers_occurrence"},
+      "must_not_infer": ["deferred_occurrence_is_materialized"]
+    },
+    {
+      "case_id": "routine-cannot-supersede-active-task",
+      "phase": "instantiation",
+      "facts": {"overlap": "prior_active", "overlap_policy": "supersede_previous"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "invalid", "task_status": "not_created", "reason": "prior_task_transition_required_separately"},
+      "must_not_infer": ["routine_trigger_cancels_prior_task"]
+    },
+    {
+      "case_id": "same-occurrence-replay",
+      "phase": "instantiation",
+      "facts": {"dedupe": "replay", "same_task": true},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "duplicate", "task_status": "existing", "reason": "same_materialization_replay"},
+      "must_not_infer": ["delivery_retry_creates_second_task"]
+    },
+    {
+      "case_id": "same-key-different-task-conflict",
+      "phase": "instantiation",
+      "facts": {"dedupe": "replay", "same_task": false},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "integrity_conflict", "task_status": "indeterminate", "reason": "materialization_key_task_conflict"},
+      "must_not_infer": ["duplicate_task_last_writer_wins"]
+    },
+    {
+      "case_id": "cloud-event-content-collision",
+      "phase": "instantiation",
+      "facts": {"event_integrity": "same_source_id_different_content"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "integrity_conflict", "task_status": "indeterminate", "reason": "event_identity_content_conflict"},
+      "must_not_infer": ["same_event_id_accepts_changed_payload"]
+    },
+    {
+      "case_id": "distinct-events-same-logical-occurrence",
+      "phase": "instantiation",
+      "facts": {"distinct_event_ids": true, "same_occurrence_key": true, "dedupe": "replay", "same_task": true},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "duplicate", "task_status": "existing", "reason": "same_materialization_replay"},
+      "must_not_infer": ["distinct_cloud_event_ids_mean_distinct_tasks"]
+    },
+    {
+      "case_id": "task-template-mismatch",
+      "phase": "instantiation",
+      "facts": {"task_template": "mismatch"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "invalid", "task_status": "not_created", "reason": "materialized_task_template_mismatch"},
+      "must_not_infer": ["routine_can_materialize_out_of_scope_task"]
+    },
+    {
+      "case_id": "task-intent-binding-mismatch",
+      "phase": "instantiation",
+      "facts": {"task_intent": "mismatch"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "invalid", "task_status": "not_created", "reason": "materialized_task_intent_mismatch"},
+      "must_not_infer": ["routine_task_can_bind_other_intent"]
+    },
+    {
+      "case_id": "routine-revision-same-occurrence-deduped",
+      "phase": "instantiation",
+      "facts": {"routine_revision_changed": true, "same_occurrence_key": true, "dedupe": "replay", "same_task": true},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "duplicate", "task_status": "existing", "reason": "same_materialization_replay"},
+      "must_not_infer": ["routine_revision_duplicates_materialized_occurrence"]
+    },
+    {
+      "case_id": "qualified-forecast-can-trigger-evaluation",
+      "phase": "instantiation",
+      "facts": {"trigger_kind": "forecast_assessment", "trigger_evidence": "admitted", "trigger": "matched"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "materialized", "task_status": "created", "reason": "active_routine_materialized_exact_occurrence"},
+      "must_not_infer": ["forecast_trigger_is_observed_future_fact"]
+    },
+    {
+      "case_id": "raw-forecast-cannot-trigger",
+      "phase": "instantiation",
+      "facts": {"trigger_kind": "forecast_assessment", "trigger_evidence": "not_admitted"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "indeterminate", "task_status": "not_created", "reason": "trigger_evidence_not_admitted"},
+      "must_not_infer": ["model_output_self_triggers_routine"]
+    },
+    {
+      "case_id": "reactivation-does-not-imply-catch-up",
+      "phase": "instantiation",
+      "facts": {"reactivated": true, "lateness": "expired", "late_policy": "skip"},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "expired", "task_status": "not_created", "reason": "occurrence_outside_lateness_policy"},
+      "must_not_infer": ["resume_replays_pause_interval"]
+    },
+    {
+      "case_id": "materialization-does-not-authorize-action",
+      "phase": "instantiation",
+      "facts": {"authorization_requested": true},
+      "expected": {"artifact_status": "not_evaluated", "identity_relation": "not_evaluated", "activation_status": "active", "decision_status": "materialized", "task_status": "created", "reason": "task_created_authorization_separate"},
+      "must_not_infer": ["routine_activation_is_action_authorization", "task_creation_dispatches_device_command"]
+    }
+  ],
+  "model_boundary_cases": [
+    {"case_id": "pattern-routine-boundary", "expected": {"observed_pattern": "descriptive_claim", "routine": "authority_activated_instantiation_policy"}, "must_not_infer": ["repeated_behavior_is_active_routine"]},
+    {"case_id": "intent-routine-boundary", "expected": {"intent": "declarative_household_commitment", "routine": "when_to_evaluate_task_creation"}, "must_not_infer": ["persistent_intent_implies_active_routine"]},
+    {"case_id": "schedule-routine-boundary", "expected": {"schedule": "recurrence_specification", "routine": "governed_wrapper_with_task_and_delivery_semantics"}, "must_not_infer": ["calendar_entry_is_active_routine"]},
+    {"case_id": "trigger-condition-boundary", "expected": {"trigger": "evaluation_opportunity", "condition": "as_of_eligibility_assessment"}, "must_not_infer": ["trigger_match_means_condition_true"]},
+    {"case_id": "false-unknown-boundary", "expected": {"false": "not_eligible", "unknown": "indeterminate"}, "must_not_infer": ["unknown_condition_is_false"]},
+    {"case_id": "event-occurrence-boundary", "expected": {"event": "record_about_an_occurrence", "occurrence_key": "policy_correlated_task_generation_slot"}, "must_not_infer": ["cloud_event_id_is_logical_occurrence_id"]},
+    {"case_id": "routine-task-boundary", "expected": {"routine": "repeatable_instantiation_policy", "task": "one_bounded_work_lineage"}, "must_not_infer": ["routine_uid_is_task_id"]},
+    {"case_id": "materialization-execution-boundary", "expected": {"materialization": "task_definition_created", "execution": "separate_plan_proposal_attempt_chain"}, "must_not_infer": ["materialized_task_is_executed_action"]},
+    {"case_id": "activation-authorization-boundary", "expected": {"routine_activation": "may_generate_tasks", "action_authorization": "exact_proposal_permission"}, "must_not_infer": ["routine_activation_authorizes_all_outputs"]},
+    {"case_id": "pause-intent-boundary", "expected": {"routine_pause": "stop_new_instantiation", "intent_commitment": "unchanged_without_own_transition"}, "must_not_infer": ["pause_retracts_intent"]},
+    {"case_id": "retire-task-boundary", "expected": {"routine_retirement": "stop_future_instantiation", "existing_task": "requires_separate_transition"}, "must_not_infer": ["retirement_cancels_task"]},
+    {"case_id": "event-dedup-boundary", "expected": {"source_plus_id": "delivery_duplicate_key", "materialization_key": "logical_occurrence_dedup_key"}, "must_not_infer": ["event_dedup_is_task_dedup"]},
+    {"case_id": "reschedule-identity-boundary", "expected": {"actual_fire_time": "delivery_context", "original_recurrence_identity": "stable_occurrence_basis"}, "must_not_infer": ["reschedule_creates_new_occurrence_key"]},
+    {"case_id": "late-policy-boundary", "expected": {"missed_occurrence": "historical_generation_opportunity", "catch_up": "explicit_bounded_policy_only"}, "must_not_infer": ["missed_means_run_immediately"]},
+    {"case_id": "overlap-transition-boundary", "expected": {"overlap_policy": "new_occurrence_gate", "prior_task_transition": "separate_authority_and_state_operation"}, "must_not_infer": ["new_trigger_supersedes_prior_task"]},
+    {"case_id": "forecast-fact-boundary", "expected": {"forecast": "qualified_prediction_claim", "future_fact": "not_established"}, "must_not_infer": ["forecast_trigger_proves_future_occurrence"]},
+    {"case_id": "decision-history-boundary", "expected": {"instantiation_decision": "append_only_as_of_record", "current_policy": "does_not_rewrite_prior_decision"}, "must_not_infer": ["policy_revision_mutates_decision_history"]},
+    {"case_id": "external-language-boundary", "expected": {"external_rule_language": "trigger_and_condition_expression", "hwm_profile": "identity_authority_evidence_and_output_boundary"}, "must_not_infer": ["hwm_defines_universal_rule_dsl"]}
+  ]
+}

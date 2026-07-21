@@ -1,0 +1,126 @@
+{
+  "contract": "hwm-standing:PolicyDocument",
+  "contract_version": "0.1.0-fixture",
+  "document_id": "urn:hwm:standing-policy:household-alpha:r7",
+  "household_id": "urn:hwm:household:alpha",
+  "authority_id": "urn:hwm:authority:alpha",
+  "authority_epoch": 7,
+  "issued_at": "2026-07-01T00:00:00Z",
+  "standing_grants": [
+    {
+      "grant_id": "urn:hwm:standing-grant:firsthand-visible-change",
+      "principal": { "actor_ids": [], "role_ids": ["urn:hwm:role:household-observer"] },
+      "evidence_kinds": ["interaction_attestation"],
+      "relations": ["confirms", "refutes"],
+      "purposes": ["commissioning-visible-effect"],
+      "target": {
+        "predicates": ["hwm-effect:visibleOutputChange"],
+        "subject_mode": "any",
+        "subject_ids": []
+      },
+      "space_scope": { "mode": "listed", "values": ["urn:hwm:space:bedroom"] },
+      "procedures": { "mode": "listed", "values": ["urn:hwm:procedure:bound-action-challenge"] },
+      "requirements": { "direct_experience": true, "exact_question_binding": true },
+      "validity": { "from": "2026-07-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "qualification": { "mode": "none", "credential_types": [], "trusted_issuers": [], "jurisdictions": [] },
+      "extensions": {}
+    },
+    {
+      "grant_id": "urn:hwm:standing-grant:self-preference",
+      "principal": { "actor_ids": [], "role_ids": ["urn:hwm:role:resident"] },
+      "evidence_kinds": ["household_attestation", "interaction_attestation"],
+      "relations": ["confirms", "refutes"],
+      "purposes": ["personal-comfort-planning"],
+      "target": {
+        "predicates": ["hwm-preference:preferredRange"],
+        "subject_mode": "self",
+        "subject_ids": []
+      },
+      "space_scope": { "mode": "all", "values": [] },
+      "procedures": { "mode": "all", "values": [] },
+      "requirements": { "direct_experience": false, "exact_question_binding": true },
+      "validity": { "from": "2026-07-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "qualification": { "mode": "none", "credential_types": [], "trusted_issuers": [], "jurisdictions": [] },
+      "extensions": {}
+    },
+    {
+      "grant_id": "urn:hwm:standing-grant:bedroom-lux-meter",
+      "principal": { "actor_ids": ["urn:hwm:sensor:lux-meter-1"], "role_ids": [] },
+      "evidence_kinds": ["sensor_observation"],
+      "relations": ["supports", "refutes"],
+      "purposes": ["commissioning-photometry"],
+      "target": {
+        "predicates": ["hwm-measurement:illuminanceValue"],
+        "subject_mode": "listed",
+        "subject_ids": ["urn:hwm:zone:bedroom-reading-plane"]
+      },
+      "space_scope": { "mode": "listed", "values": ["urn:hwm:space:bedroom"] },
+      "procedures": { "mode": "listed", "values": ["urn:hwm:procedure:calibrated-lux-measurement-v1"] },
+      "requirements": { "direct_experience": false, "exact_question_binding": false },
+      "validity": { "from": "2026-07-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "qualification": { "mode": "none", "credential_types": [], "trusted_issuers": [], "jurisdictions": [] },
+      "extensions": {}
+    },
+    {
+      "grant_id": "urn:hwm:standing-grant:endpoint-acknowledgement",
+      "principal": { "actor_ids": ["urn:hwm:endpoint:night-light-1"], "role_ids": [] },
+      "evidence_kinds": ["device_acknowledgement"],
+      "relations": ["supports"],
+      "purposes": ["execution-tracing"],
+      "target": {
+        "predicates": ["hwm-action:commandAcknowledged"],
+        "subject_mode": "listed",
+        "subject_ids": ["urn:hwm:endpoint:night-light-1"]
+      },
+      "space_scope": { "mode": "all", "values": [] },
+      "procedures": { "mode": "listed", "values": ["urn:hwm:procedure:matter-command-ack"] },
+      "requirements": { "direct_experience": false, "exact_question_binding": false },
+      "validity": { "from": "2026-07-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "qualification": { "mode": "none", "credential_types": [], "trusted_issuers": [], "jurisdictions": [] },
+      "extensions": {}
+    },
+    {
+      "grant_id": "urn:hwm:standing-grant:installer-position-check",
+      "principal": { "actor_ids": [], "role_ids": ["urn:hwm:role:commissioning-installer"] },
+      "evidence_kinds": ["professional_attestation"],
+      "relations": ["confirms", "refutes"],
+      "purposes": ["installation-commissioning"],
+      "target": {
+        "predicates": ["hwm-install:installedAtPlannedPosition"],
+        "subject_mode": "any",
+        "subject_ids": []
+      },
+      "space_scope": { "mode": "listed", "values": ["urn:hwm:space:bedroom"] },
+      "procedures": { "mode": "listed", "values": ["urn:hwm:procedure:position-check-v1"] },
+      "requirements": { "direct_experience": false, "exact_question_binding": true },
+      "validity": { "from": "2026-07-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "qualification": { "mode": "none", "credential_types": [], "trusted_issuers": [], "jurisdictions": [] },
+      "extensions": {}
+    },
+    {
+      "grant_id": "urn:hwm:standing-grant:electrical-inspection-shenzhen",
+      "principal": { "actor_ids": [], "role_ids": ["urn:hwm:role:electrical-reviewer"] },
+      "evidence_kinds": ["professional_attestation"],
+      "relations": ["confirms", "refutes"],
+      "purposes": ["electrical-installation-review"],
+      "target": {
+        "predicates": ["hwm-electrical:inspectionOutcome"],
+        "subject_mode": "any",
+        "subject_ids": []
+      },
+      "space_scope": { "mode": "listed", "values": ["urn:hwm:space:whole-home"] },
+      "procedures": { "mode": "listed", "values": ["urn:hwm:procedure:electrical-inspection-v1"] },
+      "requirements": { "direct_experience": false, "exact_question_binding": true },
+      "validity": { "from": "2026-07-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" },
+      "qualification": {
+        "mode": "credential_required",
+        "credential_types": ["urn:credential-type:electrical-inspection"],
+        "trusted_issuers": ["urn:issuer:fixture-accreditation-body"],
+        "jurisdictions": ["CN-GD-SZ"]
+      },
+      "extensions": {}
+    }
+  ],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "urn:hwm:fixture:unsigned" },
+  "extensions": {}
+}

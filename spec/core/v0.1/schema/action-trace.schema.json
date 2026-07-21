@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/core/v0.1/schema/action-trace.schema.json",
+  "title": "HWM Action Trace v0.1",
+  "type": "object",
+  "required": [
+    "contract",
+    "contract_version",
+    "trace_id",
+    "trace_revision",
+    "household_id",
+    "generated_at",
+    "known_through",
+    "based_on_view_id",
+    "intent",
+    "proposal",
+    "authorization",
+    "execution",
+    "observation_record_ids",
+    "effect_assessments",
+    "goal_evaluations",
+    "resource_assessments",
+    "user_attestation_record_ids",
+    "recovery_record_ids",
+    "extensions"
+  ],
+  "properties": {
+    "contract": { "const": "hwm:ActionTrace" },
+    "contract_version": { "const": "0.1.0" },
+    "trace_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "trace_revision": { "type": "integer", "minimum": 1 },
+    "household_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "generated_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "known_through": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "based_on_view_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "intent": {
+      "type": "object",
+      "required": ["intent_id", "requested_by", "goal_claim_ids"],
+      "properties": {
+        "intent_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "requested_by": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "goal_claim_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "proposal": {
+      "type": "object",
+      "required": ["proposal_id", "proposed_by", "action", "effect_claim_ids"],
+      "properties": {
+        "proposal_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "proposed_by": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "action": {
+          "type": "object",
+          "required": ["action_type", "target_endpoint_id", "parameters"],
+          "properties": {
+            "action_type": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "target_endpoint_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "parameters": { "type": "object", "additionalProperties": true }
+          },
+          "additionalProperties": false
+        },
+        "effect_claim_ids": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "authorization": {
+      "type": "object",
+      "required": ["decision", "authority_epoch", "record_id"],
+      "properties": {
+        "decision": { "enum": ["allowed", "denied", "confirmation_required", "indeterminate"] },
+        "authority_epoch": { "type": "integer", "minimum": 0 },
+        "record_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "policy_ids": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "required": ["status", "reason_codes"],
+      "properties": {
+        "status": { "enum": ["dispatched", "not_dispatched"] },
+        "dispatch_record_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "acknowledgement": {
+          "type": "object",
+          "required": ["status", "record_id"],
+          "properties": {
+            "status": { "enum": ["acknowledged", "rejected", "timed_out"] },
+            "record_id": { "$ref": "common.schema.json#/$defs/Identifier" }
+          },
+          "additionalProperties": false
+        },
+        "reason_codes": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "dispatched" } }
+          },
+          "then": {
+            "properties": {
+              "dispatch_record_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+              "acknowledgement": {
+                "type": "object",
+                "required": ["status", "record_id"],
+                "properties": {
+                  "status": { "enum": ["acknowledged", "rejected", "timed_out"] },
+                  "record_id": { "$ref": "common.schema.json#/$defs/Identifier" }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": ["dispatch_record_id", "acknowledgement"]
+          }
+        },
+        {
+          "if": {
+            "properties": { "status": { "const": "not_dispatched" } }
+          },
+          "then": {
+            "properties": {
+              "dispatch_record_id": false,
+              "acknowledgement": false
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "observation_record_ids": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+      "uniqueItems": true
+    },
+    "effect_assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["effect_claim_id", "status", "observation_record_ids", "reason_codes"],
+        "properties": {
+          "effect_claim_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "status": { "enum": ["consistent", "inconsistent", "insufficient_evidence", "context_mismatch", "not_applicable"] },
+          "observation_record_ids": {
+            "type": "array",
+            "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "uniqueItems": true
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "goal_evaluations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["goal_claim_id", "status", "observation_record_ids", "reason_codes"],
+        "properties": {
+          "goal_claim_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "status": { "enum": ["satisfied", "partially_satisfied", "not_satisfied", "indeterminate"] },
+          "observation_record_ids": {
+            "type": "array",
+            "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "uniqueItems": true
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "resource_assessments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["resource_claim_id", "status", "observation_record_ids", "reason_codes"],
+        "properties": {
+          "resource_claim_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "status": { "enum": ["within_limit", "exceeded", "indeterminate", "not_applicable"] },
+          "observation_record_ids": {
+            "type": "array",
+            "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "uniqueItems": true
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "user_attestation_record_ids": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+      "uniqueItems": true
+    },
+    "recovery_record_ids": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+      "uniqueItems": true
+    },
+    "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+  },
+  "additionalProperties": false
+}

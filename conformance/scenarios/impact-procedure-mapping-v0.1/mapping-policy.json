@@ -1,0 +1,86 @@
+{
+  "contract": "hwm-procedure:MappingPolicyDocument",
+  "contract_version": "0.1.0-fixture",
+  "document_id": "urn:hwm:procedure-policy:household-7",
+  "household_id": "urn:hwm:household:discussion-home",
+  "authority_id": "urn:hwm:authority:discussion-home",
+  "authority_epoch": 7,
+  "issued_at": "2026-07-19T08:05:00Z",
+  "policy_combining_strategy": "only_one_applicable_per_impact",
+  "mapping_rules": [
+    {
+      "rule_id": "physical-person-affirmative",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["physical_exposure"], "entity_kinds": ["person"], "impact_statuses": ["material"],
+      "requirement_templates": [
+        { "template_id": "obtain-affirmative", "kind": "affirmative_response", "timing": "before_authorization", "route_mode": "affected_subject", "route_role_ids": [], "completion_signal": "affirmative_response", "failure_effect": "confirmation_required", "negative_signal_effect": "blocks", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "physical-pet-consult-care-role",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["physical_exposure"], "entity_kinds": ["pet"], "impact_statuses": ["possible"],
+      "requirement_templates": [
+        { "template_id": "offer-care-consultation", "kind": "consultation_opportunity", "timing": "before_authorization", "route_mode": "authority_resolved_representative", "route_role_ids": [], "completion_signal": "opportunity_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "requires_replan", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "privacy-opaque-objection-window",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["privacy_data"], "entity_kinds": ["opaque_subject"], "impact_statuses": ["material"],
+      "requirement_templates": [
+        { "template_id": "open-objection-window", "kind": "objection_window", "timing": "before_dispatch", "route_mode": "affected_subject", "route_role_ids": [], "completion_signal": "window_expired_without_objection", "failure_effect": "indeterminate", "negative_signal_effect": "blocks", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "resource-qualified-review",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["shared_resource"], "entity_kinds": ["resource"], "impact_statuses": ["possible"],
+      "requirement_templates": [
+        { "template_id": "obtain-safety-review", "kind": "qualified_review", "timing": "before_authorization", "route_mode": "authority_role", "route_role_ids": ["urn:hwm:role:electrical-safety-reviewer"], "completion_signal": "review_accepted", "failure_effect": "denied", "negative_signal_effect": "blocks", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "control-interest-notify",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["control_interest"], "entity_kinds": ["person"], "impact_statuses": ["material"],
+      "requirement_templates": [
+        { "template_id": "notify-control-change", "kind": "notification", "timing": "before_dispatch", "route_mode": "affected_subject", "route_role_ids": [], "completion_signal": "notice_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "not_applicable", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "explicit-not-material-none",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["test_no_requirement"], "entity_kinds": ["person"], "impact_statuses": ["not_material"],
+      "requirement_templates": [
+        { "template_id": "explicit-none", "kind": "none", "timing": "not_applicable", "route_mode": "not_applicable", "route_role_ids": [], "completion_signal": "not_applicable", "failure_effect": "no_gate", "negative_signal_effect": "not_applicable", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "ambiguous-a",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["ambiguous_test"], "entity_kinds": ["person"], "impact_statuses": ["material"],
+      "requirement_templates": [
+        { "template_id": "ambiguous-notice-a", "kind": "notification", "timing": "before_dispatch", "route_mode": "affected_subject", "route_role_ids": [], "completion_signal": "notice_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "not_applicable", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    },
+    {
+      "rule_id": "ambiguous-b",
+      "action_types": ["SetZoneTemperature"], "purposes": ["shared_comfort"],
+      "channel_ids": ["ambiguous_test"], "entity_kinds": ["person"], "impact_statuses": ["material"],
+      "requirement_templates": [
+        { "template_id": "ambiguous-notice-b", "kind": "notification", "timing": "before_dispatch", "route_mode": "affected_subject", "route_role_ids": [], "completion_signal": "notice_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "not_applicable", "extensions": {} }
+      ],
+      "validity": { "from": "2026-01-01T00:00:00Z", "to": "2027-01-01T00:00:00Z" }, "extensions": {}
+    }
+  ],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "fixture-only" },
+  "extensions": {}
+}

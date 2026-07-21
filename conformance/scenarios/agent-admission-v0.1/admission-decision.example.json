@@ -1,0 +1,49 @@
+{
+  "contract": "hwm-admission:Decision",
+  "contract_version": "0.1.0-fixture",
+  "decision_id": "urn:hwm:admission-decision:agent-a-1",
+  "request_binding": {
+    "artifact_id": "urn:hwm:admission-request:agent-a-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "9f15b63d96e07c36ec9b38da3c8c1520b63dacaa4ac109c9814c4db902df1fa7"
+  },
+  "decided_at": "2026-07-19T11:05:00Z",
+  "trust_root_binding": {
+    "lineage_id": "urn:hwm:authority-lineage:household-1",
+    "root_id": "urn:hwm:trust-root:household-1:v2",
+    "root_version": 2,
+    "authority_epoch_floor": 11
+  },
+  "authority_epoch": 11,
+  "compatibility": {
+    "status": "compatible",
+    "matched_profile_ids": ["hwm:agent-admission", "hwm:authority", "hwm:core"],
+    "missing_required_profile_ids": [],
+    "unsupported_optional_profile_ids": ["hwm:interactive-evidence"],
+    "canonicalization": "RFC8785",
+    "proof_suite": "fixture-proof-suite"
+  },
+  "instance_binding": {
+    "status": "verified",
+    "binding_type": "fixture",
+    "value": "fixture:agent-a-key",
+    "verification_method": "fixture-agent-proof-adapter"
+  },
+  "authorization_decision": "allowed",
+  "assigned_subject_id": "urn:hwm:subject:admitted-agent-a",
+  "granted_scope": {
+    "purposes": ["urn:hwm:purpose:morning-preparation"],
+    "actions": ["resolve_view", "propose_action"],
+    "audiences": ["urn:hwm:resolver:household-1"]
+  },
+  "issued_lease_binding": {
+    "artifact_id": "urn:hwm:lease:agent-a-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "6accce499a76ed85c69fb47c53b3b212b372c3904d8fe05c67f9b690c4346f94"
+  },
+  "reason_codes": ["compatible_and_authorized"],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "fixture-authority-proof-adapter", "value": "fixture:agent-a-decision-proof" },
+  "extensions": {}
+}

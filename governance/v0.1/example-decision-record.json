@@ -1,0 +1,17 @@
+{
+  "decision_id":"hwm-example-decision-2026-07-19",
+  "proposal":{"proposal_id":"hwm-example-clarify-evidence-language","revision":1,"sha256":"b5ddb5ea3851d4754c8a690ddc5ef89a5a4d51e357012f4d04d7b25a46921e25"},
+  "policy":{"policy_id":"hwm-specification-change-governance","version":"0.1","sha256":"b400fd33cecb1bf4e45f48fd009ddc40f92f104b8474f52207b098454eabb28b"},
+  "review_set_sha256":"11b1e0c4298d4478fa40e9bfd0342aba65d12042d7199a1a1be68a444d7999da",
+  "steward":{"actor_ref":"urn:hwm:steward:project-fixture","role":"decision_steward","conflict_disclosure":"The steward is a project maintainer; this decision establishes only project-procedure closure."},
+  "as_of":"2026-07-19T00:00:00Z",
+  "role_coverage":{"status":"satisfied","required":["editorial_review","model_boundary_review"],"present":["editorial_review","model_boundary_review"]},
+  "conflict_disclosures_complete":true,
+  "objection_dispositions":[{"objection_id":"objection-wording-1","class":"alternative_design","disposition":"deferred_with_rationale","rationale":"The current wording is explicit and test-aligned; concision can be reconsidered in a new editorial proposal.","follow_up_ref":"urn:hwm:follow-up:wording-review"}],
+  "dissent_refs":["review-dissent-1"],
+  "evidence_refs":["urn:hwm:evidence:public-example"],
+  "conclusion":"accept",
+  "rationale":"Required review scopes are present, conflicts are disclosed, and the non-blocking wording objection is preserved and deferred with a follow-up.",
+  "next_step":"prepare_release_record",
+  "must_not_infer":["technical_truth","full_representation","community_consensus","standard_adoption","publication","certification","market_acceptance","household_trust","access","action_authority"]
+}

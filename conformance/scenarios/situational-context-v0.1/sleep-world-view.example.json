@@ -1,0 +1,62 @@
+{
+  "contract": "hwm:WorldView",
+  "contract_version": "0.1.0",
+  "view_id": "urn:hwm:view:resident-a-night-context-2026-07-19T22:20:00Z",
+  "household_id": "urn:hwm:household:fixture-situation-001",
+  "requester": "urn:hwm:agent:night-comfort-planner",
+  "purpose": "urn:hwm:purpose:night-comfort-eligibility",
+  "generated_at": "2026-07-19T22:20:01Z",
+  "as_of": "2026-07-19T22:20:00Z",
+  "known_through": "2026-07-19T22:20:00Z",
+  "freshness": {"maximum_age_seconds": 600, "status": "current"},
+  "coverage": {
+    "entity_refs": [
+      "urn:hwm:person:resident-a",
+      "urn:hwm:space:bedroom-a",
+      "urn:hwm:episode:resident-a-sleep-2026-07-19"
+    ],
+    "claim_kinds": ["https://saref.etsi.org/saref4ehaw/hasActivity"]
+  },
+  "authority_epoch": 12,
+  "profiles": [
+    {"id": "hwm:core", "version": "0.1.0", "required": true},
+    {"id": "https://homeworldmodel.org/spec/profiles/situational-context/v0.1", "version": "0.1.0-fixture", "required": true}
+  ],
+  "resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:resident-a-current-activity",
+      "subject": "urn:hwm:person:resident-a",
+      "predicate": "https://saref.etsi.org/saref4ehaw/hasActivity",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:resident-a-sleeping",
+          "object": {
+            "episode_ref": "urn:hwm:episode:resident-a-sleep-2026-07-19",
+            "kind_ref": "urn:hwm:activity-kind:sleeping-in-bed",
+            "participant_refs": ["urn:hwm:person:resident-a"],
+            "space_refs": ["urn:hwm:space:bedroom-a"]
+          },
+          "claim_ids": ["urn:hwm:claim:resident-a-sleep-episode-2026-07-19-r1"],
+          "evidence_record_ids": [
+            "urn:hwm:record:bedroom-presence-window-2026-07-19T22:12:00Z",
+            "urn:hwm:record:resident-a-sleep-attestation-2026-07-19"
+          ],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["purpose_scoped_episode_claim_accepted"]
+    }
+  ],
+  "conflicts": [],
+  "limitations": [
+    {
+      "code": "no_household_wide_mode",
+      "description": "This View resolves one resident activity and does not assert that the household, another resident, a guest, or a pet is sleeping."
+    }
+  ],
+  "extensions": {}
+}

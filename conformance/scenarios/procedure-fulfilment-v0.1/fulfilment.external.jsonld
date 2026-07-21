@@ -1,0 +1,82 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "as": "https://www.w3.org/ns/activitystreams#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:requirement-set:shared-bedroom-hvac-1",
+      "@type": ["odrl:Policy", "prov:Entity"],
+      "odrl:profile": { "@id": "https://homeworldmodel.org/spec/profiles/procedure-fulfilment/v0.1" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "odrl:obligation": [
+        { "@id": "urn:hwm:requirement:affirmative" },
+        { "@id": "urn:hwm:requirement:notification-a" },
+        { "@id": "urn:hwm:requirement:audit" }
+      ]
+    },
+    {
+      "@id": "urn:hwm:requirement:affirmative",
+      "@type": ["odrl:Duty", "schema:AskAction"],
+      "odrl:assignee": { "@id": "urn:hwm:service:coordinator" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:requirement:notification-a",
+      "@type": ["odrl:Duty", "schema:InformAction"],
+      "odrl:assignee": { "@id": "urn:hwm:service:notification" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:requirement:audit",
+      "@type": ["odrl:Duty", "prov:Plan"],
+      "odrl:assignee": { "@id": "urn:hwm:service:audit" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:record:affirm-confirm",
+      "@type": ["as:Accept", "prov:Entity"],
+      "as:object": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "prov:generatedAtTime": "2026-07-19T12:03:00Z"
+    },
+    {
+      "@id": "urn:hwm:activity:evaluate-standing-affirm-confirm",
+      "@type": "prov:Activity",
+      "prov:used": { "@id": "urn:hwm:record:affirm-confirm" },
+      "prov:generated": { "@id": "urn:hwm:standing-decision:affirm-confirm" }
+    },
+    {
+      "@id": "urn:hwm:standing-decision:affirm-confirm",
+      "@type": ["prov:Entity", "schema:CheckAction"],
+      "schema:object": { "@id": "urn:hwm:record:affirm-confirm" },
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:evaluate-standing-affirm-confirm" },
+      "dcterms:conformsTo": { "@id": "https://homeworldmodel.org/spec/profiles/evidence-standing/v0.1" }
+    },
+    {
+      "@id": "urn:hwm:record:notification-a-delivered",
+      "@type": ["as:Announce", "prov:Entity"],
+      "as:object": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "prov:generatedAtTime": "2026-07-19T12:04:00Z"
+    },
+    {
+      "@id": "urn:hwm:activity:evaluate-fulfilment-preauth-1",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:requirement-set:shared-bedroom-hvac-1" },
+        { "@id": "urn:hwm:record:affirm-confirm" },
+        { "@id": "urn:hwm:standing-decision:affirm-confirm" },
+        { "@id": "urn:hwm:record:notification-a-delivered" }
+      ],
+      "prov:generated": { "@id": "urn:hwm:assessment:fulfilment-preauth-1" }
+    },
+    {
+      "@id": "urn:hwm:assessment:fulfilment-preauth-1",
+      "@type": ["prov:Entity", "schema:CheckAction"],
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:evaluate-fulfilment-preauth-1" },
+      "dcterms:conformsTo": { "@id": "https://homeworldmodel.org/spec/profiles/procedure-fulfilment/v0.1" }
+    }
+  ]
+}

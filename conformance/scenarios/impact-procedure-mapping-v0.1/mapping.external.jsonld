@@ -1,0 +1,86 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "dpv": "https://w3id.org/dpv#",
+    "as": "https://www.w3.org/ns/activitystreams#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+      "@type": ["prov:Plan", "schema:Action"],
+      "schema:actionStatus": { "@id": "schema:PotentialActionStatus" },
+      "dcterms:hasVersion": 1
+    },
+    {
+      "@id": "urn:hwm:policy:impact-procedure-1",
+      "@type": "odrl:Policy",
+      "odrl:profile": { "@id": "https://homeworldmodel.org/spec/profiles/impact-procedure-mapping/v0.1" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "odrl:obligation": [
+        { "@id": "urn:hwm:requirement:affirmative-1" },
+        { "@id": "urn:hwm:requirement:notify-control-1" },
+        { "@id": "urn:hwm:requirement:qualified-review-1" }
+      ]
+    },
+    {
+      "@id": "urn:hwm:action:request-response",
+      "@type": ["odrl:Action", "schema:AskAction"]
+    },
+    {
+      "@id": "urn:hwm:action:notify",
+      "@type": ["odrl:Action", "schema:InformAction"]
+    },
+    {
+      "@id": "urn:hwm:action:review",
+      "@type": ["odrl:Action", "schema:ReviewAction"]
+    },
+    {
+      "@id": "urn:hwm:requirement:affirmative-1",
+      "@type": ["odrl:Duty", "schema:AskAction"],
+      "odrl:assignee": { "@id": "urn:hwm:service:coordinator" },
+      "odrl:action": { "@id": "urn:hwm:action:request-response" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:requirement:privacy-consultation-1",
+      "@type": ["odrl:Duty", "dpv:ConsultationWithDataSubject"],
+      "odrl:assignee": { "@id": "urn:hwm:service:privacy-coordinator" },
+      "odrl:action": { "@id": "urn:hwm:action:notify" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "dpv:hasDataSubject": { "@id": "urn:hwm:slot:proposal-1:03" }
+    },
+    {
+      "@id": "urn:hwm:requirement:notify-control-1",
+      "@type": ["odrl:Duty", "dpv:Notice"],
+      "odrl:assignee": { "@id": "urn:hwm:service:notification" },
+      "odrl:action": { "@id": "urn:hwm:action:notify" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:requirement:qualified-review-1",
+      "@type": ["odrl:Duty", "dpv:RiskAssessment"],
+      "odrl:assignee": { "@id": "urn:hwm:service:safety-review" },
+      "odrl:action": { "@id": "urn:hwm:action:review" },
+      "odrl:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:activity:map-impact-procedures-1",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:assessment:impact-coverage-1" },
+        { "@id": "urn:hwm:policy:impact-procedure-1" }
+      ],
+      "prov:generated": { "@id": "urn:hwm:requirement-set:proposal-1" }
+    },
+    {
+      "@id": "urn:hwm:requirement-set:proposal-1",
+      "@type": ["prov:Entity", "odrl:Policy"],
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:map-impact-procedures-1" },
+      "dcterms:conformsTo": { "@id": "https://homeworldmodel.org/spec/profiles/impact-procedure-mapping/v0.1" }
+    }
+  ]
+}
+

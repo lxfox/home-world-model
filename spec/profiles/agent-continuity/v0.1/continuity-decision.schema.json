@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/agent-continuity/v0.1/continuity-decision.schema.json",
+  "title": "HWM Agent Continuity Decision v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "decision_id", "checkpoint_binding", "decided_at", "trust_root_binding", "authority_epoch", "source_admission_decision_binding", "target_admission_decision_binding", "mode", "authorization_decision", "responsible_subject_id", "current_actor_subject_id", "granted_actions", "target_lease_binding", "cutover", "reason_codes", "proof", "extensions"],
+  "properties": {
+    "contract": {"const": "hwm-continuity:Decision"},
+    "contract_version": {"const": "0.1.0-fixture"},
+    "decision_id": {"type": "string", "minLength": 1},
+    "checkpoint_binding": {"$ref": "#/$defs/DigestBinding"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "trust_root_binding": {"$ref": "#/$defs/TrustRootBinding"},
+    "authority_epoch": {"type": "integer", "minimum": 0},
+    "source_admission_decision_binding": {"$ref": "#/$defs/DigestBinding"},
+    "target_admission_decision_binding": {"$ref": "#/$defs/DigestBinding"},
+    "mode": {"enum": ["context_share", "successor", "delegated_acting", "exclusive_cutover"]},
+    "authorization_decision": {"enum": ["allowed", "denied", "confirmation_required", "indeterminate"]},
+    "responsible_subject_id": {"type": ["string", "null"], "minLength": 1},
+    "current_actor_subject_id": {"type": ["string", "null"], "minLength": 1},
+    "granted_actions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["read_checkpoint", "continue_planning", "propose_revision", "act_on_behalf", "dispatch_existing_proposal"]}
+    },
+    "target_lease_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]},
+    "cutover": {"$ref": "#/$defs/Cutover"},
+    "reason_codes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"}},
+    "proof": {"$ref": "#/$defs/Proof"},
+    "extensions": {"type": "object", "additionalProperties": true}
+  },
+  "$defs": {
+    "DigestBinding": {
+      "type": "object",
+      "required": ["artifact_id", "digest_algorithm", "canonicalization", "digest"],
+      "properties": {
+        "artifact_id": {"type": "string", "minLength": 1},
+        "digest_algorithm": {"const": "sha-256"},
+        "canonicalization": {"const": "RFC8785"},
+        "digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "TrustRootBinding": {
+      "type": "object",
+      "required": ["lineage_id", "root_id", "root_version", "authority_epoch_floor"],
+      "properties": {
+        "lineage_id": {"type": "string", "minLength": 1},
+        "root_id": {"type": "string", "minLength": 1},
+        "root_version": {"type": "integer", "minimum": 1},
+        "authority_epoch_floor": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "Cutover": {
+      "type": "object",
+      "required": ["source_lease_binding", "source_lease_status", "target_lease_status", "status"],
+      "properties": {
+        "source_lease_binding": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/DigestBinding"}]},
+        "source_lease_status": {"enum": ["not_applicable", "expired", "revoked_by_known_epoch", "still_active", "indeterminate"]},
+        "target_lease_status": {"enum": ["not_applicable", "active", "inactive", "indeterminate"]},
+        "status": {"enum": ["not_applicable", "ready", "pending", "indeterminate"]}
+      },
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method", "value"],
+      "properties": {
+        "mode": {"enum": ["unsigned_fixture", "signature", "vc", "cwt"]},
+        "verification_method": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"authorization_decision": {"const": "allowed"}}, "required": ["authorization_decision"]},
+      "then": {
+        "properties": {
+          "current_actor_subject_id": {"type": "string"},
+          "granted_actions": {"type": "array", "minItems": 1},
+          "target_lease_binding": {"$ref": "#/$defs/DigestBinding"}
+        }
+      },
+      "else": {
+        "properties": {
+          "current_actor_subject_id": {"type": "null"},
+          "granted_actions": {"type": "array", "maxItems": 0},
+          "target_lease_binding": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"mode": {"const": "delegated_acting"}, "authorization_decision": {"const": "allowed"}}, "required": ["mode", "authorization_decision"]},
+      "then": {
+        "properties": {
+          "responsible_subject_id": {"type": "string"},
+          "granted_actions": {"type": "array", "contains": {"const": "act_on_behalf"}}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"mode": {"const": "exclusive_cutover"}, "authorization_decision": {"const": "allowed"}}, "required": ["mode", "authorization_decision"]},
+      "then": {"properties": {"cutover": {"type": "object", "properties": {"status": {"const": "ready"}}}}}
+    }
+  ],
+  "additionalProperties": false
+}

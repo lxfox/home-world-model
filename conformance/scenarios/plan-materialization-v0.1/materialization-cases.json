@@ -1,0 +1,29 @@
+{
+  "cases":[
+    {"case_id":"atomic-self-contained-proposal","facts":{},"expected":{"result":"proposal_self_contained","reason":"no_downstream_method_reliance"}},
+    {"case_id":"cross-proposal-dependency","facts":{"cross_proposal":"required"},"expected":{"result":"plan_artifact_required","reason":"cross_proposal_dependencies_require_plan"}},
+    {"case_id":"agent-handoff","facts":{"handoff":"required"},"expected":{"result":"plan_artifact_required","reason":"handoff_or_continuity_requires_plan"}},
+    {"case_id":"household-selects-alternative","facts":{"alternatives":"required"},"expected":{"result":"plan_artifact_required","reason":"household_alternative_selection_requires_plan"}},
+    {"case_id":"professional-method-review","facts":{"review":"required"},"expected":{"result":"plan_artifact_required","reason":"method_review_requires_plan"}},
+    {"case_id":"long-lived-assumption","facts":{"assumptions":"required"},"expected":{"result":"plan_artifact_required","reason":"long_lived_assumptions_require_plan"}},
+    {"case_id":"cross-proposal-rollback","facts":{"contingency":"required"},"expected":{"result":"plan_artifact_required","reason":"cross_proposal_contingency_requires_plan"}},
+    {"case_id":"task-method-continuity","facts":{"task_method":"required"},"expected":{"result":"plan_artifact_required","reason":"task_method_continuity_requires_plan"}},
+    {"case_id":"proposal-explicitly-references-plan","facts":{"reference":"required"},"expected":{"result":"plan_artifact_required","reason":"explicit_plan_reference_requires_plan"}},
+    {"case_id":"audit-policy","facts":{"audit":"required"},"expected":{"result":"plan_artifact_required","reason":"policy_audit_requires_plan"}},
+    {"case_id":"policy-missing","facts":{"policy":"not_observed"},"expected":{"result":"indeterminate","reason":"materialization_policy_not_observed"}},
+    {"case_id":"policy-contested","facts":{"policy":"contested"},"expected":{"result":"indeterminate","reason":"materialization_policy_contested"}},
+    {"case_id":"reliance-unknown","facts":{"handoff":"indeterminate"},"expected":{"result":"indeterminate","reason":"downstream_reliance_indeterminate"}},
+    {"case_id":"proposal-incomplete","facts":{"proposal":"incomplete"},"expected":{"result":"indeterminate","reason":"proposal_not_self_contained"}},
+    {"case_id":"private-prompt-has-parameters","facts":{"proposal":"incomplete","private_only":true},"expected":{"result":"indeterminate","reason":"proposal_not_self_contained"}},
+    {"case_id":"raw-cot-offered-as-plan","facts":{"artifact":"raw_chain_of_thought"},"expected":{"result":"indeterminate","reason":"raw_chain_of_thought_not_portable_plan"}},
+    {"case_id":"rationale-offered-as-proof","facts":{"artifact":"rationale_only"},"expected":{"result":"indeterminate","reason":"rationale_not_decision_structure"}},
+    {"case_id":"plan-revision-binding-match","facts":{"cross_proposal":"required","revision":"sequential_match"},"expected":{"result":"plan_artifact_required","reason":"cross_proposal_dependencies_require_plan"}},
+    {"case_id":"plan-revision-binding-mismatch","facts":{"cross_proposal":"required","revision":"mismatch"},"expected":{"result":"indeterminate","reason":"plan_revision_binding_mismatch"}},
+    {"case_id":"new-plan-does-not-retarget-proposal","facts":{"cross_proposal":"required","proposal_plan":"prior_revision"},"expected":{"result":"plan_artifact_required","reason":"cross_proposal_dependencies_require_plan"}},
+    {"case_id":"unlisted-alternative","facts":{"unlisted_alternative":true},"expected":{"result":"proposal_self_contained","reason":"no_downstream_method_reliance"}},
+    {"case_id":"plan-selected-not-authorized","facts":{"cross_proposal":"required","plan_selected":true},"expected":{"result":"plan_artifact_required","reason":"cross_proposal_dependencies_require_plan"}},
+    {"case_id":"world-view-mismatch","facts":{"view":"mismatch"},"expected":{"result":"indeterminate","reason":"world_view_binding_mismatch"}},
+    {"case_id":"authority-epoch-stale","facts":{"epoch":"stale"},"expected":{"result":"indeterminate","reason":"authority_epoch_stale"}}
+  ],
+  "must_not_infer":["private_reasoning_is_household_plan","chain_of_thought_is_faithful_proof","rationale_is_causal_proof","raw_prompt_is_audit_artifact","hidden_state_must_be_disclosed","missing_policy_defaults_ephemeral","unlisted_alternative_was_considered","not_selected_means_infeasible","plan_assumption_is_accepted_fact","plan_prediction_is_observed_fact","plan_revision_retargets_proposal","plan_identity_is_task_identity","plan_selected_means_intent_adopted","plan_selected_authorizes_proposal","plan_materialized_authorizes_action","opaque_plan_can_hide_action_parameters","proposal_may_omit_impacts_if_plan_has_them","inaccessible_plan_is_authorization_basis","self_contained_proposal_skips_impact_review","plan_required_means_plan_already_exists"]
+}

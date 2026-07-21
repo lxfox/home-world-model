@@ -1,0 +1,15 @@
+{
+  "gate_id":"synthetic-canary-restoration-gate",
+  "response_basis":{"ref":"../../responses/v0.1/example-response-basis.json","sha256":"64e841b590fcc8bff61dfb47cb12c4ace2c5e313d18799dc78c9096df7ed5e73"},
+  "configurations":{"stopped_digest":"0000000000000000000000000000000000000000000000000000000000000000","proposed_digest":"1111111111111111111111111111111111111111111111111111111111111111"},
+  "remediation":{"status":"completed","evidence_refs":["urn:hwm:remediation:synthetic-fixture"],"conflict_disclosure":"synthetic repair evidence and assessment are project-owned; no independent safety standing is claimed"},
+  "risk_reassessment":{"status":"reduced_with_limits","assessment_ref":"urn:hwm:risk-assessment:synthetic-fixture","population":"one synthetic canary controller","channels":["thermal","control_availability"],"uncertainty":"no real household, long-horizon or full-population evidence","as_of":"2026-07-19T00:00:00Z"},
+  "risk_disposition":{"status":"accepted","risk_bearer_ref":"urn:hwm:authority:synthetic-fixture","scope":"one synthetic canary stage only","valid_through":"2026-07-20T00:00:00Z","constraints":["one controller","limited capability","automatic rollback trigger","no population transfer"]},
+  "proposal":{"status":"current","proposal_ref":"urn:hwm:proposal:synthetic-canary-restoration","revision":"1"},
+  "procedures":{"status":"satisfied","assessment_ref":"urn:hwm:procedure-assessment:synthetic-fixture"},
+  "authority":{"status":"allowed","decision_ref":"urn:hwm:authority-decision:synthetic-canary","authority_epoch":1,"local_safety":"clear"},
+  "stage":{"stage_id":"synthetic-canary-1","kind":"canary","scope":"one synthetic controller with limited high-power duration","exposure_budget":"one attempt, ten-minute observation","observation_gate":"thermal bound, command cessation, no unexpected control loss","rollback":"return to precautionary hold and verify no new high-power dispatch","execution_status":"stage_not_started"},
+  "routing_result":"authorized_for_stage",
+  "limitations":["synthetic fixture","authorization is limited to one stage","no Attempt or outcome is claimed"],
+  "must_not_infer":["stage_dispatched","stage_passed","full_restoration","zero_residual_risk","universal_safety","population_transfer","long_horizon_safety","consent","fairness","household_trust","access","action_authority"]
+}

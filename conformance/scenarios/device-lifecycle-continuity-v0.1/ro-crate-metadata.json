@@ -1,0 +1,123 @@
+{
+  "@context": [
+    "https://w3id.org/ro/crate/1.3/context",
+    {
+      "authorityEpoch": "https://homeworldmodel.org/terms/authorityEpoch",
+      "roundtripSentinel": {
+        "@id": "https://example.org/hwm/roundtrip-sentinel",
+        "@type": "https://homeworldmodel.org/spec/profiles/ro-crate/v0.1#JsonValue"
+      }
+    }
+  ],
+  "@graph": [
+    {
+      "@id": "ro-crate-metadata.json",
+      "@type": "CreativeWork",
+      "about": { "@id": "./" },
+      "conformsTo": { "@id": "https://w3id.org/ro/crate/1.3" }
+    },
+    {
+      "@id": "./",
+      "@type": "Dataset",
+      "identifier": "urn:hwm:package:device-lifecycle-continuity-v0.1",
+      "name": "HWM device lifecycle continuity fixture package",
+      "description": "An HWM RO-Crate Profile candidate package for device replacement, tombstone, temporal-status, Claim collision, and late Action Trace tests.",
+      "datePublished": "2026-07-18T09:20:01Z",
+      "license": { "@id": "https://creativecommons.org/licenses/by/4.0/" },
+      "about": { "@id": "urn:hwm:household:fixture-003" },
+      "mentions": [
+        { "@id": "urn:hwm:authority:fixture-003" }
+      ],
+      "conformsTo": [
+        { "@id": "https://homeworldmodel.org/spec/profiles/ro-crate/v0.1" },
+        { "@id": "https://homeworldmodel.org/spec/core/v0.1" },
+        { "@id": "https://homeworldmodel.org/spec/profiles/space-lifecycle/v0.1" },
+        { "@id": "https://homeworldmodel.org/spec/profiles/simple-action-effect/v0.1" }
+      ],
+      "hasPart": [
+        { "@id": "claims.json" },
+        { "@id": "records.json" }
+      ],
+      "roundtripSentinel": "{\"must_survive\":true,\"fixture\":\"device-lifecycle-continuity-v0.1\"}"
+    },
+    {
+      "@id": "claims.json",
+      "@type": "File",
+      "name": "HWM Claim Envelope set",
+      "description": "Immutable Claim Bodies with append-oriented Evidence Link projections.",
+      "additionalType": "https://homeworldmodel.org/spec/core/v0.1#ClaimEnvelopeSet",
+      "encodingFormat": "application/json",
+      "contentSize": "9534",
+      "sha256": "38e4b72a39128affe1782fe47044e2da9bceed694aa241120b003635fbc7c178",
+      "conformsTo": { "@id": "https://homeworldmodel.org/spec/core/v0.1/schema/claim-set.schema.json" }
+    },
+    {
+      "@id": "records.json",
+      "@type": "File",
+      "name": "HWM Record set",
+      "description": "Append-oriented observation, action, authorization, revision, and deletion Records.",
+      "additionalType": "https://homeworldmodel.org/spec/core/v0.1#RecordSet",
+      "encodingFormat": "application/json",
+      "contentSize": "4389",
+      "sha256": "a7b05e0df7adcac2846000e6e65b7d645c5bd908edbbab9c7c4310ff25e261d9",
+      "conformsTo": { "@id": "https://homeworldmodel.org/spec/core/v0.1/schema/record-set.schema.json" }
+    },
+    {
+      "@id": "urn:hwm:household:fixture-003",
+      "@type": "Thing",
+      "name": "Synthetic household scope fixture-003"
+    },
+    {
+      "@id": "urn:hwm:authority:fixture-003",
+      "@type": "Thing",
+      "name": "Synthetic household Authority state fixture-003",
+      "additionalType": "https://homeworldmodel.org/spec/profiles/authority/v0.1#AuthorityState",
+      "authorityEpoch": 4
+    },
+    {
+      "@id": "https://homeworldmodel.org/spec/profiles/ro-crate/v0.1",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "HWM RO-Crate Profile",
+      "version": "0.1.0",
+      "isProfileOf": { "@id": "https://w3id.org/ro/crate/1.3" }
+    },
+    {
+      "@id": "https://homeworldmodel.org/spec/core/v0.1",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "HWM Core",
+      "identifier": "hwm:core",
+      "version": "0.1.0"
+    },
+    {
+      "@id": "https://homeworldmodel.org/spec/profiles/space-lifecycle/v0.1",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "HWM Space and Lifecycle Profile fixture declaration",
+      "identifier": "hwm:space-lifecycle",
+      "version": "0.1.0-fixture"
+    },
+    {
+      "@id": "https://homeworldmodel.org/spec/profiles/simple-action-effect/v0.1",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "HWM Simple Action-Effect Profile fixture declaration",
+      "identifier": "hwm:simple-action-effect",
+      "version": "0.1.0-fixture"
+    },
+    {
+      "@id": "https://creativecommons.org/licenses/by/4.0/",
+      "@type": "CreativeWork",
+      "name": "Creative Commons Attribution 4.0 International"
+    },
+    {
+      "@id": "https://homeworldmodel.org/spec/core/v0.1/schema/claim-set.schema.json",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "HWM Claim Set JSON Schema",
+      "version": "0.1.0"
+    },
+    {
+      "@id": "https://homeworldmodel.org/spec/core/v0.1/schema/record-set.schema.json",
+      "@type": ["CreativeWork", "Profile"],
+      "name": "HWM Record Set JSON Schema",
+      "version": "0.1.0"
+    }
+  ]
+}

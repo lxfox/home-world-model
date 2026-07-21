@@ -1,0 +1,188 @@
+[
+  {
+    "case_id": "aggregate-forecast-disclosure",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:evidence-resolver",
+      "action": "hwm-authority:resolveView",
+      "target": { "selector_type": "predicate", "value": "hwm-forecast:probability" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T06:55:00Z",
+      "verifier_epoch": 11,
+      "constraint_inputs": { "lease_status": "active" },
+      "confirmations": []
+    },
+    "expected": { "decision": "allowed", "reason_code": "matching_permission" }
+  },
+  {
+    "case_id": "person-level-identity-prohibited",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:evidence-resolver",
+      "action": "hwm-authority:resolveView",
+      "target": { "selector_type": "predicate", "value": "hwm-forecast:expectedSubject" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T06:55:00Z",
+      "verifier_epoch": 11,
+      "constraint_inputs": { "lease_status": "active" },
+      "confirmations": []
+    },
+    "expected": { "decision": "denied", "reason_code": "matching_prohibition" }
+  },
+  {
+    "case_id": "pump-allowed-online",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:00:00Z",
+      "verifier_epoch": 11,
+      "constraint_inputs": {
+        "lease_status": "active",
+        "resource_observation": { "value": 0.18, "unit": "kWh" }
+      },
+      "confirmations": []
+    },
+    "expected": { "decision": "allowed", "reason_code": "matching_permission" }
+  },
+  {
+    "case_id": "hvac-conflict-needs-confirmation",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "matter:SetOccupiedHeatingSetpoint" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:00:01Z",
+      "verifier_epoch": 11,
+      "constraint_inputs": {
+        "lease_status": "active",
+        "applicability_status": "conflicting"
+      },
+      "confirmations": []
+    },
+    "expected": { "decision": "confirmation_required", "reason_code": "unsatisfied_confirmation_duty" }
+  },
+  {
+    "case_id": "hvac-confirmed-by-all",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "matter:SetOccupiedHeatingSetpoint" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:02:00Z",
+      "verifier_epoch": 11,
+      "constraint_inputs": {
+        "lease_status": "active",
+        "applicability_status": "conflicting"
+      },
+      "confirmations": [
+        "urn:hwm:subject:resident-a",
+        "urn:hwm:subject:resident-b"
+      ]
+    },
+    "expected": { "decision": "allowed", "reason_code": "matching_permission_duties_satisfied" }
+  },
+  {
+    "case_id": "verifier-behind-lease-epoch",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:00:00Z",
+      "verifier_epoch": 10,
+      "constraint_inputs": { "lease_status": "active" },
+      "confirmations": []
+    },
+    "expected": { "decision": "indeterminate", "reason_code": "verifier_authority_state_behind" }
+  },
+  {
+    "case_id": "lease-revoked-by-new-epoch",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:06:00Z",
+      "verifier_epoch": 12,
+      "constraint_inputs": { "lease_status": "active" },
+      "confirmations": []
+    },
+    "expected": { "decision": "denied", "reason_code": "lease_epoch_stale" }
+  },
+  {
+    "case_id": "offline-cached-lease-before-expiry",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:12:00Z",
+      "verifier_epoch": 11,
+      "authority_online": false,
+      "constraint_inputs": {
+        "lease_status": "active",
+        "resource_observation": { "value": 0.18, "unit": "kWh" }
+      },
+      "confirmations": []
+    },
+    "expected": { "decision": "allowed", "reason_code": "matching_permission_offline_lease" }
+  },
+  {
+    "case_id": "offline-lease-expired",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:16:00Z",
+      "verifier_epoch": 11,
+      "authority_online": false,
+      "constraint_inputs": { "lease_status": "expired" },
+      "confirmations": []
+    },
+    "expected": { "decision": "denied", "reason_code": "lease_expired" }
+  },
+  {
+    "case_id": "local-safety-overrides-permission",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:00:00Z",
+      "verifier_epoch": 11,
+      "local_safety_status": "denied",
+      "constraint_inputs": {
+        "lease_status": "active",
+        "resource_observation": { "value": 0.18, "unit": "kWh" }
+      },
+      "confirmations": []
+    },
+    "expected": { "decision": "denied", "reason_code": "local_safety_denied" }
+  },
+  {
+    "case_id": "missing-resource-constraint-input",
+    "request": {
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audience": "urn:hwm:service:execution-gateway",
+      "action": "hwm-authority:dispatchAction",
+      "target": { "selector_type": "action_type", "value": "hwm-action:StartCirculation" },
+      "purpose": "hwm:purpose:morning-preparation",
+      "decision_time": "2026-07-18T07:00:00Z",
+      "verifier_epoch": 11,
+      "constraint_inputs": { "lease_status": "active" },
+      "confirmations": []
+    },
+    "expected": { "decision": "indeterminate", "reason_code": "constraint_input_unknown" }
+  }
+]

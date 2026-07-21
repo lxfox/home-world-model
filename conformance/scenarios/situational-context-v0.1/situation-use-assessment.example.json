@@ -1,0 +1,55 @@
+{
+  "contract": "hwm-situation:UseAssessment",
+  "contract_version": "0.1.0-fixture",
+  "assessment_id": "urn:hwm:situation-assessment:resident-a-night-context-2026-07-19T22:20:00Z",
+  "household_id": "urn:hwm:household:fixture-situation-001",
+  "purpose": "urn:hwm:purpose:night-comfort-eligibility",
+  "assessed_at": "2026-07-19T22:20:02Z",
+  "as_of": "2026-07-19T22:20:00Z",
+  "authority_epoch": 12,
+  "world_view_binding": {
+    "artifact_id": "urn:hwm:view:resident-a-night-context-2026-07-19T22:20:00Z",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "1a6429a346d3aa37f267ad9fc3e4b840a6c38fcaff882311a22afde36f625f89"
+  },
+  "query_binding": {
+    "artifact_id": "urn:hwm:situation-query:resident-a-sleeping-in-bedroom-a",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "9ef4ed01b415c012703f556d19ea6cf9f96df08288a8a2977badd249e8db82ae"
+  },
+  "input_resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:resident-a-current-activity",
+      "subject_ref": "urn:hwm:person:resident-a",
+      "predicate_ref": "https://saref.etsi.org/saref4ehaw/hasActivity",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "qualification_status": "matched",
+      "candidate_claim_ids": ["urn:hwm:claim:resident-a-sleep-episode-2026-07-19-r1"],
+      "reason_codes": ["exact_subject_kind_space_and_time_match"]
+    }
+  ],
+  "subject_coverage": {
+    "mode": "exact_subjects",
+    "basis_binding": {
+      "artifact_id": "urn:hwm:subject-set:resident-a-only-for-night-comfort",
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "728c260dc239817b10f0daae5cddec30f7ec8acc3cee3770bfdd4b284d59849b"
+    },
+    "status": "complete",
+    "reason_codes": ["exact_query_subject_covered"]
+  },
+  "result": "satisfied",
+  "reason_codes": ["accepted_current_in_effect_episode_matches_exact_query"],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-situational-context-registry",
+    "value": "fixture:situation-use-assessment-proof"
+  },
+  "extensions": {}
+}

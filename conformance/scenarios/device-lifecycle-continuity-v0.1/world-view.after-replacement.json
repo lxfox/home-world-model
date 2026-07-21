@@ -1,0 +1,179 @@
+{
+  "contract": "hwm:WorldView",
+  "contract_version": "0.1.0",
+  "view_id": "urn:hwm:view:lifecycle-after-replacement",
+  "household_id": "urn:hwm:household:fixture-003",
+  "requester": "urn:hwm:subject:lifecycle-planner",
+  "purpose": "hwm:purpose:reading",
+  "generated_at": "2026-07-18T09:12:00Z",
+  "as_of": "2026-07-18T09:12:00Z",
+  "known_through": "2026-07-18T09:10:00Z",
+  "freshness": { "maximum_age_seconds": 300, "status": "partially_stale" },
+  "coverage": {
+    "entity_refs": [
+      "urn:hwm:slot:lifecycle-reading-light",
+      "urn:hwm:asset:lamp-old",
+      "urn:hwm:asset:lamp-new",
+      "urn:hwm:endpoint:matter-lamp-old",
+      "urn:hwm:endpoint:matter-lamp-new",
+      "urn:hwm:record:raw-calibration-frame-new-lamp"
+    ],
+    "claim_kinds": ["rdf:type", "hwm-effect:minimumRequirement", "hwm-lifecycle:fulfills", "http://purl.org/dc/terms/replaces", "hwm-lifecycle:exposes", "hwm-effect:predictsOutcome", "hwm:payloadAvailability"]
+  },
+  "authority_epoch": 4,
+  "profiles": [
+    { "id": "hwm:core", "version": "0.1.0", "required": true },
+    { "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }
+  ],
+  "resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:lifecycle-slot-after",
+      "subject": "urn:hwm:slot:lifecycle-reading-light",
+      "predicate": "rdf:type",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "stale",
+      "temporal_status": "unbounded",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:lifecycle-slot-after",
+        "object": "hwm:FunctionalSlot",
+        "claim_ids": ["urn:hwm:claim:lifecycle-slot-type"],
+        "evidence_record_ids": ["urn:hwm:record:lifecycle-initial-declaration"],
+        "extensions": {}
+      }],
+      "reason_codes": ["evidence_age_exceeds_view_threshold"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:lifecycle-requirement-after",
+      "subject": "urn:hwm:slot:lifecycle-reading-light",
+      "predicate": "hwm-effect:minimumRequirement",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "stale",
+      "temporal_status": "unbounded",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:lifecycle-requirement-after",
+        "object": {
+          "affected_feature_id": "urn:hwm:zone:lifecycle-reading",
+          "property": "saref:Light",
+          "threshold": { "value": 300, "unit": "lx" },
+          "comparator": ">="
+        },
+        "claim_ids": ["urn:hwm:claim:lifecycle-reading-requirement"],
+        "evidence_record_ids": ["urn:hwm:record:lifecycle-initial-declaration"],
+        "extensions": {}
+      }],
+      "reason_codes": ["evidence_age_exceeds_view_threshold"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:old-fulfillment-after",
+      "subject": "urn:hwm:asset:lamp-old",
+      "predicate": "hwm-lifecycle:fulfills",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "expired",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:old-fulfillment-after",
+        "object": "urn:hwm:slot:lifecycle-reading-light",
+        "claim_ids": ["urn:hwm:claim:old-asset-fulfills-slot"],
+        "evidence_record_ids": ["urn:hwm:record:lifecycle-replacement-declaration"],
+        "extensions": {}
+      }],
+      "reason_codes": ["claim_valid_time_ended", "fresh_retraction_record"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:new-replaces-old-after",
+      "subject": "urn:hwm:asset:lamp-new",
+      "predicate": "http://purl.org/dc/terms/replaces",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:new-replaces-old-after",
+        "object": "urn:hwm:asset:lamp-old",
+        "claim_ids": ["urn:hwm:claim:new-asset-replaces-old"],
+        "evidence_record_ids": ["urn:hwm:record:lifecycle-replacement-declaration"],
+        "extensions": {}
+      }],
+      "reason_codes": []
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:new-fulfillment-after",
+      "subject": "urn:hwm:asset:lamp-new",
+      "predicate": "hwm-lifecycle:fulfills",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:new-fulfillment-after",
+        "object": "urn:hwm:slot:lifecycle-reading-light",
+        "claim_ids": ["urn:hwm:claim:new-asset-fulfills-slot"],
+        "evidence_record_ids": ["urn:hwm:record:lifecycle-replacement-declaration"],
+        "extensions": {}
+      }],
+      "reason_codes": []
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:new-endpoint-after",
+      "subject": "urn:hwm:asset:lamp-new",
+      "predicate": "hwm-lifecycle:exposes",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:new-endpoint-after",
+        "object": "urn:hwm:endpoint:matter-lamp-new",
+        "claim_ids": ["urn:hwm:claim:new-asset-exposes-endpoint"],
+        "evidence_record_ids": ["urn:hwm:record:lifecycle-replacement-declaration"],
+        "extensions": {}
+      }],
+      "reason_codes": []
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:new-effect-after",
+      "subject": "urn:hwm:endpoint:matter-lamp-new",
+      "predicate": "hwm-effect:predictsOutcome",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [{
+        "candidate_id": "urn:hwm:candidate:new-effect-after",
+        "object": {
+          "when": { "action_type": "matter:MoveToLevel", "parameters": { "level_percent": 60 } },
+          "affected_feature_id": "urn:hwm:zone:lifecycle-reading",
+          "property": "saref:Light",
+          "expected_range": { "minimum": 320, "maximum": 360, "unit": "lx" },
+          "observation_window_seconds": 10,
+          "measurement_procedure": "urn:hwm:procedure:lifecycle-lux-v1",
+          "model_version": "new-lamp-v1"
+        },
+        "claim_ids": ["urn:hwm:claim:new-endpoint-effect"],
+        "evidence_record_ids": ["urn:hwm:record:new-lamp-calibration-summary"],
+        "extensions": {}
+      }],
+      "reason_codes": ["durable_summary_available"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:raw-calibration-payload-after",
+      "subject": "urn:hwm:record:raw-calibration-frame-new-lamp",
+      "predicate": "hwm:payloadAvailability",
+      "availability_status": "source_unavailable",
+      "epistemic_status": "not_evaluated",
+      "freshness_status": "not_applicable",
+      "temporal_status": "indeterminate",
+      "candidates": [],
+      "reason_codes": ["payload_deleted", "tombstone_retained"]
+    }
+  ],
+  "conflicts": [],
+  "limitations": [{
+    "code": "raw_calibration_payload_deleted",
+    "description": "The raw calibration frame was deleted under Authority epoch 4; its non-sensitive tombstone and durable summary remain."
+  }],
+  "extensions": {}
+}

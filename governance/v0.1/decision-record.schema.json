@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/v0.1/decision-record.schema.json",
+  "title":"HWM Specification Decision Record",
+  "type":"object",
+  "required":["decision_id","proposal","policy","review_set_sha256","steward","as_of","role_coverage","conflict_disclosures_complete","objection_dispositions","dissent_refs","evidence_refs","conclusion","rationale","next_step","must_not_infer"],
+  "properties":{
+    "decision_id":{"type":"string","minLength":1},
+    "proposal":{"type":"object","required":["proposal_id","revision","sha256"],"properties":{"proposal_id":{"type":"string"},"revision":{"type":"integer","minimum":1},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "policy":{"type":"object","required":["policy_id","version","sha256"],"properties":{"policy_id":{"const":"hwm-specification-change-governance"},"version":{"const":"0.1"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "review_set_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "steward":{"type":"object","required":["actor_ref","role","conflict_disclosure"],"properties":{"actor_ref":{"type":"string"},"role":{"const":"decision_steward"},"conflict_disclosure":{"type":"string","minLength":1}},"additionalProperties":false},
+    "as_of":{"type":"string","format":"date-time"},
+    "role_coverage":{"type":"object","required":["status","required","present"],"properties":{"status":{"enum":["satisfied","not_satisfied"]},"required":{"type":"array","items":{"type":"string"},"uniqueItems":true},"present":{"type":"array","items":{"type":"string"},"uniqueItems":true}},"additionalProperties":false},
+    "conflict_disclosures_complete":{"type":"boolean"},
+    "objection_dispositions":{"type":"array","items":{"type":"object","required":["objection_id","class","disposition","rationale"],"properties":{"objection_id":{"type":"string"},"class":{"type":"string"},"disposition":{"enum":["accepted","addressed","deferred_with_rationale","out_of_scope_with_rationale","unresolved"]},"rationale":{"type":"string","minLength":1},"follow_up_ref":{"type":"string"}},"additionalProperties":false}},
+    "dissent_refs":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "evidence_refs":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "conclusion":{"enum":["accept","revise","reject","defer","procedurally_invalid"]},
+    "rationale":{"type":"string","minLength":1},
+    "next_step":{"enum":["prepare_release_record","new_proposal_revision","close_rejected","await_inputs","repair_procedure"]},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "additionalProperties":false
+}

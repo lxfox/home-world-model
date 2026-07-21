@@ -1,0 +1,162 @@
+{
+  "artifact": "hwm-procedure:OracleCases",
+  "artifact_version": "0.1.0-fixture",
+  "base_requests": {
+    "mixed-home-impact": {
+      "verifier_epoch": 7,
+      "decision_time": "2026-07-19T12:00:00Z",
+      "proposal": {
+        "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+        "revision": 1,
+        "action_type": "SetZoneTemperature",
+        "purpose": "shared_comfort"
+      },
+      "impact_closure": {
+        "assessment_id": "urn:hwm:assessment:impact-coverage-1",
+        "coverage_status": "complete_for_declared_channels",
+        "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+        "proposal_revision": 1,
+        "authority_epoch": 7,
+        "impact_entries": [
+          { "impact_id": "impact-human-a-thermal", "channel_id": "physical_exposure", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:resident-a", "basis_ids": ["urn:hwm:effect:bedroom-air-temperature"] },
+          { "impact_id": "impact-pet-thermal", "channel_id": "physical_exposure", "entity_kind": "pet", "impact_status": "possible", "affected_entity_ref": "urn:hwm:subject:cat-1", "basis_ids": ["urn:hwm:effect:bedroom-air-temperature"] },
+          { "impact_id": "impact-opaque-privacy-c", "channel_id": "privacy_data", "entity_kind": "opaque_subject", "impact_status": "material", "opaque_subject_handle": "urn:hwm:opaque:authority-7:9f2", "basis_ids": ["urn:hwm:processing:occupancy-inference"] },
+          { "impact_id": "impact-shared-circuit", "channel_id": "shared_resource", "entity_kind": "resource", "impact_status": "possible", "affected_entity_ref": "urn:hwm:resource:hvac-circuit-2", "basis_ids": ["urn:hwm:effect:predicted-electric-load"] },
+          { "impact_id": "impact-human-a-control", "channel_id": "control_interest", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:resident-a", "basis_ids": ["urn:hwm:claim:shared-bedroom-control-interest"] },
+          { "impact_id": "impact-control-b", "channel_id": "control_interest", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:resident-b", "basis_ids": ["urn:hwm:claim:shared-bedroom-control-interest"] }
+        ]
+      },
+      "route_binding_ids": ["route-human-a-thermal", "route-pet-care", "route-privacy-opaque", "route-resource-review", "route-human-a-control", "route-control-b"]
+    }
+  },
+  "route_bindings": {
+    "route-human-a-thermal": { "binding_id": "route-human-a-thermal", "impact_id": "impact-human-a-thermal", "template_id": "obtain-affirmative", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:01", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-pet-care": { "binding_id": "route-pet-care", "impact_id": "impact-pet-thermal", "template_id": "offer-care-consultation", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:02", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-privacy-opaque": { "binding_id": "route-privacy-opaque", "impact_id": "impact-opaque-privacy-c", "template_id": "open-objection-window", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:03", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-resource-review": { "binding_id": "route-resource-review", "impact_id": "impact-shared-circuit", "template_id": "obtain-safety-review", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:04", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-human-a-control": { "binding_id": "route-human-a-control", "impact_id": "impact-human-a-control", "template_id": "notify-control-change", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:05", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-control-b": { "binding_id": "route-control-b", "impact_id": "impact-control-b", "template_id": "notify-control-change", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:06", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-pet-unavailable": { "binding_id": "route-pet-unavailable", "impact_id": "impact-pet-thermal", "template_id": "offer-care-consultation", "status": "unavailable", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-pet-denied": { "binding_id": "route-pet-denied", "impact_id": "impact-pet-thermal", "template_id": "offer-care-consultation", "status": "denied", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-pet-second": { "binding_id": "route-pet-second", "impact_id": "impact-pet-thermal", "template_id": "offer-care-consultation", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:02b", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-pet-stale-epoch": { "binding_id": "route-pet-stale-epoch", "impact_id": "impact-pet-thermal", "template_id": "offer-care-consultation", "status": "resolved", "participation_slot_id": "urn:hwm:slot:proposal-1:02-old", "authority_epoch": 6, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-not-material": { "binding_id": "route-not-material", "impact_id": "impact-not-material", "template_id": "explicit-none", "status": "resolved", "participation_slot_id": "urn:hwm:slot:should-not-be-used", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" },
+    "route-ambiguous": { "binding_id": "route-ambiguous", "impact_id": "impact-ambiguous", "template_id": "ambiguous-notice-a", "status": "resolved", "participation_slot_id": "urn:hwm:slot:ambiguous", "authority_epoch": 7, "expires_at": "2026-07-19T12:30:00Z" }
+  },
+  "cases": [
+    {
+      "case_id": "mixed-requirements-map", "base_request_id": "mixed-home-impact", "overrides": {},
+      "expected": {
+        "mapping_status": "mapped_for_declared_impacts",
+        "matched_rule_ids": ["control-interest-notify", "physical-person-affirmative", "physical-pet-consult-care-role", "privacy-opaque-objection-window", "resource-qualified-review"],
+        "mapped_impact_ids": ["impact-control-b", "impact-human-a-control", "impact-human-a-thermal", "impact-opaque-privacy-c", "impact-pet-thermal", "impact-shared-circuit"],
+        "unmapped_impact_ids": [],
+        "requirement_descriptors": [
+          "impact-control-b|notify-control-change|notification|before_dispatch|notice_delivered|indeterminate|not_applicable",
+          "impact-human-a-control|notify-control-change|notification|before_dispatch|notice_delivered|indeterminate|not_applicable",
+          "impact-human-a-thermal|obtain-affirmative|affirmative_response|before_authorization|affirmative_response|confirmation_required|blocks",
+          "impact-opaque-privacy-c|open-objection-window|objection_window|before_dispatch|window_expired_without_objection|indeterminate|blocks",
+          "impact-pet-thermal|offer-care-consultation|consultation_opportunity|before_authorization|opportunity_delivered|indeterminate|requires_replan",
+          "impact-shared-circuit|obtain-safety-review|qualified_review|before_authorization|review_accepted|denied|blocks"
+        ],
+        "participation_slot_ids": ["urn:hwm:slot:proposal-1:01", "urn:hwm:slot:proposal-1:02", "urn:hwm:slot:proposal-1:03", "urn:hwm:slot:proposal-1:04", "urn:hwm:slot:proposal-1:05", "urn:hwm:slot:proposal-1:06"],
+        "reason_codes": ["all_disclosed_impacts_mapped"]
+      },
+      "must_not_infer": ["affected_means_voter", "person_obligated_to_answer", "affirmative_response_is_legal_consent", "notification_is_acceptance", "silence_is_agreement", "review_is_authorization", "pet_representative_is_guardian", "slot_is_identity", "cross_channel_requirements_merged", "action_authorized"]
+    },
+    {
+      "case_id": "partial-closure-fails-closed", "base_request_id": "mixed-home-impact", "overrides": { "impact_closure": { "coverage_status": "partial" } },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["impact_closure_not_complete_for_declared_channels"] },
+      "must_not_infer": ["visible_subset_is_complete", "missing_channel_has_no_requirements"]
+    },
+    {
+      "case_id": "indeterminate-closure-fails-closed", "base_request_id": "mixed-home-impact", "overrides": { "impact_closure": { "coverage_status": "indeterminate" } },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["impact_closure_not_complete_for_declared_channels"] },
+      "must_not_infer": ["indeterminate_means_no_requirement", "action_authorized"]
+    },
+    {
+      "case_id": "proposal-revision-mismatch", "base_request_id": "mixed-home-impact", "overrides": { "proposal": { "revision": 2 } },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["impact_closure_wrong_proposal_revision"] },
+      "must_not_infer": ["old_mapping_carries_forward", "same_action_means_same_requirements"]
+    },
+    {
+      "case_id": "closure-authority-epoch-mismatch", "base_request_id": "mixed-home-impact", "overrides": { "impact_closure": { "authority_epoch": 6 } },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["impact_closure_authority_epoch_stale"] },
+      "must_not_infer": ["stale_closure_authority_valid", "action_authorized"]
+    },
+    {
+      "case_id": "mapping-policy-epoch-stale", "base_request_id": "mixed-home-impact", "overrides": { "verifier_epoch": 8 },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["mapping_policy_epoch_stale"] },
+      "must_not_infer": ["stale_mapping_policy_valid", "action_authorized"]
+    },
+    {
+      "case_id": "verifier-authority-state-behind", "base_request_id": "mixed-home-impact", "overrides": { "verifier_epoch": 6 },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["verifier_authority_state_behind"] },
+      "must_not_infer": ["future_authority_policy_known", "action_authorized"]
+    },
+    {
+      "case_id": "unmapped-impact-is-indeterminate", "base_request_id": "mixed-home-impact",
+      "overrides": { "impact_closure": { "impact_entries": [{ "impact_id": "impact-future-role", "channel_id": "future_occupancy", "entity_kind": "future_role", "impact_status": "possible", "basis_ids": ["urn:hwm:design:future-bedroom"] }] }, "route_binding_ids": [] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-future-role"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["no_applicable_mapping_rule"] },
+      "must_not_infer": ["policy_silence_means_none", "future_role_has_no_interests"]
+    },
+    {
+      "case_id": "ambiguous-impact-rule-is-indeterminate", "base_request_id": "mixed-home-impact",
+      "overrides": { "impact_closure": { "impact_entries": [{ "impact_id": "impact-ambiguous", "channel_id": "ambiguous_test", "entity_kind": "person", "impact_status": "material", "affected_entity_ref": "urn:hwm:subject:test", "basis_ids": [] }] }, "route_binding_ids": ["route-ambiguous"] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": ["ambiguous-a", "ambiguous-b"], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-ambiguous"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["multiple_applicable_mapping_rules"] },
+      "must_not_infer": ["first_mapping_rule_wins", "rules_merged_silently"]
+    },
+    {
+      "case_id": "representative-route-missing", "base_request_id": "mixed-home-impact", "overrides": { "route_binding_ids": ["route-human-a-thermal", "route-privacy-opaque", "route-resource-review", "route-human-a-control", "route-control-b"] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": ["physical-pet-consult-care-role"], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-pet-thermal"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["required_route_missing"] },
+      "must_not_infer": ["automatic_guardian", "missing_route_drops_requirement"]
+    },
+    {
+      "case_id": "representative-route-unavailable", "base_request_id": "mixed-home-impact", "overrides": { "route_binding_ids": ["route-human-a-thermal", "route-pet-unavailable", "route-privacy-opaque", "route-resource-review", "route-human-a-control", "route-control-b"] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": ["physical-pet-consult-care-role"], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-pet-thermal"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["required_route_unavailable"] },
+      "must_not_infer": ["unavailable_route_means_no_representative_needed", "pet_unaffected"]
+    },
+    {
+      "case_id": "representative-route-denied", "base_request_id": "mixed-home-impact", "overrides": { "route_binding_ids": ["route-human-a-thermal", "route-pet-denied", "route-privacy-opaque", "route-resource-review", "route-human-a-control", "route-control-b"] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": ["physical-pet-consult-care-role"], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-pet-thermal"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["required_route_denied"] },
+      "must_not_infer": ["denied_route_means_no_requirement", "identity_may_be_disclosed"]
+    },
+    {
+      "case_id": "duplicate-route-is-indeterminate", "base_request_id": "mixed-home-impact", "overrides": { "route_binding_ids": ["route-human-a-thermal", "route-pet-care", "route-pet-second", "route-privacy-opaque", "route-resource-review", "route-human-a-control", "route-control-b"] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": ["physical-pet-consult-care-role"], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-pet-thermal"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["multiple_current_routes_for_requirement"] },
+      "must_not_infer": ["choose_route_silently", "routes_are_same_identity"]
+    },
+    {
+      "case_id": "stale-route-epoch-is-indeterminate", "base_request_id": "mixed-home-impact", "overrides": { "route_binding_ids": ["route-human-a-thermal", "route-pet-stale-epoch", "route-privacy-opaque", "route-resource-review", "route-human-a-control", "route-control-b"] },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": ["physical-pet-consult-care-role"], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-pet-thermal"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["route_authority_epoch_stale"] },
+      "must_not_infer": ["stale_representative_binding_valid", "automatic_guardian"]
+    },
+    {
+      "case_id": "empty-complete-closure-maps-empty", "base_request_id": "mixed-home-impact", "overrides": { "impact_closure": { "impact_entries": [] }, "route_binding_ids": [] },
+      "expected": { "mapping_status": "mapped_for_declared_impacts", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["no_disclosed_impacts"] },
+      "must_not_infer": ["globally_no_impacts", "no_rights_exist", "action_authorized"]
+    },
+    {
+      "case_id": "explicit-none-preserves-impact", "base_request_id": "mixed-home-impact",
+      "overrides": { "impact_closure": { "impact_entries": [{ "impact_id": "impact-not-material", "channel_id": "test_no_requirement", "entity_kind": "person", "impact_status": "not_material", "affected_entity_ref": "urn:hwm:subject:test", "basis_ids": [] }] }, "route_binding_ids": ["route-not-material"] },
+      "expected": { "mapping_status": "mapped_for_declared_impacts", "matched_rule_ids": ["explicit-not-material-none"], "mapped_impact_ids": ["impact-not-material"], "unmapped_impact_ids": [], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["explicit_no_additional_requirement"] },
+      "must_not_infer": ["none_means_unaffected", "impact_erased", "other_rights_waived"]
+    },
+    {
+      "case_id": "action-mismatch-does-not-reuse-rules", "base_request_id": "mixed-home-impact", "overrides": { "proposal": { "action_type": "OpenWindow" } },
+      "expected": { "mapping_status": "indeterminate", "matched_rule_ids": [], "mapped_impact_ids": [], "unmapped_impact_ids": ["impact-human-a-thermal"], "requirement_descriptors": [], "participation_slot_ids": [], "reason_codes": ["no_applicable_mapping_rule"] },
+      "must_not_infer": ["mapping_rules_cross_actions", "same_impact_channel_same_procedure"]
+    }
+  ],
+  "model_boundary_cases": [
+    { "case_id": "system-owns-obtain-response", "kind": "obligation_direction", "inputs": { "requirement_kind": "affirmative_response" }, "expected": { "obligated_party": "action_side_service", "person_must_answer": false }, "must_not_infer": ["person_obligated_to_answer", "nonresponse_is_person_violation"] },
+    { "case_id": "affirmative-is-not-consent", "kind": "affirmative_boundary", "inputs": { "signal": "confirm" }, "expected": { "requirement_signal": "affirmative_response", "legal_consent": "not_inferred", "authorization": "not_inferred" }, "must_not_infer": ["affirmative_response_is_legal_consent", "action_authorized"] },
+    { "case_id": "consultation-silence", "kind": "consultation_boundary", "inputs": { "opportunity_delivered": true, "response": null }, "expected": { "opportunity_complete": true, "agreement": "not_inferred", "waiver": "not_inferred" }, "must_not_infer": ["silence_is_agreement", "silence_is_waiver"] },
+    { "case_id": "objection-window-expiry", "kind": "objection_boundary", "inputs": { "window_expired": true, "objection": false }, "expected": { "window_signal": "expired_without_objection", "affirmative_acceptance": "not_inferred", "waiver": "not_inferred" }, "must_not_infer": ["silence_is_affirmative_acceptance", "silence_is_waiver"] },
+    { "case_id": "notification-delivery", "kind": "notification_boundary", "inputs": { "delivered": true }, "expected": { "notification_complete": true, "acceptance": "not_inferred", "permission": "not_inferred" }, "must_not_infer": ["notification_is_acceptance", "notification_is_permission"] },
+    { "case_id": "qualified-review-boundary", "kind": "review_boundary", "inputs": { "review_accepted": true }, "expected": { "review_signal": "accepted", "authorization": "not_inferred", "universal_competence": "not_inferred" }, "must_not_infer": ["review_is_authorization", "reviewer_globally_qualified"] },
+    { "case_id": "slot-privacy-boundary", "kind": "slot_boundary", "inputs": { "slot_id": "urn:hwm:slot:proposal-1:03" }, "expected": { "identity": "withheld", "presence": "not_inferred", "membership": "not_inferred", "durable_delegation": "not_inferred" }, "must_not_infer": ["slot_is_identity", "slot_proves_presence", "slot_proves_membership", "slot_is_delegation"] },
+    { "case_id": "representative-not-guardian", "kind": "representative_boundary", "inputs": { "route_resolved": true }, "expected": { "route_status": "resolved", "legal_guardian": "not_inferred", "general_delegation": "not_inferred" }, "must_not_infer": ["pet_representative_is_guardian", "representative_has_general_delegation"] },
+    { "case_id": "same-entity-not-auto-merged", "kind": "coalescing_boundary", "inputs": { "entity_equal": true, "channels": ["physical_exposure", "control_interest"] }, "expected": { "requirement_count": 2, "identity_link_disclosed": false }, "must_not_infer": ["cross_channel_requirements_merged", "entity_equality_safe_to_disclose"] }
+  ]
+}

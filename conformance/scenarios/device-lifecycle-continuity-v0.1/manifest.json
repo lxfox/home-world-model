@@ -1,0 +1,42 @@
+{
+  "contract": "hwm:HouseholdManifest",
+  "contract_version": "0.1.0",
+  "package_id": "urn:hwm:package:device-lifecycle-continuity-v0.1",
+  "household_id": "urn:hwm:household:fixture-003",
+  "created_at": "2026-07-18T09:20:01Z",
+  "profiles": [
+    { "id": "hwm:core", "version": "0.1.0", "required": true },
+    { "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+  ],
+  "authority": {
+    "authority_id": "urn:hwm:authority:fixture-003",
+    "epoch": 4
+  },
+  "resources": [
+    {
+      "id": "claims.json",
+      "media_type": "application/json",
+      "role": "claims",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "38e4b72a39128affe1782fe47044e2da9bceed694aa241120b003635fbc7c178"
+      }
+    },
+    {
+      "id": "records.json",
+      "media_type": "application/json",
+      "role": "records",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "a7b05e0df7adcac2846000e6e65b7d645c5bd908edbbab9c7c4310ff25e261d9"
+      }
+    }
+  ],
+  "extensions": {
+    "https://example.org/hwm/roundtrip-sentinel": {
+      "must_survive": true,
+      "fixture": "device-lifecycle-continuity-v0.1"
+    }
+  }
+}

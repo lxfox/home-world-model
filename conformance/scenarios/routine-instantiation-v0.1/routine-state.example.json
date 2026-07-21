@@ -1,0 +1,32 @@
+{
+  "contract": "hwm-routine:ActivationState",
+  "contract_version": "0.1.0-fixture",
+  "state_id": "urn:hwm:routine-state:weekday-morning-hot-water-1:1",
+  "routine_id": "urn:hwm:routine:weekday-morning-hot-water-1",
+  "state_revision": 1,
+  "previous_state_binding": null,
+  "routine_definition_binding": {
+    "routine_id": "urn:hwm:routine:weekday-morning-hot-water-1",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "5cf7a717ed9ef3061eb101e9c9f1d66d0aa367d9c1af211387558b1b278b6794"
+  },
+  "assessed_at": "2026-07-19T04:50:00Z",
+  "authority_epoch": 11,
+  "activation_status": "active",
+  "activation_decision_binding": {
+    "artifact_id": "urn:hwm:authority-decision:routine-activation-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "5555555555555555555555555555555555555555555555555555555555555555"
+  },
+  "transition_record_binding": null,
+  "related_routine_bindings": [],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-routine-state-registry",
+    "value": "fixture:routine-state-proof"
+  },
+  "extensions": {}
+}

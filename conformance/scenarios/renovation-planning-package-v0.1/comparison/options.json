@@ -1,0 +1,26 @@
+{
+  "comparison_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+  "comparison_type": "design_option_comparison",
+  "input_context_ids": [
+    "urn:hwm:design-option:reading-light-a",
+    "urn:hwm:design-option:reading-light-b"
+  ],
+  "requirement_claim_ids": [
+    "urn:hwm:claim:planned-reading-requirement"
+  ],
+  "results": [
+    {
+      "design_option_id": "urn:hwm:design-option:reading-light-a",
+      "requirement_status": "satisfied",
+      "reason_claim_id": "urn:hwm:claim:option-a-requirement-status"
+    },
+    {
+      "design_option_id": "urn:hwm:design-option:reading-light-b",
+      "requirement_status": "not_satisfied",
+      "reason_claim_id": "urn:hwm:claim:option-b-requirement-status"
+    }
+  ],
+  "recommended_option_id": "urn:hwm:design-option:reading-light-a",
+  "recommendation_claim_id": "urn:hwm:claim:comparison-recommends-option-a",
+  "status": "advisory_not_authorization"
+}

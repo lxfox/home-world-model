@@ -1,0 +1,16 @@
+{
+  "evidence_id":"hwm-example-project-adoption-declaration",
+  "kind":"adoption_declaration",
+  "release":{"release_id":"hwm-base-exchange-v0.1-candidate","sha256":"74c7873de0d06ed5d79d5a82ba414c096720058ddede9b05617495e8d34e91af"},
+  "subject_ref":"urn:hwm:organization:hwm-project",
+  "scope":{"purpose":"project reference implementation and specification development","artifacts":["base-exchange-v0.1"]},
+  "issuer_ref":"urn:hwm:organization:hwm-project",
+  "issued_at":"2026-07-19T00:00:00Z",
+  "validity":{"from":"2026-07-19T00:00:00Z","through":"2026-10-19T00:00:00Z"},
+  "method":{"type":"attributed_self_declaration","authority":"project scope only"},
+  "lineage_ref":"urn:hwm:adoption-lineage:project-self-report",
+  "privacy_class":"public_attributed",
+  "applicability":"current",
+  "limitations":["self-declaration by the specification project","candidate release rather than external production adoption"],
+  "must_not_infer":["external_adoption","implementation_conformance","deployment","active_use","market_coverage","community_consensus","household_trust","access","action_authority"]
+}

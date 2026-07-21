@@ -1,0 +1,27 @@
+{
+  "contract": "hwm-intent:Definition",
+  "contract_version": "0.1.0-fixture",
+  "intent_id": "urn:hwm:intent:shared-bedroom-morning-comfort-1",
+  "definition_revision": 1,
+  "previous_definition_binding": null,
+  "identity_basis": {
+    "household_id": "urn:hwm:household:1",
+    "purpose": "urn:hwm:purpose:morning-preparation",
+    "lifecycle_kind": "transient",
+    "beneficiary_refs": ["urn:hwm:subject:resident-a", "urn:hwm:subject:resident-b"],
+    "scope_refs": ["urn:hwm:function-position:bedroom-hvac", "urn:hwm:space:bedroom"]
+  },
+  "identity_basis_digest": "770f731ee7b44bdc325178772acdaa61a2261225652b6160d3c388eb1314dc3d",
+  "expectations": [
+    {"expectation_id": "bedroom-ready", "kind": "goal", "mandatory": true, "target_binding": {"artifact_id": "urn:hwm:claim:shared-bedroom-comfort-goal", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "1111111111111111111111111111111111111111111111111111111111111111"}},
+    {"expectation_id": "energy-limit", "kind": "constraint", "mandatory": true, "target_binding": {"artifact_id": "urn:hwm:claim:morning-energy-constraint", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "2222222222222222222222222222222222222222222222222222222222222222"}}
+  ],
+  "basis_bindings": [
+    {"artifact_id": "urn:hwm:view:morning-agent-a-r2", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "3333333333333333333333333333333333333333333333333333333333333333"}
+  ],
+  "revision": {"relation": "genesis", "continuity_decision_binding": null, "expectation_lineage": []},
+  "created_at": "2026-07-19T05:55:00Z",
+  "created_by_subject": "urn:hwm:subject:resident-a",
+  "proof": {"mode": "unsigned_fixture", "verification_method": "fixture-intent-registry", "value": "fixture:intent-definition-proof"},
+  "extensions": {}
+}

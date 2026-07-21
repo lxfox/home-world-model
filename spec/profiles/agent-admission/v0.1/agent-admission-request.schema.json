@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/agent-admission/v0.1/agent-admission-request.schema.json",
+  "title": "HWM Agent Admission Request v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "request_id", "agent_instance_handle", "audience", "issued_at", "expires_at", "nonce", "supported_profiles", "supported_canonicalizations", "supported_proof_suites", "instance_key_binding", "requested_purposes", "requested_actions", "proof", "extensions"],
+  "properties": {
+    "contract": { "const": "hwm-admission:Request" },
+    "contract_version": { "const": "0.1.0-fixture" },
+    "request_id": { "type": "string", "minLength": 1 },
+    "agent_instance_handle": { "type": "string", "minLength": 1 },
+    "audience": { "type": "string", "minLength": 1 },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "nonce": { "type": "string", "minLength": 16 },
+    "supported_profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/ProfileSupport" }
+    },
+    "supported_canonicalizations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "supported_proof_suites": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "instance_key_binding": {
+      "type": "object",
+      "required": ["binding_type", "value"],
+      "properties": {
+        "binding_type": { "enum": ["jwk_thumbprint", "cose_key_thumbprint", "platform_key_ref", "fixture"] },
+        "value": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "requested_purposes": { "$ref": "#/$defs/UniqueIdentifiers" },
+    "requested_actions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "enum": ["resolve_view", "propose_action", "dispatch_action", "submit_record"] }
+    },
+    "proof": {
+      "type": "object",
+      "required": ["mode", "verification_method", "value"],
+      "properties": {
+        "mode": { "enum": ["unsigned_fixture", "signature", "dpop", "cwt"] },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "UniqueIdentifiers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ProfileSupport": {
+      "type": "object",
+      "required": ["id", "versions"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "versions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

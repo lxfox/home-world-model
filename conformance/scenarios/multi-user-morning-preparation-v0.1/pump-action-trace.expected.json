@@ -1,0 +1,97 @@
+{
+  "contract": "hwm:ActionTrace",
+  "contract_version": "0.1.0",
+  "trace_id": "urn:hwm:trace:morning-circulation-pump",
+  "trace_revision": 1,
+  "household_id": "urn:hwm:household:morning-fixture-001",
+  "generated_at": "2026-07-18T07:10:14Z",
+  "known_through": "2026-07-18T07:10:13Z",
+  "based_on_view_id": "urn:hwm:view:morning-preparation-before-actions",
+  "intent": {
+    "intent_id": "urn:hwm:intent:prepare-home-for-morning",
+    "requested_by": "urn:hwm:subject:morning-planner-agent",
+    "goal_claim_ids": [
+      "urn:hwm:claim:hot-water-wait-requirement",
+      "urn:hwm:claim:hot-water-temperature-requirement"
+    ]
+  },
+  "proposal": {
+    "proposal_id": "urn:hwm:proposal:start-circulation",
+    "proposed_by": "urn:hwm:subject:morning-planner-agent",
+    "action": {
+      "action_type": "hwm-action:StartCirculation",
+      "target_endpoint_id": "urn:hwm:endpoint:circulation-pump",
+      "parameters": {}
+    },
+    "effect_claim_ids": [
+      "urn:hwm:claim:pump-wait-time-effect",
+      "urn:hwm:claim:pump-temperature-effect",
+      "urn:hwm:claim:pump-energy-effect"
+    ]
+  },
+  "authorization": {
+    "decision": "allowed",
+    "authority_epoch": 11,
+    "record_id": "urn:hwm:record:pump-authorization",
+    "policy_ids": ["urn:hwm:policy:morning-water-preparation"]
+  },
+  "execution": {
+    "status": "dispatched",
+    "dispatch_record_id": "urn:hwm:record:pump-dispatch",
+    "acknowledgement": {
+      "status": "acknowledged",
+      "record_id": "urn:hwm:record:pump-acknowledgement"
+    },
+    "reason_codes": ["authorization_allowed"]
+  },
+  "observation_record_ids": [
+    "urn:hwm:record:wait-time-8s",
+    "urn:hwm:record:water-temperature-41c",
+    "urn:hwm:record:pump-energy-018"
+  ],
+  "effect_assessments": [
+    {
+      "effect_claim_id": "urn:hwm:claim:pump-wait-time-effect",
+      "status": "consistent",
+      "observation_record_ids": ["urn:hwm:record:wait-time-8s"],
+      "reason_codes": ["observation_within_expected_range"]
+    },
+    {
+      "effect_claim_id": "urn:hwm:claim:pump-temperature-effect",
+      "status": "consistent",
+      "observation_record_ids": ["urn:hwm:record:water-temperature-41c"],
+      "reason_codes": ["observation_within_expected_range"]
+    },
+    {
+      "effect_claim_id": "urn:hwm:claim:pump-energy-effect",
+      "status": "consistent",
+      "observation_record_ids": ["urn:hwm:record:pump-energy-018"],
+      "reason_codes": ["observation_within_expected_range"]
+    }
+  ],
+  "goal_evaluations": [
+    {
+      "goal_claim_id": "urn:hwm:claim:hot-water-wait-requirement",
+      "status": "satisfied",
+      "observation_record_ids": ["urn:hwm:record:wait-time-8s"],
+      "reason_codes": ["observation_at_or_below_maximum"]
+    },
+    {
+      "goal_claim_id": "urn:hwm:claim:hot-water-temperature-requirement",
+      "status": "satisfied",
+      "observation_record_ids": ["urn:hwm:record:water-temperature-41c"],
+      "reason_codes": ["observation_at_or_above_minimum"]
+    }
+  ],
+  "resource_assessments": [
+    {
+      "resource_claim_id": "urn:hwm:claim:morning-energy-constraint",
+      "status": "within_limit",
+      "observation_record_ids": ["urn:hwm:record:pump-energy-018"],
+      "reason_codes": ["observed_energy_below_constraint"]
+    }
+  ],
+  "user_attestation_record_ids": [],
+  "recovery_record_ids": [],
+  "extensions": {}
+}

@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/adoption/v0.1/adoption-view.schema.json",
+  "title":"HWM Adoption View",
+  "type":"object",
+  "required":["view_id","release","question","population","as_of","evidence_policy","axes","deduplication","limitations","must_not_infer"],
+  "properties":{
+    "view_id":{"type":"string"},
+    "release":{"type":"object","required":["release_id","sha256"],"properties":{"release_id":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "question":{"type":"string"},
+    "population":{"type":"string"},
+    "as_of":{"type":"string","format":"date-time"},
+    "evidence_policy":{"type":"string"},
+    "axes":{"type":"object","required":["declared","implemented","deployed","depended_on","sustained","market_estimated"],"properties":{
+      "declared":{"$ref":"#/$defs/axis"},"implemented":{"$ref":"#/$defs/axis"},"deployed":{"$ref":"#/$defs/axis"},"depended_on":{"$ref":"#/$defs/axis"},"sustained":{"$ref":"#/$defs/axis"},"market_estimated":{"$ref":"#/$defs/axis"}
+    },"additionalProperties":false},
+    "deduplication":{"type":"object","required":["unit","lineage_policy"],"properties":{"unit":{"type":"string"},"lineage_policy":{"type":"string"}},"additionalProperties":false},
+    "limitations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "$defs":{"axis":{"type":"object","required":["status","evidence_sha256"],"properties":{"status":{"enum":["supported","not_supported","indeterminate","not_evaluated","withdrawn"]},"evidence_sha256":{"type":"array","items":{"type":"string","pattern":"^[0-9a-f]{64}$"},"uniqueItems":true},"reason":{"type":"string"}},"additionalProperties":false}},
+  "additionalProperties":false
+}

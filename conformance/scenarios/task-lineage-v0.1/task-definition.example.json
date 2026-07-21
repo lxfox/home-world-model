@@ -1,0 +1,25 @@
+{
+  "contract": "hwm-task:Definition",
+  "contract_version": "0.1.0-fixture",
+  "task_id": "urn:hwm:task:morning-bedroom-comfort-1",
+  "definition_revision": 1,
+  "previous_definition_binding": null,
+  "identity_basis": {
+    "household_id": "urn:hwm:household:1",
+    "intent_binding": {"intent_id": "urn:hwm:intent:shared-bedroom-morning-comfort-1", "definition_revision": 1, "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "8ed227a14cd787357c83633b56d014192aea91ae4ad00a1ea64c2c8086c52d18"},
+    "purpose": "urn:hwm:purpose:morning-preparation",
+    "occurrence": {"kind": "one_off", "routine_binding": null, "occurrence_key": null, "original_scheduled_time": null},
+    "scope_refs": ["urn:hwm:function-position:bedroom-hvac", "urn:hwm:space:bedroom"]
+  },
+  "identity_basis_digest": "6a1002763a374778a5ff747d4cc863fc5b69e1a6a053e4c9970105da4b4e7841",
+  "lineage": {"relation": "genesis", "source_task_bindings": []},
+  "created_at": "2026-07-19T06:00:00Z",
+  "created_by_subject": "urn:hwm:subject:admitted-agent-a",
+  "plan_bindings": [{"artifact_id": "urn:hwm:plan:morning-comfort-r1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "2222222222222222222222222222222222222222222222222222222222222222"}],
+  "exit_criteria": [
+    {"criterion_id": "bedroom-ready-goal", "kind": "goal_evaluation", "mandatory": true, "target_binding": {"artifact_id": "urn:hwm:goal:bedroom-ready", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "3333333333333333333333333333333333333333333333333333333333333333"}},
+    {"criterion_id": "hvac-terminal", "kind": "proposal_terminal", "mandatory": true, "target_binding": {"artifact_id": "urn:hwm:proposal:bedroom-hvac-r2", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "4444444444444444444444444444444444444444444444444444444444444444"}}
+  ],
+  "proof": {"mode": "unsigned_fixture", "verification_method": "fixture-task-registry", "value": "fixture:task-definition-proof"},
+  "extensions": {}
+}

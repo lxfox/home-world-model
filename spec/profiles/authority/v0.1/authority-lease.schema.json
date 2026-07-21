@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-lease.schema.json",
+  "title": "HWM Standalone Authority Lease v0.1",
+  "$ref": "authority-profile.schema.json#/$defs/Lease"
+}

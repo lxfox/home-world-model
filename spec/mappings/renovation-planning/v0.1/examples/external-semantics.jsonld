@@ -1,0 +1,100 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "earl": "http://www.w3.org/ns/earl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:design-context:renovation-base-r2",
+      "@type": ["prov:Entity", "prov:Plan"]
+    },
+    {
+      "@id": "urn:hwm:design-option:reading-light-a",
+      "@type": ["prov:Entity", "prov:Plan"],
+      "prov:wasDerivedFrom": { "@id": "urn:hwm:design-context:renovation-base-r2" }
+    },
+    {
+      "@id": "urn:hwm:design-option:reading-light-b",
+      "@type": ["prov:Entity", "prov:Plan"],
+      "prov:wasDerivedFrom": { "@id": "urn:hwm:design-context:renovation-base-r2" }
+    },
+    {
+      "@id": "urn:hwm:claim:planned-reading-requirement",
+      "@type": ["prov:Entity", "earl:TestCriterion"]
+    },
+    {
+      "@id": "urn:hwm:activity:evaluate-option-a",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:claim:planned-option-simulated-effect" },
+        { "@id": "urn:hwm:claim:planned-reading-requirement" }
+      ],
+      "prov:generated": { "@id": "urn:hwm:evaluation:option-a-reading-requirement" }
+    },
+    {
+      "@id": "urn:hwm:evaluation:option-a-reading-requirement",
+      "@type": ["prov:Entity", "earl:Assertion"],
+      "earl:subject": { "@id": "urn:hwm:design-option:reading-light-a" },
+      "earl:test": { "@id": "urn:hwm:claim:planned-reading-requirement" },
+      "earl:result": { "@id": "urn:hwm:test-result:option-a-reading-requirement" },
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:evaluate-option-a" }
+    },
+    {
+      "@id": "urn:hwm:test-result:option-a-reading-requirement",
+      "@type": ["prov:Entity", "earl:TestResult"],
+      "earl:outcome": { "@id": "http://www.w3.org/ns/earl#passed" }
+    },
+    {
+      "@id": "urn:hwm:activity:evaluate-option-b",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:claim:planned-option-b-simulated-effect" },
+        { "@id": "urn:hwm:claim:planned-reading-requirement" }
+      ],
+      "prov:generated": { "@id": "urn:hwm:evaluation:option-b-reading-requirement" }
+    },
+    {
+      "@id": "urn:hwm:evaluation:option-b-reading-requirement",
+      "@type": ["prov:Entity", "earl:Assertion"],
+      "earl:subject": { "@id": "urn:hwm:design-option:reading-light-b" },
+      "earl:test": { "@id": "urn:hwm:claim:planned-reading-requirement" },
+      "earl:result": { "@id": "urn:hwm:test-result:option-b-reading-requirement" },
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:evaluate-option-b" }
+    },
+    {
+      "@id": "urn:hwm:test-result:option-b-reading-requirement",
+      "@type": ["prov:Entity", "earl:TestResult"],
+      "earl:outcome": { "@id": "http://www.w3.org/ns/earl#failed" }
+    },
+    {
+      "@id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:evaluation:option-a-reading-requirement" },
+        { "@id": "urn:hwm:evaluation:option-b-reading-requirement" }
+      ],
+      "prov:generated": { "@id": "urn:hwm:recommendation:reading-light-a-vs-b-1" }
+    },
+    {
+      "@id": "urn:hwm:recommendation:reading-light-a-vs-b-1",
+      "@type": ["prov:Entity", "schema:Recommendation"],
+      "schema:itemReviewed": { "@id": "urn:hwm:design-option:reading-light-a" },
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:comparison:reading-light-a-vs-b-1" }
+    },
+    {
+      "@id": "urn:hwm:choice:homeowner-reading-light-1",
+      "@type": ["prov:Activity", "schema:ChooseAction"],
+      "schema:agent": { "@id": "urn:hwm:subject:homeowner" },
+      "schema:object": { "@id": "urn:hwm:design-option:reading-light-a" },
+      "schema:actionOption": [
+        { "@id": "urn:hwm:design-option:reading-light-a" },
+        { "@id": "urn:hwm:design-option:reading-light-b" }
+      ],
+      "schema:actionStatus": { "@id": "https://schema.org/CompletedActionStatus" },
+      "prov:used": { "@id": "urn:hwm:recommendation:reading-light-a-vs-b-1" },
+      "prov:wasAssociatedWith": { "@id": "urn:hwm:subject:homeowner" }
+    }
+  ]
+}

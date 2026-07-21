@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/core/v0.1/schema/claim-envelope.schema.json",
+  "title": "HWM Claim Envelope v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "claim", "evidence_links", "extensions"],
+  "properties": {
+    "contract": { "const": "hwm:ClaimEnvelope" },
+    "contract_version": { "const": "0.1.0" },
+    "claim": {
+      "type": "object",
+      "description": "Immutable Claim Body. Evidence Links are deliberately excluded from Claim identity.",
+      "required": [
+        "claim_id",
+        "issuer",
+        "issued_at",
+        "proposition",
+        "scope",
+        "epistemic_basis",
+        "profiles",
+        "creation_record_id",
+        "extensions"
+      ],
+      "properties": {
+        "claim_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "issuer": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "issued_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+        "proposition": {
+          "type": "object",
+          "required": ["subject", "predicate", "object"],
+          "properties": {
+            "subject": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "predicate": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "object": {}
+          },
+          "additionalProperties": false
+        },
+        "valid_time": { "$ref": "common.schema.json#/$defs/TimeInterval" },
+        "scope": {
+          "type": "object",
+          "required": ["household_id"],
+          "properties": {
+            "household_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "space_ids": {
+              "type": "array",
+              "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+              "uniqueItems": true
+            },
+            "purposes": {
+              "type": "array",
+              "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "epistemic_basis": {
+          "type": "object",
+          "required": ["mode"],
+          "properties": {
+            "mode": {
+              "enum": ["declared", "observed", "inferred", "predicted", "planned", "simulated", "learned"]
+            },
+            "method": { "type": "string" },
+            "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+          },
+          "additionalProperties": false
+        },
+        "profiles": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "common.schema.json#/$defs/ProfileRef" }
+        },
+        "creation_record_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+      },
+      "additionalProperties": false
+    },
+    "evidence_links": {
+      "type": "array",
+      "description": "Append-oriented projection; not part of Claim Body identity.",
+      "items": {
+        "type": "object",
+        "required": ["link_id", "relation", "record_id", "asserted_by", "created_at", "extensions"],
+        "properties": {
+          "link_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "relation": { "enum": ["supports", "refutes", "confirms", "retracts"] },
+          "record_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "asserted_by": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "created_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+          "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/action-attempt/v0.1/attempt-state-assessment.schema.json",
+  "title":"HWM Action Attempt State Assessment v0.1",
+  "type":"object",
+  "required":["contract","contract_version","assessment_id","attempt_binding","as_of","state","delivery_certainty","execution_certainty","safe_transmission_decision","evaluated_record_bindings","reason_codes","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-attempt:StateAssessment"},"contract_version":{"const":"0.1.0"},
+    "assessment_id":{"type":"string","minLength":1},"attempt_binding":{"$ref":"#/$defs/Binding"},"as_of":{"type":"string","format":"date-time"},
+    "state":{"enum":["not_sent","send_rejected","delivery_unknown","endpoint_accepted","execution_reported_started","execution_reported_completed","execution_reported_failed","cancellation_reported","contested","indeterminate"]},
+    "delivery_certainty":{"enum":["not_delivered","delivered","possibly_delivered","indeterminate"]},
+    "execution_certainty":{"enum":["not_started","possibly_started","reported_started","reported_completed","reported_failed","indeterminate"]},
+    "safe_transmission_decision":{"enum":["initial_send_allowed","same_attempt_retransmission_allowed","reconciliation_required","new_attempt_authorization_required","no_further_transmission","indeterminate"]},
+    "evaluated_record_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},
+    "reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false},"extensions":{"type":"object"}
+  },
+  "$defs":{"Digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},"Binding":{"type":"object","required":["artifact_id","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false}},
+  "additionalProperties":false
+}

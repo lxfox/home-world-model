@@ -1,0 +1,11 @@
+{
+  "contract": "hwm-situation:SubjectSetFixture",
+  "set_id": "urn:hwm:subject-set:resident-a-only-for-night-comfort",
+  "household_id": "urn:hwm:household:fixture-situation-001",
+  "mode": "exact_subjects",
+  "subject_refs": ["urn:hwm:person:resident-a"],
+  "purpose": "urn:hwm:purpose:night-comfort-eligibility",
+  "as_of": "2026-07-19T22:20:00Z",
+  "authority_epoch": 12,
+  "extensions": {}
+}

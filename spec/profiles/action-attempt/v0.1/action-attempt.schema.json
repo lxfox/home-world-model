@@ -1,0 +1,37 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/action-attempt/v0.1/action-attempt.schema.json",
+  "title":"HWM Action Attempt v0.1",
+  "type":"object",
+  "required":["contract","contract_version","attempt_id","household_id","proposal_binding","authorization_binding","proposal_state_binding","gateway_id","endpoint_binding","created_at","deduplication_contract","transmissions","acknowledgement_records","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-attempt:ActionAttempt"},"contract_version":{"const":"0.1.0"},
+    "attempt_id":{"type":"string","minLength":1},"household_id":{"type":"string","minLength":1},
+    "proposal_binding":{"$ref":"#/$defs/ProposalBinding"},
+    "authorization_binding":{"$ref":"#/$defs/ArtifactBinding"},
+    "proposal_state_binding":{"$ref":"#/$defs/ArtifactBinding"},
+    "gateway_id":{"type":"string","minLength":1},"endpoint_binding":{"$ref":"#/$defs/ArtifactBinding"},
+    "created_at":{"type":"string","format":"date-time"},
+    "deduplication_contract":{
+      "type":"object","required":["mode","key","scope","retained_until","evidence_binding"],
+      "properties":{
+        "mode":{"enum":["none","transport_only","endpoint_command"]},
+        "key":{"type":["string","null"],"minLength":1},
+        "scope":{"enum":["none","connection","session","endpoint","endpoint_action"]},
+        "retained_until":{"type":["string","null"],"format":"date-time"},
+        "evidence_binding":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/ArtifactBinding"}]}
+      },"additionalProperties":false
+    },
+    "transmissions":{"type":"array","items":{"$ref":"#/$defs/Transmission"}},
+    "acknowledgement_records":{"type":"array","items":{"$ref":"#/$defs/Acknowledgement"}},
+    "proof":{"$ref":"#/$defs/Proof"},"extensions":{"type":"object"}
+  },
+  "$defs":{
+    "Digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "ProposalBinding":{"type":"object","required":["proposal_id","proposal_revision","digest_algorithm","canonicalization","digest"],"properties":{"proposal_id":{"type":"string","minLength":1},"proposal_revision":{"type":"integer","minimum":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false},
+    "ArtifactBinding":{"type":"object","required":["artifact_id","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false},
+    "Transmission":{"type":"object","required":["transmission_id","attempt_id","sequence","sent_at","transport","transport_message_id","payload_digest","result"],"properties":{"transmission_id":{"type":"string","minLength":1},"attempt_id":{"type":"string","minLength":1},"sequence":{"type":"integer","minimum":1},"sent_at":{"type":"string","format":"date-time"},"transport":{"type":"string","minLength":1},"transport_message_id":{"type":"string","minLength":1},"payload_digest":{"$ref":"#/$defs/Digest"},"result":{"enum":["sent","send_rejected","send_error","indeterminate"]}},"additionalProperties":false},
+    "Acknowledgement":{"type":"object","required":["record_id","source","kind","status","recorded_at","transmission_id","raw_binding"],"properties":{"record_id":{"type":"string","minLength":1},"source":{"type":"string","minLength":1},"kind":{"enum":["transport_received","endpoint_accepted","execution_started","execution_completed","execution_rejected","execution_failed","cancellation_accepted"]},"status":{"enum":["reported","verified","contested","indeterminate"]},"recorded_at":{"type":"string","format":"date-time"},"transmission_id":{"type":["string","null"],"minLength":1},"raw_binding":{"$ref":"#/$defs/ArtifactBinding"}},"additionalProperties":false},
+    "Proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}
+  },"additionalProperties":false
+}

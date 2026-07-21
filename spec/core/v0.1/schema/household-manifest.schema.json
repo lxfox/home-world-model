@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/core/v0.1/schema/household-manifest.schema.json",
+  "title": "HWM Household Manifest v0.1",
+  "type": "object",
+  "required": [
+    "contract",
+    "contract_version",
+    "package_id",
+    "household_id",
+    "created_at",
+    "profiles",
+    "authority",
+    "resources",
+    "extensions"
+  ],
+  "properties": {
+    "contract": { "const": "hwm:HouseholdManifest" },
+    "contract_version": { "const": "0.1.0" },
+    "package_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "household_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "created_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/ProfileRef" }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["authority_id", "epoch"],
+      "properties": {
+        "authority_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+        "epoch": { "type": "integer", "minimum": 0 },
+        "policy_resource": { "$ref": "common.schema.json#/$defs/Identifier" }
+      },
+      "additionalProperties": false
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "media_type", "role", "integrity"],
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "media_type": { "type": "string", "minLength": 1 },
+          "role": {
+            "enum": ["claims", "records", "authority", "external_evidence", "other"]
+          },
+          "integrity": {
+            "type": "object",
+            "required": ["algorithm", "digest"],
+            "properties": {
+              "algorithm": { "type": "string", "minLength": 1 },
+              "digest": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+  },
+  "additionalProperties": false
+}

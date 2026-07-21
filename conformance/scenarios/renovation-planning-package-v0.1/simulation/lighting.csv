@@ -1,0 +1,3 @@
+option_id,zone_id,input_level_percent,illuminance_min,illuminance_max,unit,method,model_version
+urn:hwm:design-option:reading-light-a,urn:hwm:zone:planned-reading,100,320,380,lx,synthetic-ray-simulation,sim-fixture-1
+urn:hwm:design-option:reading-light-b,urn:hwm:zone:planned-reading,100,245,285,lx,synthetic-ray-simulation,sim-fixture-1

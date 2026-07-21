@@ -1,0 +1,28 @@
+{
+  "cases":[
+    {"case_id":"eligible-gap","facts":{},"expected":{"result":"eligible","reason":"accepted_gap_and_policy_conditions_satisfied"}},
+    {"case_id":"satisfied-target","facts":{"fit":"satisfied"},"expected":{"result":"not_eligible","reason":"fit_result_outside_policy"}},
+    {"case_id":"partial-not-declared","facts":{"fit":"partially_satisfied"},"expected":{"result":"not_eligible","reason":"fit_result_outside_policy"}},
+    {"case_id":"fit-indeterminate","facts":{"fit":"indeterminate"},"expected":{"result":"indeterminate","reason":"target_fit_indeterminate"}},
+    {"case_id":"missing-policy","facts":{"policy":"not_observed"},"expected":{"result":"indeterminate","reason":"deliberation_policy_not_observed"}},
+    {"case_id":"policy-contested","facts":{"policy":"contested"},"expected":{"result":"indeterminate","reason":"deliberation_policy_contested"}},
+    {"case_id":"policy-stale","facts":{"policy_freshness":"stale"},"expected":{"result":"indeterminate","reason":"deliberation_policy_not_current"}},
+    {"case_id":"binding-mismatch","facts":{"binding":"mismatch"},"expected":{"result":"indeterminate","reason":"content_binding_mismatch"}},
+    {"case_id":"purpose-mismatch","facts":{"purpose":"mismatch"},"expected":{"result":"indeterminate","reason":"purpose_mismatch"}},
+    {"case_id":"authority-stale","facts":{"epoch":"stale"},"expected":{"result":"indeterminate","reason":"authority_epoch_stale"}},
+    {"case_id":"condition-false","facts":{"conditions":["not_satisfied"]},"expected":{"result":"not_eligible","reason":"policy_condition_not_satisfied"}},
+    {"case_id":"condition-unknown","facts":{"conditions":["indeterminate"]},"expected":{"result":"indeterminate","reason":"policy_condition_indeterminate"}},
+    {"case_id":"partial-coverage","facts":{"coverage":"partial"},"expected":{"result":"indeterminate","reason":"condition_coverage_partial"}},
+    {"case_id":"open-deliberation","facts":{"duplicate":"open_deliberation"},"expected":{"result":"not_eligible","reason":"duplicate_open_deliberation"}},
+    {"case_id":"cooldown","facts":{"duplicate":"cooldown_active"},"expected":{"result":"not_eligible","reason":"duplicate_cooldown_active"}},
+    {"case_id":"existing-work","facts":{"duplicate":"existing_work"},"expected":{"result":"not_eligible","reason":"duplicate_existing_work"}},
+    {"case_id":"existing-adopted-intent","facts":{"intent":"adopted_for_exact_target"},"expected":{"result":"not_eligible","reason":"existing_intent_handles_exact_target"}},
+    {"case_id":"duplicate-unknown","facts":{"duplicate":"indeterminate"},"expected":{"result":"indeterminate","reason":"duplicate_status_indeterminate"}},
+    {"case_id":"privacy-denied","facts":{"access":"denied"},"expected":{"result":"indeterminate","reason":"condition_access_denied"}},
+    {"case_id":"explicit-user-request","facts":{"origin":"explicit_user_request"},"expected":{"result":"indeterminate","reason":"explicit_request_uses_direct_intent_path"}},
+    {"case_id":"intent-drift","facts":{"origin":"existing_intent_drift"},"expected":{"result":"indeterminate","reason":"intent_drift_uses_fulfillment_path"}},
+    {"case_id":"routine-occurrence","facts":{"origin":"routine_occurrence"},"expected":{"result":"indeterminate","reason":"routine_uses_instantiation_path"}},
+    {"case_id":"safety-duty","facts":{"origin":"safety_duty"},"expected":{"result":"indeterminate","reason":"safety_duty_uses_authority_procedure"}}
+  ],
+  "must_not_infer":["target_gap_is_need","gap_is_urgent","gap_is_high_priority","eligible_creates_intent","eligible_adopts_intent","eligible_authorizes_notification","eligible_discloses_private_basis","eligible_creates_task","eligible_selects_plan","eligible_creates_proposal","eligible_authorizes_action","duplicate_suppression_erases_gap","explicit_request_is_agent_inferred_need","intent_drift_is_new_opportunity","safety_duty_comes_from_fit","agent_policy_is_household_policy","unknown_is_eligible"]
+}

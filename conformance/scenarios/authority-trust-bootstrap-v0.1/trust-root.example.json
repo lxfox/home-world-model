@@ -1,0 +1,33 @@
+{
+  "contract": "hwm-authority:TrustRoot",
+  "contract_version": "0.1.0-fixture",
+  "signed": {
+    "root_id": "urn:hwm:trust-root:household-1:v1",
+    "lineage_id": "urn:hwm:authority-lineage:household-1",
+    "authority_id": "urn:hwm:authority:household-1",
+    "household_id": "urn:hwm:household:1",
+    "root_version": 1,
+    "authority_epoch_floor": 10,
+    "issued_at": "2026-07-01T00:00:00Z",
+    "expires_at": "2027-07-01T00:00:00Z",
+    "transition_kind": "genesis",
+    "previous_root_binding": null,
+    "verification_methods": [
+      { "method_id": "root-a", "controller": "urn:hwm:controller:household-1:a", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-a", "purposes": ["root"], "extensions": {} },
+      { "method_id": "root-b", "controller": "urn:hwm:controller:household-1:b", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-b", "purposes": ["root"], "extensions": {} },
+      { "method_id": "authority-online-a", "controller": "urn:hwm:service:authority-1", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:authority-online-a", "purposes": ["authority_document"], "extensions": {} },
+      { "method_id": "recovery-a", "controller": "urn:hwm:recovery-custodian:a", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-a", "purposes": ["recovery"], "extensions": {} },
+      { "method_id": "recovery-b", "controller": "urn:hwm:recovery-custodian:b", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-b", "purposes": ["recovery"], "extensions": {} }
+    ],
+    "roles": {
+      "root": { "threshold": 2, "method_ids": ["root-a", "root-b"] },
+      "authority_document": { "threshold": 1, "method_ids": ["authority-online-a"] }
+    },
+    "recovery_policy": { "mode": "precommitted", "threshold": 2, "method_ids": ["recovery-a", "recovery-b"] }
+  },
+  "proofs": [
+    { "proof_id": "genesis-next-a", "authorization_role": "next_root", "signer_method_id": "root-a", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:genesis-next-a" },
+    { "proof_id": "genesis-next-b", "authorization_role": "next_root", "signer_method_id": "root-b", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:genesis-next-b" }
+  ],
+  "extensions": {}
+}

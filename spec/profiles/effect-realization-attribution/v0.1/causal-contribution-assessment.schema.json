@@ -1,0 +1,17 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/effect-realization-attribution/v0.1/causal-contribution-assessment.schema.json",
+  "title":"HWM Causal Contribution Assessment v0.1",
+  "type":"object",
+  "required":["contract","contract_version","assessment_id","attempt_binding","effect_realization_binding","causal_method_binding","as_of","status","evidence_design","baseline_bindings","outcome_bindings","competing_factor_bindings","assumption_bindings","reason_codes","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-effect:CausalContributionAssessment"},"contract_version":{"const":"0.1.0"},
+    "assessment_id":{"type":"string","minLength":1},"attempt_binding":{"$ref":"#/$defs/Binding"},"effect_realization_binding":{"$ref":"#/$defs/Binding"},"causal_method_binding":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/Binding"}]},"as_of":{"type":"string","format":"date-time"},
+    "status":{"enum":["not_assessed","supported_contribution","not_supported","contested","indeterminate"]},
+    "evidence_design":{"enum":["none","temporal_sequence_only","before_after","controlled_comparison","accepted_causal_model","randomized_intervention","other_declared"]},
+    "baseline_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},"outcome_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},"competing_factor_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},"assumption_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},
+    "reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},"proof":{"$ref":"#/$defs/Proof"},"extensions":{"type":"object"}
+  },
+  "$defs":{"Digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},"Binding":{"type":"object","required":["artifact_id","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false},"Proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}},
+  "additionalProperties":false
+}

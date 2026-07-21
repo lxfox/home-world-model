@@ -1,0 +1,576 @@
+{
+  "artifact": "hwm:CoreTermMappingAudit",
+  "version": "0.1.0",
+  "status": "mapping_candidate",
+  "normative_language": "en",
+  "sources": [
+    { "source_id": "rdf11", "title": "RDF 1.1 Concepts and Abstract Syntax", "url": "https://www.w3.org/TR/rdf11-concepts/", "version_or_date": "W3C Recommendation 2014-02-25" },
+    { "source_id": "jsonld11", "title": "JSON-LD 1.1", "url": "https://www.w3.org/TR/json-ld11/", "version_or_date": "W3C Recommendation 2020-07-16" },
+    { "source_id": "prov-o", "title": "PROV-O: The PROV Ontology", "url": "https://www.w3.org/TR/prov-o/", "version_or_date": "W3C Recommendation 2013-04-30" },
+    { "source_id": "vc20", "title": "Verifiable Credentials Data Model v2.0", "url": "https://www.w3.org/TR/vc-data-model-2.0/", "version_or_date": "W3C Recommendation 2025-05-15" },
+    { "source_id": "webanno", "title": "Web Annotation Data Model", "url": "https://www.w3.org/TR/annotation-model/", "version_or_date": "W3C Recommendation 2017-02-23" },
+    { "source_id": "sosa2023", "title": "Semantic Sensor Network Ontology — 2023 Edition", "url": "https://www.w3.org/TR/vocab-ssn-2023/", "version_or_date": "2023 Edition; latest published version accessed 2026-07-18" },
+    { "source_id": "wot-td11", "title": "Web of Things Thing Description 1.1", "url": "https://www.w3.org/TR/wot-thing-description11/", "version_or_date": "W3C Recommendation 2023-12-05" },
+    { "source_id": "saref411", "title": "ETSI TS 103 264 — SAREF Reference Ontology and oneM2M Mapping", "url": "https://www.etsi.org/deliver/etsi_ts/103200_103299/103264/04.01.01_60/ts_103264v040101p.pdf", "version_or_date": "V4.1.1 2025-02" },
+    { "source_id": "bot", "title": "Building Topology Ontology", "url": "https://w3c-lbd-cg.github.io/bot/", "version_or_date": "Living specification accessed 2026-07-18" },
+    { "source_id": "brick15", "title": "Brick ontology documentation", "url": "https://docs.brickschema.org/", "version_or_date": "v1.5 documentation accessed 2026-07-18" },
+    { "source_id": "ifc43", "title": "Industry Foundation Classes IFC 4.3", "url": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/", "version_or_date": "IFC4.3 ADD2" },
+    { "source_id": "ngsild18", "title": "ETSI GS CIM 009 — NGSI-LD API", "url": "https://www.etsi.org/deliver/etsi_gs/CIM/001_099/009/01.08.01_60/gs_cim009v010801p.pdf", "version_or_date": "V1.8.1 2024-03" },
+    { "source_id": "odrl22", "title": "ODRL Information Model 2.2", "url": "https://www.w3.org/TR/odrl-model/", "version_or_date": "W3C Recommendation 2018-02-15" },
+    { "source_id": "xacml30", "title": "eXtensible Access Control Markup Language 3.0", "url": "https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html", "version_or_date": "OASIS Standard 2013-01-22" },
+    { "source_id": "owl-time", "title": "Time Ontology in OWL", "url": "https://www.w3.org/TR/owl-time/", "version_or_date": "W3C Recommendation 2022-11-15" },
+    { "source_id": "rocrate13", "title": "RO-Crate Specification", "url": "https://www.researchobject.org/ro-crate/specification.html", "version_or_date": "v1.3 current long-term release" },
+    { "source_id": "dcmi", "title": "DCMI Metadata Terms", "url": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/", "version_or_date": "DCMI Recommendation 2020-01-20" },
+    { "source_id": "matter-sdk", "title": "Matter connectedhomeip data model and access-control documentation", "url": "https://project-chip.github.io/connectedhomeip-doc/", "version_or_date": "Current SDK documentation accessed 2026-07-18" },
+    { "source_id": "iec81346", "title": "IEC 81346-1 — Structuring principles and reference designations", "url": "https://www.iso.org/standard/82229.html", "version_or_date": "IEC 81346-1:2022; official public abstract accessed 2026-07-19" },
+    { "source_id": "iso81346-12", "title": "ISO 81346-12 — Construction works and building services", "url": "https://www.iso.org/standard/63886.html", "version_or_date": "ISO 81346-12:2018; confirmed current 2024; official public abstract accessed 2026-07-19" },
+    { "source_id": "ace9200", "title": "Authentication and Authorization for Constrained Environments Using OAuth 2.0", "url": "https://www.rfc-editor.org/rfc/rfc9200.html", "version_or_date": "RFC 9200 2022-08" },
+    { "source_id": "cwt8392", "title": "CBOR Web Token", "url": "https://www.rfc-editor.org/rfc/rfc8392.html", "version_or_date": "RFC 8392 2018-05" }
+  ],
+  "terms": [
+    {
+      "term_id": "hwm:EntityRef",
+      "layer": "kernel",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "rdf11", "term": "IRI", "coverage": "exact" },
+        { "source_id": "jsonld11", "term": "node identifier (@id)", "coverage": "exact" },
+        { "source_id": "ngsild18", "term": "Entity id", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "HWM only constrains identifier stability and states that identity equivalence is not implied by identifier reuse.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["all-three-fixtures"]
+    },
+    {
+      "term_id": "hwm:Claim",
+      "layer": "kernel",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "rdf11", "term": "RDF triple", "coverage": "strong_partial" },
+        { "source_id": "vc20", "term": "claim / credentialSubject", "coverage": "strong_partial" },
+        { "source_id": "prov-o", "term": "Entity with attribution and generation", "coverage": "partial" }
+      ],
+      "residual_gap": "The one-proposition immutable body, epistemic basis, household scope, profile versions, creation Record, and same-ID/same-body rule are an application profile across these standards.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["claim-id-collision", "late-evidence-link"]
+    },
+    {
+      "term_id": "hwm:Record",
+      "layer": "kernel",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "Entity / Activity / generation / invalidation", "coverage": "strong_partial" },
+        { "source_id": "sosa2023", "term": "Observation / Actuation", "coverage": "binding_specific" },
+        { "source_id": "ngsild18", "term": "temporal Property or Relationship instance", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "HWM's small immutable event-record JSON shape and explicit integrity mode are packaging constraints, not a new event ontology.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["all-three-fixtures"]
+    },
+    {
+      "term_id": "hwm:Authority",
+      "layer": "kernel",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "odrl22", "term": "Policy / Permission / Prohibition / Duty / Constraint", "coverage": "strong_partial" },
+        { "source_id": "xacml30", "term": "Policy Decision Point and authorization decision", "coverage": "strong_partial" },
+        { "source_id": "ace9200", "term": "Authorization Server / client / Resource Server", "coverage": "binding_specific" },
+        { "source_id": "vc20", "term": "issuer / verifier / securing mechanism", "coverage": "partial" }
+      ],
+      "residual_gap": "Household-local trust anchors, epoch awareness, bounded offline Lease, and deterministic deny-overrides are HWM Profile constraints.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["authority-oracle-11-cases"]
+    },
+    {
+      "term_id": "hwm:HouseholdManifest",
+      "layer": "exchange_contract",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "rocrate13", "term": "RO-Crate Metadata Descriptor / Root Data Entity / conformsTo", "coverage": "strong_partial" },
+        { "source_id": "dcmi", "term": "Dataset metadata, hasPart, conformsTo", "coverage": "partial" }
+      ],
+      "residual_gap": "Household scope, required HWM Profiles, Authority reference, and mandatory resource integrity are an RO-Crate Profile or simple-JSON binding, not a new generic package model.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["package-digest-validation", "ro-crate-lossless-manifest-projection"]
+    },
+    {
+      "term_id": "hwm:HouseholdKnowledgePackage",
+      "layer": "exchange_contract",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "rocrate13", "term": "Attached or Detached RO-Crate Package", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "The household-specific content and authorization rules belong in an HWM RO-Crate Profile; packaging itself is already covered.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["all-three-fixtures"]
+    },
+    {
+      "term_id": "hwm:ClaimEnvelope",
+      "layer": "exchange_contract",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "vc20", "term": "Verifiable Credential, evidence, credentialStatus", "coverage": "strong_partial" },
+        { "source_id": "prov-o", "term": "qualified attribution / derivation / invalidation", "coverage": "partial" },
+        { "source_id": "webanno", "term": "Annotation body-target relation with motivation", "coverage": "partial" }
+      ],
+      "residual_gap": "No reviewed source defines a one-proposition immutable body whose independently identified support, refutation, confirmation, and retraction links can grow without changing body identity.",
+      "normative_action": "retain_exchange_contract",
+      "confidence": "medium",
+      "fixture_evidence": ["late-evidence-link", "claim-id-collision", "single-candidate-contest"]
+    },
+    {
+      "term_id": "hwm:EvidenceLink",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "qualified influence and derivation", "coverage": "partial" },
+        { "source_id": "webanno", "term": "Annotation / motivation / target", "coverage": "strong_partial" },
+        { "source_id": "vc20", "term": "evidence and credentialStatus", "coverage": "partial" }
+      ],
+      "residual_gap": "Epistemic polarity (`supports`, `refutes`, `confirms`, `retracts`) and its effect on household resolution are not supplied by PROV alone.",
+      "normative_action": "retain_wire_only",
+      "confidence": "medium",
+      "fixture_evidence": ["lighting-evidence-links", "forecast-calibration-not-refutation", "exact-bound-interaction-attestation", "refutation-without-negation"]
+    },
+    {
+      "term_id": "hwm:WorldView",
+      "layer": "exchange_contract",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "ngsild18", "term": "query result and temporal representation", "coverage": "strong_partial" },
+        { "source_id": "vc20", "term": "Verifiable Presentation", "coverage": "partial" },
+        { "source_id": "odrl22", "term": "purpose and constraint-bound policy", "coverage": "partial" },
+        { "source_id": "owl-time", "term": "Instant / Interval and temporal relations", "coverage": "partial" }
+      ],
+      "residual_gap": "The purpose-, requester-, time-, coverage-, and Authority-bound self-contained resolution projection with privacy-safe zero-candidate results and orthogonal status axes is not defined by one reviewed standard.",
+      "normative_action": "retain_exchange_contract",
+      "confidence": "high",
+      "fixture_evidence": ["33-world-view-resolutions", "access-denied-zero-candidates", "freshness-versus-temporal-status", "single-candidate-contest", "qualified-correction"]
+    },
+    {
+      "term_id": "hwm:Candidate",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "rdf11", "term": "object of an RDF triple", "coverage": "partial" },
+        { "source_id": "ngsild18", "term": "Property or Relationship instance", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "Candidate is a World View serialization node that binds one disclosed value to visible Claim and evidence references; it is not a household-domain class.",
+      "normative_action": "retain_wire_only",
+      "confidence": "high",
+      "fixture_evidence": ["33-world-view-resolutions"]
+    },
+    {
+      "term_id": "hwm:FunctionalSlot",
+      "layer": "domain_role",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "iec81346", "term": "object viewed under a function aspect and reference designation", "coverage": "strong_partial" },
+        { "source_id": "iso81346-12", "term": "system object occurrence in construction works and building services", "coverage": "strong_partial" },
+        { "source_id": "brick15", "term": "Equipment / System / Automation Collection", "coverage": "partial" },
+        { "source_id": "ifc43", "term": "type, system, group, or spatially contained functional object", "coverage": "partial" }
+      ],
+      "residual_gap": "HWM needs a Profile rule that binds a household function-position identifier to a declared IEC 81346 reference designation system, keeps requirements and history attached to that position, and keeps manufactured-asset and endpoint identities separate. This is a cross-standard lifecycle constraint, not an HWM ontology class. Exact relation encoding still requires licensed clause review.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["device-lifecycle-continuity"]
+    },
+    {
+      "term_id": "hwm:PhysicalAsset",
+      "layer": "domain_role",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "saref411", "term": "saref:Device", "coverage": "strong_partial" },
+        { "source_id": "bot", "term": "bot:Element", "coverage": "strong_partial" },
+        { "source_id": "brick15", "term": "brick:Equipment", "coverage": "strong_partial" },
+        { "source_id": "ifc43", "term": "IfcElement / IfcAsset", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "Profiles select the domain-specific external class; HWM only requires it not be conflated with a network endpoint or functional role.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["device-lifecycle-continuity"]
+    },
+    {
+      "term_id": "hwm:DigitalEndpoint",
+      "layer": "domain_role",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "matter-sdk", "term": "Matter Endpoint with device types and clusters", "coverage": "binding_specific" },
+        { "source_id": "wot-td11", "term": "Thing and InteractionAffordance", "coverage": "binding_specific" },
+        { "source_id": "brick15", "term": "Point hosted by ICT Equipment", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "There is no protocol-neutral external class with identical granularity; HWM should keep an interface role in bindings, not publish a competing endpoint ontology.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["matter-endpoint-replacement"]
+    },
+    {
+      "term_id": "sosa:FeatureOfInterest",
+      "layer": "domain_role",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "sosa2023", "term": "sosa:FeatureOfInterest", "uri": "http://www.w3.org/ns/sosa/FeatureOfInterest", "coverage": "exact" },
+        { "source_id": "saref411", "term": "saref:FeatureOfInterest", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "A measurement zone can additionally be typed as BOT Zone or Brick Location; no HWM class is needed.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["lighting-measurement-zone", "morning-physical-effects"]
+    },
+    {
+      "term_id": "hwm:Space",
+      "layer": "domain_role",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "bot", "term": "bot:Zone / bot:Space", "coverage": "strong_partial" },
+        { "source_id": "brick15", "term": "brick:Location", "coverage": "strong_partial" },
+        { "source_id": "ifc43", "term": "IfcSpace / IfcSpatialElement", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "A Space Profile chooses one or more existing vocabularies and records equivalence only when justified.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["lighting-space-scope"]
+    },
+    {
+      "term_id": "hwm:Observation",
+      "layer": "domain_role",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "sosa2023", "term": "sosa:Observation", "uri": "http://www.w3.org/ns/sosa/Observation", "coverage": "exact" },
+        { "source_id": "saref411", "term": "saref:Observation / Measurement", "coverage": "strong_partial" },
+        { "source_id": "ngsild18", "term": "Property instance with observedAt", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "HWM Record packaging and resolver status are separate from the observation domain model.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["lighting-observations", "late-observation"]
+    },
+    {
+      "term_id": "hwm:ActionProposal",
+      "layer": "exchange_contract",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "odrl22", "term": "Request Policy with action, target, assignee, and constraints", "coverage": "strong_partial" },
+        { "source_id": "prov-o", "term": "prov:Plan used by an Activity", "coverage": "partial" },
+        { "source_id": "wot-td11", "term": "ActionAffordance and invocation input", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "HWM requires an exact based-on View identifier and explicit expected-effect and goal references before authorization.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "medium",
+      "fixture_evidence": ["all-action-traces"]
+    },
+    {
+      "term_id": "hwm:AuthorizationDecision",
+      "layer": "exchange_contract",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "xacml30", "term": "Permit / Deny / Indeterminate / NotApplicable plus Obligation", "coverage": "strong_partial" },
+        { "source_id": "odrl22", "term": "Permission / Prohibition / Duty", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "`confirmation_required` is a household-friendly projection of a non-dispatchable decision with a confirmation Duty or Obligation, not a new general policy-decision theory.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["hvac-confirmation-required", "authority-oracle-11-cases"]
+    },
+    {
+      "term_id": "hwm:ActionTrace",
+      "layer": "exchange_contract",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "Bundle / Activity / Entity / used / generated", "coverage": "strong_partial" },
+        { "source_id": "sosa2023", "term": "Actuation and Observation", "coverage": "strong_partial" },
+        { "source_id": "wot-td11", "term": "Action invocation and protocol forms", "coverage": "binding_specific" },
+        { "source_id": "xacml30", "term": "authorization Result", "coverage": "partial" }
+      ],
+      "residual_gap": "The immutable revisioned projection that keeps authorization, dispatch, acknowledgement, physical observation, effect consistency, goals, resources, forecast realization, and user acceptance independent is not supplied as one contract.",
+      "normative_action": "retain_exchange_contract",
+      "confidence": "high",
+      "fixture_evidence": ["lighting-four-oracles", "morning-multi-effect", "late-trace-revision"]
+    },
+    {
+      "term_id": "hwm:AvailabilityStatus",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "xacml30", "term": "Deny / Indeterminate / NotApplicable", "coverage": "partial" },
+        { "source_id": "ngsild18", "term": "query errors and absent attributes", "coverage": "partial" }
+      ],
+      "residual_gap": "The privacy-safe distinction among available, not observed, source unavailable, and access denied, including zero-Candidate non-disclosure, is a World View behavior contract.",
+      "normative_action": "retain_wire_only",
+      "confidence": "high",
+      "fixture_evidence": ["access-denied-zero-candidates", "deleted-source-unavailable"]
+    },
+    {
+      "term_id": "hwm:EpistemicStatus",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "vc20", "term": "verification and confidence method", "coverage": "partial" },
+        { "source_id": "prov-o", "term": "provenance relations", "coverage": "partial" }
+      ],
+      "residual_gap": "PROV describes origin, not whether a purpose-bound resolver accepts, contests, cannot verify, or cannot evaluate a proposition.",
+      "normative_action": "retain_wire_only",
+      "confidence": "high",
+      "fixture_evidence": ["accepted-preferences-with-conflict", "contested-capability", "single-candidate-contest", "purpose-bound-admission"]
+    },
+    {
+      "term_id": "hwm:FreshnessStatus",
+      "layer": "wire_field",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "ngsild18", "term": "observedAt / modifiedAt / temporal representation", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "The status is a deterministic View-policy result derived from source time and maximum age; it is not a new ontology class.",
+      "normative_action": "retain_wire_only",
+      "confidence": "high",
+      "fixture_evidence": ["freshness-versus-temporal-status"]
+    },
+    {
+      "term_id": "hwm:TemporalStatus",
+      "layer": "wire_field",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "owl-time", "term": "time:Instant / time:Interval and interval relations", "coverage": "strong_partial" },
+        { "source_id": "vc20", "term": "validFrom / validUntil", "coverage": "partial" }
+      ],
+      "residual_gap": "The enum is a materialized resolver result at View `as_of`; temporal concepts and comparisons come from OWL-Time and the HWM half-open JSON binding.",
+      "normative_action": "retain_wire_only",
+      "confidence": "high",
+      "fixture_evidence": ["current-plus-expired", "stale-plus-unbounded"]
+    },
+    {
+      "term_id": "hwm:ApplicabilityStatus",
+      "layer": "wire_field",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "odrl22", "term": "Constraint and Rule applicability", "coverage": "strong_partial" },
+        { "source_id": "xacml30", "term": "NotApplicable and policy combining", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "The HWM enum projects preference and requirement conflict separately from epistemic truth and authorization.",
+      "normative_action": "retain_wire_only",
+      "confidence": "high",
+      "fixture_evidence": ["accepted-preferences-with-conflict"]
+    },
+    {
+      "term_id": "hwm:EffectAssessment",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "sosa2023", "term": "Actuation / Observation / Procedure / Result", "coverage": "strong_partial" },
+        { "source_id": "prov-o", "term": "Activity used Entity and generated Entity", "coverage": "partial" }
+      ],
+      "residual_gap": "The explicit comparison between predicted range, recorded context, and physical observation is not a standard SOSA result type.",
+      "normative_action": "retain_wire_only",
+      "confidence": "medium",
+      "fixture_evidence": ["lighting-four-oracles", "morning-three-effects"]
+    },
+    {
+      "term_id": "hwm:GoalEvaluation",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "Entity derived from observations and plan", "coverage": "partial" }
+      ],
+      "residual_gap": "Goal satisfaction is intentionally independent of effect consistency and dispatch; no reviewed IoT standard supplies this assessment contract.",
+      "normative_action": "retain_wire_only",
+      "confidence": "medium",
+      "fixture_evidence": ["295-lux-consistent-but-not-satisfied"]
+    },
+    {
+      "term_id": "hwm:ResourceAssessment",
+      "layer": "wire_field",
+      "decision": "hwm_contract_gap",
+      "external_terms": [
+        { "source_id": "sosa2023", "term": "Observation and Result", "coverage": "partial" },
+        { "source_id": "odrl22", "term": "Constraint", "coverage": "partial" }
+      ],
+      "residual_gap": "HWM only defines the action-trace comparison status; quantities and units must come from a unit vocabulary selected by the Effect Profile.",
+      "normative_action": "retain_wire_only",
+      "confidence": "medium",
+      "fixture_evidence": ["morning-energy-within-limit"]
+    },
+    {
+      "term_id": "hwm:AuthorityEpochAndLease",
+      "layer": "wire_field",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "ace9200", "term": "Authorization Server token issuance and local Resource Server validation", "coverage": "strong_partial" },
+        { "source_id": "cwt8392", "term": "exp / nbf / iat / aud / cti claims", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "Epoch is a household profile rule for learned revocation state; Lease expiry bounds offline exposure and does not promise instantaneous offline revocation.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["authority-oracle-11-cases"]
+    },
+    {
+      "term_id": "hwm:locatedIn",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "brick15", "term": "brick:hasLocation", "coverage": "strong_partial" },
+        { "source_id": "bot", "term": "bot:containsElement / bot:containsZone", "coverage": "binding_specific" },
+        { "source_id": "ifc43", "term": "spatial containment relationship", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "Direction and geometry semantics are selected by the Space Profile.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["lighting-space-scope"]
+    },
+    {
+      "term_id": "hwm:containsAndAdjacentTo",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "bot", "term": "bot:containsZone / bot:containsElement / bot:adjacentZone / bot:adjacentElement", "coverage": "exact" }
+      ],
+      "residual_gap": "HWM should not mint aliases.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": []
+    },
+    {
+      "term_id": "hwm:fulfills",
+      "layer": "relationship",
+      "decision": "do_not_standardize",
+      "external_terms": [
+        { "source_id": "iec81346", "term": "relation between an object under functional and product aspects", "coverage": "strong_partial" },
+        { "source_id": "iso81346-12", "term": "reference designation of an object occurrence, excluding inventory or serial identity and product types", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "The generic verb conflates a time-bounded asset-to-function realization binding with requirement satisfaction, candidate consideration, compatibility proof, and identity. Those distinctions already have different lifecycle and evidence rules, so one Core predicate would be actively unsafe even before an exact IEC relation encoding is selected.",
+      "normative_action": "reject_term",
+      "confidence": "high",
+      "fixture_evidence": ["device-lifecycle-continuity"]
+    },
+    {
+      "term_id": "hwm:exposes",
+      "layer": "relationship",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "brick15", "term": "brick:hosts / brick:hasPoint", "coverage": "binding_specific" },
+        { "source_id": "wot-td11", "term": "Thing has InteractionAffordance and Form", "coverage": "binding_specific" },
+        { "source_id": "matter-sdk", "term": "Node endpoint composition", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "The relation is protocol-dependent and belongs in bindings; Core only requires asset and endpoint identities remain distinct.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["matter-endpoint-replacement"]
+    },
+    {
+      "term_id": "hwm:replacesAndSupersedes",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "dcmi", "term": "dcterms:replaces / dcterms:isReplacedBy", "uri": "http://purl.org/dc/terms/replaces", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "HWM adds household scope and valid time in the enclosing Claim, not a new replacement predicate.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["device-lifecycle-continuity"]
+    },
+    {
+      "term_id": "hwm:equivalentTo",
+      "layer": "relationship",
+      "decision": "do_not_standardize",
+      "external_terms": [
+        { "source_id": "rdf11", "term": "identity-sensitive IRI semantics", "coverage": "partial" },
+        { "source_id": "prov-o", "term": "prov:alternateOf / prov:specializationOf", "coverage": "partial" }
+      ],
+      "residual_gap": "A generic equivalence predicate is too dangerous. Exact identity, alternate representation, semantic mapping, and household-scoped operational equivalence must use different external terms or a narrowly named Profile relation.",
+      "normative_action": "reject_term",
+      "confidence": "high",
+      "fixture_evidence": ["replacement-not-equivalence"]
+    },
+    {
+      "term_id": "hwm:affectsAndObserves",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "sosa2023", "term": "sosa:hasFeatureOfInterest / observes / actsOnProperty", "coverage": "strong_partial" },
+        { "source_id": "saref411", "term": "saref:actsUpon", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "Expected-effect comparison remains an HWM Profile contract, but the domain relations are external.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["lighting-effect-model", "morning-multi-effect"]
+    },
+    {
+      "term_id": "hwm:generatedByAttributedToDerivedFrom",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "prov:wasGeneratedBy / wasAttributedTo / wasDerivedFrom", "coverage": "exact" }
+      ],
+      "residual_gap": "HWM must use PROV terms directly in semantic bindings.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["all-three-fixtures"]
+    },
+    {
+      "term_id": "hwm:basedOnViewAndAssessmentRelations",
+      "layer": "relationship",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "prov:used / wasDerivedFrom / qualifiedAssociation", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "HWM constrains which exact immutable View, Claim, and Record identifiers must be cited by Proposal and Action Trace fields.",
+      "normative_action": "retain_profile_constraint",
+      "confidence": "high",
+      "fixture_evidence": ["all-action-traces"]
+    },
+    {
+      "term_id": "hwm:EvidenceResolver",
+      "layer": "system_role",
+      "decision": "internal_role_only",
+      "external_terms": [
+        { "source_id": "xacml30", "term": "Policy Information Point / Policy Decision Point analogy", "coverage": "partial" },
+        { "source_id": "ngsild18", "term": "Context Broker / Context Source", "coverage": "partial" }
+      ],
+      "residual_gap": "It names a separation-of-concerns role; Core does not require a service, API, or ontology class.",
+      "normative_action": "retain_internal_documentation",
+      "confidence": "high",
+      "fixture_evidence": []
+    },
+    {
+      "term_id": "hwm:AgentPlanner",
+      "layer": "system_role",
+      "decision": "internal_role_only",
+      "external_terms": [],
+      "residual_gap": "Planner implementation is explicitly out of Core scope.",
+      "normative_action": "retain_internal_documentation",
+      "confidence": "high",
+      "fixture_evidence": []
+    },
+    {
+      "term_id": "hwm:PolicyEvaluator",
+      "layer": "system_role",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "xacml30", "term": "Policy Decision Point", "coverage": "exact" },
+        { "source_id": "odrl22", "term": "ODRL evaluator implementation role", "coverage": "partial" }
+      ],
+      "residual_gap": "HWM should use PDP terminology in the Authority Profile while explaining the plain-language role.",
+      "normative_action": "remove_hwm_vocabulary",
+      "confidence": "high",
+      "fixture_evidence": ["authority-oracle-11-cases"]
+    },
+    {
+      "term_id": "hwm:ExecutionGateway",
+      "layer": "system_role",
+      "decision": "internal_role_only",
+      "external_terms": [
+        { "source_id": "xacml30", "term": "Policy Enforcement Point", "coverage": "strong_partial" },
+        { "source_id": "wot-td11", "term": "Consumer invoking an ActionAffordance", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "The role enforces authorization before protocol-specific dispatch; it is not an exchange vocabulary class.",
+      "normative_action": "retain_internal_documentation",
+      "confidence": "high",
+      "fixture_evidence": ["not-dispatched-versus-device-failure"]
+    }
+  ]
+}

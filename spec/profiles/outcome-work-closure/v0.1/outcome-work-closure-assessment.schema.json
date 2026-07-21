@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/outcome-work-closure/v0.1/outcome-work-closure-assessment.schema.json",
+  "title":"HWM Outcome Assurance and Work Closure Assessment v0.1",
+  "type":"object",
+  "required":["contract","contract_version","assessment_id","intent_binding","intent_lifecycle","commitment_state_binding","realization_binding","task_binding","world_view_binding","as_of","assurance_window","expectation_results","intent_assurance","task_exit_results","open_attempt_bindings","open_obligation_bindings","work_closure_gate","reason_codes","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-closure:OutcomeWorkAssessment"},"contract_version":{"const":"0.1.0"},
+    "assessment_id":{"type":"string","minLength":1},"intent_binding":{"$ref":"#/$defs/Binding"},"intent_lifecycle":{"enum":["transient","persistent"]},"commitment_state_binding":{"$ref":"#/$defs/Binding"},"realization_binding":{"$ref":"#/$defs/Binding"},"task_binding":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/Binding"}]},"world_view_binding":{"$ref":"#/$defs/Binding"},"as_of":{"type":"string","format":"date-time"},
+    "assurance_window":{"type":"object","required":["from","to","coverage"],"properties":{"from":{"type":"string","format":"date-time"},"to":{"type":"string","format":"date-time"},"coverage":{"enum":["complete","partial","indeterminate"]}},"additionalProperties":false},
+    "expectation_results":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/Result"}},
+    "intent_assurance":{"enum":["not_evaluated","not_started","ongoing","fulfilled","not_fulfilled","degraded","indeterminate"]},
+    "task_exit_results":{"type":"array","items":{"$ref":"#/$defs/Result"}},
+    "open_attempt_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},
+    "open_obligation_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Obligation"}},
+    "work_closure_gate":{"enum":["task_close_eligible","task_continue_required","task_remediation_required","awaiting_evidence","direct_realization_closed","not_applicable","indeterminate"]},
+    "reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},"proof":{"$ref":"#/$defs/Proof"},"extensions":{"type":"object"}
+  },
+  "$defs":{
+    "Digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},"Binding":{"type":"object","required":["artifact_id","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false},
+    "Result":{"type":"object","required":["criterion_id","mandatory","status","evidence_bindings","reason_codes"],"properties":{"criterion_id":{"type":"string","minLength":1},"mandatory":{"type":"boolean"},"status":{"enum":["satisfied","not_satisfied","indeterminate","not_applicable"]},"evidence_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},"reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}},"additionalProperties":false},
+    "Obligation":{"type":"object","required":["obligation_id","kind","status","binding"],"properties":{"obligation_id":{"type":"string","minLength":1},"kind":{"enum":["side_effect_review","recovery","compensation","notification","audit","professional_acceptance","other_declared"]},"status":{"enum":["open","indeterminate"]},"binding":{"$ref":"#/$defs/Binding"}},"additionalProperties":false},
+    "Proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}
+  },"additionalProperties":false
+}

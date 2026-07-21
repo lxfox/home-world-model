@@ -1,0 +1,204 @@
+[
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:functional-slot-type",
+      "issuer": "urn:hwm:subject:homeowner",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:slot:bedroom-reading-light",
+        "predicate": "rdf:type",
+        "object": "hwm:FunctionalSlot"
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-001",
+        "space_ids": ["urn:hwm:space:bedroom"]
+      },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [
+        { "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }
+      ],
+      "creation_record_id": "urn:hwm:record:setup-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:asset-fulfills-slot",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-001",
+        "predicate": "hwm-lifecycle:fulfills",
+        "object": "urn:hwm:slot:bedroom-reading-light"
+      },
+      "valid_time": { "from": "2026-07-18T08:00:00Z" },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-001",
+        "space_ids": ["urn:hwm:space:bedroom"]
+      },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [
+        { "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }
+      ],
+      "creation_record_id": "urn:hwm:record:setup-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:endpoint-exposes-asset",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-001",
+        "predicate": "hwm-lifecycle:exposes",
+        "object": "urn:hwm:endpoint:matter-lamp-001"
+      },
+      "valid_time": { "from": "2026-07-18T08:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-001" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [
+        { "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }
+      ],
+      "creation_record_id": "urn:hwm:record:setup-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:reading-zone-requirement",
+      "issuer": "urn:hwm:subject:homeowner",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:zone:bedroom-reading",
+        "predicate": "hwm-effect:minimumRequirement",
+        "object": {
+          "property": "saref:Light",
+          "threshold": { "value": 300, "unit": "lx" },
+          "comparator": ">="
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-001",
+        "space_ids": ["urn:hwm:space:bedroom"],
+        "purposes": ["hwm:purpose:reading"]
+      },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [
+        { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+      ],
+      "creation_record_id": "urn:hwm:record:setup-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:set-level-60-effect",
+      "issuer": "urn:hwm:subject:commissioning-agent",
+      "issued_at": "2026-07-18T08:01:00Z",
+      "proposition": {
+        "subject": "urn:hwm:endpoint:matter-lamp-001",
+        "predicate": "hwm-effect:predictsOutcome",
+        "object": {
+          "when": {
+            "action_type": "matter:MoveToLevel",
+            "parameters": { "level_percent": 60 }
+          },
+          "affected_feature_id": "urn:hwm:zone:bedroom-reading",
+          "property": "saref:Light",
+          "expected_range": { "minimum": 285, "maximum": 335, "unit": "lx" },
+          "context_claim_ids": [],
+          "observation_window_seconds": 10,
+          "measurement_procedure": "urn:hwm:procedure:reading-zone-lux-v1",
+          "tolerance": { "value": 0, "unit": "lx" },
+          "uncertainty": { "kind": "bounded_interval", "confidence": 0.8 },
+          "model_version": "commissioning-sample-1"
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-001",
+        "space_ids": ["urn:hwm:space:bedroom"]
+      },
+      "epistemic_basis": {
+        "mode": "learned",
+        "method": "commissioning measurement",
+        "confidence": 0.8
+      },
+      "profiles": [
+        { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+      ],
+      "creation_record_id": "urn:hwm:record:effect-model-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [
+      {
+        "link_id": "urn:hwm:evidence-link:effect-model-support",
+        "relation": "supports",
+        "record_id": "urn:hwm:record:effect-model-declaration",
+        "asserted_by": "urn:hwm:subject:commissioning-agent",
+        "created_at": "2026-07-18T08:01:00Z",
+        "extensions": {}
+      }
+    ],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:observed-illuminance-295",
+      "issuer": "urn:hwm:subject:lux-sensor-001",
+      "issued_at": "2026-07-18T08:05:08Z",
+      "proposition": {
+        "subject": "urn:hwm:zone:bedroom-reading",
+        "predicate": "sosa:hasSimpleResult",
+        "object": { "value": 295, "unit": "lx" }
+      },
+      "valid_time": {
+        "at": "2026-07-18T08:05:08Z"
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-001",
+        "space_ids": ["urn:hwm:space:bedroom"]
+      },
+      "epistemic_basis": {
+        "mode": "observed",
+        "method": "urn:hwm:procedure:reading-zone-lux-v1"
+      },
+      "profiles": [
+        { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+      ],
+      "creation_record_id": "urn:hwm:record:observation-295-lux",
+      "extensions": {}
+    },
+    "evidence_links": [
+      {
+        "link_id": "urn:hwm:evidence-link:observation-support",
+        "relation": "supports",
+        "record_id": "urn:hwm:record:observation-295-lux",
+        "asserted_by": "urn:hwm:subject:lux-sensor-001",
+        "created_at": "2026-07-18T08:05:09Z",
+        "extensions": {}
+      }
+    ],
+    "extensions": {}
+  }
+]

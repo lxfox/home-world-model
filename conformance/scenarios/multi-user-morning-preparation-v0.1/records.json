@@ -1,0 +1,183 @@
+[
+  {
+    "record_id": "urn:hwm:record:forecast-issued",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:routine-forecast-agent",
+    "recorded_at": "2026-07-18T06:50:00Z",
+    "payload": {
+      "claim_ids": ["urn:hwm:claim:morning-hot-water-demand-forecast"],
+      "source_evidence_disclosure": "withheld_by_purpose_policy"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:resident-a-preference",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:resident-a",
+    "recorded_at": "2026-07-17T20:00:00Z",
+    "payload": { "claim_ids": ["urn:hwm:claim:resident-a-temperature-preference"] },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:resident-b-preference",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:resident-b",
+    "recorded_at": "2026-07-17T20:01:00Z",
+    "payload": { "claim_ids": ["urn:hwm:claim:resident-b-temperature-preference"] },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:household-requirements",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:homeowner",
+    "recorded_at": "2026-07-17T20:05:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:morning-energy-constraint",
+        "urn:hwm:claim:hot-water-wait-requirement",
+        "urn:hwm:claim:hot-water-temperature-requirement",
+        "urn:hwm:claim:shared-bedroom-comfort-goal"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:pump-effect-models",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:commissioning-agent",
+    "recorded_at": "2026-07-17T20:10:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:pump-wait-time-effect",
+        "urn:hwm:claim:pump-temperature-effect",
+        "urn:hwm:claim:pump-energy-effect"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:pump-authorization",
+    "record_type": "authorization",
+    "attributed_to": "urn:hwm:authority:morning-fixture-001",
+    "recorded_at": "2026-07-18T07:00:00Z",
+    "payload": {
+      "proposal_id": "urn:hwm:proposal:start-circulation",
+      "decision": "allowed",
+      "authority_epoch": 11,
+      "lease_id": "urn:hwm:lease:morning-planner-epoch-11",
+      "policy_ids": ["urn:hwm:policy:morning-water-preparation"]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:hvac-authorization",
+    "record_type": "authorization",
+    "attributed_to": "urn:hwm:authority:morning-fixture-001",
+    "recorded_at": "2026-07-18T07:00:01Z",
+    "payload": {
+      "proposal_id": "urn:hwm:proposal:set-shared-bedroom-21",
+      "decision": "confirmation_required",
+      "authority_epoch": 11,
+      "lease_id": "urn:hwm:lease:morning-planner-epoch-11",
+      "policy_ids": ["urn:hwm:policy:shared-zone-preference-conflict"]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:pump-dispatch",
+    "record_type": "action",
+    "attributed_to": "urn:hwm:subject:execution-gateway",
+    "recorded_at": "2026-07-18T07:10:00Z",
+    "payload": {
+      "action_type": "hwm-action:StartCirculation",
+      "target_endpoint_id": "urn:hwm:endpoint:circulation-pump",
+      "parameters": {}
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:pump-acknowledgement",
+    "record_type": "action",
+    "attributed_to": "urn:hwm:endpoint:circulation-pump",
+    "recorded_at": "2026-07-18T07:10:01Z",
+    "payload": {
+      "dispatch_record_id": "urn:hwm:record:pump-dispatch",
+      "status": "acknowledged"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:wait-time-8s",
+    "record_type": "observation",
+    "attributed_to": "urn:hwm:subject:water-flow-sensor",
+    "recorded_at": "2026-07-18T07:10:09Z",
+    "observed_at": "2026-07-18T07:10:08Z",
+    "procedure": "urn:hwm:procedure:hot-water-wait-v1",
+    "payload": {
+      "feature_of_interest": "urn:hwm:feature:bathroom-hot-water-outlet",
+      "property": "hwm-water:WaitTime",
+      "result": { "value": 8, "unit": "s" }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:water-temperature-41c",
+    "record_type": "observation",
+    "attributed_to": "urn:hwm:subject:water-temperature-sensor",
+    "recorded_at": "2026-07-18T07:10:09Z",
+    "observed_at": "2026-07-18T07:10:08Z",
+    "procedure": "urn:hwm:procedure:hot-water-temperature-v1",
+    "payload": {
+      "feature_of_interest": "urn:hwm:feature:bathroom-hot-water-outlet",
+      "property": "saref:Temperature",
+      "result": { "value": 41, "unit": "Cel" }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:pump-energy-018",
+    "record_type": "observation",
+    "attributed_to": "urn:hwm:subject:energy-meter",
+    "recorded_at": "2026-07-18T07:10:13Z",
+    "observed_at": "2026-07-18T07:10:12Z",
+    "procedure": "urn:hwm:procedure:pump-energy-v1",
+    "payload": {
+      "feature_of_interest": "urn:hwm:feature:morning-preparation-energy",
+      "property": "saref:Energy",
+      "result": { "value": 0.18, "unit": "kWh" }
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:no-shower-observed",
+    "record_type": "observation",
+    "attributed_to": "urn:hwm:subject:privacy-preserving-activity-resolver",
+    "recorded_at": "2026-07-18T07:46:00Z",
+    "observed_at": "2026-07-18T07:45:00Z",
+    "procedure": "urn:hwm:procedure:aggregate-event-realization-v1",
+    "payload": {
+      "forecast_claim_id": "urn:hwm:claim:morning-hot-water-demand-forecast",
+      "event_type": "hwm-event:HotWaterDemand",
+      "horizon": {
+        "from": "2026-07-18T07:15:00Z",
+        "to": "2026-07-18T07:45:00Z"
+      },
+      "realization": "not_observed",
+      "semantic_relation": "calibration_sample_not_refutation"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  }
+]

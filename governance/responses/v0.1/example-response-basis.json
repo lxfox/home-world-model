@@ -1,0 +1,15 @@
+{
+  "basis_id":"synthetic-precautionary-hold-basis",
+  "response_class":"precautionary_hold",
+  "signals":[{"ref":"example-signal.json","sha256":"8d96ef98a66d5aeb274d4e6725404fde3e98f2f42c378992dc2b7262ef200a57","standing":"admitted"}],
+  "policy_binding":{"policy_ref":"urn:hwm:policy:synthetic-precautionary-hold","revision":"1","sha256":"0000000000000000000000000000000000000000000000000000000000000000","authority_epoch":1},
+  "scope":{"targets":["urn:hwm:device:synthetic-heater"],"actions":["block_new_high-power-dispatch"],"spaces":["urn:hwm:space:synthetic-room"],"excluded":["unrelated devices","historical data access","restoration"]},
+  "timing":{"as_of":"2026-07-19T00:00:00Z","starts_at":"2026-07-19T00:00:00Z","review_or_expires_at":"2026-07-20T00:00:00Z"},
+  "fallback":{"safe_state":"existing command completes; no new high-power dispatch; ordinary manual control remains under separate safety policy","proportionality_rationale":"restrict only the candidate risk path while preserving unrelated control","restoration_rule":"new current evidence plus separate Authority and safety decision"},
+  "post_response_duties":["notify synthetic review owner","review signal before expiry","record renewal, restoration or escalation decision"],
+  "eligibility":"precautionary_hold_eligible",
+  "authority_status":"not_evaluated",
+  "execution_status":"not_proposed",
+  "limitations":["synthetic routing fixture","eligibility is not authorization or execution","hold does not prove harm"],
+  "must_not_infer":["harm_confirmed","authorization","dispatch","safe_state_realized","indefinite_suspension","restoration_authorized","household_trust","access","action_authority"]
+}

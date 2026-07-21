@@ -1,0 +1,13 @@
+{
+  "release_id":"hwm-governance-release-fixture-v0.1",
+  "release_line":"fixture-only",
+  "decision_bindings":[{"decision_id":"hwm-example-decision-2026-07-19","decision_record_sha256":"b241816d1954c90f5a3f2e7e03c94c715a01ac5178837ef10009db353a742ad8","conclusion":"accept"}],
+  "content_manifest":{"manifest_id":"urn:hwm:manifest:fixture","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","entries":[{"path":"fixture/specification.json","canonical_uri":"https://example.invalid/hwm/fixture/specification.json","media_type":"application/json","sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}]},
+  "checks":{"integrity":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-integrity"]},"licensing":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-license"]},"canonical_uri":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-uri"]},"release":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-release-check"]}},
+  "publisher":{"actor_ref":"urn:hwm:actor:fixture-publisher","role":"publisher","conflict_disclosure":"synthetic same-project fixture"},
+  "released_at":"2026-07-19T00:00:00Z",
+  "publisher_signature":{"payload_ref":"governance/v0.1/example-release-payload.json","release_payload_sha256":"8ab33d4a73e24bad1847da44a413a6f251413ae61e88d47e7169f3c0acaca30e","signer_ref":"urn:hwm:actor:fixture-publisher","algorithm":"Ed25519","public_key_pem":"-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA4jN5YjyGG/QDVABb32hrXOOdxRoCKwCsxdLxcxlEMFk=\n-----END PUBLIC KEY-----\n","signature_base64":"wmBN+VpD964aahMujvWQRzPan7GptWTBC/LAd8Xud2vrnVEfwlqmweP92wVPp7l7ZUwzTNh0jhMOmP7HM5hKBg==","verification_status":"verified","verification_evidence_ref":"governance/v0.1/validate.mjs"},
+  "publication_receipts":[{"channel":"synthetic_fixture","public_uri":"https://example.invalid/hwm/fixture/release","observed_at":"2026-07-19T00:00:00Z","content_manifest_sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"}],
+  "limitations":["synthetic schema fixture only","does not assert an actual publication or production key custody"],
+  "must_not_infer":["truth","community_consensus","standard_adoption","external_adoption","production_readiness","household_trust","access","action_authority"]
+}

@@ -1,0 +1,185 @@
+[
+  {
+    "record_id": "urn:hwm:record:renovation-design-import",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:designer",
+    "recorded_at": "2026-07-18T10:00:00Z",
+    "payload": {
+      "artifact_id": "design/spatial-model.jsonld",
+      "source_revision": "architect-design-r2",
+      "claim_ids": [
+        "urn:hwm:claim:planned-building-type",
+        "urn:hwm:claim:planned-bedroom-type",
+        "urn:hwm:claim:building-has-planned-bedroom",
+        "urn:hwm:claim:planned-reading-zone-type",
+        "urn:hwm:claim:planned-reading-slot-type"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-requirement-declaration",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:homeowner",
+    "recorded_at": "2026-07-18T10:02:00Z",
+    "payload": {
+      "claim_ids": ["urn:hwm:claim:planned-reading-requirement"],
+      "interaction": "explicit_user_requirement"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-catalog-import",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:catalog-adapter",
+    "recorded_at": "2026-07-18T10:03:00Z",
+    "payload": {
+      "artifact_id": "catalog/candidate-products.jsonld",
+      "claim_ids": [
+        "urn:hwm:claim:candidate-product-model-type",
+        "urn:hwm:claim:candidate-product-maximum-power",
+        "urn:hwm:claim:candidate-product-model-b-type",
+        "urn:hwm:claim:candidate-product-b-maximum-power"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-option-a-declaration",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:design-agent",
+    "recorded_at": "2026-07-18T10:04:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:option-a-derived-from-base",
+        "urn:hwm:claim:product-model-candidate-for-slot",
+        "urn:hwm:claim:planned-mounting-for-option"
+      ],
+      "status": "proposed_not_purchased"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-option-b-declaration",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:design-agent",
+    "recorded_at": "2026-07-18T10:04:30Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:option-b-derived-from-base",
+        "urn:hwm:claim:product-model-b-candidate-for-slot",
+        "urn:hwm:claim:planned-mounting-for-option-b"
+      ],
+      "status": "proposed_not_purchased"
+    },
+    "integrity": {
+      "mode": "unsigned"
+    },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-electrical-plan",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:electrical-designer",
+    "recorded_at": "2026-07-18T10:05:00Z",
+    "payload": {
+      "artifact_id": "design/electrical-plan.json",
+      "claim_ids": ["urn:hwm:claim:planned-circuit-reserved-load"],
+      "status": "incomplete_catalog_screening_only",
+      "not_verified": true,
+      "compliance_status": "not_evaluated"
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-option-a-lighting-simulation",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:simulation-adapter",
+    "recorded_at": "2026-07-18T10:06:00Z",
+    "payload": {
+      "artifact_id": "simulation/lighting.csv",
+      "activity_type": "simulation",
+      "claim_ids": [
+        "urn:hwm:claim:planned-option-simulated-effect",
+        "urn:hwm:claim:option-a-requirement-status"
+      ],
+      "input_claim_ids": [
+        "urn:hwm:claim:planned-mounting-for-option",
+        "urn:hwm:claim:candidate-product-maximum-power",
+        "urn:hwm:claim:planned-reading-requirement"
+      ]
+    },
+    "integrity": { "mode": "unsigned" },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-option-b-lighting-simulation",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:simulation-adapter",
+    "recorded_at": "2026-07-18T10:06:30Z",
+    "payload": {
+      "artifact_id": "simulation/lighting.csv",
+      "activity_type": "simulation",
+      "claim_ids": [
+        "urn:hwm:claim:planned-option-b-simulated-effect",
+        "urn:hwm:claim:option-b-requirement-status"
+      ],
+      "input_claim_ids": [
+        "urn:hwm:claim:planned-mounting-for-option-b",
+        "urn:hwm:claim:candidate-product-b-maximum-power",
+        "urn:hwm:claim:planned-reading-requirement"
+      ]
+    },
+    "integrity": {
+      "mode": "unsigned"
+    },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-option-comparison",
+    "record_type": "declaration",
+    "attributed_to": "urn:hwm:subject:design-agent",
+    "recorded_at": "2026-07-18T10:07:00Z",
+    "payload": {
+      "artifact_id": "comparison/options.json",
+      "input_context_ids": [
+        "urn:hwm:design-option:reading-light-a",
+        "urn:hwm:design-option:reading-light-b"
+      ],
+      "input_claim_ids": [
+        "urn:hwm:claim:option-a-requirement-status",
+        "urn:hwm:claim:option-b-requirement-status"
+      ],
+      "claim_ids": [
+        "urn:hwm:claim:comparison-recommends-option-a"
+      ],
+      "status": "advisory_not_authorization"
+    },
+    "integrity": {
+      "mode": "unsigned"
+    },
+    "extensions": {}
+  },
+  {
+    "record_id": "urn:hwm:record:renovation-homeowner-selection",
+    "record_type": "attestation",
+    "attributed_to": "urn:hwm:subject:homeowner",
+    "recorded_at": "2026-07-18T10:08:00Z",
+    "payload": {
+      "claim_ids": [
+        "urn:hwm:claim:homeowner-selects-option-a"
+      ],
+      "interaction": "explicit_user_selection",
+      "status": "selected_not_purchased_not_installed"
+    },
+    "integrity": {
+      "mode": "unsigned"
+    },
+    "extensions": {}
+  }
+]

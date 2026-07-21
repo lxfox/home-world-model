@@ -1,0 +1,61 @@
+{
+  "contract": "hwm-task:Definition",
+  "contract_version": "0.1.0-fixture",
+  "task_id": "urn:hwm:task:weekday-morning-hot-water:2026-07-20",
+  "definition_revision": 1,
+  "previous_definition_binding": null,
+  "identity_basis": {
+    "household_id": "urn:hwm:household:1",
+    "intent_binding": {
+      "intent_id": "urn:hwm:intent:weekday-morning-hot-water-readiness-1",
+      "definition_revision": 1,
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "47df3ada98b4a55bf35d36222dbbd7c5e7d07d8a01ce0da7070ea580545c2a88"
+    },
+    "purpose": "urn:hwm:purpose:morning-hot-water-readiness",
+    "occurrence": {
+      "kind": "routine_occurrence",
+      "routine_binding": {
+        "routine_id": "urn:hwm:routine:weekday-morning-hot-water-1",
+        "definition_revision": 1,
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "digest": "5cf7a717ed9ef3061eb101e9c9f1d66d0aa367d9c1af211387558b1b278b6794"
+      },
+      "occurrence_key": "Asia/Shanghai/2026-07-20T06:30:00",
+      "original_scheduled_time": "2026-07-19T22:30:00Z"
+    },
+    "scope_refs": [
+      "urn:hwm:function-position:hot-water-loop",
+      "urn:hwm:space:bathroom"
+    ]
+  },
+  "identity_basis_digest": "8015c77017f24863783d1da2e191f3ad56a337f0a06fb59508004f28f0674eb3",
+  "lineage": {
+    "relation": "genesis",
+    "source_task_bindings": []
+  },
+  "created_at": "2026-07-19T22:30:05Z",
+  "created_by_subject": "urn:hwm:subject:admitted-agent-a",
+  "plan_bindings": [],
+  "exit_criteria": [
+    {
+      "criterion_id": "hot-water-ready-goal",
+      "kind": "goal_evaluation",
+      "mandatory": true,
+      "target_binding": {
+        "artifact_id": "urn:hwm:goal:hot-water-ready",
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "digest": "4444444444444444444444444444444444444444444444444444444444444444"
+      }
+    }
+  ],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-task-registry",
+    "value": "fixture:routine-task-definition-proof"
+  },
+  "extensions": {}
+}

@@ -1,0 +1,16 @@
+{
+  "evidence_id":"hwm-example-governance-chain-adoption",
+  "kind":"adoption_declaration",
+  "release":{"release_id":"hwm-governance-release-fixture-v0.1","sha256":"5b5469ed9d49bf5756e8f5eda1162701f5de1cb26fc61231329ba4e91ff912cc"},
+  "subject_ref":"urn:hwm:organization:fixture-adopter",
+  "scope":{"purpose":"end-to-end governance-chain fixture","artifacts":["fixture/specification.json"]},
+  "issuer_ref":"urn:hwm:organization:fixture-adopter",
+  "issued_at":"2026-07-19T00:00:00Z",
+  "validity":{"from":"2026-07-19T00:00:00Z","through":"2026-10-19T00:00:00Z"},
+  "method":{"type":"synthetic_attributed_self_declaration","authority":"fixture scope only"},
+  "lineage_ref":"urn:hwm:adoption-lineage:governance-chain-fixture",
+  "privacy_class":"public_attributed",
+  "applicability":"current",
+  "limitations":["synthetic end-to-end governance fixture only","does not assert an actual publication, adopter or deployment"],
+  "must_not_infer":["external_adoption","implementation_conformance","deployment","active_use","market_coverage","community_consensus","household_trust","access","action_authority"]
+}

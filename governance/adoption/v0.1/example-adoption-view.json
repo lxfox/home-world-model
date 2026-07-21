@@ -1,0 +1,19 @@
+{
+  "view_id":"hwm-example-current-adoption-view",
+  "release":{"release_id":"hwm-base-exchange-v0.1-candidate","sha256":"74c7873de0d06ed5d79d5a82ba414c096720058ddede9b05617495e8d34e91af"},
+  "question":"What current evidence exists for adoption of this exact candidate?",
+  "population":"publicly attributable evidence known to the HWM project fixture",
+  "as_of":"2026-07-19T00:00:00Z",
+  "evidence_policy":"hwm-adoption-evidence-v0.1",
+  "axes":{
+    "declared":{"status":"supported","evidence_sha256":["74db9dfe9e8a32ec5111197f8f3fda9587a254d7a767fd70f6e65ee6b3a45d7f"],"reason":"The project made one scoped self-declaration."},
+    "implemented":{"status":"not_evaluated","evidence_sha256":[],"reason":"Implementation evidence remains in the separate interoperability portfolio."},
+    "deployed":{"status":"not_evaluated","evidence_sha256":[],"reason":"No deployment population was evaluated."},
+    "depended_on":{"status":"not_evaluated","evidence_sha256":[],"reason":"No downstream dependency population was evaluated."},
+    "sustained":{"status":"not_evaluated","evidence_sha256":[],"reason":"No longitudinal policy was evaluated."},
+    "market_estimated":{"status":"not_evaluated","evidence_sha256":[],"reason":"No market population or denominator was evaluated."}
+  },
+  "deduplication":{"unit":"attributed organization declaration","lineage_policy":"same subject, release, scope and declaration lineage count once"},
+  "limitations":["project self-report only","no external adoption or deployment evidence"],
+  "must_not_infer":["external_adoption","overall_adoption_score","market_share","community_consensus","standard_adoption","certification","household_trust","access","action_authority"]
+}

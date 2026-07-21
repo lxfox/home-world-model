@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/mappings/core/v0.1/term-mapping.schema.json",
+  "title": "HWM Core term mapping audit v0.1",
+  "type": "object",
+  "required": ["artifact", "version", "status", "normative_language", "sources", "terms"],
+  "properties": {
+    "artifact": { "const": "hwm:CoreTermMappingAudit" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "mapping_candidate" },
+    "normative_language": { "const": "en" },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["source_id", "title", "url", "version_or_date"],
+        "properties": {
+          "source_id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" },
+          "version_or_date": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "terms": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["term_id", "layer", "decision", "external_terms", "residual_gap", "normative_action", "confidence", "fixture_evidence"],
+        "properties": {
+          "term_id": { "type": "string", "minLength": 1 },
+          "layer": {
+            "enum": ["kernel", "exchange_contract", "wire_field", "domain_role", "relationship", "system_role"]
+          },
+          "decision": {
+            "enum": ["external_reuse", "hwm_application_profile", "hwm_contract_gap", "internal_role_only", "provisional_pending_mapping", "do_not_standardize"]
+          },
+          "external_terms": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["source_id", "term", "coverage"],
+              "properties": {
+                "source_id": { "type": "string", "minLength": 1 },
+                "term": { "type": "string", "minLength": 1 },
+                "uri": { "type": "string", "format": "uri" },
+                "coverage": { "enum": ["exact", "strong_partial", "partial", "binding_specific"] }
+              },
+              "additionalProperties": false
+            }
+          },
+          "residual_gap": { "type": "string" },
+          "normative_action": {
+            "enum": ["remove_hwm_vocabulary", "retain_profile_constraint", "retain_exchange_contract", "retain_wire_only", "retain_internal_documentation", "defer_claim_of_novelty", "reject_term"]
+          },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "fixture_evidence": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

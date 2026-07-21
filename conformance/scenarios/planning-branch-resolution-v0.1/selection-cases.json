@@ -1,0 +1,183 @@
+{
+  "profile": "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1",
+  "contract_version": "0.1.0-fixture",
+  "cases": [
+    {
+      "case_id": "selection-before-revision",
+      "as_of": "2026-07-18T11:00:00Z",
+      "selections": [
+        {
+          "claim_id": "urn:hwm:claim:homeowner-selects-option-a",
+          "action_id": "urn:hwm:choice:homeowner-reading-light-1",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+          "chosen_option_id": "urn:hwm:design-option:reading-light-a",
+          "action_option_ids": [
+            "urn:hwm:design-option:reading-light-a",
+            "urn:hwm:design-option:reading-light-b"
+          ],
+          "issued_at": "2026-07-18T10:08:00Z"
+        },
+        {
+          "claim_id": "urn:hwm:claim:homeowner-selects-option-b-revision-1",
+          "action_id": "urn:hwm:choice:homeowner-reading-light-2",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+          "chosen_option_id": "urn:hwm:design-option:reading-light-b",
+          "action_option_ids": [
+            "urn:hwm:design-option:reading-light-a",
+            "urn:hwm:design-option:reading-light-b"
+          ],
+          "issued_at": "2026-07-18T12:00:00Z",
+          "replaces_claim_id": "urn:hwm:claim:homeowner-selects-option-a"
+        }
+      ],
+      "expected": {
+        "status": "accepted",
+        "current_claim_ids": ["urn:hwm:claim:homeowner-selects-option-a"],
+        "current_option_ids": ["urn:hwm:design-option:reading-light-a"],
+        "history_claim_ids": ["urn:hwm:claim:homeowner-selects-option-a"],
+        "reason_codes": []
+      }
+    },
+    {
+      "case_id": "selection-after-revision",
+      "as_of": "2026-07-18T12:01:00Z",
+      "selections": [
+        {
+          "claim_id": "urn:hwm:claim:homeowner-selects-option-a",
+          "action_id": "urn:hwm:choice:homeowner-reading-light-1",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+          "chosen_option_id": "urn:hwm:design-option:reading-light-a",
+          "action_option_ids": [
+            "urn:hwm:design-option:reading-light-a",
+            "urn:hwm:design-option:reading-light-b"
+          ],
+          "issued_at": "2026-07-18T10:08:00Z"
+        },
+        {
+          "claim_id": "urn:hwm:claim:homeowner-selects-option-b-revision-1",
+          "action_id": "urn:hwm:choice:homeowner-reading-light-2",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:reading-light-a-vs-b-1",
+          "chosen_option_id": "urn:hwm:design-option:reading-light-b",
+          "action_option_ids": [
+            "urn:hwm:design-option:reading-light-a",
+            "urn:hwm:design-option:reading-light-b"
+          ],
+          "issued_at": "2026-07-18T12:00:00Z",
+          "replaces_claim_id": "urn:hwm:claim:homeowner-selects-option-a"
+        }
+      ],
+      "expected": {
+        "status": "accepted",
+        "current_claim_ids": ["urn:hwm:claim:homeowner-selects-option-b-revision-1"],
+        "current_option_ids": ["urn:hwm:design-option:reading-light-b"],
+        "history_claim_ids": [
+          "urn:hwm:claim:homeowner-selects-option-a",
+          "urn:hwm:claim:homeowner-selects-option-b-revision-1"
+        ],
+        "reason_codes": []
+      }
+    },
+    {
+      "case_id": "selection-fork-conflict",
+      "as_of": "2026-07-18T12:02:00Z",
+      "selections": [
+        {
+          "claim_id": "urn:hwm:claim:choice-root-a",
+          "action_id": "urn:hwm:choice:fork-root",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:three-options",
+          "chosen_option_id": "urn:hwm:design-option:a",
+          "action_option_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b", "urn:hwm:design-option:c"],
+          "issued_at": "2026-07-18T10:00:00Z"
+        },
+        {
+          "claim_id": "urn:hwm:claim:choice-fork-b",
+          "action_id": "urn:hwm:choice:fork-b",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:three-options",
+          "chosen_option_id": "urn:hwm:design-option:b",
+          "action_option_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b", "urn:hwm:design-option:c"],
+          "issued_at": "2026-07-18T11:00:00Z",
+          "replaces_claim_id": "urn:hwm:claim:choice-root-a"
+        },
+        {
+          "claim_id": "urn:hwm:claim:choice-fork-c",
+          "action_id": "urn:hwm:choice:fork-c",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:three-options",
+          "chosen_option_id": "urn:hwm:design-option:c",
+          "action_option_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b", "urn:hwm:design-option:c"],
+          "issued_at": "2026-07-18T11:01:00Z",
+          "replaces_claim_id": "urn:hwm:claim:choice-root-a"
+        }
+      ],
+      "expected": {
+        "status": "conflicting",
+        "current_claim_ids": ["urn:hwm:claim:choice-fork-b", "urn:hwm:claim:choice-fork-c"],
+        "current_option_ids": ["urn:hwm:design-option:b", "urn:hwm:design-option:c"],
+        "history_claim_ids": ["urn:hwm:claim:choice-root-a", "urn:hwm:claim:choice-fork-b", "urn:hwm:claim:choice-fork-c"],
+        "reason_codes": ["multiple_unreplaced_selection_heads"]
+      }
+    },
+    {
+      "case_id": "selection-replacement-cycle",
+      "as_of": "2026-07-18T12:02:00Z",
+      "selections": [
+        {
+          "claim_id": "urn:hwm:claim:cycle-a",
+          "action_id": "urn:hwm:choice:cycle-a",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:cycle",
+          "chosen_option_id": "urn:hwm:design-option:a",
+          "action_option_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+          "issued_at": "2026-07-18T10:00:00Z",
+          "replaces_claim_id": "urn:hwm:claim:cycle-b"
+        },
+        {
+          "claim_id": "urn:hwm:claim:cycle-b",
+          "action_id": "urn:hwm:choice:cycle-b",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:cycle",
+          "chosen_option_id": "urn:hwm:design-option:b",
+          "action_option_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+          "issued_at": "2026-07-18T11:00:00Z",
+          "replaces_claim_id": "urn:hwm:claim:cycle-a"
+        }
+      ],
+      "expected": {
+        "status": "integrity_conflict",
+        "current_claim_ids": [],
+        "current_option_ids": [],
+        "history_claim_ids": ["urn:hwm:claim:cycle-a", "urn:hwm:claim:cycle-b"],
+        "reason_codes": ["replacement_cycle"]
+      }
+    },
+    {
+      "case_id": "selection-dangling-replacement",
+      "as_of": "2026-07-18T12:02:00Z",
+      "selections": [
+        {
+          "claim_id": "urn:hwm:claim:dangling-b",
+          "action_id": "urn:hwm:choice:dangling-b",
+          "actor_id": "urn:hwm:subject:homeowner",
+          "comparison_id": "urn:hwm:comparison:dangling",
+          "chosen_option_id": "urn:hwm:design-option:b",
+          "action_option_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+          "issued_at": "2026-07-18T11:00:00Z",
+          "replaces_claim_id": "urn:hwm:claim:missing-a"
+        }
+      ],
+      "expected": {
+        "status": "indeterminate",
+        "current_claim_ids": [],
+        "current_option_ids": [],
+        "history_claim_ids": ["urn:hwm:claim:dangling-b"],
+        "reason_codes": ["replacement_target_unavailable"]
+      }
+    }
+  ]
+}

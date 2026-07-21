@@ -1,0 +1,23 @@
+{
+  "assessment_id":"hwm-base-exchange-v0.1-composition-assessment-r1",
+  "conformance_set_ref":"sha256:ea2ecdd3f35cd7fe0ba3ef144821e3b15c827b3fb2176736a73e916d92a37ee2",
+  "as_of":"2026-07-19T00:00:00Z",
+  "checks":[
+    {"check_kind":"descriptor_integrity","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":[]},
+    {"check_kind":"offline_resolution","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":["local registry paths are release-candidate paths, not published URI resolution"]},
+    {"check_kind":"dependency_closure","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":[]},
+    {"check_kind":"version_resolution","status":"satisfied","evidence_refs":["conformance-set.json"],"limitations":[]},
+    {"check_kind":"lock_consistency","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":[]},
+    {"check_kind":"incompatibility","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":[]},
+    {"check_kind":"required_cycle","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":[]},
+    {"check_kind":"artifact_coverage","status":"satisfied","evidence_refs":["validate.mjs"],"limitations":[]},
+    {"check_kind":"role_evidence","status":"satisfied_with_limits","evidence_refs":["conformance/readers/python/reference_reader.py","spec/profiles/ro-crate/v0.1/validate.mjs"],"limitations":["implementation-owned evidence only; no organizationally independent reader"]},
+    {"check_kind":"invariant_coverage","status":"satisfied_with_limits","evidence_refs":["conformance/README.md"],"limitations":["repository suites cover declared candidate invariants but are not an adopted certification program"]},
+    {"check_kind":"unknown_extensions","status":"satisfied","evidence_refs":["spec/profiles/ro-crate/v0.1/validate.mjs"],"limitations":[]},
+    {"check_kind":"degradation","status":"satisfied","evidence_refs":["conformance-set.json"],"limitations":[]}
+  ],
+  "overall":"conformant_with_limits",
+  "effective_degradation":null,
+  "limitations":["implementation-owned evidence","candidate documents are not yet published at canonical URIs","production cryptographic proof and independent interoperability remain unverified"],
+  "must_not_infer":["independent_interoperability","published_uri_resolution","agent_capability","household_trust","package_truth","raw_package_access","action_authority"]
+}

@@ -1,0 +1,51 @@
+{
+  "contract": "hwm-continuity:Decision",
+  "contract_version": "0.1.0-fixture",
+  "decision_id": "urn:hwm:continuity-decision:morning-task-r1-agent-b",
+  "checkpoint_binding": {
+    "artifact_id": "urn:hwm:continuity-checkpoint:morning-task-r1-agent-b",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "1afec1ed044eb5eeb81a6769d44789f743ed3ef4b6cd428ef0ed7c2481ff00a4"
+  },
+  "decided_at": "2026-07-19T12:00:00Z",
+  "trust_root_binding": {
+    "lineage_id": "urn:hwm:authority-lineage:household-1",
+    "root_id": "urn:hwm:trust-root:household-1:v2",
+    "root_version": 2,
+    "authority_epoch_floor": 11
+  },
+  "authority_epoch": 11,
+  "source_admission_decision_binding": {
+    "artifact_id": "urn:hwm:admission-decision:agent-a-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "target_admission_decision_binding": {
+    "artifact_id": "urn:hwm:admission-decision:agent-b-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "3333333333333333333333333333333333333333333333333333333333333333"
+  },
+  "mode": "successor",
+  "authorization_decision": "allowed",
+  "responsible_subject_id": null,
+  "current_actor_subject_id": "urn:hwm:subject:admitted-agent-b",
+  "granted_actions": ["read_checkpoint", "continue_planning", "propose_revision"],
+  "target_lease_binding": {
+    "artifact_id": "urn:hwm:lease:agent-b-continuity-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "204d4dc9028a8b68bec0a5f552b17fa7d80f48d4b342eec7c15b3e864896e7b2"
+  },
+  "cutover": {
+    "source_lease_binding": null,
+    "source_lease_status": "not_applicable",
+    "target_lease_status": "active",
+    "status": "not_applicable"
+  },
+  "reason_codes": ["target_specific_checkpoint_and_lease_allowed"],
+  "proof": {"mode": "unsigned_fixture", "verification_method": "fixture-authority-proof-adapter", "value": "fixture:continuity-decision-proof"},
+  "extensions": {}
+}

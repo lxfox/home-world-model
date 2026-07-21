@@ -1,0 +1,54 @@
+{
+  "contract": "hwm-intent:StateAssessment",
+  "contract_version": "0.1.0-fixture",
+  "state_id": "urn:hwm:intent-state:weekday-morning-hot-water-readiness-1:1",
+  "intent_id": "urn:hwm:intent:weekday-morning-hot-water-readiness-1",
+  "state_revision": 1,
+  "previous_state_binding": null,
+  "intent_definition_binding": {
+    "intent_id": "urn:hwm:intent:weekday-morning-hot-water-readiness-1",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "47df3ada98b4a55bf35d36222dbbd7c5e7d07d8a01ce0da7070ea580545c2a88"
+  },
+  "assessed_at": "2026-07-19T22:29:55Z",
+  "as_of": "2026-07-19T22:29:55Z",
+  "authority_epoch": 11,
+  "commitment_status": "adopted",
+  "fulfillment_status": "ongoing",
+  "commitment_decision_binding": {
+    "artifact_id": "urn:hwm:authority-decision:persistent-intent-adoption-1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "6666666666666666666666666666666666666666666666666666666666666666"
+  },
+  "expectation_results": [
+    {
+      "expectation_id": "hot-water-ready",
+      "result": "not_due",
+      "evidence_bindings": []
+    },
+    {
+      "expectation_id": "circulation-energy-bounded",
+      "result": "satisfied",
+      "evidence_bindings": [
+        {
+          "artifact_id": "urn:hwm:assessment:hot-water-energy-current",
+          "digest_algorithm": "sha-256",
+          "canonicalization": "RFC8785",
+          "digest": "7777777777777777777777777777777777777777777777777777777777777777"
+        }
+      ]
+    }
+  ],
+  "active_task_bindings": [],
+  "transition_record_binding": null,
+  "related_intent_bindings": [],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-intent-state-registry",
+    "value": "fixture:persistent-intent-state-proof"
+  },
+  "extensions": {}
+}

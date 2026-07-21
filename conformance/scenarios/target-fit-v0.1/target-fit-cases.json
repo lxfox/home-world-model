@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {"case_id":"inside-interval","facts":{"observed":[19.5,20.5]},"expected":{"criterion":"met","result":"satisfied","reason":"all_required_criteria_met"}},
+    {"case_id":"outside-above","facts":{"observed":[24.8,25.2]},"expected":{"criterion":"not_met","result":"not_satisfied","reason":"required_criterion_not_met"}},
+    {"case_id":"outside-below","facts":{"observed":[17.8,18.2]},"expected":{"criterion":"not_met","result":"not_satisfied","reason":"required_criterion_not_met"}},
+    {"case_id":"boundary-overlap","facts":{"observed":[20.8,21.2]},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"required_criterion_indeterminate"}},
+    {"case_id":"exact-upper-bound","facts":{"observed":[21,21]},"expected":{"criterion":"met","result":"satisfied","reason":"all_required_criteria_met"}},
+    {"case_id":"wrong-room","facts":{"feature":"bedroom-b"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"feature_of_interest_mismatch"}},
+    {"case_id":"wrong-property","facts":{"property":"humidity"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"observed_property_mismatch"}},
+    {"case_id":"wrong-unit","facts":{"unit":"degF"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"unit_or_conversion_binding_mismatch"}},
+    {"case_id":"wrong-procedure","facts":{"procedure":"weather-api"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"procedure_mismatch"}},
+    {"case_id":"stale-observation","facts":{"freshness":"stale"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"observation_not_current"}},
+    {"case_id":"missing-observation","facts":{"availability":"not_observed"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"observation_not_observed"}},
+    {"case_id":"access-denied","facts":{"availability":"access_denied"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"observation_access_denied"}},
+    {"case_id":"contested-state","facts":{"epistemic":"contested"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"observation_contested"}},
+    {"case_id":"spec-not-accepted","facts":{"spec":"not_verified"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"evaluation_specification_not_accepted"}},
+    {"case_id":"target-not-accepted","facts":{"target":"contested"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"target_not_accepted"}},
+    {"case_id":"not-applicable","facts":{"applicability":"not_applicable"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"target_not_applicable"}},
+    {"case_id":"applicability-unknown","facts":{"applicability":"indeterminate"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"target_applicability_indeterminate"}},
+    {"case_id":"simulated-not-current","facts":{"basis":"simulated"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"epistemic_basis_not_current_observed"}},
+    {"case_id":"purpose-mismatch","facts":{"purpose":"mismatch"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"purpose_binding_mismatch"}},
+    {"case_id":"time-mismatch","facts":{"as_of":"mismatch"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"phenomenon_time_mismatch"}},
+    {"case_id":"average-for-pointwise","facts":{"coverage":"spatial_average"},"expected":{"criterion":"indeterminate","result":"indeterminate","reason":"spatial_coverage_mismatch"}},
+    {"case_id":"experience-rejects-sensor-fit","facts":{"experience":"rejected"},"expected":{"criterion":"met","result":"satisfied","reason":"all_required_criteria_met"}},
+    {"case_id":"experience-accepts-sensor-failure","facts":{"observed":[24.8,25.2],"experience":"accepted"},"expected":{"criterion":"not_met","result":"not_satisfied","reason":"required_criterion_not_met"}}
+  ],
+  "aggregation_cases": [
+    {"case_id":"all-met","operator":"all_required","criteria":["met","met"],"expected":"satisfied"},
+    {"case_id":"all-one-false","operator":"all_required","criteria":["met","not_met"],"expected":"not_satisfied"},
+    {"case_id":"all-one-unknown","operator":"all_required","criteria":["met","indeterminate"],"expected":"indeterminate"},
+    {"case_id":"any-one-true","operator":"any_sufficient","criteria":["met","indeterminate"],"expected":"satisfied"},
+    {"case_id":"any-all-false","operator":"any_sufficient","criteria":["not_met","not_met"],"expected":"not_satisfied"},
+    {"case_id":"any-no-true-with-unknown","operator":"any_sufficient","criteria":["not_met","indeterminate"],"expected":"indeterminate"},
+    {"case_id":"partial-mixed","operator":"report_partial","criteria":["met","not_met"],"expected":"partially_satisfied"},
+    {"case_id":"partial-near-is-not-partial","operator":"report_partial","criteria":["indeterminate"],"expected":"indeterminate"},
+    {"case_id":"partial-unknown-fails-closed","operator":"report_partial","criteria":["met","indeterminate"],"expected":"indeterminate"}
+  ],
+  "must_not_infer": ["sensor_fit_is_subjective_comfort","sensor_failure_is_household_need","fit_creates_intent","fit_creates_task","fit_authorizes_action","experience_overwrites_measurement","measurement_overwrites_experience","simulated_state_is_current_state","average_proves_pointwise_minimum","near_threshold_is_partial_satisfaction","missing_observation_is_failure","one_target_fit_is_household_utility","action_execution_success_equals_target_fit"]
+}

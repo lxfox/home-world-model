@@ -1,0 +1,24 @@
+import assert from "node:assert/strict";import fs from "node:fs";import path from "node:path";import {fileURLToPath} from "node:url";
+const dir=path.dirname(fileURLToPath(import.meta.url));const oracle=JSON.parse(fs.readFileSync(path.join(dir,"model-cases.json"),"utf8"));
+const base={policy:"accepted",identity:"same",semantic:"association",causality:"not_assessed",sample:"observation",standing:"accepted",coverage:"sufficient",validation:"passed",privacy:"allowed",revision:"sequential",change:"samples",use_context:"inside",release:"accepted",drift:"none"};
+const answer=(result,reason)=>({result,reason});
+const evaluate=(o,phase="update")=>{const f={...base,...o};
+ if(phase==="use"){if(f.use_context==="outside")return answer("indeterminate","input_outside_applicability_domain");if(f.use_context==="missing")return answer("indeterminate","required_model_context_missing");if(f.release==="retired")return answer("indeterminate","model_not_current_for_use");if(f.release!=="accepted")return answer("indeterminate","model_not_accepted_for_purpose");return answer("prediction_eligible","accepted_model_and_context_applicable")}
+ if(f.policy!=="accepted")return answer("indeterminate",`model_update_policy_${f.policy==="missing"?"unavailable":f.policy}`);
+ if(f.identity!=="same")return answer("new_model_required","installed_model_identity_changed");
+ if(f.revision==="same_different_content")return answer("not_eligible","immutable_revision_content_conflict");
+ if(f.revision==="previous_mismatch")return answer("not_eligible","previous_model_digest_mismatch");
+ if(f.revision==="gap")return answer("indeterminate","model_revision_gap");
+ if(f.privacy==="denied")return answer("not_eligible","dataset_use_not_authorized");if(f.privacy!=="allowed")return answer("indeterminate","dataset_authorization_indeterminate");
+ if(f.sample==="device_ack")return answer("not_eligible","device_ack_not_outcome_sample");
+ if(f.standing==="denied")return answer("not_eligible","sample_evidence_not_admitted");if(f.standing!=="accepted")return answer("indeterminate","sample_evidence_standing_indeterminate");
+ if(f.semantic==="causal"&&f.causality==="not_assessed")return answer("not_eligible","causal_contribution_not_supported");if(f.semantic==="causal"&&f.causality!=="supported")return answer("indeterminate","causal_contribution_indeterminate");
+ if(f.coverage==="insufficient")return answer("not_eligible","dataset_coverage_insufficient");if(f.coverage!=="sufficient")return answer("indeterminate","dataset_coverage_indeterminate");
+ if(f.validation==="failed")return answer("not_eligible","validation_threshold_not_met");if(f.validation==="training_only")return answer("indeterminate","training_fit_not_validation");if(f.validation!=="passed")return answer("indeterminate","independent_validation_missing");
+ if(f.drift==="detected")return answer("indeterminate","drift_requires_candidate_revalidation");
+ return answer("candidate_revision_eligible","evidence_and_validation_satisfy_update_policy")};
+assert.equal(oracle.cases.length,36);for(const c of oracle.cases)assert.deepEqual(evaluate(c.facts,c.phase??"update"),c.expected,c.case_id);
+for(const x of ["installed_model_is_product_capability","single_success_promotes_model","association_model_is_causal_model","training_fit_is_validation","accepted_model_authorizes_action","out_of_domain_may_extrapolate_silently"])assert.ok(oracle.must_not_infer.includes(x));
+console.log("INSTALLED INFLUENCE MODEL OK",oracle.cases.length,"semantic cases",oracle.must_not_infer.length,"forbidden inferences");
+console.log("LOCALITY OK","installed endpoint, geometry, feature, property, and action kind bound");
+console.log("LEARNING SAFETY OK","candidate revision, validation, and purpose acceptance remain separate");

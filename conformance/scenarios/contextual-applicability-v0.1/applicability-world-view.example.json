@@ -1,0 +1,85 @@
+{
+  "contract": "hwm:WorldView",
+  "contract_version": "0.1.0",
+  "view_id": "urn:hwm:view:resident-a-night-preference-2026-07-19T22:20:00Z",
+  "household_id": "urn:hwm:household:fixture-situation-001",
+  "requester": "urn:hwm:agent:night-comfort",
+  "purpose": "urn:hwm:purpose:night-comfort-eligibility",
+  "generated_at": "2026-07-19T22:20:01Z",
+  "as_of": "2026-07-19T22:20:00Z",
+  "known_through": "2026-07-19T22:20:00Z",
+  "freshness": {"maximum_age_seconds": 900, "status": "current"},
+  "coverage": {
+    "entity_refs": ["urn:hwm:person:resident-a", "urn:hwm:space:bedroom-a"],
+    "claim_kinds": ["preference", "applicability_rule"]
+  },
+  "authority_epoch": 12,
+  "profiles": [
+    {"id": "https://homeworldmodel.org/spec/core/v0.1", "version": "0.1.0", "required": true},
+    {"id": "https://homeworldmodel.org/spec/profiles/contextual-applicability/v0.1", "version": "0.1.0-fixture", "required": true}
+  ],
+  "resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:resident-a-sleep-temperature-preference",
+      "subject": "urn:hwm:person:resident-a",
+      "predicate": "hwm-preference:preferredRange",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:resident-a-sleep-temperature-preference",
+          "object": {
+            "property": "https://saref.etsi.org/core/Temperature",
+            "range": {"minimum": 19, "maximum": 21, "unit": "Cel"}
+          },
+          "claim_ids": ["urn:hwm:claim:resident-a-sleep-temperature-preference"],
+          "evidence_record_ids": ["urn:hwm:record:resident-a-sleep-temperature-preference"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["authorized_subject_declaration"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:resident-a-sleep-temperature-applicability-rule",
+      "subject": "urn:hwm:claim:resident-a-sleep-temperature-preference",
+      "predicate": "https://homeworldmodel.org/spec/profiles/contextual-applicability/v0.1#qualifiedBy",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:resident-a-sleep-temperature-applicability-rule",
+          "object": {
+            "operator": "all_of",
+            "conditions": [
+              {
+                "condition_id": "urn:hwm:condition:resident-a-sleeping-in-bedroom-a",
+                "query_binding": {
+                  "artifact_id": "urn:hwm:situation-query:resident-a-sleeping-in-bedroom-a",
+                  "content_scope": "artifact",
+                  "digest_algorithm": "sha-256",
+                  "canonicalization": "RFC8785",
+                  "digest": "9ef4ed01b415c012703f556d19ea6cf9f96df08288a8a2977badd249e8db82ae"
+                },
+                "expected_result": "satisfied",
+                "subject_alignment": "same_subject"
+              }
+            ]
+          },
+          "claim_ids": ["urn:hwm:claim:resident-a-sleep-temperature-applicability-rule"],
+          "evidence_record_ids": ["urn:hwm:record:resident-a-sleep-temperature-applicability-rule"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["authorized_context_rule"]
+    }
+  ],
+  "conflicts": [],
+  "limitations": [
+    {"code": "condition_assessed_separately", "description": "The bound Situation Use Assessment carries the condition result and its privacy-limited evidence."}
+  ],
+  "extensions": {}
+}

@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-profile.schema.json",
+  "title": "HWM Minimal Authority Profile v0.1",
+  "type": "object",
+  "required": [
+    "contract",
+    "contract_version",
+    "document_id",
+    "authority_id",
+    "household_id",
+    "authority_epoch",
+    "issued_at",
+    "trust_root_binding",
+    "trust_anchors",
+    "policies",
+    "leases",
+    "safety_policy_refs",
+    "proof",
+    "extensions"
+  ],
+  "properties": {
+    "contract": { "const": "hwm-authority:ProfileDocument" },
+    "contract_version": { "const": "0.1.0" },
+    "document_id": { "type": "string", "minLength": 1 },
+    "authority_id": { "type": "string", "minLength": 1 },
+    "household_id": { "type": "string", "minLength": 1 },
+    "authority_epoch": { "type": "integer", "minimum": 0 },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "trust_root_binding": {
+      "type": "object",
+      "required": ["lineage_id", "root_id", "root_version", "authority_epoch_floor"],
+      "properties": {
+        "lineage_id": { "type": "string", "minLength": 1 },
+        "root_id": { "type": "string", "minLength": 1 },
+        "root_version": { "type": "integer", "minimum": 1 },
+        "authority_epoch_floor": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "trust_anchors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["anchor_id", "anchor_type", "controller", "verification_method", "extensions"],
+        "properties": {
+          "anchor_id": { "type": "string", "minLength": 1 },
+          "anchor_type": { "enum": ["raw_public_key", "platform_identity", "vc_issuer", "fixture"] },
+          "controller": { "type": "string", "minLength": 1 },
+          "verification_method": { "type": "string", "minLength": 1 },
+          "extensions": { "type": "object", "additionalProperties": true }
+        },
+        "additionalProperties": false
+      }
+    },
+    "policies": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Policy" }
+    },
+    "leases": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Lease" }
+    },
+    "safety_policy_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "proof": { "$ref": "#/$defs/Proof" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "Selector": {
+      "type": "object",
+      "required": ["selector_type", "values"],
+      "properties": {
+        "selector_type": {
+          "enum": ["predicate", "action_type", "profile", "resource_role", "entity", "all"]
+        },
+        "values": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "Constraint": {
+      "type": "object",
+      "required": ["constraint_id", "operator", "left_operand", "right_operand"],
+      "properties": {
+        "constraint_id": { "type": "string", "minLength": 1 },
+        "operator": { "enum": ["eq", "neq", "lt", "lte", "gt", "gte", "in", "contains", "within"] },
+        "left_operand": {
+          "enum": [
+            "purpose",
+            "authority_epoch",
+            "decision_time",
+            "audience",
+            "applicability_status",
+            "resource_observation",
+            "required_claim",
+            "lease_status"
+          ]
+        },
+        "right_operand": {},
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Duty": {
+      "type": "object",
+      "required": ["duty_id", "action", "assignees", "threshold", "condition", "extensions"],
+      "properties": {
+        "duty_id": { "type": "string", "minLength": 1 },
+        "action": { "const": "hwm-authority:obtainConfirmation" },
+        "assignees": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "threshold": {
+          "type": "object",
+          "required": ["mode"],
+          "properties": {
+            "mode": { "enum": ["all", "any", "count"] },
+            "count": { "type": "integer", "minimum": 1 }
+          },
+          "additionalProperties": false
+        },
+        "condition": {
+          "type": "object",
+          "required": ["condition_type", "selector"],
+          "properties": {
+            "condition_type": { "const": "applicability_conflict" },
+            "selector": { "$ref": "#/$defs/Selector" }
+          },
+          "additionalProperties": false
+        },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Rule": {
+      "type": "object",
+      "required": ["rule_id", "assignees", "action", "targets", "constraints", "duties", "extensions"],
+      "properties": {
+        "rule_id": { "type": "string", "minLength": 1 },
+        "assignees": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "action": {
+          "enum": [
+            "hwm-authority:resolveView",
+            "hwm-authority:proposeAction",
+            "hwm-authority:dispatchAction",
+            "hwm-authority:confirmAction"
+          ]
+        },
+        "targets": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/Selector" }
+        },
+        "constraints": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Constraint" }
+        },
+        "duties": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Duty" }
+        },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Policy": {
+      "type": "object",
+      "required": ["policy_id", "assigner", "conflict_strategy", "permissions", "prohibitions", "extensions"],
+      "properties": {
+        "policy_id": { "type": "string", "minLength": 1 },
+        "assigner": { "type": "string", "minLength": 1 },
+        "conflict_strategy": { "const": "deny_overrides" },
+        "permissions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Rule" }
+        },
+        "prohibitions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/Rule" }
+        },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method"],
+      "properties": {
+        "mode": { "enum": ["unsigned_fixture", "digest", "signature", "vc", "cwt"] },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "Lease": {
+      "type": "object",
+      "required": [
+        "lease_id",
+        "subject",
+        "audiences",
+        "policy_ids",
+        "authority_epoch",
+        "not_before",
+        "expires_at",
+        "proof_of_possession",
+        "proof",
+        "extensions"
+      ],
+      "properties": {
+        "lease_id": { "type": "string", "minLength": 1 },
+        "subject": { "type": "string", "minLength": 1 },
+        "audiences": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "policy_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "authority_epoch": { "type": "integer", "minimum": 0 },
+        "not_before": { "type": "string", "format": "date-time" },
+        "expires_at": { "type": "string", "format": "date-time" },
+        "proof_of_possession": {
+          "type": "object",
+          "required": ["binding_type", "value"],
+          "properties": {
+            "binding_type": { "enum": ["jwk_thumbprint", "cose_key_thumbprint", "platform_key_ref", "fixture"] },
+            "value": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "proof": { "$ref": "#/$defs/Proof" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

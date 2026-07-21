@@ -1,0 +1,373 @@
+{
+  "contract": "hwm:WorldView",
+  "contract_version": "0.1.0",
+  "view_id": "urn:hwm:view:morning-preparation-before-actions",
+  "household_id": "urn:hwm:household:morning-fixture-001",
+  "requester": "urn:hwm:subject:morning-planner-agent",
+  "purpose": "hwm:purpose:morning-preparation",
+  "generated_at": "2026-07-18T06:55:00Z",
+  "as_of": "2026-07-18T06:55:00Z",
+  "known_through": "2026-07-18T06:50:00Z",
+  "freshness": {
+    "maximum_age_seconds": 300,
+    "status": "current"
+  },
+  "coverage": {
+    "entity_refs": [
+      "urn:hwm:event:morning-hot-water-demand-window",
+      "urn:hwm:subject:resident-a",
+      "urn:hwm:subject:resident-b",
+      "urn:hwm:space:shared-bedroom",
+      "urn:hwm:feature:bathroom-hot-water-outlet",
+      "urn:hwm:feature:morning-preparation-energy",
+      "urn:hwm:endpoint:circulation-pump"
+    ],
+    "claim_kinds": ["forecast", "preference", "constraint", "requirement", "goal", "predicted_effect"]
+  },
+  "authority_epoch": 11,
+  "profiles": [
+    { "id": "hwm:core", "version": "0.1.0", "required": true },
+    { "id": "hwm:forecast", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:preference-context", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+  ],
+  "resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:aggregate-morning-demand",
+      "subject": "urn:hwm:event:morning-hot-water-demand-window",
+      "predicate": "hwm-forecast:probability",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "in_effect",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:aggregate-morning-demand",
+          "object": {
+            "event_type": "hwm-event:HotWaterDemand",
+            "probability": 0.78,
+            "horizon": {
+              "from": "2026-07-18T07:15:00Z",
+              "to": "2026-07-18T07:45:00Z"
+            },
+            "population": "household_aggregate"
+          },
+          "claim_ids": ["urn:hwm:claim:morning-hot-water-demand-forecast"],
+          "evidence_record_ids": ["urn:hwm:record:forecast-issued"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "applicable",
+        "context_claim_ids": [],
+        "conflict_ids": [],
+        "reason_codes": ["forecast_horizon_matches_planning_horizon"]
+      },
+      "reason_codes": ["purpose_authorized_aggregate_derivation"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:future-hot-water-user-identity",
+      "subject": "urn:hwm:event:morning-hot-water-demand-window",
+      "predicate": "hwm-forecast:expectedSubject",
+      "availability_status": "access_denied",
+      "epistemic_status": "not_evaluated",
+      "freshness_status": "not_applicable",
+      "temporal_status": "indeterminate",
+      "candidates": [],
+      "reason_codes": ["person_level_activity_not_authorized_for_purpose"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:resident-a-temperature-preference",
+      "subject": "urn:hwm:subject:resident-a",
+      "predicate": "hwm-preference:preferredRange",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:resident-a-temperature-preference",
+          "object": {
+            "property": "saref:Temperature",
+            "range": { "minimum": 22, "maximum": 23, "unit": "Cel" },
+            "context": {
+              "space_id": "urn:hwm:space:shared-bedroom",
+              "occupancy": "occupied"
+            }
+          },
+          "claim_ids": ["urn:hwm:claim:resident-a-temperature-preference"],
+          "evidence_record_ids": ["urn:hwm:record:resident-a-preference"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "conflicting",
+        "context_claim_ids": [],
+        "conflict_ids": ["urn:hwm:conflict:shared-bedroom-temperature"],
+        "reason_codes": ["overlapping_context_non_intersecting_ranges"]
+      },
+      "reason_codes": ["authorized_self_declaration"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:resident-b-temperature-preference",
+      "subject": "urn:hwm:subject:resident-b",
+      "predicate": "hwm-preference:preferredRange",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:resident-b-temperature-preference",
+          "object": {
+            "property": "saref:Temperature",
+            "range": { "minimum": 19, "maximum": 20, "unit": "Cel" },
+            "context": {
+              "space_id": "urn:hwm:space:shared-bedroom",
+              "occupancy": "occupied"
+            }
+          },
+          "claim_ids": ["urn:hwm:claim:resident-b-temperature-preference"],
+          "evidence_record_ids": ["urn:hwm:record:resident-b-preference"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "conflicting",
+        "context_claim_ids": [],
+        "conflict_ids": ["urn:hwm:conflict:shared-bedroom-temperature"],
+        "reason_codes": ["overlapping_context_non_intersecting_ranges"]
+      },
+      "reason_codes": ["authorized_self_declaration"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:morning-energy-constraint",
+      "subject": "urn:hwm:intent:prepare-home-for-morning",
+      "predicate": "hwm-resource:maximumConsumption",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:morning-energy-constraint",
+          "object": {
+            "resource": "saref:Energy",
+            "maximum": { "value": 1.5, "unit": "kWh" },
+            "window": {
+              "from": "2026-07-18T06:55:00Z",
+              "to": "2026-07-18T07:45:00Z"
+            }
+          },
+          "claim_ids": ["urn:hwm:claim:morning-energy-constraint"],
+          "evidence_record_ids": ["urn:hwm:record:household-requirements"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "applicable",
+        "context_claim_ids": [],
+        "conflict_ids": [],
+        "reason_codes": ["planning_window_matches_constraint_window"]
+      },
+      "reason_codes": ["authorized_household_constraint"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:hot-water-wait-requirement",
+      "subject": "urn:hwm:feature:bathroom-hot-water-outlet",
+      "predicate": "hwm-effect:maximumRequirement",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:hot-water-wait-requirement",
+          "object": {
+            "property": "hwm-water:WaitTime",
+            "threshold": { "value": 10, "unit": "s" },
+            "comparator": "<="
+          },
+          "claim_ids": ["urn:hwm:claim:hot-water-wait-requirement"],
+          "evidence_record_ids": ["urn:hwm:record:household-requirements"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "applicable",
+        "context_claim_ids": [],
+        "conflict_ids": [],
+        "reason_codes": ["morning_preparation_purpose"]
+      },
+      "reason_codes": ["authorized_household_requirement"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:hot-water-temperature-requirement",
+      "subject": "urn:hwm:feature:bathroom-hot-water-outlet",
+      "predicate": "hwm-effect:minimumRequirement",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:hot-water-temperature-requirement",
+          "object": {
+            "property": "saref:Temperature",
+            "threshold": { "value": 40, "unit": "Cel" },
+            "comparator": ">="
+          },
+          "claim_ids": ["urn:hwm:claim:hot-water-temperature-requirement"],
+          "evidence_record_ids": ["urn:hwm:record:household-requirements"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "applicable",
+        "context_claim_ids": [],
+        "conflict_ids": [],
+        "reason_codes": ["morning_preparation_purpose"]
+      },
+      "reason_codes": ["authorized_household_requirement"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:shared-bedroom-comfort-goal",
+      "subject": "urn:hwm:space:shared-bedroom",
+      "predicate": "hwm-goal:desiredCondition",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:shared-bedroom-comfort-goal",
+          "object": {
+            "property": "saref:Temperature",
+            "purpose": "morning_comfort"
+          },
+          "claim_ids": ["urn:hwm:claim:shared-bedroom-comfort-goal"],
+          "evidence_record_ids": ["urn:hwm:record:household-requirements"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "conflicting",
+        "context_claim_ids": [],
+        "conflict_ids": ["urn:hwm:conflict:shared-bedroom-temperature"],
+        "reason_codes": ["goal_requires_resolution_of_visible_preferences"]
+      },
+      "reason_codes": ["authorized_household_goal"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:pump-wait-time-effect",
+      "subject": "urn:hwm:endpoint:circulation-pump",
+      "predicate": "hwm-effect:predictsOutcome",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:pump-wait-time-effect",
+          "object": {
+            "when": { "action_type": "hwm-action:StartCirculation", "parameters": {} },
+            "affected_feature_id": "urn:hwm:feature:bathroom-hot-water-outlet",
+            "property": "hwm-water:WaitTime",
+            "expected_range": { "minimum": 5, "maximum": 9, "unit": "s" },
+            "context_claim_ids": [],
+            "observation_window_seconds": 15,
+            "measurement_procedure": "urn:hwm:procedure:hot-water-wait-v1",
+            "tolerance": { "value": 0, "unit": "s" },
+            "uncertainty": { "kind": "bounded_interval", "confidence": 0.8 },
+            "model_version": "commissioning-sample-1"
+          },
+          "claim_ids": ["urn:hwm:claim:pump-wait-time-effect"],
+          "evidence_record_ids": ["urn:hwm:record:pump-effect-models"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["commissioning_model_in_scope"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:pump-temperature-effect",
+      "subject": "urn:hwm:endpoint:circulation-pump",
+      "predicate": "hwm-effect:predictsOutcome",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:pump-temperature-effect",
+          "object": {
+            "when": { "action_type": "hwm-action:StartCirculation", "parameters": {} },
+            "affected_feature_id": "urn:hwm:feature:bathroom-hot-water-outlet",
+            "property": "saref:Temperature",
+            "expected_range": { "minimum": 40, "maximum": 45, "unit": "Cel" },
+            "context_claim_ids": [],
+            "observation_window_seconds": 15,
+            "measurement_procedure": "urn:hwm:procedure:hot-water-temperature-v1",
+            "tolerance": { "value": 0, "unit": "Cel" },
+            "uncertainty": { "kind": "bounded_interval", "confidence": 0.8 },
+            "model_version": "commissioning-sample-1"
+          },
+          "claim_ids": ["urn:hwm:claim:pump-temperature-effect"],
+          "evidence_record_ids": ["urn:hwm:record:pump-effect-models"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["commissioning_model_in_scope"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:pump-energy-effect",
+      "subject": "urn:hwm:endpoint:circulation-pump",
+      "predicate": "hwm-effect:predictsOutcome",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:pump-energy-effect",
+          "object": {
+            "when": { "action_type": "hwm-action:StartCirculation", "parameters": {} },
+            "affected_feature_id": "urn:hwm:feature:morning-preparation-energy",
+            "property": "saref:Energy",
+            "expected_range": { "minimum": 0.15, "maximum": 0.25, "unit": "kWh" },
+            "context_claim_ids": [],
+            "observation_window_seconds": 60,
+            "measurement_procedure": "urn:hwm:procedure:pump-energy-v1",
+            "tolerance": { "value": 0, "unit": "kWh" },
+            "uncertainty": { "kind": "bounded_interval", "confidence": 0.8 },
+            "model_version": "commissioning-sample-1"
+          },
+          "claim_ids": ["urn:hwm:claim:pump-energy-effect"],
+          "evidence_record_ids": ["urn:hwm:record:pump-effect-models"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["commissioning_model_in_scope"]
+    }
+  ],
+  "conflicts": [
+    {
+      "conflict_id": "urn:hwm:conflict:shared-bedroom-temperature",
+      "claim_ids": [
+        "urn:hwm:claim:resident-a-temperature-preference",
+        "urn:hwm:claim:resident-b-temperature-preference"
+      ],
+      "reason_code": "overlapping_context_non_intersecting_ranges"
+    }
+  ],
+  "limitations": [
+    {
+      "code": "source_evidence_withheld",
+      "description": "The aggregate forecast is disclosed, but person-level source Claims and Records are not available for this purpose."
+    },
+    {
+      "code": "fixture_unsigned_records",
+      "description": "Fixture Records are unsigned and must not be treated as production trust evidence."
+    }
+  ],
+  "extensions": {}
+}

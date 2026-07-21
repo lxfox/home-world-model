@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/evidence-standing/v0.1/evidence-standing-decision-set.schema.json",
+  "title": "HWM Evidence Standing Decision Set v0.1",
+  "type": "object",
+  "required": ["artifact", "artifact_version", "decisions"],
+  "properties": {
+    "artifact": { "const": "hwm-standing:DecisionSet" },
+    "artifact_version": { "const": "0.1.0-fixture" },
+    "decisions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "evidence-standing-decision.schema.json" }
+    }
+  },
+  "additionalProperties": false
+}

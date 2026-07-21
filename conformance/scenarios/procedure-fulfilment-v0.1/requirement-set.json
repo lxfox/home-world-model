@@ -1,0 +1,22 @@
+{
+  "contract": "hwm-fulfilment:RequirementSet",
+  "contract_version": "0.1.0-fixture",
+  "requirement_set_id": "urn:hwm:requirement-set:shared-bedroom-hvac-1",
+  "household_id": "urn:hwm:household:discussion-home",
+  "authority_id": "urn:hwm:authority:discussion-home",
+  "authority_epoch": 7,
+  "mapping_assessment_id": "urn:hwm:assessment:impact-procedure-1",
+  "mapping_status": "mapped_for_declared_impacts",
+  "proposal": { "proposal_id": "urn:hwm:proposal:shared-bedroom-hvac-1", "revision": 1 },
+  "requirements": [
+    { "requirement_id": "req-affirmative", "source_impact_ids": ["impact-human-a-thermal"], "kind": "affirmative_response", "timing": "before_authorization", "participation_slot_id": "urn:hwm:slot:proposal-1:01", "completion_signal": "affirmative_response", "failure_effect": "confirmation_required", "negative_signal_effect": "blocks", "opens_at": "2026-07-19T12:00:00Z", "due_at": "2026-07-19T12:10:00Z", "extensions": {} },
+    { "requirement_id": "req-consultation", "source_impact_ids": ["impact-pet-thermal"], "kind": "consultation_opportunity", "timing": "before_authorization", "participation_slot_id": "urn:hwm:slot:proposal-1:02", "completion_signal": "opportunity_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "requires_replan", "opens_at": "2026-07-19T12:00:00Z", "due_at": "2026-07-19T12:05:00Z", "extensions": {} },
+    { "requirement_id": "req-objection", "source_impact_ids": ["impact-opaque-privacy-c"], "kind": "objection_window", "timing": "before_dispatch", "participation_slot_id": "urn:hwm:slot:proposal-1:03", "completion_signal": "window_expired_without_objection", "failure_effect": "indeterminate", "negative_signal_effect": "blocks", "opens_at": "2026-07-19T12:00:00Z", "due_at": "2026-07-19T12:06:00Z", "extensions": {} },
+    { "requirement_id": "req-review", "source_impact_ids": ["impact-shared-circuit"], "kind": "qualified_review", "timing": "before_authorization", "participation_slot_id": "urn:hwm:slot:proposal-1:04", "completion_signal": "review_accepted", "failure_effect": "denied", "negative_signal_effect": "blocks", "opens_at": "2026-07-19T12:00:00Z", "due_at": "2026-07-19T12:10:00Z", "extensions": {} },
+    { "requirement_id": "req-notification-a", "source_impact_ids": ["impact-human-a-control"], "kind": "notification", "timing": "before_dispatch", "participation_slot_id": "urn:hwm:slot:proposal-1:05", "completion_signal": "notice_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "not_applicable", "opens_at": "2026-07-19T12:00:00Z", "due_at": "2026-07-19T12:10:00Z", "extensions": {} },
+    { "requirement_id": "req-notification-b", "source_impact_ids": ["impact-control-b"], "kind": "notification", "timing": "before_dispatch", "participation_slot_id": "urn:hwm:slot:proposal-1:06", "completion_signal": "notice_delivered", "failure_effect": "indeterminate", "negative_signal_effect": "not_applicable", "opens_at": "2026-07-19T12:00:00Z", "due_at": "2026-07-19T12:10:00Z", "extensions": {} },
+    { "requirement_id": "req-audit", "source_impact_ids": ["impact-shared-circuit"], "kind": "audit", "timing": "after_execution", "participation_slot_id": null, "completion_signal": "audit_recorded", "failure_effect": "post_action_noncompliance", "negative_signal_effect": "record_only", "opens_at": "2026-07-19T12:20:00Z", "due_at": "2026-07-19T12:40:00Z", "extensions": {} }
+  ],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "fixture-only" },
+  "extensions": {}
+}

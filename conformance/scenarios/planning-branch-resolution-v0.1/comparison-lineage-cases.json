@@ -1,0 +1,55 @@
+{
+  "profile": "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1",
+  "contract_version": "0.1.0-fixture",
+  "cases": [
+    {
+      "case_id": "comparison-branches-share-base",
+      "input_context_ids": ["urn:hwm:option:a", "urn:hwm:option:b"],
+      "branch_closures": [
+        {"context_id": "urn:hwm:option:a", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r3"},
+        {"context_id": "urn:hwm:option:b", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r3"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "ready", "root_base_context_id": "urn:hwm:base:r3", "emitted_recommendation_ids": ["urn:hwm:recommendation:a"], "reason_codes": []}
+    },
+    {
+      "case_id": "comparison-branches-use-different-base-revisions",
+      "input_context_ids": ["urn:hwm:option:a-r1", "urn:hwm:option:b-r2"],
+      "branch_closures": [
+        {"context_id": "urn:hwm:option:a-r1", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r2"},
+        {"context_id": "urn:hwm:option:b-r2", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r3"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:b",
+      "expected": {"status": "invalid_context", "root_base_context_id": null, "emitted_recommendation_ids": [], "reason_codes": ["comparison_inputs_do_not_share_base"]}
+    },
+    {
+      "case_id": "comparison-branch-closure-missing",
+      "input_context_ids": ["urn:hwm:option:a", "urn:hwm:option:b"],
+      "branch_closures": [
+        {"context_id": "urn:hwm:option:a", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r3"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "root_base_context_id": null, "emitted_recommendation_ids": [], "reason_codes": ["branch_closure_missing"]}
+    },
+    {
+      "case_id": "comparison-includes-historical-branch",
+      "input_context_ids": ["urn:hwm:option:a-r1", "urn:hwm:option:b-r2"],
+      "branch_closures": [
+        {"context_id": "urn:hwm:option:a-r1", "context_status": "historical_only", "root_base_context_id": "urn:hwm:base:r2"},
+        {"context_id": "urn:hwm:option:b-r2", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r3"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:b",
+      "expected": {"status": "indeterminate", "root_base_context_id": null, "emitted_recommendation_ids": [], "reason_codes": ["branch_not_current"]}
+    },
+    {
+      "case_id": "comparison-branch-dependency-indeterminate",
+      "input_context_ids": ["urn:hwm:option:a", "urn:hwm:option:b"],
+      "branch_closures": [
+        {"context_id": "urn:hwm:option:a", "context_status": "ready", "root_base_context_id": "urn:hwm:base:r3"},
+        {"context_id": "urn:hwm:option:b", "context_status": "indeterminate", "root_base_context_id": "urn:hwm:base:r3"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "root_base_context_id": null, "emitted_recommendation_ids": [], "reason_codes": ["branch_dependency_indeterminate"]}
+    }
+  ]
+}

@@ -1,0 +1,3672 @@
+{
+  "manifest_id": "hwm-public-repository-projection-v0.1",
+  "generated_from": "internal allowlist; source history intentionally not exposed",
+  "file_count": 733,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 99,
+      "sha256": "aa2c527ff7ddb7d6da133526c9f2800133f09fc10adeb761b77d6244c54770fc"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/action-trace.expected.json",
+      "size": 2196,
+      "sha256": "8848206271a7a85013a42f67171462965421ea4e3437ac78175eed5f0e840791"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/claims.json",
+      "size": 6827,
+      "sha256": "0c9b3d8ec563fe5492207e9d8fe729d26b1354512d01e37de8049dec3471a2b1"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/manifest.json",
+      "size": 1315,
+      "sha256": "8c136f2cb1d124e9fec2ecefceb361a8c7319739a2c54db2b8ff43e74924a2bc"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/oracle-cases.json",
+      "size": 774,
+      "sha256": "05ab6722e75c60f5069a1c8dbc38f8abe6d88eb20ea7bec507cc1346fbcd555c"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/README.md",
+      "size": 3403,
+      "sha256": "1e4c36ad705b34b99babf190a20f34524d69dd88c94306272ce087da4a70fc23"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/README.zh-CN.md",
+      "size": 2958,
+      "sha256": "8064ef3ab0d3ebf554e961d2db24879cb9e2184466144cb89d5292cfeee87571"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/records.json",
+      "size": 3063,
+      "sha256": "65974d1df0dda81231c5096bb5bc86417b00eb610f94cedd8d4e619eedf204ef"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/validate.mjs",
+      "size": 7494,
+      "sha256": "1533fc76cc94beefa037bad23f14d3f5ae8cf19d31971d3b4d1ef84b8173e93d"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/world-view.after.expected.json",
+      "size": 4272,
+      "sha256": "6fa33d1653cb6195386a323e88d71f8f1b6fa2af18134c19c93fc50c5dab1abe"
+    },
+    {
+      "path": "conformance/fixtures/bedroom-reading-light-v0.1/world-view.before.json",
+      "size": 6289,
+      "sha256": "9ab9dd76b102a35687dee1d38a4bcb33c5185c9327a6c3b0cf0c2c65b519ba23"
+    },
+    {
+      "path": "conformance/README.md",
+      "size": 739,
+      "sha256": "21645dec7cb69f1d15237a7ff01b8dd4b15fbb3ac9a3260692705ec3d02111e5"
+    },
+    {
+      "path": "conformance/scenarios/action-attempt-v0.1/attempt-cases.json",
+      "size": 7910,
+      "sha256": "96759eab39040155eea525b060908ee2c0d8ecd05384d34395bf5661c80aabc7"
+    },
+    {
+      "path": "conformance/scenarios/action-attempt-v0.1/README.md",
+      "size": 397,
+      "sha256": "e2663f8db4c7833ec671dcd955a7d7667681f247486f1ce077299b90c16ad4ef"
+    },
+    {
+      "path": "conformance/scenarios/action-attempt-v0.1/README.zh-CN.md",
+      "size": 402,
+      "sha256": "9cd04a7491d4fc8ceb1cb246791f371fcb1ef799a4ffb2c0220c5014e0063a69"
+    },
+    {
+      "path": "conformance/scenarios/action-attempt-v0.1/validate.mjs",
+      "size": 4464,
+      "sha256": "2474c5141c81246507c2189d29a26b9edda0b5f13e7f0403590480f2ed5f0a9e"
+    },
+    {
+      "path": "conformance/scenarios/action-proposal-lineage-v0.1/proposal-lineage-cases.json",
+      "size": 6451,
+      "sha256": "a614201657f485356bf25c026804f7360beecffe9d4244609736a7459cf5a38a"
+    },
+    {
+      "path": "conformance/scenarios/action-proposal-lineage-v0.1/README.md",
+      "size": 440,
+      "sha256": "9b23b6a340047184e8866deea48128d4900e5f9e8bd5ed53aed4cad3df0c2e2f"
+    },
+    {
+      "path": "conformance/scenarios/action-proposal-lineage-v0.1/README.zh-CN.md",
+      "size": 414,
+      "sha256": "8e6ff836aea95b56a5baa85c588f316c3a9808dabdb958c8f7bb059d9943601d"
+    },
+    {
+      "path": "conformance/scenarios/action-proposal-lineage-v0.1/validate.mjs",
+      "size": 3177,
+      "sha256": "0af72c8ea36a524c8225387c4de1d01326390ff02a024fe708653728e8663e5a"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/admission-cases.json",
+      "size": 17139,
+      "sha256": "75ed614584377a871ea42760f2eaf301764b8b86d14d49c0714a8dc7a624c8ff"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/admission-decision.example.json",
+      "size": 1865,
+      "sha256": "4b2961341ad1ab0acb3c5888c553367686e3b9e645d9c89de8242040c3dd893e"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/admission-request.example.json",
+      "size": 1037,
+      "sha256": "44586d23f55182fe617f47c0bb614c16ee22451d0d9e69aac23cf9068a0f302c"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/issued-lease.example.json",
+      "size": 575,
+      "sha256": "23c9a2ed3c9e5292834f0e23e78f0a123648a2cbbfb0f0f892b1aec1b0c0c334"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/README.md",
+      "size": 854,
+      "sha256": "bd56d7cba2b2b03c0e7f4a6f75500419047b7304e4905c414b125f5ef4b2396c"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/README.zh-CN.md",
+      "size": 757,
+      "sha256": "29404184af51ee708ebeb981ff0046190374ab7350130e86db5100a4bb3d7f24"
+    },
+    {
+      "path": "conformance/scenarios/agent-admission-v0.1/validate.mjs",
+      "size": 13576,
+      "sha256": "281d7717a0a440c454e8db81c8cc14c11bad42d868fee88c85ecbf82694d4f6f"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/continuity-cases.json",
+      "size": 21008,
+      "sha256": "bec8e107515f6b9c989356cbaa8f887e287e4b48935c647b9dbc550d9ef57113"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/continuity-checkpoint.example.json",
+      "size": 3051,
+      "sha256": "27a0eecc143e7716747bce52df1622908ac911e6bbbf3b5bfa45a9e7d3b42c4c"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/continuity-decision.example.json",
+      "size": 2073,
+      "sha256": "329e86485e63a87930ee95afd0f1942f596c08db0f7f10d04a8840c541c5dcfd"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/README.md",
+      "size": 817,
+      "sha256": "99d0ea223abbadacaa6f7e2a51ae6c87193634083c7106c58edfc102415b15c1"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/README.zh-CN.md",
+      "size": 703,
+      "sha256": "95c9e39a21e4b43d9e5328b992b8b36f58a244b46fd42abd91949633d4cb32ac"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/target-lease.example.json",
+      "size": 615,
+      "sha256": "cc23ea00afaca3c7682720d28bd53f4d1cf1b9f0c477c61cb41e69417c46bb14"
+    },
+    {
+      "path": "conformance/scenarios/agent-continuity-v0.1/validate.mjs",
+      "size": 18158,
+      "sha256": "f7b97ab4d099c781736a6e5f244868d93d9e935feeb35d401ec071c140ea15a9"
+    },
+    {
+      "path": "conformance/scenarios/agent-orientation-snapshot-v0.1/orientation-cases.json",
+      "size": 6888,
+      "sha256": "1ac29ad6bbb4e09988ec9fbadba0a69fa8f73920130c178ba82816b86b971e91"
+    },
+    {
+      "path": "conformance/scenarios/agent-orientation-snapshot-v0.1/README.md",
+      "size": 468,
+      "sha256": "4e2ce7092dd00e4a1e5a24b65bb3dd5490942656ece310ee0d23578055faf972"
+    },
+    {
+      "path": "conformance/scenarios/agent-orientation-snapshot-v0.1/README.zh-CN.md",
+      "size": 463,
+      "sha256": "df18b0ccb2c444a8e40777a9225359cd209c7772d80545638fd98457d9e906dc"
+    },
+    {
+      "path": "conformance/scenarios/agent-orientation-snapshot-v0.1/validate.mjs",
+      "size": 3977,
+      "sha256": "98f04e65cf8b23a38aa92176d4008cbf80ee9adf83d6a73b5fe1ef9eceb480bf"
+    },
+    {
+      "path": "conformance/scenarios/anticipatory-readiness-planning-v0.1/readiness-cases.json",
+      "size": 6855,
+      "sha256": "39c37f9c52a2c7f1ecfef74c11a355ec98dc8fea0ed0cedd28cd24da0b4e6213"
+    },
+    {
+      "path": "conformance/scenarios/anticipatory-readiness-planning-v0.1/README.md",
+      "size": 481,
+      "sha256": "b7c7592927b77556b0bac03589f6e2a71928c304d546b532241fd659899405eb"
+    },
+    {
+      "path": "conformance/scenarios/anticipatory-readiness-planning-v0.1/README.zh-CN.md",
+      "size": 385,
+      "sha256": "1daebe65cecd9ec2427699d71d8a8ba6bf4385702ebf2e0b0bf4d1de3f0d41cb"
+    },
+    {
+      "path": "conformance/scenarios/anticipatory-readiness-planning-v0.1/validate.mjs",
+      "size": 1101,
+      "sha256": "8a52313675e08edea107658f8baf75b01b750b596e93ce70d51b6bdba1a9681f"
+    },
+    {
+      "path": "conformance/scenarios/authority-trust-bootstrap-v0.1/README.md",
+      "size": 2589,
+      "sha256": "b39dc3a1461c1054eee457e29a2028aab8e40546e62badeb6a0c4a8e89f337a0"
+    },
+    {
+      "path": "conformance/scenarios/authority-trust-bootstrap-v0.1/README.zh-CN.md",
+      "size": 2295,
+      "sha256": "770208777d95fcb21ced505a6fa412ff80e4b6044777c2edfb9ff41c56163f15"
+    },
+    {
+      "path": "conformance/scenarios/authority-trust-bootstrap-v0.1/trust-cases.json",
+      "size": 18079,
+      "sha256": "f6c6da110c0abdb31c745e89c7ed5770450deb723816dd2337b1ae74316da623"
+    },
+    {
+      "path": "conformance/scenarios/authority-trust-bootstrap-v0.1/trust-root.example.json",
+      "size": 2355,
+      "sha256": "f2a7e25d5aa5939a3cd117da12a133c12699b85676a3ffc4b82a05be313f4e7c"
+    },
+    {
+      "path": "conformance/scenarios/authority-trust-bootstrap-v0.1/validate.mjs",
+      "size": 13565,
+      "sha256": "9fa6cf24adcd0916e31fdfa67854d683405a49ebad3d81ff6ac91242a2d62250"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/claims.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/manifest.json",
+      "size": 846,
+      "sha256": "b3655b515fa9e19c64c5d37275212cb9261b87740b80941c05f31dfb6aa112ea"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/README.md",
+      "size": 1389,
+      "sha256": "d52d1ce4d82e803584a5239b9a8d1011dae8f5384ea67b0e7b600fba17f87875"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/README.zh-CN.md",
+      "size": 929,
+      "sha256": "7b3e67872f0b70e3b8dfe63b24a31e91ef21b9e7ec370fa67d4936a829258276"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/records.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/relay-cases.json",
+      "size": 2868,
+      "sha256": "c1b9502246276b698bb6d7091a65bb5331bb47079f2a103c698e98f1bd97d84d"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/ro-crate-metadata.json",
+      "size": 3183,
+      "sha256": "76d55192afa5d76b61cd2b7183df263afbf0d2eaae41142681547f06895a518a"
+    },
+    {
+      "path": "conformance/scenarios/base-only-package-v0.1/validate.mjs",
+      "size": 3285,
+      "sha256": "34bf5edc8bddc0fcaf9fb416a4a801abe125713e93465f2a19e5e68095dfc6b9"
+    },
+    {
+      "path": "conformance/scenarios/bounded-impact-closure-v0.1/coverage-policy.json",
+      "size": 2797,
+      "sha256": "8e838ea1cae727b6d55e787ffc76a77de225f9b4a7b0093c5795aed3179e61bf"
+    },
+    {
+      "path": "conformance/scenarios/bounded-impact-closure-v0.1/impact-cases.json",
+      "size": 25133,
+      "sha256": "e2af72c77014af0d3990455d76d81a3b6dccc158bcee26d24b878b05cf41167b"
+    },
+    {
+      "path": "conformance/scenarios/bounded-impact-closure-v0.1/impact.external.jsonld",
+      "size": 2595,
+      "sha256": "74c7ce7bd05c68cf2bf0488a64f68423a3809f6eb23deedf3142069c731c4f59"
+    },
+    {
+      "path": "conformance/scenarios/bounded-impact-closure-v0.1/README.md",
+      "size": 3028,
+      "sha256": "5a9b68cbb82919d04c5626cf93c02141ad600307ff368bd9cb05fa2a2bb29b44"
+    },
+    {
+      "path": "conformance/scenarios/bounded-impact-closure-v0.1/README.zh-CN.md",
+      "size": 2202,
+      "sha256": "ecec76f08676157a08036b8270e0b1e58a857b80a5522d6422fa4514ffc1c68b"
+    },
+    {
+      "path": "conformance/scenarios/bounded-impact-closure-v0.1/validate.mjs",
+      "size": 9292,
+      "sha256": "945e685d981edc0bf3949bf789eccb2d537281aac4d001dc688cc4e4c462ba79"
+    },
+    {
+      "path": "conformance/scenarios/change-impact-revalidation-v0.1/README.md",
+      "size": 484,
+      "sha256": "2077e25553fc434b68e838f138d23ab21f4acb5540f2a5d04c002dd0984b313b"
+    },
+    {
+      "path": "conformance/scenarios/change-impact-revalidation-v0.1/README.zh-CN.md",
+      "size": 450,
+      "sha256": "bc7e8a9202ea318b61c7ef20f7be2e81a8c2295a6ec7c4c7683a43fe5b11b853"
+    },
+    {
+      "path": "conformance/scenarios/change-impact-revalidation-v0.1/revalidation-cases.json",
+      "size": 8814,
+      "sha256": "8f49d20bc5f59439d25d500d5fc97e3ef8b4be4b99dffe75a94b6e7200f46d2b"
+    },
+    {
+      "path": "conformance/scenarios/change-impact-revalidation-v0.1/validate.mjs",
+      "size": 3670,
+      "sha256": "8db3e74591de0b8bdaec845447bb0476194d10f750f19694c4dfe98323a4226f"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/applicability-assessment.example.json",
+      "size": 3422,
+      "sha256": "93d526c8284c1c7d7c77f28a17f97f734234ac5cf6be4469c926bbb751610983"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/applicability-cases.json",
+      "size": 20803,
+      "sha256": "32d21c83cd25f59937ec413eeee0ebf40900c223db6c1e68585223bc3d80fe9b"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/applicability-rule-claim.example.json",
+      "size": 1717,
+      "sha256": "ba09b0b960f91912fdc23a77faa8de608fd8056fd8cb7dd21a47f4bf5a675f31"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/applicability-world-view.example.json",
+      "size": 3655,
+      "sha256": "c30686e6f53800a8d42fca14b0ada0864f62ccd83700a6acede1d66f30e14a5f"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/preference-claim.example.json",
+      "size": 1125,
+      "sha256": "87c1dd9e1a0b7ab123f9797e64f2b6341549edd25cbff5d46b462b46f12ba8e1"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/README.md",
+      "size": 2272,
+      "sha256": "5207de8f56f94d85f24585715df33af82af1043572b798c2aceff83e30045574"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/README.zh-CN.md",
+      "size": 2102,
+      "sha256": "084311c565f679e93585e3df654c30c1662d0155f311e68db0d32d73c3dfb013"
+    },
+    {
+      "path": "conformance/scenarios/contextual-applicability-v0.1/validate.mjs",
+      "size": 12456,
+      "sha256": "850819c64f3f7f338fab42ac1e60200894a5c6e71b524a4819f21e604e21b459"
+    },
+    {
+      "path": "conformance/scenarios/cross-agent-work-composition-v0.1/composition-cases.json",
+      "size": 6771,
+      "sha256": "118d7d0e8ef311594e821632c999f22d7b600ecaf4f9688ccb990a59ca66b24f"
+    },
+    {
+      "path": "conformance/scenarios/cross-agent-work-composition-v0.1/README.md",
+      "size": 724,
+      "sha256": "627405e2d8f4b2770faaa5cbcbfdb9e811c3936976a5db0ea65a642184def93d"
+    },
+    {
+      "path": "conformance/scenarios/cross-agent-work-composition-v0.1/README.zh-CN.md",
+      "size": 539,
+      "sha256": "40ae0e90f47793b6927550b9e1fc42b03ecb3069b8f33b560a888c5c0fab00a0"
+    },
+    {
+      "path": "conformance/scenarios/cross-agent-work-composition-v0.1/validate.mjs",
+      "size": 1192,
+      "sha256": "440d1ae425877d55a748be81d577483189b41becf159196e1cb99dd7042e2056"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-closure-v0.1/closure-cases.json",
+      "size": 4543,
+      "sha256": "5c248917d23228e14a8adb47965f885f1a94890ae5313d4ab9c85fce8c52578c"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-closure-v0.1/README.md",
+      "size": 579,
+      "sha256": "98fb872f5a002ae5afdff824e24057e48d7d783a48353f18b10e03c46e41a83c"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-closure-v0.1/README.zh-CN.md",
+      "size": 528,
+      "sha256": "f56c7b9622b47a39bfac8dae5893aa5353eb8410dcc08398a21598e1edcb93b6"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-closure-v0.1/validate.mjs",
+      "size": 3177,
+      "sha256": "574dccc33067b263b75ac9421f5a3d2085387307d39777751bf3bab4e004e20e"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-eligibility-v0.1/deliberation-cases.json",
+      "size": 3943,
+      "sha256": "d179c812d528717ebf605a55d8eac18274ddd3a7ad0ecc979f1633ed580783a4"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-eligibility-v0.1/README.md",
+      "size": 645,
+      "sha256": "31821530c342a46019ab34b36f4edf165c28607d1a7852962ac225f1df5a4c19"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-eligibility-v0.1/README.zh-CN.md",
+      "size": 607,
+      "sha256": "19b14e09b07a8343e8e5fe4fc3556d8b922d7b52567d6916e45d4779ab3b7ff1"
+    },
+    {
+      "path": "conformance/scenarios/deliberation-eligibility-v0.1/validate.mjs",
+      "size": 3268,
+      "sha256": "2bdf9f7b1115f16ae4cf20597337cac9e525b889ed4fa09237ee20aff7d9003c"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/action-trace.revision-1.json",
+      "size": 1972,
+      "sha256": "16931fb73024447e094bf723aaffee202cc5893f5a778130427d6d6809a7d528"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/action-trace.revision-2.json",
+      "size": 2080,
+      "sha256": "e7aefc72a5da084d09da7bf28b0f9bb37db3ef3f044013ae4177b74e0d5ad984"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/claim-id-collision.input.json",
+      "size": 1704,
+      "sha256": "1de857a91cd557202ab160fd88a9715fa2499aa8d137cd46782c3a6e1e3312ea"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/claims.json",
+      "size": 9534,
+      "sha256": "38e4b72a39128affe1782fe47044e2da9bceed694aa241120b003635fbc7c178"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/manifest.json",
+      "size": 1261,
+      "sha256": "03b3668290858da0324abda09c2aa17d61f41318a7e06966ccea95ea19b1a487"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/README.md",
+      "size": 1955,
+      "sha256": "0df8779ef31039e601d5b253e044efc5f2a5ffc110c4e11b043b6c30181a5f45"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/README.zh-CN.md",
+      "size": 1752,
+      "sha256": "8e0f8eae0b61683ea5ad7340d421d30e344ab4ef0bd4b28c5be5f6cae35e331b"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/records.json",
+      "size": 4389,
+      "sha256": "a7b05e0df7adcac2846000e6e65b7d645c5bd908edbbab9c7c4310ff25e261d9"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/ro-crate-equivalence.mjs",
+      "size": 5195,
+      "sha256": "2f281ac52aa07bd3e60acd9bab2be007d3906d9c91745d21afe66971881880af"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/ro-crate-metadata.json",
+      "size": 4817,
+      "sha256": "52069c907b6ce3f450e3786858ae4c9ab06d8dba055040e3866777af40183a92"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/validate.mjs",
+      "size": 9603,
+      "sha256": "bd975f50f675734fe6fc52de339c9935333e129c175d6224f1282cb3e3e3e0a8"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/world-view.after-replacement.json",
+      "size": 7368,
+      "sha256": "19703770189c51c49d09b26491317464503484554b5dde0ac668441ddd184ef6"
+    },
+    {
+      "path": "conformance/scenarios/device-lifecycle-continuity-v0.1/world-view.before-replacement.json",
+      "size": 5015,
+      "sha256": "b56c1d795455edc725b574021d2a7d67167fbea49c4cb773185ebe3e426c0c56"
+    },
+    {
+      "path": "conformance/scenarios/effect-realization-attribution-v0.1/effect-cases.json",
+      "size": 8168,
+      "sha256": "bc528bc1eedf019415188cbade3d48d805053f0af83d89dac197c5d1e883201c"
+    },
+    {
+      "path": "conformance/scenarios/effect-realization-attribution-v0.1/README.md",
+      "size": 464,
+      "sha256": "1d32356ddc86aeaf57380fa48bd71bfad6e02355722ac225c706d9e16d6094c2"
+    },
+    {
+      "path": "conformance/scenarios/effect-realization-attribution-v0.1/README.zh-CN.md",
+      "size": 451,
+      "sha256": "316f18f37a1c9d000fe9de5b22663582f4b7fa848ead9894a76f4f9c9440e261"
+    },
+    {
+      "path": "conformance/scenarios/effect-realization-attribution-v0.1/validate.mjs",
+      "size": 3830,
+      "sha256": "ed8fc66e641d5580576c137f64f9c09761820bd5ea8461f9231fcd23df11cbf8"
+    },
+    {
+      "path": "conformance/scenarios/entity-identity-alignment-v0.1/identity-cases.json",
+      "size": 6895,
+      "sha256": "5742232ab640cb98aeb9bee9cc0de54d0052f9c7b91beb818078d937d469064e"
+    },
+    {
+      "path": "conformance/scenarios/entity-identity-alignment-v0.1/README.md",
+      "size": 471,
+      "sha256": "dd787064335c4eea4e962f9af33f477e6ebcd1a4f095b23f2574f50918dd20d3"
+    },
+    {
+      "path": "conformance/scenarios/entity-identity-alignment-v0.1/README.zh-CN.md",
+      "size": 394,
+      "sha256": "399eb8e2796efb402b01b9078ad062e28fcd5fde044a729ac4c40c071778c42f"
+    },
+    {
+      "path": "conformance/scenarios/entity-identity-alignment-v0.1/validate.mjs",
+      "size": 1105,
+      "sha256": "1071291cf1526c5670056a44549c8b27897dbae107f44edacc2f90861e308d78"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/admission-cases.json",
+      "size": 29858,
+      "sha256": "53c16e93653f5710db83f29761d6c0a150c62b1ec8d02500260ea2b9653bb770"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/interaction-binding.json",
+      "size": 1603,
+      "sha256": "96e839bba78a668eddb9d36f445f5cbdca25c0b14bb3edd935ffaed3672591ba"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/interaction.external.jsonld",
+      "size": 2431,
+      "sha256": "b73a7e85795908efeedbf3b0705c3739a119b50b1fe2372fc96237b1a854ca68"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/README.md",
+      "size": 3985,
+      "sha256": "8fd54b80e2a054c527711eed6f3ca6b221f60d22d45aaf1251974e13d6487cd2"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/README.zh-CN.md",
+      "size": 3467,
+      "sha256": "313fe609a56417ebc484c49d692a23b40b8d9688442c1984439f8ce9e9935b4b"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/validate.mjs",
+      "size": 9496,
+      "sha256": "5eaff07ee63520527037cd4b5c72fa73f187a10a19db68154cc42f4a5c058232"
+    },
+    {
+      "path": "conformance/scenarios/epistemic-admission-and-correction-v0.1/world-view.single-candidate-contested.json",
+      "size": 2003,
+      "sha256": "c5e70696e5850372bc02bab685ac69ac7c8c0b0fdeed712cf6f597d6c02a4274"
+    },
+    {
+      "path": "conformance/scenarios/evidence-standing-v0.1/README.md",
+      "size": 2846,
+      "sha256": "d7e04fa8f5f1a3eb48deed00cb9378aa53bd156b5e5c7f8676ed4204d7cc0d0a"
+    },
+    {
+      "path": "conformance/scenarios/evidence-standing-v0.1/README.zh-CN.md",
+      "size": 2561,
+      "sha256": "75654dbbaa93756df25469598751a550d9aead18ffdde767ba117b8c809eafa2"
+    },
+    {
+      "path": "conformance/scenarios/evidence-standing-v0.1/standing-cases.json",
+      "size": 23969,
+      "sha256": "d1ea548da40b40f853cdfd5376e5344cf852360244723a39163e73626cf18342"
+    },
+    {
+      "path": "conformance/scenarios/evidence-standing-v0.1/standing-decision.example.json",
+      "size": 1021,
+      "sha256": "94f55f7a13b1c8a8b6704d83f4d65afb7a5c807ccdc71dc794e2114be9c65c9d"
+    },
+    {
+      "path": "conformance/scenarios/evidence-standing-v0.1/standing-policy.json",
+      "size": 6218,
+      "sha256": "39210a64f5781422a0a81e3541c361dda883b4a482c99db3001418cbeb14b5b7"
+    },
+    {
+      "path": "conformance/scenarios/evidence-standing-v0.1/validate.mjs",
+      "size": 8198,
+      "sha256": "3d650d088d07b36875526371baff58da2016c1c26193078bbeee87b2212e56e4"
+    },
+    {
+      "path": "conformance/scenarios/household-commissioning-experiment-v0.1/experiment-cases.json",
+      "size": 6690,
+      "sha256": "aac92a3d3a7b08700ec8447f75ecd6d3e20899568a8c09ae4f49f8e321b76108"
+    },
+    {
+      "path": "conformance/scenarios/household-commissioning-experiment-v0.1/README.md",
+      "size": 446,
+      "sha256": "544785f6864a80a22299d72f24dcd4fbdd326b41b8c5a455057a42c5a7908714"
+    },
+    {
+      "path": "conformance/scenarios/household-commissioning-experiment-v0.1/README.zh-CN.md",
+      "size": 333,
+      "sha256": "4fcc43e9ac284ec1278475c8e614c6110ecbe6cb4621e2e4e50614bf5da15a41"
+    },
+    {
+      "path": "conformance/scenarios/household-commissioning-experiment-v0.1/validate.mjs",
+      "size": 1116,
+      "sha256": "60a3f59be2ed2b07a670dac3ca13bd4210ca6ef653967334997f6959adfe7d4a"
+    },
+    {
+      "path": "conformance/scenarios/impact-procedure-mapping-v0.1/mapping-cases.json",
+      "size": 20435,
+      "sha256": "accc9a09fdd5fb5a365a09d7c15b0865b873bcf0cb9cdb7d50ee0439c13067ae"
+    },
+    {
+      "path": "conformance/scenarios/impact-procedure-mapping-v0.1/mapping-policy.json",
+      "size": 6030,
+      "sha256": "0bb865d7615ac24ddd7096325edeac6bbb6dfe64d0ade235602dd3a917067529"
+    },
+    {
+      "path": "conformance/scenarios/impact-procedure-mapping-v0.1/mapping.external.jsonld",
+      "size": 3295,
+      "sha256": "9cd18ffb8d3b4d7f07a4a58be553c443c189ec027ef157ec144cff07b31ce8e3"
+    },
+    {
+      "path": "conformance/scenarios/impact-procedure-mapping-v0.1/README.md",
+      "size": 2828,
+      "sha256": "39ceaf9684870a5e1d6182bb8f100bddc6ddd40368a9dd679f4d813a606b32ab"
+    },
+    {
+      "path": "conformance/scenarios/impact-procedure-mapping-v0.1/README.zh-CN.md",
+      "size": 2306,
+      "sha256": "ff27bcd235b5e28f62f651b5da429b52cd8b9d9b721defce9006e08809f20a54"
+    },
+    {
+      "path": "conformance/scenarios/impact-procedure-mapping-v0.1/validate.mjs",
+      "size": 11180,
+      "sha256": "598afbfe704a5dad3eb5fdb9cce099985e43248028293960107ca79eee5c4a97"
+    },
+    {
+      "path": "conformance/scenarios/installed-influence-model-v0.1/model-cases.json",
+      "size": 7596,
+      "sha256": "7d68d74b3d135e744213d7a5bddd3108f120d5498b8d051ef179dd120d30fa04"
+    },
+    {
+      "path": "conformance/scenarios/installed-influence-model-v0.1/README.md",
+      "size": 445,
+      "sha256": "3eb45916585b7377d17000d742443aae1242dbe9fb4d0906766b5c989a2fad4f"
+    },
+    {
+      "path": "conformance/scenarios/installed-influence-model-v0.1/README.zh-CN.md",
+      "size": 440,
+      "sha256": "8282d42a37000115b1b26eddc38f4c17536acaa1fb7971c53aba2b6c470c2176"
+    },
+    {
+      "path": "conformance/scenarios/installed-influence-model-v0.1/validate.mjs",
+      "size": 3759,
+      "sha256": "8182f561b33c4ad99351ad3d2de6fe6bf32df0572f467244bd8f29607466f8dc"
+    },
+    {
+      "path": "conformance/scenarios/intent-commitment-v0.1/intent-cases.json",
+      "size": 27340,
+      "sha256": "01bff8c9edb292feea5b47269904c4034273647532ac5f96d379823c7c927d4f"
+    },
+    {
+      "path": "conformance/scenarios/intent-commitment-v0.1/intent-definition.example.json",
+      "size": 1833,
+      "sha256": "f018d4be8767bb804e18a965b9f5687824ba7ddeeaba7b2ae81e036ef1f4e630"
+    },
+    {
+      "path": "conformance/scenarios/intent-commitment-v0.1/intent-state.example.json",
+      "size": 2289,
+      "sha256": "8b6dd0c7a4b7228588edc254427c04f4f5ef58189e116195d4b93502be64aabf"
+    },
+    {
+      "path": "conformance/scenarios/intent-commitment-v0.1/README.md",
+      "size": 1320,
+      "sha256": "0f5282ea6a9200d17807b523a6321479ef950ba245a49af86f134712a28a5461"
+    },
+    {
+      "path": "conformance/scenarios/intent-commitment-v0.1/README.zh-CN.md",
+      "size": 940,
+      "sha256": "d32be27c525c911a80b4208e0b83186689b22138d1d2bcf12433a4a4c8acdf39"
+    },
+    {
+      "path": "conformance/scenarios/intent-commitment-v0.1/validate.mjs",
+      "size": 11521,
+      "sha256": "256e0858d12ebcada25aeadbeebf0b154928505114cf50ba7a03250445ddb125"
+    },
+    {
+      "path": "conformance/scenarios/joint-environmental-influence-v0.1/joint-cases.json",
+      "size": 7022,
+      "sha256": "8af70ace61f8849e7460afcef721210fb049cb836e58114c0a616733f6354434"
+    },
+    {
+      "path": "conformance/scenarios/joint-environmental-influence-v0.1/README.md",
+      "size": 463,
+      "sha256": "5ea5fddca26bd6c451f29fc39ca91c14280f6fbbd2a7e99f711c2e881e537bf0"
+    },
+    {
+      "path": "conformance/scenarios/joint-environmental-influence-v0.1/README.zh-CN.md",
+      "size": 383,
+      "sha256": "e301070e56d5141d6e0a0329555a156a491a8b5015ff5e92feda097d8d9f938c"
+    },
+    {
+      "path": "conformance/scenarios/joint-environmental-influence-v0.1/validate.mjs",
+      "size": 1105,
+      "sha256": "1d95ec59c9a4a0e268a3d6b1943a153f869ca1ab7978ad54c1f21003e3906b91"
+    },
+    {
+      "path": "conformance/scenarios/model-contribution-admission-v0.1/contribution-cases.json",
+      "size": 6688,
+      "sha256": "d5c11810a8bda4cc6d160126a844e07e64bc564995fa09a00b2f3109f6a591b9"
+    },
+    {
+      "path": "conformance/scenarios/model-contribution-admission-v0.1/README.md",
+      "size": 460,
+      "sha256": "52947cd84878742f2f46a4b22703f306c9512fb5c22bbcc9f95e6aa5a7a4a800"
+    },
+    {
+      "path": "conformance/scenarios/model-contribution-admission-v0.1/README.zh-CN.md",
+      "size": 388,
+      "sha256": "c440aa81924fb86f1d025db148b3d90080a10240cbf770b8b8a0c0a770bf10cd"
+    },
+    {
+      "path": "conformance/scenarios/model-contribution-admission-v0.1/validate.mjs",
+      "size": 1120,
+      "sha256": "83bc458a5be5e944f11f6f7cf6c1fc8faa6f9dffbb08c6c9b2e6a21e34f0aeae"
+    },
+    {
+      "path": "conformance/scenarios/multi-target-option-comparison-v0.1/comparison-cases.json",
+      "size": 7677,
+      "sha256": "fa3a68ece5b0c814426dc652e36f40dcf5b14e56704175c85e7a916cb47386cc"
+    },
+    {
+      "path": "conformance/scenarios/multi-target-option-comparison-v0.1/README.md",
+      "size": 456,
+      "sha256": "ddcab9ec225c17b4d6e609fc0604fa06a672067b911a96f1e171c7d1f4519715"
+    },
+    {
+      "path": "conformance/scenarios/multi-target-option-comparison-v0.1/README.zh-CN.md",
+      "size": 419,
+      "sha256": "e3f51aca4309e30102d74acf5adb319e64934ac42db46a7482b4277bdc8bfba6"
+    },
+    {
+      "path": "conformance/scenarios/multi-target-option-comparison-v0.1/validate.mjs",
+      "size": 4535,
+      "sha256": "64dffbcbc518816e796b3e7aa86e124b89bb91f9419694a445ac9f607e0224e1"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/authority-evaluator.mjs",
+      "size": 7375,
+      "sha256": "56d3acb1aa38bdc23bd4d7ba491a4d0e6f75bff10c477beeba9c32801d742c78"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/authority-oracle.json",
+      "size": 7478,
+      "sha256": "8dd7b244ca8ca2d294d34a698dbc64f80f7cc86c333bd68c5c1cccb57a8954c1"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/authority-profile.json",
+      "size": 8242,
+      "sha256": "fbdb9f7308aa180f027049e507279f59466e3d8336953946d58cb504d68f4660"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/claims.json",
+      "size": 12095,
+      "sha256": "541ff5e63f7eef07538074a1ad3c71a3326e78e4a9de55eeec0affb8be4b1b98"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/hvac-action-trace.expected.json",
+      "size": 1710,
+      "sha256": "ad0f4f934017c6110b752cfe6b1c3a174f0dae6c22b25939827fb7b681082345"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/manifest.json",
+      "size": 1675,
+      "sha256": "25e4400d73e08cb0c375edd6722459cd85947b051029d9e6c66d6e06c2de8333"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/oracle.expected.json",
+      "size": 1226,
+      "sha256": "554a0195cf4372fba5744459eb353deadff6e3d35d39829479ea3d5cd73064fc"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/pump-action-trace.expected.json",
+      "size": 3333,
+      "sha256": "286e23057fba59084211075e256a0a323083a3e82b26d1c606d1021dfb9f1ff9"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/README.md",
+      "size": 8329,
+      "sha256": "3a3c31f9b1778ceddfabef368f533608bb17181f48825ee95a866423137276b0"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/README.zh-CN.md",
+      "size": 7252,
+      "sha256": "777ad39faae1014ed75ae0101cea160300b891789b7427ed92ab9f63f6a48008"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/records.json",
+      "size": 6330,
+      "sha256": "db32c6db536c4ad3a03133e49c00355c4c6592949848f44cdbb1d051e3d0dcab"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/validate.mjs",
+      "size": 12353,
+      "sha256": "3cb7b3884071219dc795e72c2fa28711ffd22c2eab6f06b0bb94591340c8eb61"
+    },
+    {
+      "path": "conformance/scenarios/multi-user-morning-preparation-v0.1/world-view.before.json",
+      "size": 14624,
+      "sha256": "8ca26d9787776ffdb5cc770b8a131d8af1c521adfcaac13b9611ce102dbf3705"
+    },
+    {
+      "path": "conformance/scenarios/outcome-work-closure-v0.1/closure-cases.json",
+      "size": 7945,
+      "sha256": "1248132e0a3464a296401be0943d5df020f0ffa234de485bc4301188e46d163e"
+    },
+    {
+      "path": "conformance/scenarios/outcome-work-closure-v0.1/README.md",
+      "size": 466,
+      "sha256": "317e0fbe3ddcc59a1a357a03a87718458d01aa734abfbeecda1a33eb9c3a99de"
+    },
+    {
+      "path": "conformance/scenarios/outcome-work-closure-v0.1/README.zh-CN.md",
+      "size": 453,
+      "sha256": "3e224908f5661158e78501d71b121af22bbad13ab9f940656898a3b0fd9e9eb8"
+    },
+    {
+      "path": "conformance/scenarios/outcome-work-closure-v0.1/validate.mjs",
+      "size": 4480,
+      "sha256": "2be763e2bd49bf0fb64d4a3402d2b7c7db8258eef0e49f5b1f1e27571c9e4321"
+    },
+    {
+      "path": "conformance/scenarios/physical-asset-onboarding-v0.1/onboarding-cases.json",
+      "size": 7097,
+      "sha256": "7412f6adf008783a8ede28fc232c423a4b517de368212773a7ca6812847d6fc4"
+    },
+    {
+      "path": "conformance/scenarios/physical-asset-onboarding-v0.1/README.md",
+      "size": 772,
+      "sha256": "b3120393884654d00e20f91512b09593fd6a65620fedae719ddd8bcd9428cf9b"
+    },
+    {
+      "path": "conformance/scenarios/physical-asset-onboarding-v0.1/README.zh-CN.md",
+      "size": 629,
+      "sha256": "951d858b9d01142ad626d8429e35fc78c23d98bdadab607028e947716bc72376"
+    },
+    {
+      "path": "conformance/scenarios/physical-asset-onboarding-v0.1/validate.mjs",
+      "size": 2103,
+      "sha256": "cd37faabe212186383e5dda3b723df40b561d1a75f1751096b4ce7d6557d359d"
+    },
+    {
+      "path": "conformance/scenarios/plan-materialization-v0.1/materialization-cases.json",
+      "size": 4882,
+      "sha256": "c2a03bfb1062f3547784088f5a9a94e4298c48fe9ccfc62b3433fb38e6bc35ac"
+    },
+    {
+      "path": "conformance/scenarios/plan-materialization-v0.1/README.md",
+      "size": 578,
+      "sha256": "0679b958b6f3935057722e457195e995f325b3cd5d4bfe2a0a873e3351e36cec"
+    },
+    {
+      "path": "conformance/scenarios/plan-materialization-v0.1/README.zh-CN.md",
+      "size": 511,
+      "sha256": "01b31cce6f44195130fcfa738ef4118914d3e43042afab5de86a732dd6d880df"
+    },
+    {
+      "path": "conformance/scenarios/plan-materialization-v0.1/validate.mjs",
+      "size": 3774,
+      "sha256": "1392a53a158c0af4ac9d3c23f4b745073a172e97e10687c17dd9c15513742cf5"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/base-revision.external.jsonld",
+      "size": 1299,
+      "sha256": "b572eb5d5bf3936fc27525c547e14d8b91236872ccf985c5c33ea8b8dd822997"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/comparison-cases.json",
+      "size": 9418,
+      "sha256": "d4504564ecd3310b9207085eeca312bcd24a5ed2711c259d683889572088a4e6"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/comparison-lineage-cases.json",
+      "size": 3206,
+      "sha256": "75329b02d22f1e8ba38e643ba17e2e0ce2a51ffb049e9e7171327b921133fe72"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/dependency-cases.json",
+      "size": 16618,
+      "sha256": "340106bab22d88632e3f99fd2f2b960948be6bf38e19ddad3ba9c22678228635"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/README.md",
+      "size": 4868,
+      "sha256": "4fc954b5d9532b1fb0afbb1c532f305249de9cb6d2f1cc9b76af7d4fa7979f87"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/README.zh-CN.md",
+      "size": 4422,
+      "sha256": "17937fbae8f8dbbfc9dcc21a9858def64cc5e4bf199a3908d8a7bcb3effad63e"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/selection-cases.json",
+      "size": 7691,
+      "sha256": "12925c51cc13c5855fa19d88360a3e566d8d1a76ac32c10c451e9fc9bc8244d8"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/selection-revision.external.jsonld",
+      "size": 1811,
+      "sha256": "7422998f5baa0a4221c359557d9008a27b3fb94e59d7d327bf7a2caf785298b6"
+    },
+    {
+      "path": "conformance/scenarios/planning-branch-resolution-v0.1/validate.mjs",
+      "size": 13627,
+      "sha256": "5ef25539c70970101015a395cb7494e374387189b0092260cf77737699794308"
+    },
+    {
+      "path": "conformance/scenarios/planning-prediction-qualification-v0.1/model-cases.json",
+      "size": 7068,
+      "sha256": "691371c0d9909afa9d6b05a027655efe6a0e5ff23c7eb8c6cecc9b758f1c342a"
+    },
+    {
+      "path": "conformance/scenarios/planning-prediction-qualification-v0.1/README.md",
+      "size": 454,
+      "sha256": "2936d6b548e0dcda5297983d2d628c5ee14ae8645357e02b4e6ffcaf266e698e"
+    },
+    {
+      "path": "conformance/scenarios/planning-prediction-qualification-v0.1/README.zh-CN.md",
+      "size": 434,
+      "sha256": "6430c7a795bcd37adeae1304ae8ec1e7914c03dd6de4424b8f07796761829af1"
+    },
+    {
+      "path": "conformance/scenarios/planning-prediction-qualification-v0.1/validate.mjs",
+      "size": 3526,
+      "sha256": "d25b7e1cb13d10ba9f174e1354985b0d63b50ed76ec9b992f7c1f8a1c00be23e"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/admission-decisions.json",
+      "size": 26172,
+      "sha256": "8bfdab821c2bdad15bb9da88ceb6dfab9700c8267b78f14e952cbacdc386c568"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/assessment.example.json",
+      "size": 1285,
+      "sha256": "8f2357120c2a689d66c02506fa6099b7aa993d44402ad0570cdbe753a4af0696"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/fulfilment-cases.json",
+      "size": 27068,
+      "sha256": "4f6499f5a6427d1c4a6ef6f393baa9171b53a0dde658cd725e46196e01430614"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/fulfilment.external.jsonld",
+      "size": 3378,
+      "sha256": "2081e74d948d83f067c36e3f252b14b28ce99371df18c90a1c33783b484bee35"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/README.md",
+      "size": 1650,
+      "sha256": "01703d06ad50d4bf5c5081e53bf4d9600389c3d6277f0481477b2159ce8f4080"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/README.zh-CN.md",
+      "size": 1200,
+      "sha256": "43367fa556ee5d6c84f107f7a48a7083ea7a4179b5da4b9564fe661a9fda0d64"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/requirement-set.json",
+      "size": 3505,
+      "sha256": "1d71068c01992fb7b4fbe1e53746089c1320920ed147ae197b8f88137f0e5e3b"
+    },
+    {
+      "path": "conformance/scenarios/procedure-fulfilment-v0.1/validate.mjs",
+      "size": 18088,
+      "sha256": "bacf734f5f6426f2a52a0f513322b1f5b9fb91fdd1a184f2624dea2c9bafb9b0"
+    },
+    {
+      "path": "conformance/scenarios/procurement-offer-qualification-v0.1/procurement-cases.json",
+      "size": 6490,
+      "sha256": "775cfd1d6c7308abe9bd07b3d6ae91d87b5dcde775dfa24d8b037e048ace8786"
+    },
+    {
+      "path": "conformance/scenarios/procurement-offer-qualification-v0.1/README.md",
+      "size": 465,
+      "sha256": "88a32e2787ad67eb79d94341386c62f387c134333043a47391ee4779062f456d"
+    },
+    {
+      "path": "conformance/scenarios/procurement-offer-qualification-v0.1/README.zh-CN.md",
+      "size": 310,
+      "sha256": "c7d739fd89c6118bc6a9decc5bbf5e257de028f1595cb6a9cf07b8fb09298de3"
+    },
+    {
+      "path": "conformance/scenarios/procurement-offer-qualification-v0.1/validate.mjs",
+      "size": 1135,
+      "sha256": "a99990dc3d515f34898a21cea7569b5ed7c4a47b3d8e66ab4418cab29fc47417"
+    },
+    {
+      "path": "conformance/scenarios/profile-composition-conformance-v0.1/composition-cases.json",
+      "size": 6391,
+      "sha256": "77418489040f5e952122ebc383f4b09551d2114cfbaedce71bacc8b0e844acc5"
+    },
+    {
+      "path": "conformance/scenarios/profile-composition-conformance-v0.1/README.md",
+      "size": 687,
+      "sha256": "3e41ee59b02eda233eb7246537f7275ba8ef026c4aa8d59cc91c623b23f66a24"
+    },
+    {
+      "path": "conformance/scenarios/profile-composition-conformance-v0.1/README.zh-CN.md",
+      "size": 612,
+      "sha256": "4bf38f539ba042352aee143994ad3e4536b57a5ba6b20eb858d3460fe177bc22"
+    },
+    {
+      "path": "conformance/scenarios/profile-composition-conformance-v0.1/validate.mjs",
+      "size": 1727,
+      "sha256": "42a18ab45920d6310759f3802d95d2e4a71d5156da7c6b4b5d6cc8edc031bf43"
+    },
+    {
+      "path": "conformance/scenarios/purpose-bound-disclosure-v0.1/disclosure-cases.json",
+      "size": 6561,
+      "sha256": "0ad22122613fd85d3219507c297e4446e1366bec87b8746af975d039dbbae554"
+    },
+    {
+      "path": "conformance/scenarios/purpose-bound-disclosure-v0.1/README.md",
+      "size": 406,
+      "sha256": "ae64b30304928a107adf4a0f08c46a2c140f54a35b686d7930c57de18af36bc1"
+    },
+    {
+      "path": "conformance/scenarios/purpose-bound-disclosure-v0.1/README.zh-CN.md",
+      "size": 359,
+      "sha256": "8c17ece30c851edf23496d6e863be7b399bb222e766866fa1dd0dc6fa546028b"
+    },
+    {
+      "path": "conformance/scenarios/purpose-bound-disclosure-v0.1/validate.mjs",
+      "size": 1114,
+      "sha256": "0eb426ad8aa2a3576dc0f80ecf7df29bdef4dabb6aec3b1cd309dc3c8029de7e"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/catalog/candidate-products.jsonld",
+      "size": 1964,
+      "sha256": "0d5bba3f2a8640ef4fd44555bdc742010c3306e9c04772e62e24d601a2b1414d"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/claims.json",
+      "size": 30851,
+      "sha256": "4f608f6d26d2ac8297c337261a0a71a35f64e6913603aa179d17f8391822aeb6"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/comparison/options.json",
+      "size": 907,
+      "sha256": "7183918a692cc9c560212cf622e7f3c12ee6e50e4f4d2c12de0e689faa45c6bd"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/design/electrical-plan.json",
+      "size": 1866,
+      "sha256": "f6b529e738bbe24f96a57b5b8b7c1711373cc308a533bb73373d76c99f434256"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/design/spatial-model.jsonld",
+      "size": 833,
+      "sha256": "5bd913b08a25a4f466d1e370f6ac9be75126f3b2f66d767ab9435cf7ad952c1d"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/manifest.json",
+      "size": 2526,
+      "sha256": "b8b73a4019c91790759567e0cb8eff51003d649cee7732af85c4c5ae669fc5e2"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/README.md",
+      "size": 2642,
+      "sha256": "5bd6b4c18a328550d43be1189e1b084ebf3be8a03f7437e996fa7fffd83561b0"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/README.zh-CN.md",
+      "size": 2300,
+      "sha256": "dde1d98f16fb42bd989d7be5b6e9c6ae9aae9ac2e6aaac3471ae7721c9f280f8"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/records.json",
+      "size": 5976,
+      "sha256": "9ef7c6b10e8e4b26cb3501d7fdcdfc1a3c12c2d4527b999263d993d91884f2f3"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/ro-crate-metadata.json",
+      "size": 9322,
+      "sha256": "1a35b51d6469c3789a0260943ab71b4080f978e2e7adf84736d8eb2ba9d06ed1"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/simulation/lighting.csv",
+      "size": 338,
+      "sha256": "6c649e038c89b3ff7d5d55d21250ef5c087983b3b486f05b77d9893e05d9415c"
+    },
+    {
+      "path": "conformance/scenarios/renovation-planning-package-v0.1/validate.mjs",
+      "size": 11329,
+      "sha256": "60b058b8b177e6c13a247e209187d441268344f352f91c104429b6a73624ae91"
+    },
+    {
+      "path": "conformance/scenarios/requirement-operationalization-v0.1/README.md",
+      "size": 451,
+      "sha256": "a060d0ca98d7d5ad883627fe262781e4f137c45346201f2828dde441cc3f016c"
+    },
+    {
+      "path": "conformance/scenarios/requirement-operationalization-v0.1/README.zh-CN.md",
+      "size": 416,
+      "sha256": "7157e13e71d312145046a6f173956e9dc0df8abfbe4319099a3b298277725ef5"
+    },
+    {
+      "path": "conformance/scenarios/requirement-operationalization-v0.1/review-cases.json",
+      "size": 7061,
+      "sha256": "730c4df553e4483fa2a96c9d9803bcc55e23892165f6e1ab0990f140e6f29232"
+    },
+    {
+      "path": "conformance/scenarios/requirement-operationalization-v0.1/validate.mjs",
+      "size": 4018,
+      "sha256": "72bbeeccf2eab35ee91771fe4d7b91b071e2427970b3ec66d12c2a7529d69d1f"
+    },
+    {
+      "path": "conformance/scenarios/reusable-value-rule-v0.1/README.md",
+      "size": 437,
+      "sha256": "51514dcae813a597836c64af6ea5bafc4f452b80a98599af5498cf2d6b081c72"
+    },
+    {
+      "path": "conformance/scenarios/reusable-value-rule-v0.1/README.zh-CN.md",
+      "size": 421,
+      "sha256": "aff4044b7922551a7bc99a3f04c022f0e3675563c9a7865467e6475b546c9827"
+    },
+    {
+      "path": "conformance/scenarios/reusable-value-rule-v0.1/rule-cases.json",
+      "size": 7509,
+      "sha256": "a3b49e3668381bec35395463ec49867b7f442bc0e70b6555bc4b2016fe304643"
+    },
+    {
+      "path": "conformance/scenarios/reusable-value-rule-v0.1/validate.mjs",
+      "size": 4515,
+      "sha256": "e00765a3d89b260bf503fc6b685c6bb454d94a2737de130dae4f152ed967da79"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/eligibility-spec.example.json",
+      "size": 519,
+      "sha256": "a03be2d282dd1d698b098bdf1fdb3634594d8a4323d0bdbef73742e32bf5e56e"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/instantiation-decision.example.json",
+      "size": 3071,
+      "sha256": "e52fb332aaefa17d43787fe567c548d56333a6c3e615638c9323d8d9514d350f"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/occurrence-key-policy.example.json",
+      "size": 393,
+      "sha256": "908831434ab449b9f5ad9ed7749e145da3451aee4282f95453c46ba624c347be"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/persistent-intent-definition.example.json",
+      "size": 2134,
+      "sha256": "cba98709f18400aa5d1ce8b0dc61012cc1d042ea8c93e2242d2854bc5d12d495"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/persistent-intent-state.example.json",
+      "size": 1844,
+      "sha256": "09e016d051d0e5b3de76b8bac21e345edb13cf472cd30d4ceb9a486b436b2c69"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/README.md",
+      "size": 2606,
+      "sha256": "2bb779fac3d4dd32be85f411065b963925c292c7c4c5d7d8b3ade4a323cbd0ca"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/README.zh-CN.md",
+      "size": 2527,
+      "sha256": "f51264f855c59e4e807f602423e0aa6bc4c71e8d9a5b9d02c74234533dda0785"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/routine-cases.json",
+      "size": 30864,
+      "sha256": "5c5a6661eff5acbec9a93618086c5a5a48195ec06449192625615e50755288bd"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/routine-definition.example.json",
+      "size": 3020,
+      "sha256": "cecc5d245b5dc3353f17bd843f27509c1cd56d443021c780742b611b43aba0be"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/routine-state.example.json",
+      "size": 1166,
+      "sha256": "959a4856acfdcbe1dafd40d585bfca51019d691d8b9618c962ef76c00d83d6ad"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/task-definition.example.json",
+      "size": 2093,
+      "sha256": "ee4700a2eef7fcbd1124db31115f34044c0eda0461f39e19bd6e14b160441953"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/trigger-spec.example.json",
+      "size": 301,
+      "sha256": "46f0e1e8455373a9e0b9c55d2fbe65e6cc56e1dcd832d1c4e57b138966b4a3bc"
+    },
+    {
+      "path": "conformance/scenarios/routine-instantiation-v0.1/validate.mjs",
+      "size": 18950,
+      "sha256": "032d620fb03e44253a44ce888bfb739d74a99b85673d86ce262c73d8009afa84"
+    },
+    {
+      "path": "conformance/scenarios/semantic-capability-negotiation-v0.1/capability-cases.json",
+      "size": 7896,
+      "sha256": "18aad6097a8fdf181231b360c0f4f5a9bb56edc0495ff1b3482c7e9c2d943187"
+    },
+    {
+      "path": "conformance/scenarios/semantic-capability-negotiation-v0.1/README.md",
+      "size": 501,
+      "sha256": "5041796184d731a63f145151d2b3555a0bfbf7aef78fccec8db1d7224385fab7"
+    },
+    {
+      "path": "conformance/scenarios/semantic-capability-negotiation-v0.1/README.zh-CN.md",
+      "size": 478,
+      "sha256": "96659f592ae2a247f8f8a5e6ce4ee6107646dbb000b6135440f7e7040eaa05e1"
+    },
+    {
+      "path": "conformance/scenarios/semantic-capability-negotiation-v0.1/validate.mjs",
+      "size": 4611,
+      "sha256": "cc6e2baf641a2205ed0a3bd68dff1d37a1bc988675fb85012c9accc18f1ea6fb"
+    },
+    {
+      "path": "conformance/scenarios/shared-action-coordination-v0.1/coordination-cases.json",
+      "size": 26608,
+      "sha256": "1ddc738e16cc0ac46ebd54a555276ecbbbf15a4bbccdb76a5ee215a6c312f827"
+    },
+    {
+      "path": "conformance/scenarios/shared-action-coordination-v0.1/coordination-policy.json",
+      "size": 4997,
+      "sha256": "15669d3c17b23a15324f3ac558618fee29de95ee941065b28d0b986b428564a2"
+    },
+    {
+      "path": "conformance/scenarios/shared-action-coordination-v0.1/coordination.external.jsonld",
+      "size": 2766,
+      "sha256": "2af7c77e189c187ce6349a0b247aa2acf9ef331871ca2324f83ae5f55fbe13d1"
+    },
+    {
+      "path": "conformance/scenarios/shared-action-coordination-v0.1/README.md",
+      "size": 2685,
+      "sha256": "5b84ed45ee31f69611cc826984a01cffae3e97a34bd7197f3b57a8750869c73d"
+    },
+    {
+      "path": "conformance/scenarios/shared-action-coordination-v0.1/README.zh-CN.md",
+      "size": 2469,
+      "sha256": "c3bdf86fb4fdc484db411d2a66e5c565ab8ea06ef0db13c7def969e5dda50328"
+    },
+    {
+      "path": "conformance/scenarios/shared-action-coordination-v0.1/validate.mjs",
+      "size": 11684,
+      "sha256": "7a07e981af2c0767088bfcd23e5367908dbe1ff168d321c1741e3d62212ad3f8"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/README.md",
+      "size": 2857,
+      "sha256": "ee195f22d012da327e9ee981fdd0a206b8c0c0c49639785e2155c353c20b56f0"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/README.zh-CN.md",
+      "size": 2613,
+      "sha256": "9388e7640d7132ba061810296c6d272aae4cb15e2ff063534d662e8a2a4eeca0"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/situation-cases.json",
+      "size": 28590,
+      "sha256": "e4b2c5846e0afd5018848cf16ec31f3fed444c6a1527a61ec71c367154aa55df"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/situation-query.example.json",
+      "size": 738,
+      "sha256": "65cff4d7ab1727a8d46cf05f83ddae28f49f93d4fa355b999df9bdb7e0374524"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/situation-use-assessment.example.json",
+      "size": 2205,
+      "sha256": "1207cc02b3133273d0ef4218d31fc2edeeaae4369453fb0cfab62fa0f2d48eae"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/sleep-episode-claim.example.json",
+      "size": 2342,
+      "sha256": "a5d44ba3a54b746d99cee435ca154d303ff878ee33dc7d278d4a3102ca85cc4b"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/sleep-world-view.example.json",
+      "size": 2390,
+      "sha256": "c910e287f13dd6e9b590b38dcd02f4c33e2391430fef0fbbf78d5c66e374741b"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/subject-set.example.json",
+      "size": 397,
+      "sha256": "c28ac06da86405aa0692c31ce015ef9b7d8939967af5a8205c0a54a2efaea4cd"
+    },
+    {
+      "path": "conformance/scenarios/situational-context-v0.1/validate.mjs",
+      "size": 13695,
+      "sha256": "6ae78e05dab490c31e4e12e9b65ade9abf9bf6c8a91c97a6d32fe058e1619607"
+    },
+    {
+      "path": "conformance/scenarios/spatial-registration-localization-v0.1/README.md",
+      "size": 447,
+      "sha256": "8a073adad538c5e149b19dd035502b5a2952a6ddf34c2ef86a64964b81edfd47"
+    },
+    {
+      "path": "conformance/scenarios/spatial-registration-localization-v0.1/README.zh-CN.md",
+      "size": 390,
+      "sha256": "317f25304be2cd3fb683af4eece89cd68da1412312732bd482677f66eefc7f21"
+    },
+    {
+      "path": "conformance/scenarios/spatial-registration-localization-v0.1/spatial-cases.json",
+      "size": 6828,
+      "sha256": "94aeef7016fd4e9deabd88318db56279db943953b7d5c28c01fa0b20049cbacb"
+    },
+    {
+      "path": "conformance/scenarios/spatial-registration-localization-v0.1/validate.mjs",
+      "size": 1122,
+      "sha256": "033978369cdebd87beea9c3e6c5f4f1756d64498cf0a2d3049e6611de36bb61d"
+    },
+    {
+      "path": "conformance/scenarios/target-fit-v0.1/README.md",
+      "size": 686,
+      "sha256": "d935589db83386f0dbd093a7d3d21eaeda0b11edf69330846959e27bb8f21431"
+    },
+    {
+      "path": "conformance/scenarios/target-fit-v0.1/README.zh-CN.md",
+      "size": 615,
+      "sha256": "fa07cab511515efe21ed8947c0aea70d95b989929cb9d352dfe3f071f6e325ac"
+    },
+    {
+      "path": "conformance/scenarios/target-fit-v0.1/target-fit-cases.json",
+      "size": 5601,
+      "sha256": "ec2e85e9facfa836a9cbd1569ea986e6503dd74f120eadc67d999e030b5cfe30"
+    },
+    {
+      "path": "conformance/scenarios/target-fit-v0.1/validate.mjs",
+      "size": 4195,
+      "sha256": "1e142775b8dd7e9cc6c17a7bea19195a62d4c86a876b692ae2e7a715eada1b75"
+    },
+    {
+      "path": "conformance/scenarios/task-lineage-v0.1/README.md",
+      "size": 1367,
+      "sha256": "2c950cdca76a4f64d9572d0221430c480f959d15cd538ca8fa4699371e089f4e"
+    },
+    {
+      "path": "conformance/scenarios/task-lineage-v0.1/README.zh-CN.md",
+      "size": 949,
+      "sha256": "8f0ab2c9c9c28b4aa07044056255437b8717066f46ffde36c1e492a9575574b8"
+    },
+    {
+      "path": "conformance/scenarios/task-lineage-v0.1/task-definition.example.json",
+      "size": 2029,
+      "sha256": "99479dcc91985b24566928565e51a04be6451bf7e3a188a0e8a5dc7aff07b537"
+    },
+    {
+      "path": "conformance/scenarios/task-lineage-v0.1/task-lineage-cases.json",
+      "size": 21690,
+      "sha256": "8a7c2f52ce51135a3bf4be6c70d3461aa6aaf9ac157003edf3de6f2c5ed60dff"
+    },
+    {
+      "path": "conformance/scenarios/task-lineage-v0.1/task-state.example.json",
+      "size": 1880,
+      "sha256": "a9c573bbd5c6655922cd24508442aedbe7c2fdd3c8936b81a84ca0ee67596d06"
+    },
+    {
+      "path": "conformance/scenarios/task-lineage-v0.1/validate.mjs",
+      "size": 10070,
+      "sha256": "dfc20a4cc05e11a2fbc5f407740d83b314de23170d10a53e31b30a9a47f97f3b"
+    },
+    {
+      "path": "conformance/scenarios/value-clarification-dialogue-v0.1/dialogue-cases.json",
+      "size": 7651,
+      "sha256": "1e23e5e7f2e11bd34c1e95d3dfb2e572f6d5d45a4f0ac508d47e4709752f206d"
+    },
+    {
+      "path": "conformance/scenarios/value-clarification-dialogue-v0.1/README.md",
+      "size": 481,
+      "sha256": "cbb089901ea4cb1ff020bde7e655293b04b9330a8e4e82224c41e32c51093ee8"
+    },
+    {
+      "path": "conformance/scenarios/value-clarification-dialogue-v0.1/README.zh-CN.md",
+      "size": 444,
+      "sha256": "66f92ad98ba8280815f96fd2d2a96d45d26b38eb41df2699be5e0a9b29762095"
+    },
+    {
+      "path": "conformance/scenarios/value-clarification-dialogue-v0.1/validate.mjs",
+      "size": 4309,
+      "sha256": "160b2ba0d6493ef0a322f06eb6d78216e7e99b6232b6f03a7b77c49a7d75a822"
+    },
+    {
+      "path": "conformance/scenarios/work-realization-routing-v0.1/README.md",
+      "size": 610,
+      "sha256": "8dc42c81be6f0d56b6889bd76a59cc4fbfb52d7ae2fd10c5344ae94d81523a26"
+    },
+    {
+      "path": "conformance/scenarios/work-realization-routing-v0.1/README.zh-CN.md",
+      "size": 571,
+      "sha256": "7c812235f37da4778ffc2e5bca3647f1f439b23ce6612f2688ea38b162b49e55"
+    },
+    {
+      "path": "conformance/scenarios/work-realization-routing-v0.1/routing-cases.json",
+      "size": 4814,
+      "sha256": "deadda8b99b15bb66612e8a7fdc9753e434a7d6e9eb00d3b088b777ad36ce72d"
+    },
+    {
+      "path": "conformance/scenarios/work-realization-routing-v0.1/validate.mjs",
+      "size": 3769,
+      "sha256": "2d4444255a474e497c767c940c86dbfe126d8b4d44c1e2b94932bb40d0197530"
+    },
+    {
+      "path": "docs/00_context/glossary.md",
+      "size": 25581,
+      "sha256": "af08cc08c6cdc1e6f1daf36046706f10a00dad81fa8d54d304ddbdc7fb714161"
+    },
+    {
+      "path": "docs/00_context/home-world-model-core-v0.1.md",
+      "size": 28894,
+      "sha256": "ffb2d045b16c442dde05efbfa4d08147429aa8d36225ad75b10f924c95091c27"
+    },
+    {
+      "path": "docs/00_context/home-world-model-core-v0.1.zh-CN.md",
+      "size": 25450,
+      "sha256": "d9722a018d0a807ca9ac04d8a463224dc0452abb1470c7e2988991d9261e8f25"
+    },
+    {
+      "path": "docs/00_context/model-thesis-v0.1.md",
+      "size": 9869,
+      "sha256": "83ef624a5e3234d5ce5c44b13348a7b97566de2bdced7a4d2fd8d1ce21c7b296"
+    },
+    {
+      "path": "docs/00_context/model-thesis-v0.1.zh-CN.md",
+      "size": 8364,
+      "sha256": "3cff6373bf2486fd129e79882a3c1ea16e6b03e2413b8842809b3c044c3d3930"
+    },
+    {
+      "path": "docs/00_context/narrative-v0.1.md",
+      "size": 21600,
+      "sha256": "0843865fd51e02ec253c510e3cbb690641e31b3614fae0dc2812dd1ad14cf946"
+    },
+    {
+      "path": "docs/00_context/project-overview.md",
+      "size": 1983,
+      "sha256": "3969b3922097dad6d3f5a17c50e467597a60255caa48da62b1a4630ad0dde5f8"
+    },
+    {
+      "path": "docs/00_context/vision.md",
+      "size": 1474,
+      "sha256": "f2db19f34b29d6cad2f91b4d91de741ddaa00299d73764c4463002404e94aab4"
+    },
+    {
+      "path": "docs/02_domain-model/entity-model.md",
+      "size": 26889,
+      "sha256": "adabe0643e690c1b27a77afa33e5f785d67a786245d54eedef12927f50c4222a"
+    },
+    {
+      "path": "docs/02_domain-model/README.md",
+      "size": 433,
+      "sha256": "1f7b4c7af1fdf99a48653f427efd893717c0e5783e70792b9ea2c75c47f33f41"
+    },
+    {
+      "path": "docs/02_domain-model/relationship-model.md",
+      "size": 8803,
+      "sha256": "013cf1222315f75019cf9cef50da7ef968719d0b319d8f39ad6aece5d090751a"
+    },
+    {
+      "path": "docs/02_domain-model/state-machine.md",
+      "size": 14173,
+      "sha256": "10664e166b4de6f6436e1ace97d0cf4ba9b5cd17b52cc2f177f9e25f0a0939e8"
+    },
+    {
+      "path": "docs/02_domain-model/workflow.md",
+      "size": 16020,
+      "sha256": "a627450c03b50ad831362878cdcbcfda1db90c64edb370f681059cbc071f868b"
+    },
+    {
+      "path": "docs/05_decision/ADR-002-project-identity-language-and-licensing.md",
+      "size": 5477,
+      "sha256": "74175d45f61923eaf13d7fd2fd2d1d37c93152f87d8a44d964dc40d63f8e3e4e"
+    },
+    {
+      "path": "docs/05_decision/ADR-002-project-identity-language-and-licensing.zh-CN.md",
+      "size": 4591,
+      "sha256": "6cd1ec1562decdb1def054dda370b369e1db4086afb1760c6e4b7691548f8bec"
+    },
+    {
+      "path": "docs/05_decision/ADR-005-home-world-model-core-positioning.md",
+      "size": 5634,
+      "sha256": "ef9c4313fe6566b05c0653389cca36bef31bb97b93463ee612bcf1cff9ae65a5"
+    },
+    {
+      "path": "docs/05_decision/ADR-005-home-world-model-core-positioning.zh-CN.md",
+      "size": 4789,
+      "sha256": "e6cbcd535a4ec2405d74914c7154d83dfa6acc46a53b37e3368ead8578bf1e89"
+    },
+    {
+      "path": "docs/05_decision/ADR-006-ro-crate-package-binding.md",
+      "size": 4445,
+      "sha256": "bc7d1b0d61c40142c24040ce0821e2ad3186633671d0f806013caae5c54e37b3"
+    },
+    {
+      "path": "docs/05_decision/ADR-006-ro-crate-package-binding.zh-CN.md",
+      "size": 3836,
+      "sha256": "ff8456e42d1b025344a69c892a5d46de3bc737f6b3b71bb001fcd7a544a2e77a"
+    },
+    {
+      "path": "docs/05_decision/ADR-007-explicit-planning-contexts.md",
+      "size": 7031,
+      "sha256": "76a2a4b65abdbb037750154bb15f9ef73af77bca4c7f82cbbfac791d2fb21b56"
+    },
+    {
+      "path": "docs/05_decision/ADR-007-explicit-planning-contexts.zh-CN.md",
+      "size": 5932,
+      "sha256": "e9bdb147fe831e741f77324a4eef7c0f57dde67f79d1481fd20e2070a17159dd"
+    },
+    {
+      "path": "docs/05_decision/ADR-008-iec-bound-function-position.md",
+      "size": 4817,
+      "sha256": "a0854c817a8276569904dc41d32a30dbf508adf35ee624498f83e653ce84e362"
+    },
+    {
+      "path": "docs/05_decision/ADR-008-iec-bound-function-position.zh-CN.md",
+      "size": 4017,
+      "sha256": "ef1aaee898e83b26fcd859d11254c61d6085278ae1995071e8a4074831d7c0e5"
+    },
+    {
+      "path": "docs/05_decision/ADR-009-split-electrical-load-and-capacity.md",
+      "size": 5110,
+      "sha256": "82ab5a1d528a854fbca1ce83a9115bfee5312fa58416d81daab875c95c5be314"
+    },
+    {
+      "path": "docs/05_decision/ADR-009-split-electrical-load-and-capacity.zh-CN.md",
+      "size": 4269,
+      "sha256": "e87a5f94ff4875885fa6cd62a689435e0b2dff39f962839f8eb491a658062973"
+    },
+    {
+      "path": "docs/05_decision/ADR-010-resolve-facts-without-promoting-claims.md",
+      "size": 5742,
+      "sha256": "13ec633756f6f6a50a9acee401001ae368b87e3c87877062b7bc93ba2505186c"
+    },
+    {
+      "path": "docs/05_decision/ADR-010-resolve-facts-without-promoting-claims.zh-CN.md",
+      "size": 4865,
+      "sha256": "f303af7a55f508bec63bbda3469b432af89bea6e40e002366dc910046c384554"
+    },
+    {
+      "path": "docs/05_decision/ADR-011-separate-evidence-standing-from-household-authority.md",
+      "size": 6801,
+      "sha256": "f283ba042472748d77ba5cadacafa8556f4e47a6ac4141b2c16d61802fe7976e"
+    },
+    {
+      "path": "docs/05_decision/ADR-011-separate-evidence-standing-from-household-authority.zh-CN.md",
+      "size": 6054,
+      "sha256": "4ad8e6caef27c046f09411977edaa64bc62dd377ac0d63bed9492fee726c6cd5"
+    },
+    {
+      "path": "docs/05_decision/ADR-012-do-not-resolve-household-disagreement-as-truth.md",
+      "size": 7626,
+      "sha256": "7e54ee1c98421f6c00ab01f4142d62efb25ea6c6a234dcc234a747225d1af29c"
+    },
+    {
+      "path": "docs/05_decision/ADR-012-do-not-resolve-household-disagreement-as-truth.zh-CN.md",
+      "size": 6582,
+      "sha256": "eff87d62827b0a10064b2b94cfbb30b721122e4e998ed64815091c770aecc455"
+    },
+    {
+      "path": "docs/05_decision/ADR-013-bound-impact-closure-to-declared-channels.md",
+      "size": 7472,
+      "sha256": "5e7e3f3f89cd1f73ed3b8bcb7efbc1300d3f5573233842e3cec2daf8dd6fedac"
+    },
+    {
+      "path": "docs/05_decision/ADR-013-bound-impact-closure-to-declared-channels.zh-CN.md",
+      "size": 5652,
+      "sha256": "408160dc02ca231a5653cf48f027544dcf50bc7f7132c16d8130e20c4750a5c0"
+    },
+    {
+      "path": "docs/05_decision/ADR-014-map-impacts-to-system-owned-procedural-requirements.md",
+      "size": 9680,
+      "sha256": "69fb14df7a45862c270e20ea734fcd693c6e296c3eb2ca2918ca8487fb2f429f"
+    },
+    {
+      "path": "docs/05_decision/ADR-014-map-impacts-to-system-owned-procedural-requirements.zh-CN.md",
+      "size": 6933,
+      "sha256": "6f9f2d9f28f7a26dc40790a47cc2134ec9f1cb7855c09d28ea9dd7f2eba76f76"
+    },
+    {
+      "path": "docs/05_decision/ADR-015-evaluate-procedure-fulfilment-before-authorization.md",
+      "size": 5880,
+      "sha256": "d5d22b6f2da94f657f06afec10c352bd4a76a28e972f0c0c3b28bc5d9e61010c"
+    },
+    {
+      "path": "docs/05_decision/ADR-015-evaluate-procedure-fulfilment-before-authorization.zh-CN.md",
+      "size": 4026,
+      "sha256": "825a3e23f739fc25afc79a2c94cf3ab1a945ff04cc05e6590c427e8919b85329"
+    },
+    {
+      "path": "docs/05_decision/ADR-016-bind-standing-decisions-to-record-content.md",
+      "size": 5337,
+      "sha256": "002de293d48e13b241cef78ff102465acf41f97b1c7b7765097bc3894c4280b9"
+    },
+    {
+      "path": "docs/05_decision/ADR-016-bind-standing-decisions-to-record-content.zh-CN.md",
+      "size": 3594,
+      "sha256": "8b84a66bb41264584983656f8cb0b4c6d94d57e94aeed1a80b39952a1ce138a3"
+    },
+    {
+      "path": "docs/05_decision/ADR-017-terminate-authority-trust-recursion.md",
+      "size": 7174,
+      "sha256": "997e98a04085369629f13953376b828eeddf32fef90c41d31a00340606e334bc"
+    },
+    {
+      "path": "docs/05_decision/ADR-017-terminate-authority-trust-recursion.zh-CN.md",
+      "size": 6255,
+      "sha256": "1088113859a0d4f15031c877e686b27ee1f08c8cec4272c6cc9085583088ca15"
+    },
+    {
+      "path": "docs/05_decision/ADR-018-separate-agent-compatibility-admission-and-authority.md",
+      "size": 4166,
+      "sha256": "f2e37f4689596ded182ac560a3e05ed83ca7cef82650ca028b8683b8c35a32b4"
+    },
+    {
+      "path": "docs/05_decision/ADR-018-separate-agent-compatibility-admission-and-authority.zh-CN.md",
+      "size": 3326,
+      "sha256": "94d6ddd0ccc3e632498e6f1e12fc3bae8bdbb66ffacfc39c7ae1f44ba9913f08"
+    },
+    {
+      "path": "docs/05_decision/ADR-019-rematerialize-task-context-across-agent-change.md",
+      "size": 4593,
+      "sha256": "fe714f4aa4db224806ad5848d7e2975c017285a141cecb5098f03c22dc5c884a"
+    },
+    {
+      "path": "docs/05_decision/ADR-019-rematerialize-task-context-across-agent-change.zh-CN.md",
+      "size": 3785,
+      "sha256": "7c47c0645d572b08718b208fdf157f25a8f9873750f63310ab476e416bf69a47"
+    },
+    {
+      "path": "docs/05_decision/ADR-020-bind-task-identity-to-intent-occurrence-and-scope.md",
+      "size": 2869,
+      "sha256": "076a4ed19c65dc0ceed5cf718e71da7579f64846100876a4be2b50f8eea40bfc"
+    },
+    {
+      "path": "docs/05_decision/ADR-020-bind-task-identity-to-intent-occurrence-and-scope.zh-CN.md",
+      "size": 2212,
+      "sha256": "0a9c14480a8a5a52c25340c310840e0ab02247c6f0a1032f5b8e256a6de4f658"
+    },
+    {
+      "path": "docs/05_decision/ADR-021-separate-desire-intent-commitment-and-authorization.md",
+      "size": 3325,
+      "sha256": "a55a2deaa1cdf46d634f33670c1095c39e96d0fbd3787d29c498c4443aed6cdb"
+    },
+    {
+      "path": "docs/05_decision/ADR-021-separate-desire-intent-commitment-and-authorization.zh-CN.md",
+      "size": 2542,
+      "sha256": "9598c7b695fc62e3ac05dfd895a0d07a6633e9c2de6e051f18546c641e335701"
+    },
+    {
+      "path": "docs/05_decision/ADR-022-treat-routine-as-authority-activated-task-instantiation-policy.md",
+      "size": 8646,
+      "sha256": "4b087e07daeaa33879a107ef7d4953b74a020d704c30f834416115c8346950fb"
+    },
+    {
+      "path": "docs/05_decision/ADR-022-treat-routine-as-authority-activated-task-instantiation-policy.zh-CN.md",
+      "size": 7527,
+      "sha256": "4866a4bc94661e21a6c68bdd92418efc80cd467d023af87bb21b3516c240c217"
+    },
+    {
+      "path": "docs/05_decision/ADR-023-represent-household-situations-as-scoped-claims-not-global-modes.md",
+      "size": 7497,
+      "sha256": "8e8b0a0c8e477bfe03b93ae699cd8d05cf5ff0196a3716854cf53cb9378116b1"
+    },
+    {
+      "path": "docs/05_decision/ADR-023-represent-household-situations-as-scoped-claims-not-global-modes.zh-CN.md",
+      "size": 6416,
+      "sha256": "5a3f2b94719c4e09c54b85e06126ffe54f621a5c09aa5e5b90252e331590e872"
+    },
+    {
+      "path": "docs/05_decision/ADR-024-separate-contextual-applicability-conflict-and-intent.md",
+      "size": 7713,
+      "sha256": "c3d4d7fbd6e7030c5092857f0a19db339b2326ff27c50c28da43e10550ea6a78"
+    },
+    {
+      "path": "docs/05_decision/ADR-024-separate-contextual-applicability-conflict-and-intent.zh-CN.md",
+      "size": 6609,
+      "sha256": "267ea867838166af8d3f676d13f84cf145f54d0ac8da407ac37a09a9ead1fe03"
+    },
+    {
+      "path": "docs/05_decision/ADR-025-separate-target-fit-experience-and-action.md",
+      "size": 3463,
+      "sha256": "042bc12ced8d44dcfdb8124b2d9716cf98f391ee4de31606098c05d58cdb59c3"
+    },
+    {
+      "path": "docs/05_decision/ADR-025-separate-target-fit-experience-and-action.zh-CN.md",
+      "size": 2996,
+      "sha256": "8a71099b8b4f6f10629728b5dbf440ddceab66009abe170a1f924a71ed36132a"
+    },
+    {
+      "path": "docs/05_decision/ADR-026-admit-agent-initiated-deliberation-without-inferred-need.md",
+      "size": 3048,
+      "sha256": "987458ad12aa90d52f4728e04b60f24867c7d6e597242a218fac84069d0088a0"
+    },
+    {
+      "path": "docs/05_decision/ADR-026-admit-agent-initiated-deliberation-without-inferred-need.zh-CN.md",
+      "size": 2670,
+      "sha256": "bc22a365af3afa61f10452c5fdce41a0b1c99a0b062937ea5ef9aed1a8d35344"
+    },
+    {
+      "path": "docs/05_decision/ADR-027-make-deliberation-closure-a-receipt-not-an-effect-source.md",
+      "size": 3437,
+      "sha256": "f4a048df46b67098504fa55fd62adb701a3844e094086defccbbbbd24306b9a3"
+    },
+    {
+      "path": "docs/05_decision/ADR-027-make-deliberation-closure-a-receipt-not-an-effect-source.zh-CN.md",
+      "size": 2970,
+      "sha256": "bed3decb88d4f863c3e7733aa8cdb9e8e37428e865f822d0643f9e0adb0d8edb"
+    },
+    {
+      "path": "docs/05_decision/ADR-028-route-realization-by-durable-work-identity.md",
+      "size": 3266,
+      "sha256": "1e81f3870b6257fdc62b2f9747ad213eeb048d9281f5225f7d00d5bbf86ebbb9"
+    },
+    {
+      "path": "docs/05_decision/ADR-028-route-realization-by-durable-work-identity.zh-CN.md",
+      "size": 2930,
+      "sha256": "8d0d34debe0fb52179298a4d6940dbbeb797c8d2744d09d27efcf8e36b3f6284"
+    },
+    {
+      "path": "docs/05_decision/ADR-029-materialize-decision-structure-not-chain-of-thought.md",
+      "size": 3405,
+      "sha256": "50b4f4da3a2938c56c5fa92f79e9fc13a9f7d30b21ec09ab0fd44549a86f3967"
+    },
+    {
+      "path": "docs/05_decision/ADR-029-materialize-decision-structure-not-chain-of-thought.zh-CN.md",
+      "size": 3030,
+      "sha256": "16fcaf139a3b2bf729db14daa29ab54a4fe192adaf61cd9cda73c65cd2b92fd9"
+    },
+    {
+      "path": "docs/05_decision/ADR-030-bind-action-authority-to-immutable-proposal-revisions.md",
+      "size": 1837,
+      "sha256": "423ac56f76e2ab314ed92aea5c3b17732ff2bb52c83336c802c89443c254513b"
+    },
+    {
+      "path": "docs/05_decision/ADR-030-bind-action-authority-to-immutable-proposal-revisions.zh-CN.md",
+      "size": 1510,
+      "sha256": "af8e535f797120a25b94e6292e61760171dcf3af0f0296dea92d3d3fd1cd31e8"
+    },
+    {
+      "path": "docs/05_decision/ADR-031-separate-physical-attempt-from-message-delivery.md",
+      "size": 1787,
+      "sha256": "292e1528a90c429eb352541045dd71b2ad021ff88e0dcc0eca76e8639ca10928"
+    },
+    {
+      "path": "docs/05_decision/ADR-031-separate-physical-attempt-from-message-delivery.zh-CN.md",
+      "size": 1471,
+      "sha256": "92051c2f7761689890c8b813250681f05b8abdeaf8ffdfc6be3e14a83541bb5b"
+    },
+    {
+      "path": "docs/05_decision/ADR-032-separate-effect-realization-from-causal-attribution.md",
+      "size": 1708,
+      "sha256": "7073fde08fc44d162004714ca9e9bfefdd113f61e7b09d1cfa7e6f9cfd66e550"
+    },
+    {
+      "path": "docs/05_decision/ADR-032-separate-effect-realization-from-causal-attribution.zh-CN.md",
+      "size": 1401,
+      "sha256": "4b908f647a194b19b3ec5238544a72db29433d6999df77ed6e0eceb1a6a164a3"
+    },
+    {
+      "path": "docs/05_decision/ADR-033-separate-intent-assurance-from-task-closure.md",
+      "size": 1565,
+      "sha256": "0509ecca4f3bb5e75cc5d33c45b5f5dc368948216fcb0556bc08beea03f3d834"
+    },
+    {
+      "path": "docs/05_decision/ADR-033-separate-intent-assurance-from-task-closure.zh-CN.md",
+      "size": 1409,
+      "sha256": "0ee1fa159db027736b1a2480ddac13a6d5882aa756f7f4351e0b1493da7ec7d4"
+    },
+    {
+      "path": "docs/05_decision/ADR-034-learn-bounded-installed-influence-models.md",
+      "size": 1757,
+      "sha256": "bc65c7445900bf6a908c4ab8fa7aa4e13a0bb4f7e3241572094d6a45c5cbdc5d"
+    },
+    {
+      "path": "docs/05_decision/ADR-034-learn-bounded-installed-influence-models.zh-CN.md",
+      "size": 1533,
+      "sha256": "d9b45c04475fcb5351a216a2a7c5dec148d0caec51960dc2aa6133d85c5c8ae9"
+    },
+    {
+      "path": "docs/05_decision/ADR-035-qualify-planning-predictions-before-transfer.md",
+      "size": 1858,
+      "sha256": "84c4bb66fe82ffd399caef9c9a779ee77ff02b7d87352e541232e6948d208591"
+    },
+    {
+      "path": "docs/05_decision/ADR-035-qualify-planning-predictions-before-transfer.zh-CN.md",
+      "size": 1335,
+      "sha256": "fa2bbd3da24cc38a017fb32beb872a957cbd8f282ec24cde5d741f01d788eea9"
+    },
+    {
+      "path": "docs/05_decision/ADR-036-separate-household-meaning-from-evaluation-proxy.md",
+      "size": 1971,
+      "sha256": "7d07d63212e385ccefdd04939c9be6073b4e96b890c33c5449eab528bbc40f6d"
+    },
+    {
+      "path": "docs/05_decision/ADR-036-separate-household-meaning-from-evaluation-proxy.zh-CN.md",
+      "size": 1360,
+      "sha256": "e89062448c86a3b4407a97ec957e546dc6c7df35a5b0be68875b38de1d1b9917"
+    },
+    {
+      "path": "docs/05_decision/ADR-037-return-tradeoff-sets-without-hidden-household-utility.md",
+      "size": 1958,
+      "sha256": "b65beb464deb093df00b8fd0fcaf53ffc3989f4abd438443b947e232e0e3d7a2"
+    },
+    {
+      "path": "docs/05_decision/ADR-037-return-tradeoff-sets-without-hidden-household-utility.zh-CN.md",
+      "size": 1343,
+      "sha256": "bd058ad2620ffd145aa29c56e5e6651671cbe6ce72b72599746899258ef8d419"
+    },
+    {
+      "path": "docs/05_decision/ADR-038-clarify-values-with-bounded-questions-not-preference-profiling.md",
+      "size": 1998,
+      "sha256": "46aa05fb941c049ed80a5b3b4788673287317996ad526ccd4b9935d384b47f74"
+    },
+    {
+      "path": "docs/05_decision/ADR-038-clarify-values-with-bounded-questions-not-preference-profiling.zh-CN.md",
+      "size": 1306,
+      "sha256": "8a6a685674f159788c6b99f5b60363eaf59e9250ea0bf74418145e9d9705fb45"
+    },
+    {
+      "path": "docs/05_decision/ADR-039-reuse-values-only-through-activated-revocable-rules.md",
+      "size": 1802,
+      "sha256": "c16fda7bd7cfb9d79a9acda3f703651825d720961ea109a1fddd1ae11707332d"
+    },
+    {
+      "path": "docs/05_decision/ADR-039-reuse-values-only-through-activated-revocable-rules.zh-CN.md",
+      "size": 1331,
+      "sha256": "8dcce88e9ce4b72862a1c5377eb526cd2c798fdc6ad39b7288f8da1b49297077"
+    },
+    {
+      "path": "docs/05_decision/ADR-040-revalidate-through-declared-dependencies-without-rewriting-history.md",
+      "size": 1942,
+      "sha256": "2157a299385b2103c86800ad3d489b9cafe0b3b6a9b51bf14e375bf9f3b8f065"
+    },
+    {
+      "path": "docs/05_decision/ADR-040-revalidate-through-declared-dependencies-without-rewriting-history.zh-CN.md",
+      "size": 1264,
+      "sha256": "061518d72e9b0fd4959d931901023b0a91ddbf78ec706b2298ccb11f9dde0778"
+    },
+    {
+      "path": "docs/05_decision/ADR-041-orient-agents-with-purpose-bound-open-world-snapshots.md",
+      "size": 1835,
+      "sha256": "606778f14d5f4a20cd9affb6879189c25339edd5a2e3f03a30ad7cf572d9c3ed"
+    },
+    {
+      "path": "docs/05_decision/ADR-041-orient-agents-with-purpose-bound-open-world-snapshots.zh-CN.md",
+      "size": 1312,
+      "sha256": "1aafc4e156271470cc7210bb8dc597123451d547f2c4d430ed884daddbb0d687"
+    },
+    {
+      "path": "docs/05_decision/ADR-042-qualify-agent-capabilities-per-semantic-role-and-purpose.md",
+      "size": 1833,
+      "sha256": "b64d480342d44c3b4b72105319be5807161b8dee072747febff7b2e1b567a439"
+    },
+    {
+      "path": "docs/05_decision/ADR-042-qualify-agent-capabilities-per-semantic-role-and-purpose.zh-CN.md",
+      "size": 1347,
+      "sha256": "d3c304043e256db0339dbcf2bbeac0130425cc28ccd19538f2be86c0543b30a6"
+    },
+    {
+      "path": "docs/05_decision/ADR-043-compose-cross-agent-work-without-propagating-authority.md",
+      "size": 2206,
+      "sha256": "3a30dc60cce076d6fc009f070c1c382dff88d6b03355b9a6d90a2da7b77264de"
+    },
+    {
+      "path": "docs/05_decision/ADR-043-compose-cross-agent-work-without-propagating-authority.zh-CN.md",
+      "size": 1385,
+      "sha256": "13a4c8ed1ddc2043b79a7a5ad1872ab47216f1b3e655f8aebe64b333e4ec13f9"
+    },
+    {
+      "path": "docs/05_decision/ADR-044-evaluate-relative-data-minimization-without-claiming-an-absolute-minimum.md",
+      "size": 2307,
+      "sha256": "ca8e006415314f0068b6fa1117fd64a4a82ae3f5f0788f9f47313790d4b616cf"
+    },
+    {
+      "path": "docs/05_decision/ADR-044-evaluate-relative-data-minimization-without-claiming-an-absolute-minimum.zh-CN.md",
+      "size": 1264,
+      "sha256": "2fff844f74f3b3692bff764edf02a1a21cb99b47ea8828a5197ff37f6fd6b598"
+    },
+    {
+      "path": "docs/05_decision/ADR-045-admit-agent-contributions-without-writing-truth.md",
+      "size": 2114,
+      "sha256": "c3534c03672376711947706eb9a00b95c20094d207ccee6dbc93f37da6ef1e9a"
+    },
+    {
+      "path": "docs/05_decision/ADR-045-admit-agent-contributions-without-writing-truth.zh-CN.md",
+      "size": 1173,
+      "sha256": "5ea4d09edc61aa01726d2a6f36c1a730703e9e32bd8de26e991b849c66354a10"
+    },
+    {
+      "path": "docs/05_decision/ADR-046-align-typed-entities-without-a-global-identity.md",
+      "size": 2237,
+      "sha256": "3dd98a6a4aaa6aef0314ded7983634575448079209a879be59a8fd32671837b1"
+    },
+    {
+      "path": "docs/05_decision/ADR-046-align-typed-entities-without-a-global-identity.zh-CN.md",
+      "size": 1145,
+      "sha256": "0fb60babf62ddd4b960d24c3b95b420e12c97721379c168fd73110207378f740"
+    },
+    {
+      "path": "docs/05_decision/ADR-047-qualify-spatial-transform-paths-instead-of-declaring-one-perfect-twin.md",
+      "size": 2246,
+      "sha256": "03624e46f2f6b660281d1e01d0dbe8eed16f1fb605decc340724f4e6d529e7fb"
+    },
+    {
+      "path": "docs/05_decision/ADR-047-qualify-spatial-transform-paths-instead-of-declaring-one-perfect-twin.zh-CN.md",
+      "size": 1389,
+      "sha256": "bdea48253eaa606765dae95a722ecc6b838b38f3a710722c8e5f207816bb4c0e"
+    },
+    {
+      "path": "docs/05_decision/ADR-048-compose-environmental-influences-with-explicit-interaction-models.md",
+      "size": 2245,
+      "sha256": "977216d052a4b6aa9024ee9d3172697ef31633df63af7b48939eb5d14f12be3e"
+    },
+    {
+      "path": "docs/05_decision/ADR-048-compose-environmental-influences-with-explicit-interaction-models.zh-CN.md",
+      "size": 1191,
+      "sha256": "1ad9d0f9b01c4913fe5358e89d8d00d3b2cc04ac0bf07d3e4bbd6889efed45aa"
+    },
+    {
+      "path": "docs/05_decision/ADR-049-plan-readiness-from-forecast-without-acting-on-prediction.md",
+      "size": 1891,
+      "sha256": "d748e31df02dc6a24a484e0a0870d06924d3223cefbcb1a1e447ea2f0222a91e"
+    },
+    {
+      "path": "docs/05_decision/ADR-049-plan-readiness-from-forecast-without-acting-on-prediction.zh-CN.md",
+      "size": 1151,
+      "sha256": "8964be99f50fbfc71d866276a836b603ba2d3704e927292cd3631db639fd3a79"
+    },
+    {
+      "path": "docs/05_decision/ADR-050-govern-active-household-calibration-as-bounded-experiments.md",
+      "size": 1260,
+      "sha256": "944b0354433b1111feea70f4d2b863813bc20e4a8c208ad7dff54d00d3a331fe"
+    },
+    {
+      "path": "docs/05_decision/ADR-050-govern-active-household-calibration-as-bounded-experiments.zh-CN.md",
+      "size": 950,
+      "sha256": "87f8952257463969d38efc36bd4563f1700f7038945e92c51edbe93935bcbaf2"
+    },
+    {
+      "path": "docs/05_decision/ADR-051-qualify-time-bound-offers-without-collapsing-product-and-purchase.md",
+      "size": 1250,
+      "sha256": "5fbbf743bb4f1c5a2efa82c2670207860ecdc8cecf13416f3cdc4160a15d1bcb"
+    },
+    {
+      "path": "docs/05_decision/ADR-051-qualify-time-bound-offers-without-collapsing-product-and-purchase.zh-CN.md",
+      "size": 954,
+      "sha256": "8ce2fa17a91358d02b72aeb7fa377671b22eda18e99e5601a2bdef33098415cb"
+    },
+    {
+      "path": "docs/05_decision/ADR-052-admit-physical-assets-by-axis-not-one-onboarding-flag.md",
+      "size": 1721,
+      "sha256": "fdd12326671a21efcb511828a91c4f094225e7d299ca3009f6be067d1f794f94"
+    },
+    {
+      "path": "docs/05_decision/ADR-052-admit-physical-assets-by-axis-not-one-onboarding-flag.zh-CN.md",
+      "size": 903,
+      "sha256": "518abba451366e299fc5ca4d17661298480f46075565001c83bc9f0569b05de3"
+    },
+    {
+      "path": "docs/05_decision/ADR-053-name-exact-conformance-sets-instead-of-claiming-generic-hwm-support.md",
+      "size": 1549,
+      "sha256": "897ee317962b8028f6d13a74580a3cb1f64b16ebebd9e365260f9c27f6872c61"
+    },
+    {
+      "path": "docs/05_decision/ADR-053-name-exact-conformance-sets-instead-of-claiming-generic-hwm-support.zh-CN.md",
+      "size": 839,
+      "sha256": "a6bbe3ac03279ba19451bc8fd14b56b25afea1266c15e71c57db726dfd9163fa"
+    },
+    {
+      "path": "docs/05_decision/ADR-054-cluster-interoperability-evidence-by-design-lineage.md",
+      "size": 3939,
+      "sha256": "da05a6601307f620d0c35cabb7a6d3e2ba246982f642d8e380f128fcdf16e491"
+    },
+    {
+      "path": "docs/05_decision/ADR-054-cluster-interoperability-evidence-by-design-lineage.zh-CN.md",
+      "size": 2765,
+      "sha256": "fd47bd0738ee06a52fdec7760613d679e6a6feada358b17b246bb785f488da0d"
+    },
+    {
+      "path": "docs/05_decision/ADR-055-separate-specification-decision-publication-and-adoption.md",
+      "size": 4028,
+      "sha256": "c97590d68127430bb94e13b0d7f70d6212daed3dbc79d02eae567f9cf5c653bc"
+    },
+    {
+      "path": "docs/05_decision/ADR-055-separate-specification-decision-publication-and-adoption.zh-CN.md",
+      "size": 2673,
+      "sha256": "8b44f4e24f9df16e84e9febce96c5d779de0b2a900be880f596f3483011af92b"
+    },
+    {
+      "path": "docs/05_decision/ADR-056-report-adoption-as-scoped-evidence-not-one-number.md",
+      "size": 3501,
+      "sha256": "c5a0046847d78431fa6e87adde3c3bb5c9c3fa67f7e60879301aeba0167b25be"
+    },
+    {
+      "path": "docs/05_decision/ADR-056-report-adoption-as-scoped-evidence-not-one-number.zh-CN.md",
+      "size": 2570,
+      "sha256": "f7255498bfadb7cbd93bd636182339862447aba05c8f5f0f6444579db3be5e22"
+    },
+    {
+      "path": "docs/05_decision/ADR-057-evaluate-deployment-outcomes-as-orthogonal-axes.md",
+      "size": 3998,
+      "sha256": "9a4685514965c96d670de50ccc26ae1dbf0e3e771ee61895e90a80ca9063db49"
+    },
+    {
+      "path": "docs/05_decision/ADR-057-evaluate-deployment-outcomes-as-orthogonal-axes.zh-CN.md",
+      "size": 2879,
+      "sha256": "09e284db626b9e2e288e80ddd7d4aebc345242019c43e8163cd66e00d7411ab9"
+    },
+    {
+      "path": "docs/05_decision/ADR-058-separate-harm-signals-response-eligibility-and-execution.md",
+      "size": 4306,
+      "sha256": "740e6a19aac831fd303df3965c38ed4d083396e309dccd38a37ede9f721a6683"
+    },
+    {
+      "path": "docs/05_decision/ADR-058-separate-harm-signals-response-eligibility-and-execution.zh-CN.md",
+      "size": 3260,
+      "sha256": "8234727ad6378822abbfef7e66f85c8ac52934d1cce2c3f939321ca7d4dc593b"
+    },
+    {
+      "path": "docs/05_decision/ADR-059-restore-through-staged-current-evidence-gates.md",
+      "size": 4337,
+      "sha256": "8a29a360125899a873dd5bfff6303053d6d4aed19936d8b0e1560a7aee415414"
+    },
+    {
+      "path": "docs/05_decision/ADR-059-restore-through-staged-current-evidence-gates.zh-CN.md",
+      "size": 3350,
+      "sha256": "d8bb56200f54d24622af35bd79bc74f13893b299e1b14b4a7075cb342c028aa6"
+    },
+    {
+      "path": "docs/05_decision/ADR-060-route-learning-by-scope-without-global-promotion.md",
+      "size": 4829,
+      "sha256": "07f750d5f722338fbb39afd0cb72018d7833c1e24fe04034d505b6bf7a080f8b"
+    },
+    {
+      "path": "docs/05_decision/ADR-060-route-learning-by-scope-without-global-promotion.zh-CN.md",
+      "size": 3886,
+      "sha256": "77021605d2169b4a494915a53bd098daa131e2ea5ce3b834f50f6814a2f25580"
+    },
+    {
+      "path": "docs/05_decision/ADR-061-freeze-core-until-a-cross-domain-wire-gap-is-proven.md",
+      "size": 3735,
+      "sha256": "beb2ca2fbf173fdc78a16e0c665f0a50ac93e6bfa8402ae0de8bfd6254c100c5"
+    },
+    {
+      "path": "docs/05_decision/ADR-061-freeze-core-until-a-cross-domain-wire-gap-is-proven.zh-CN.md",
+      "size": 3083,
+      "sha256": "01a93fa4f07a91997df0e3e65065942d4eb5d7aeb50f6f5cd408736d41c5f100"
+    },
+    {
+      "path": "docs/05_decision/ADR-062-separate-clean-room-and-coordinated-external-trials.md",
+      "size": 2867,
+      "sha256": "ad1ef2133150f2aaa6f6e935e0b3586d4822421f5528cb1e668e2c277030c22f"
+    },
+    {
+      "path": "docs/05_decision/ADR-062-separate-clean-room-and-coordinated-external-trials.zh-CN.md",
+      "size": 2385,
+      "sha256": "398b28484543a6aa3670cc1501b582efd5fd90ef0812b4fbd07402f024557b84"
+    },
+    {
+      "path": "docs/05_decision/ADR-063-treat-state-as-history-bound-assessment-or-transition.md",
+      "size": 2330,
+      "sha256": "ec2dca001f1ab8e36ed0450067e4fdc1c969d2de8ffffca3bc25ed7d0273b74f"
+    },
+    {
+      "path": "docs/05_decision/ADR-063-treat-state-as-history-bound-assessment-or-transition.zh-CN.md",
+      "size": 2166,
+      "sha256": "1fce1392dda226146bb2cb8367554a739c1d9613ea1283074bf2d761ba59edfd"
+    },
+    {
+      "path": "docs/05_decision/ADR-064-keep-identifiers-typed-and-consequences-bounded.md",
+      "size": 2041,
+      "sha256": "37ade63267ae11742377a89448ece664a2a2d939faa157be860b993d4984ac4c"
+    },
+    {
+      "path": "docs/05_decision/ADR-064-keep-identifiers-typed-and-consequences-bounded.zh-CN.md",
+      "size": 1886,
+      "sha256": "4eda37b2f31517c4027bc77565cfb4d4e630d8202fc921c377601e1e4a138ba5"
+    },
+    {
+      "path": "docs/05_decision/ADR-065-reopen-core-consideration-for-empty-claim-scope-axes.md",
+      "size": 2285,
+      "sha256": "08b11ce29f4512d286594a72001ccb80e62f17746f0d9f8d68811fe30443f02e"
+    },
+    {
+      "path": "docs/05_decision/ADR-065-reopen-core-consideration-for-empty-claim-scope-axes.zh-CN.md",
+      "size": 2000,
+      "sha256": "ba09b905aa8cdfe614ecaae69668d6e1807a47de7ebc96ce8fec974fb0bba7d0"
+    },
+    {
+      "path": "docs/05_decision/ADR-066-model-claim-scope-axes-as-top-finite-set-or-bottom.md",
+      "size": 2264,
+      "sha256": "ef0ad5840517ab87d92c345a0556c0336faadd428f314636d30b0c64a6f5891f"
+    },
+    {
+      "path": "docs/05_decision/ADR-066-model-claim-scope-axes-as-top-finite-set-or-bottom.zh-CN.md",
+      "size": 1929,
+      "sha256": "e0368a279e21a91a77e980b33840889a8b8cf541cea03e718ba75960d9cee373"
+    },
+    {
+      "path": "docs/05_decision/ADR-067-limit-claim-scope-lattice-to-exact-identifier-selectors.md",
+      "size": 2661,
+      "sha256": "b66cb7c0e592fafaa6a984b08902cd1b4e7572b3fece2994652ead428fcda773"
+    },
+    {
+      "path": "docs/05_decision/ADR-067-limit-claim-scope-lattice-to-exact-identifier-selectors.zh-CN.md",
+      "size": 2315,
+      "sha256": "c30ab00e34c9f1c8a9e239e8e66d30803eb56e6ade72410002afb1aaaa615439"
+    },
+    {
+      "path": "docs/05_decision/ADR-068-exchange-claim-use-relation-assessments-not-resolver-algorithms.md",
+      "size": 3150,
+      "sha256": "98728b1c96532e0de3456e4bd090e8e3d9245e4e9e8cd5392e85feabdbdae765"
+    },
+    {
+      "path": "docs/05_decision/ADR-068-exchange-claim-use-relation-assessments-not-resolver-algorithms.zh-CN.md",
+      "size": 2901,
+      "sha256": "52867de792e5297805ccb6572472334ec1c87fd04375978cbd9450f7a5d72bb8"
+    },
+    {
+      "path": "docs/05_decision/ADR-069-revalidate-relation-assessments-without-invalidating-history.md",
+      "size": 3290,
+      "sha256": "d4b903fc2a9ddcd22a1ef15c67cd165039b770412d53f5fda260310680f243dc"
+    },
+    {
+      "path": "docs/05_decision/ADR-069-revalidate-relation-assessments-without-invalidating-history.zh-CN.md",
+      "size": 2977,
+      "sha256": "dbaff3f0b2f625dbcc2916902ad5281b3feb8d43a1101a5b91d8cd60726058c1"
+    },
+    {
+      "path": "docs/05_decision/ADR-070-receipt-world-view-selection-without-making-cache-authoritative.md",
+      "size": 3435,
+      "sha256": "ea8280ef0818f06d093bf297f6a2ade84c542901ec1719a6e42172df19de72b5"
+    },
+    {
+      "path": "docs/05_decision/ADR-070-receipt-world-view-selection-without-making-cache-authoritative.zh-CN.md",
+      "size": 3179,
+      "sha256": "729fab5aa50abfb6cd4b58fc6bf4c347f1bdd2226cd7c7a9756f2750b6343d94"
+    },
+    {
+      "path": "docs/05_decision/ADR-071-route-agent-feedback-by-semantic-artifact-not-fact-promotion.md",
+      "size": 3631,
+      "sha256": "4c8aa159a010eff5f206acef3d41e3cb26ad1f2b52da18a7bf37961733cf96be"
+    },
+    {
+      "path": "docs/05_decision/ADR-071-route-agent-feedback-by-semantic-artifact-not-fact-promotion.zh-CN.md",
+      "size": 3406,
+      "sha256": "31d3af146ce907872de3825b36c9d98c6a13d8d793291633e0f87dca33f4a9a3"
+    },
+    {
+      "path": "docs/05_decision/ADR-072-acquire-household-evidence-by-least-impact-sufficient-path.md",
+      "size": 4082,
+      "sha256": "e1aaf35b69bc68004947b4c09874523781160e5005a5ebee7beb6df14d2939d6"
+    },
+    {
+      "path": "docs/05_decision/ADR-072-acquire-household-evidence-by-least-impact-sufficient-path.zh-CN.md",
+      "size": 3951,
+      "sha256": "f666d006f0046bc4637d51df52bc3b741c2c1d31f98ab135f05adb6ea2e8ac3b"
+    },
+    {
+      "path": "docs/05_decision/ADR-073-steward-unknowns-without-creating-global-knowledge-debt.md",
+      "size": 3702,
+      "sha256": "1d5a41a011bae2d130865e9d887a8b4af0c17fda3d43ddb7fb21a38d866fec89"
+    },
+    {
+      "path": "docs/05_decision/ADR-073-steward-unknowns-without-creating-global-knowledge-debt.zh-CN.md",
+      "size": 3463,
+      "sha256": "1c1a9272c974ee0b92faa7677974e1157e84cf323aa386981a1aa7e81d609015"
+    },
+    {
+      "path": "docs/05_decision/ADR-074-judge-sufficiency-for-one-decision-boundary-not-the-whole-home.md",
+      "size": 3417,
+      "sha256": "c6faae797b2205868b82f4582d1a9b40c72e9304dd55b921cff47d67f468fa74"
+    },
+    {
+      "path": "docs/05_decision/ADR-074-judge-sufficiency-for-one-decision-boundary-not-the-whole-home.zh-CN.md",
+      "size": 2911,
+      "sha256": "24f390c8405b7578fc075150a4232b7800f7bc4bd2d31e71abe583deb71ff911"
+    },
+    {
+      "path": "docs/05_decision/ADR-075-preserve-household-cognition-as-reconstructable-history-not-agent-memory.md",
+      "size": 3414,
+      "sha256": "b07b63dceaf0beaf2c21154640c41570cfbb7b98ca1180e54584fbc191840657"
+    },
+    {
+      "path": "docs/05_decision/ADR-075-preserve-household-cognition-as-reconstructable-history-not-agent-memory.zh-CN.md",
+      "size": 2960,
+      "sha256": "12bc42b2bce249119d47a699b3e3727bd3661b028a2f8e76de384c6b0dbce666"
+    },
+    {
+      "path": "docs/05_decision/ADR-076-preserve-agent-interpretation-divergence-without-voting-on-truth.md",
+      "size": 3707,
+      "sha256": "8ffff96237ff723ff1eb4d4cffbc1edcd94726f3beb110b09e094ba3a48aa02e"
+    },
+    {
+      "path": "docs/05_decision/ADR-076-preserve-agent-interpretation-divergence-without-voting-on-truth.zh-CN.md",
+      "size": 3208,
+      "sha256": "c2abfe8b96aca9cf3b35508dbc9ccf592f91c3ed2c5aec594353e109455c14e4"
+    },
+    {
+      "path": "docs/05_decision/ADR-077-govern-resolver-procedures-without-creating-an-epistemic-sovereign.md",
+      "size": 3874,
+      "sha256": "fefc5242492be2b32b018869de1027e1627a7eeeeaef4ac2be0c044344004ab7"
+    },
+    {
+      "path": "docs/05_decision/ADR-077-govern-resolver-procedures-without-creating-an-epistemic-sovereign.zh-CN.md",
+      "size": 3360,
+      "sha256": "45da7fbb88c2fd5bf79e8e1e24e907c8c2f7d97c56a5b4eea8478228343fc04e"
+    },
+    {
+      "path": "docs/05_decision/ADR-078-layer-technical-assurance-and-household-reliance-choice.md",
+      "size": 3850,
+      "sha256": "d2ce0521ad8b0c56c5bd644de992efb1be1de1e13f92f3b756a750f199cca6eb"
+    },
+    {
+      "path": "docs/05_decision/ADR-078-layer-technical-assurance-and-household-reliance-choice.zh-CN.md",
+      "size": 3322,
+      "sha256": "7e069240096f0195e4995f22b4adcb51df92eb8cb4ca6649aabe02a480368ed2"
+    },
+    {
+      "path": "docs/05_decision/ADR-079-compose-a-household-charter-as-a-manifest-not-a-master-grant.md",
+      "size": 3886,
+      "sha256": "ab150e84fe69881b017811f61695bfaaed077f4fb67679093efba321f1aa978b"
+    },
+    {
+      "path": "docs/05_decision/ADR-079-compose-a-household-charter-as-a-manifest-not-a-master-grant.zh-CN.md",
+      "size": 3441,
+      "sha256": "c0e9190f3a8b5225812d496f4f31c034be365b05d6b99ad9e17b77f747a19837"
+    },
+    {
+      "path": "docs/05_decision/ADR-080-evolve-household-governance-through-review-not-learned-policy-drift.md",
+      "size": 3989,
+      "sha256": "d4c44ee6777c548ac5a43cfd4b5b9d94299219d2c6ad87d9b6be3c9f942c114a"
+    },
+    {
+      "path": "docs/05_decision/ADR-080-evolve-household-governance-through-review-not-learned-policy-drift.zh-CN.md",
+      "size": 3653,
+      "sha256": "cddb2c7cc5159d410b2421e2a1bc3caa5945c57281862b0248ac51694adbb632"
+    },
+    {
+      "path": "docs/05_decision/ADR-081-degrade-to-safe-dormancy-and-separate-exit-from-reactivation.md",
+      "size": 3910,
+      "sha256": "9d1020ab28a959d844ef523939deaf43f5b23beeae1a15766934d842ea7a4eb5"
+    },
+    {
+      "path": "docs/05_decision/ADR-081-degrade-to-safe-dormancy-and-separate-exit-from-reactivation.zh-CN.md",
+      "size": 3729,
+      "sha256": "381ee1a1ffe9d5bba218e023084427258b02a0bd08287213926e01254975620c"
+    },
+    {
+      "path": "docs/05_decision/ADR-082-separate-owned-core-semantics-containers-support-and-compatibility.md",
+      "size": 2629,
+      "sha256": "16ff3ef3d3f2e81b626a5c497fcf2e6bad74a1c28811f2be47b94ca1f21a300e"
+    },
+    {
+      "path": "docs/05_decision/ADR-082-separate-owned-core-semantics-containers-support-and-compatibility.zh-CN.md",
+      "size": 2315,
+      "sha256": "63040308ef7451988ac2f4c404eee53a50d1ecbea508a543a970196ca1f52ae1"
+    },
+    {
+      "path": "governance/adoption/v0.1/adoption-cases.json",
+      "size": 6770,
+      "sha256": "ecfbd30a58267b28c8a2a4ee1ddcde0ae309a7acbf39cdb4acd6c6e4659864c5"
+    },
+    {
+      "path": "governance/adoption/v0.1/adoption-evidence.schema.json",
+      "size": 2028,
+      "sha256": "46a32c18f7c8f2a130c9705ddd74f99f025815decd312d7c8a817dfe3a4211d9"
+    },
+    {
+      "path": "governance/adoption/v0.1/adoption-view.schema.json",
+      "size": 1893,
+      "sha256": "bff553e2e7845c95c8c1a55b1b66273eb97548102692ed1f88448a2350aa796a"
+    },
+    {
+      "path": "governance/adoption/v0.1/example-adoption-declaration.json",
+      "size": 1105,
+      "sha256": "74db9dfe9e8a32ec5111197f8f3fda9587a254d7a767fd70f6e65ee6b3a45d7f"
+    },
+    {
+      "path": "governance/adoption/v0.1/example-adoption-view.json",
+      "size": 1711,
+      "sha256": "caa218df5e2198c5470a979c2959abed9d16dce496a701d5e74cd4107c45ddd2"
+    },
+    {
+      "path": "governance/adoption/v0.1/README.md",
+      "size": 4375,
+      "sha256": "762a9e2870e8df5c2f5aaf507b00dcd182fc78358917aa40ac96c1452cb432b1"
+    },
+    {
+      "path": "governance/adoption/v0.1/README.zh-CN.md",
+      "size": 2857,
+      "sha256": "db54ecb14db543d56d4576de34a62c48970f0f58001c1939924b198a6c17c35f"
+    },
+    {
+      "path": "governance/adoption/v0.1/validate.mjs",
+      "size": 3837,
+      "sha256": "5949ad6e256a18d07b85133a12cddce69b01f55be1ed58f79498f9c87ebbc492"
+    },
+    {
+      "path": "governance/learning/v0.1/example-learning-routing-assessment.json",
+      "size": 2096,
+      "sha256": "6d3eae85a3a0d081a0ab0b3f208264d3c297a58fc9b9a0015b7fd336ecb8d128"
+    },
+    {
+      "path": "governance/learning/v0.1/learning-cases.json",
+      "size": 10623,
+      "sha256": "012e20f32b19aa682fd006fc2b5193863c88d0bc79d15af2c9599fb2521484c2"
+    },
+    {
+      "path": "governance/learning/v0.1/learning-routing-assessment.schema.json",
+      "size": 3508,
+      "sha256": "cf78df8a86be318c073f49931955c6834fa5ff9adc40956c3f408d0afc976cd8"
+    },
+    {
+      "path": "governance/learning/v0.1/README.md",
+      "size": 4751,
+      "sha256": "017abe2001e6d17d3ed126162d1079e471ec850072aa97eee6b3932dc31974c1"
+    },
+    {
+      "path": "governance/learning/v0.1/README.zh-CN.md",
+      "size": 3650,
+      "sha256": "be1924e5edba2d521d8032f33a1fe171e32e869d308ffee66103dc22c2586a7d"
+    },
+    {
+      "path": "governance/learning/v0.1/validate.mjs",
+      "size": 4287,
+      "sha256": "48273bc5afc0d4d10a0ee8e195f65de41593c2e9b484e97cca3420d39546e502"
+    },
+    {
+      "path": "governance/outcomes/v0.1/deployment-outcome-view.schema.json",
+      "size": 3498,
+      "sha256": "948b5c67c24afbbf7818fd0e9938a9c43d39c11c51e50eaf40460b8a245d4dc0"
+    },
+    {
+      "path": "governance/outcomes/v0.1/example-deployment-outcome-view.json",
+      "size": 2238,
+      "sha256": "63c1f523607be9723caf70ef113551ea1a752b96865e301d1110decd4f8b0739"
+    },
+    {
+      "path": "governance/outcomes/v0.1/example-usage-evidence.json",
+      "size": 477,
+      "sha256": "57ed03d6318aeaadd7cadd73717c6bd822b0068cba7d70571201fbae5b5ce0fc"
+    },
+    {
+      "path": "governance/outcomes/v0.1/outcome-cases.json",
+      "size": 5972,
+      "sha256": "070a6afa794e0d988f93d256bbc06de0638e6805c7b1f9658aae8264f7420fc3"
+    },
+    {
+      "path": "governance/outcomes/v0.1/README.md",
+      "size": 4166,
+      "sha256": "2b49b9387fad345729d784a19c6dcf757b9c3ef2bdd71522121f57ba5d7dcb7a"
+    },
+    {
+      "path": "governance/outcomes/v0.1/README.zh-CN.md",
+      "size": 2683,
+      "sha256": "b20b4e1bc77747855e3a26acc66e6c62efad459824394da8801f1a8f4b986966"
+    },
+    {
+      "path": "governance/outcomes/v0.1/validate.mjs",
+      "size": 3911,
+      "sha256": "7518cc885d616df95a1bf6cfbedd7a53bc8ade73b266c10298c10d411fe7d30d"
+    },
+    {
+      "path": "governance/responses/v0.1/example-response-basis.json",
+      "size": 1680,
+      "sha256": "64e841b590fcc8bff61dfb47cb12c4ace2c5e313d18799dc78c9096df7ed5e73"
+    },
+    {
+      "path": "governance/responses/v0.1/example-signal.json",
+      "size": 366,
+      "sha256": "8d96ef98a66d5aeb274d4e6725404fde3e98f2f42c378992dc2b7262ef200a57"
+    },
+    {
+      "path": "governance/responses/v0.1/README.md",
+      "size": 4584,
+      "sha256": "a4b2ad2219214bceb6765e526f3b3edb0184e3ab97602094c443b3df19e3ebeb"
+    },
+    {
+      "path": "governance/responses/v0.1/README.zh-CN.md",
+      "size": 3254,
+      "sha256": "e6b27d6909a92c9cae001719d437711e5bac4f0e16e4ddb642d56546c6ef6a1c"
+    },
+    {
+      "path": "governance/responses/v0.1/response-basis.schema.json",
+      "size": 2983,
+      "sha256": "548d9c1feb3555d6adde60c3baec951d770427fd5e296c4570c772a919926791"
+    },
+    {
+      "path": "governance/responses/v0.1/response-cases.json",
+      "size": 8472,
+      "sha256": "11de79bd7e119580e6cae1fc542925a9003fe4963fb7324f1b33d95790e91d3d"
+    },
+    {
+      "path": "governance/responses/v0.1/validate.mjs",
+      "size": 4312,
+      "sha256": "fcc90fefcf5c07e978e8dfd07bea8e85719db8a55fc25555e6c32e927494718a"
+    },
+    {
+      "path": "governance/restoration/v0.1/example-restoration-gate.json",
+      "size": 2355,
+      "sha256": "e6dca40eb4f3796dd74e222ec68479aa00172556cc8dd37585539fe53988b5d1"
+    },
+    {
+      "path": "governance/restoration/v0.1/README.md",
+      "size": 4718,
+      "sha256": "bf18fb5eed747a02d29570d7f23289526d4621ab04e7f40ea5c3973ab981350b"
+    },
+    {
+      "path": "governance/restoration/v0.1/README.zh-CN.md",
+      "size": 3530,
+      "sha256": "96d17337c7f6a3e1087633c721d30274be9caa7fed6c7add0bc214d9ad7a77ca"
+    },
+    {
+      "path": "governance/restoration/v0.1/restoration-cases.json",
+      "size": 10365,
+      "sha256": "15091de7add2d39775fc2f9a008557ec4d9fbbea2de94752b6165fea83b0f745"
+    },
+    {
+      "path": "governance/restoration/v0.1/restoration-gate.schema.json",
+      "size": 4141,
+      "sha256": "3472486f73f503be53d223345983a1373a0b1f0d11a9c99aebc3fb09da0cee1c"
+    },
+    {
+      "path": "governance/restoration/v0.1/validate.mjs",
+      "size": 4623,
+      "sha256": "e4d3b09be2a66847d19749d7a6e075bb49e760dfd2a9cd0f26d23a7f2602177b"
+    },
+    {
+      "path": "governance/v0.1/change-proposal.schema.json",
+      "size": 924,
+      "sha256": "749a9236606441504abe639b45aef6c952da73431c7a36e3eba9394b67a158b5"
+    },
+    {
+      "path": "governance/v0.1/decision-record.schema.json",
+      "size": 2781,
+      "sha256": "768329bba1456309df164d7ad01117c7a6e642fb754a2f83ae51d8f9dbcdafff"
+    },
+    {
+      "path": "governance/v0.1/example-decision-record.json",
+      "size": 1724,
+      "sha256": "a1f6f4f1d1512347ee0a17b3c55ff85b6852635f7a42d7ee56b51fa34c2d94e7"
+    },
+    {
+      "path": "governance/v0.1/example-governance-chain-adoption-declaration.json",
+      "size": 1110,
+      "sha256": "7df0658ded9f214309dd585bdd5720c75c2c9b24627573f32737a1e709fd5227"
+    },
+    {
+      "path": "governance/v0.1/example-proposal.json",
+      "size": 490,
+      "sha256": "b5ddb5ea3851d4754c8a690ddc5ef89a5a4d51e357012f4d04d7b25a46921e25"
+    },
+    {
+      "path": "governance/v0.1/example-release-payload.json",
+      "size": 1528,
+      "sha256": "8ab33d4a73e24bad1847da44a413a6f251413ae61e88d47e7169f3c0acaca30e"
+    },
+    {
+      "path": "governance/v0.1/example-release-record.json",
+      "size": 2302,
+      "sha256": "5b5469ed9d49bf5756e8f5eda1162701f5de1cb26fc61231329ba4e91ff912cc"
+    },
+    {
+      "path": "governance/v0.1/example-reviews.json",
+      "size": 822,
+      "sha256": "11b1e0c4298d4478fa40e9bfd0342aba65d12042d7199a1a1be68a444d7999da"
+    },
+    {
+      "path": "governance/v0.1/governance-cases.json",
+      "size": 6485,
+      "sha256": "b659afd54f6576b5db001e2e5fca1304b55f9cef4b1487623e8881cbd01f87ee"
+    },
+    {
+      "path": "governance/v0.1/README.md",
+      "size": 6369,
+      "sha256": "b400fd33cecb1bf4e45f48fd009ddc40f92f104b8474f52207b098454eabb28b"
+    },
+    {
+      "path": "governance/v0.1/README.zh-CN.md",
+      "size": 4407,
+      "sha256": "2cdabef330ad407d58cacc5b1e3c6cbb63aef703a8b55f905ef598482bf6c47e"
+    },
+    {
+      "path": "governance/v0.1/release-cases.json",
+      "size": 1940,
+      "sha256": "5850aad7c8e9ad0c11e5401ab8f84ae770c82c6ad5a348086795d290cd1cc0b0"
+    },
+    {
+      "path": "governance/v0.1/release-record.schema.json",
+      "size": 3797,
+      "sha256": "85689c1e28bce9057b2d158eeedd1f48931418e684506232389e495cc38346f1"
+    },
+    {
+      "path": "governance/v0.1/review-set.schema.json",
+      "size": 1323,
+      "sha256": "b524e18dcdd37a01a1facd2593d0bab6df7c0ce4beb44f5192d8a231a4499c0c"
+    },
+    {
+      "path": "governance/v0.1/validate.mjs",
+      "size": 10000,
+      "sha256": "449b4b6f66c49fe343a117ee4293c72f4f52507dbb6abdb83738f97dc6ad34de"
+    },
+    {
+      "path": "interop/challenges/base-exchange-v0.1/README.md",
+      "size": 665,
+      "sha256": "dfffc6309aa5f61a5b7854fdd7d62bf02a519889620ccbd812b562c870ab0ae0"
+    },
+    {
+      "path": "interop/challenges/base-exchange-v0.1/README.zh-CN.md",
+      "size": 517,
+      "sha256": "069a75297f03cdf960f58aef7b6d36207702f2c66750b56d19b74424a0cb317c"
+    },
+    {
+      "path": "LICENSE",
+      "size": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "size": 18656,
+      "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+    },
+    {
+      "path": "README.md",
+      "size": 3369,
+      "sha256": "4c39efa16099fc9fd5bd711d7faa0469cc0a36ef395c33aada702faeda4b3ae0"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "size": 2975,
+      "sha256": "af4101a2c6c19acdc883591c88001aec016c7cb95531684c0ee9f6480bfdb13c"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/authority.profile.json",
+      "size": 1554,
+      "sha256": "3f9b4e07aa75bbc69f679a27268a4ab77c156ea9f86d9f5caa3aa01a12dd363e"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/composition-assessment.json",
+      "size": 2397,
+      "sha256": "b4575e7a062de667ee394ab6a7c8ddeab7877ea0d6112e8935261e2e2d824fb6"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/conformance-set.json",
+      "size": 1935,
+      "sha256": "ea2ecdd3f35cd7fe0ba3ef144821e3b15c827b3fb2176736a73e916d92a37ee2"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/core.profile.json",
+      "size": 1564,
+      "sha256": "feee5381a3f9a1a0dc46b335e7248fa01dfdac1d16088b66238ee7adb46de943"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/README.md",
+      "size": 2679,
+      "sha256": "0df451e2577d382d07a05283682cdb40e5ef2b95d9582024dd85a1f6e9e9697a"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/README.zh-CN.md",
+      "size": 1982,
+      "sha256": "ed21d364d980a9a36634957640af910d41dd7ea7e77fbd0b065a19f78cd619bc"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/ro-crate.profile.json",
+      "size": 1042,
+      "sha256": "8dfdaa14e14f2ee889b0683309871b6a3183609b4ca4f7ff53995f9873c0ecc1"
+    },
+    {
+      "path": "spec/conformance-sets/base-exchange/v0.1/validate.mjs",
+      "size": 5548,
+      "sha256": "696716085297198ec8421510f89d6e3f21dac1c52a313fe461e411a45c845e56"
+    },
+    {
+      "path": "spec/core/v0.1/schema/action-trace.schema.json",
+      "size": 8107,
+      "sha256": "941e52e45c6a5379480b52c2adb156cd53cf9b957aaf2d5d492fb09e634c6ac6"
+    },
+    {
+      "path": "spec/core/v0.1/schema/claim-envelope.schema.json",
+      "size": 3828,
+      "sha256": "1549b0fd5134a44d75e6180d3aff2817d4fca7eb124141ddd9dfb0c1c97ead14"
+    },
+    {
+      "path": "spec/core/v0.1/schema/claim-set.schema.json",
+      "size": 252,
+      "sha256": "9f7a53e03749412c35afabba7fcbf4b78f6b2ec3ccda0d1bf73160c5bef05abe"
+    },
+    {
+      "path": "spec/core/v0.1/schema/common.schema.json",
+      "size": 2220,
+      "sha256": "4529fcf51758eaa08cae63cde6c487d6bca1ed216c6f9d821f406519a1a2a190"
+    },
+    {
+      "path": "spec/core/v0.1/schema/household-manifest.schema.json",
+      "size": 2175,
+      "sha256": "be70448f7d4571ac8f998fbef0dcd8723db40cb44f0016ffc6aa5f2e3f7cf7fc"
+    },
+    {
+      "path": "spec/core/v0.1/schema/record-set.schema.json",
+      "size": 246,
+      "sha256": "4ab30fababb40ec6c87da50c002f6019d5d138b8615befee886b857b0c2eae73"
+    },
+    {
+      "path": "spec/core/v0.1/schema/record.schema.json",
+      "size": 1265,
+      "sha256": "1dc221536b60a860dcaa3a24de724d2fde41c32af6895b9308545d76852982b1"
+    },
+    {
+      "path": "spec/core/v0.1/schema/world-view.schema.json",
+      "size": 9134,
+      "sha256": "08e3c9822b2e256087c907f8976958e3f9bb161e592903322ee92830707dc31a"
+    },
+    {
+      "path": "spec/mappings/core/v0.1/README.md",
+      "size": 10790,
+      "sha256": "71fab05ca841efc9dbfbdac7859e6577bb29265c40695c05d11fbc62dc967029"
+    },
+    {
+      "path": "spec/mappings/core/v0.1/README.zh-CN.md",
+      "size": 8618,
+      "sha256": "0b02eefb241f68f3e955350c949ba8127bf1a55bc16599b5a16009f37c0411f9"
+    },
+    {
+      "path": "spec/mappings/core/v0.1/term-mapping.json",
+      "size": 34477,
+      "sha256": "1723e182aa528cefec6651fd8482659364fa8ea98ad391e1908039adf270599f"
+    },
+    {
+      "path": "spec/mappings/core/v0.1/term-mapping.schema.json",
+      "size": 2889,
+      "sha256": "f8c96da20cb09d894894d1116f92a1bb446f077a5dc193fb48a081f9de4d1577"
+    },
+    {
+      "path": "spec/mappings/core/v0.1/validate.mjs",
+      "size": 3978,
+      "sha256": "4f8a0b5b46d37c1c5166337fac5468544a48dc64f27618e00a662b2fe15508dd"
+    },
+    {
+      "path": "spec/mappings/electrical-design/v0.1/boundary-cases.json",
+      "size": 3378,
+      "sha256": "f689ea3f5b0f7b4d018e69a76b76d56842be9a40df8b598d4dd19e3627a7d2c7"
+    },
+    {
+      "path": "spec/mappings/electrical-design/v0.1/README.md",
+      "size": 4349,
+      "sha256": "2127617c92e1e3d40c0692a338e81b7b2cf609b47571f604d28e6d82bf7b7e47"
+    },
+    {
+      "path": "spec/mappings/electrical-design/v0.1/README.zh-CN.md",
+      "size": 3784,
+      "sha256": "febb9970b562d72fd9b8a6e59460dcd35f74ba6733b8af96bc4829fe4d7b17a5"
+    },
+    {
+      "path": "spec/mappings/electrical-design/v0.1/validate.mjs",
+      "size": 1693,
+      "sha256": "c6f84878a179700525bc64353e87fbc91b45a88edf5e0692e1e03675b08653e9"
+    },
+    {
+      "path": "spec/mappings/iec81346/v0.1/boundary-cases.json",
+      "size": 2652,
+      "sha256": "5657706ccfffdcdce82c8cd594ca355fbda379e223cc3cd61eee726c6d37a65a"
+    },
+    {
+      "path": "spec/mappings/iec81346/v0.1/README.md",
+      "size": 3013,
+      "sha256": "3aeb359c8896bc1a4ab22cdd62ca6fa67a1dbd9aca578ba14f6c3a40dfb023ed"
+    },
+    {
+      "path": "spec/mappings/iec81346/v0.1/README.zh-CN.md",
+      "size": 2569,
+      "sha256": "679923dd19d37addbf58dd1d910bbc51ea2b448f395cbc02df22cc9f136f20c5"
+    },
+    {
+      "path": "spec/mappings/iec81346/v0.1/validate.mjs",
+      "size": 1391,
+      "sha256": "c27c7863c1339f222bec9ccf3c3999b403349e93c5c9a3200b403a7adea05693"
+    },
+    {
+      "path": "spec/mappings/renovation-planning/v0.1/examples/external-semantics.jsonld",
+      "size": 4114,
+      "sha256": "99b7abd1c9f49670d16d1cd7839e3d7b6afec59a8064b84db21b79470e89d30d"
+    },
+    {
+      "path": "spec/mappings/renovation-planning/v0.1/planning-term-mapping.json",
+      "size": 20634,
+      "sha256": "c5e3cd53a5638faa3cb3384b8f28aa489f92c5f6af5f3864002fba210d0f4dfa"
+    },
+    {
+      "path": "spec/mappings/renovation-planning/v0.1/planning-term-mapping.schema.json",
+      "size": 2933,
+      "sha256": "54de1c62ac608e0f5a86ec622ec943ba15b619d094056f723edb0e46cae7d143"
+    },
+    {
+      "path": "spec/mappings/renovation-planning/v0.1/README.md",
+      "size": 11394,
+      "sha256": "a7479a46bba404531626a51b34dc0c3ab59ad7f8c84ff19f8c92f0a6f6723238"
+    },
+    {
+      "path": "spec/mappings/renovation-planning/v0.1/README.zh-CN.md",
+      "size": 9990,
+      "sha256": "a36fd211af8fd17523d193d87b3330bf981cfaa321a51213cf9af567e4576dfd"
+    },
+    {
+      "path": "spec/mappings/renovation-planning/v0.1/validate.mjs",
+      "size": 7306,
+      "sha256": "bdc45b87292d2067f78e66c2894588ef644e36e619e2d2109ff0ffe1a05c2f52"
+    },
+    {
+      "path": "spec/profiles/action-attempt/v0.1/action-attempt.schema.json",
+      "size": 4210,
+      "sha256": "03e93ba51f603f30fc2e4be9b988d4dabe5143a2ec202e92324da3ded54f6b84"
+    },
+    {
+      "path": "spec/profiles/action-attempt/v0.1/attempt-state-assessment.schema.json",
+      "size": 2346,
+      "sha256": "4c9b1353afc23cb45f6d539fcef02116a0dfd2fd8b4aa2dfe99154e936f2e099"
+    },
+    {
+      "path": "spec/profiles/action-attempt/v0.1/README.md",
+      "size": 5127,
+      "sha256": "0941d9a3d533ed12bc8096605b8bf8389d277a15e9b51f05f2c90025db852c40"
+    },
+    {
+      "path": "spec/profiles/action-attempt/v0.1/README.zh-CN.md",
+      "size": 2383,
+      "sha256": "834bc25de41302e9cbc8fab89da55168792b2ad2a701be761c077a44dcdc68c9"
+    },
+    {
+      "path": "spec/profiles/action-proposal-lineage/v0.1/action-proposal.schema.json",
+      "size": 4880,
+      "sha256": "7759cbad14a297f5cbb0a02c1bd9968a6f9e325d26cdb238a9a2755a6dc12bba"
+    },
+    {
+      "path": "spec/profiles/action-proposal-lineage/v0.1/proposal-state-assessment.schema.json",
+      "size": 2289,
+      "sha256": "d08408f32ae64412aba35aff9ec0795a5cc5215b2276070bb7544a791ec3f833"
+    },
+    {
+      "path": "spec/profiles/action-proposal-lineage/v0.1/README.md",
+      "size": 5727,
+      "sha256": "fb90d7d9e13929a525780310aaff70e89147c1b33e08394614f7afc5a346e8e2"
+    },
+    {
+      "path": "spec/profiles/action-proposal-lineage/v0.1/README.zh-CN.md",
+      "size": 3398,
+      "sha256": "10a3315085ac4990375da0122cb6b1ece8a94a2102220ae2aac2fef87eb399f2"
+    },
+    {
+      "path": "spec/profiles/agent-admission/v0.1/agent-admission-decision.schema.json",
+      "size": 5849,
+      "sha256": "ed8f8149cb2ed56cdabd41c48f6713eef75cb5d89b356dba1892504c24ab220d"
+    },
+    {
+      "path": "spec/profiles/agent-admission/v0.1/agent-admission-request.schema.json",
+      "size": 3130,
+      "sha256": "65b6c3bcc9f093b28742f83d41de31d9fbd66faf70a099397fdfc49f436367c2"
+    },
+    {
+      "path": "spec/profiles/agent-admission/v0.1/README.md",
+      "size": 6549,
+      "sha256": "316c08e84be55cfb480e8226a6b9a3edbbe60f45a6629a8f459b4403d44200e5"
+    },
+    {
+      "path": "spec/profiles/agent-admission/v0.1/README.zh-CN.md",
+      "size": 4949,
+      "sha256": "9679ec23db58b6d68fd9ad8f7c0ebf7a549e95ac5d909fc0d92bbcde2cc00d36"
+    },
+    {
+      "path": "spec/profiles/agent-continuity/v0.1/continuity-checkpoint.schema.json",
+      "size": 5744,
+      "sha256": "a247bbf50f8d2d6e1ab50b9ba3dc26d7672cbdaae06ad9e0d85c58a86069579b"
+    },
+    {
+      "path": "spec/profiles/agent-continuity/v0.1/continuity-decision.schema.json",
+      "size": 5379,
+      "sha256": "4b211c75997b8efd10e4aa0cd82072ee80a407d7ef917fbee34ef1b747ef45cc"
+    },
+    {
+      "path": "spec/profiles/agent-continuity/v0.1/README.md",
+      "size": 7346,
+      "sha256": "cb0e706ad9963f5e1f6951c66eae3f30173af6b099d3870437b4b49d1bddb241"
+    },
+    {
+      "path": "spec/profiles/agent-continuity/v0.1/README.zh-CN.md",
+      "size": 5216,
+      "sha256": "25a896f60458c6397e2eaf17bb54402702b8284acd029e6a688e5042c0e5f1b7"
+    },
+    {
+      "path": "spec/profiles/agent-orientation-snapshot/v0.1/orientation-snapshot.schema.json",
+      "size": 5780,
+      "sha256": "a9484996c74ec1ae31c8101ca983308a80becf24afa36e6b41e2c41326d739e6"
+    },
+    {
+      "path": "spec/profiles/agent-orientation-snapshot/v0.1/orientation-use-assessment.schema.json",
+      "size": 3286,
+      "sha256": "8bcd06f48d3d92e7d5247b697ed97ce1d453503dca5ae19ff7a607ae7084611f"
+    },
+    {
+      "path": "spec/profiles/agent-orientation-snapshot/v0.1/README.md",
+      "size": 8069,
+      "sha256": "e0e62649e3bf6f579a33b5a1578ccd15fcf572d45251e971ab8a6e30792986c6"
+    },
+    {
+      "path": "spec/profiles/agent-orientation-snapshot/v0.1/README.zh-CN.md",
+      "size": 3711,
+      "sha256": "42b16490e5c261d41bf702270bfd389f1f651b277a113c2a86882f98de2307ee"
+    },
+    {
+      "path": "spec/profiles/anticipatory-readiness-planning/v0.1/preparation-window-plan.schema.json",
+      "size": 2133,
+      "sha256": "67f2b557357d0db999556fd63af68253757ad7b4ad902cb538e7cdf3a0c5a874"
+    },
+    {
+      "path": "spec/profiles/anticipatory-readiness-planning/v0.1/readiness-objective-specification.schema.json",
+      "size": 1365,
+      "sha256": "cca49b66ecf2ac1392c57e4b6c2e6fabcde7f92ec557a05dc6f9cdeb9fc2ebcf"
+    },
+    {
+      "path": "spec/profiles/anticipatory-readiness-planning/v0.1/readiness-planning-assessment.schema.json",
+      "size": 1385,
+      "sha256": "9bdc5f49dae5adb735bf1e6c89507c9db1ee17de06dab727a947ffb864268520"
+    },
+    {
+      "path": "spec/profiles/anticipatory-readiness-planning/v0.1/README.md",
+      "size": 8135,
+      "sha256": "222bb01bec6403ea05c69dd10e5424a2aaeaa29df93bbbd651b025e986d53857"
+    },
+    {
+      "path": "spec/profiles/anticipatory-readiness-planning/v0.1/README.zh-CN.md",
+      "size": 1868,
+      "sha256": "fb5cf217c866bc3e1e4fe8122616247255cb0e50b02731b42534d8b56dd2011e"
+    },
+    {
+      "path": "spec/profiles/authority/v0.1/authority-lease.schema.json",
+      "size": 266,
+      "sha256": "73d012d9e66761abb15104fe8bd37769e5781c0f956f538d2fe7187a22bd746d"
+    },
+    {
+      "path": "spec/profiles/authority/v0.1/authority-profile.schema.json",
+      "size": 8665,
+      "sha256": "3779514800f37f83242be2d5a8e05822637ebdb18167e1d4fa1d407a407fa321"
+    },
+    {
+      "path": "spec/profiles/authority/v0.1/authority-trust-root.schema.json",
+      "size": 5772,
+      "sha256": "81d8358fc72fc721a314f41b041759ac97b39b4949710334019829723c0e62e5"
+    },
+    {
+      "path": "spec/profiles/authority/v0.1/README.md",
+      "size": 13046,
+      "sha256": "534475e87eb72be2c2721ad142c765b77a7f68a6cf89c502a3726574d310052a"
+    },
+    {
+      "path": "spec/profiles/authority/v0.1/README.zh-CN.md",
+      "size": 11516,
+      "sha256": "fd2c110cf2650957ca091c8d954746f3871bf7bcfa816ee0562026ee6bae535f"
+    },
+    {
+      "path": "spec/profiles/bounded-impact-closure/v0.1/coverage-policy.schema.json",
+      "size": 4098,
+      "sha256": "927dcb85e6ed4086386d425366ec66c85b6858c04386576b662f17b04e520d14"
+    },
+    {
+      "path": "spec/profiles/bounded-impact-closure/v0.1/README.md",
+      "size": 7327,
+      "sha256": "abfd48ca51271c4203baea47303d0a854089f1eea5a99973e447e606d952a4a5"
+    },
+    {
+      "path": "spec/profiles/bounded-impact-closure/v0.1/README.zh-CN.md",
+      "size": 5411,
+      "sha256": "799bd1fc2551a6639429ff194c085f46b8459f840431dfe444c37d27e9c0ead4"
+    },
+    {
+      "path": "spec/profiles/change-impact-revalidation/v0.1/artifact-revalidation-assessment.schema.json",
+      "size": 3820,
+      "sha256": "ef96fc671e380aff45e8399a741a7b5b6e2e5b95d33530dac749e5e59ec40f4a"
+    },
+    {
+      "path": "spec/profiles/change-impact-revalidation/v0.1/household-change-set.schema.json",
+      "size": 2541,
+      "sha256": "4d08c69e271481df48e4ccd4fd2c4f6d4f8df997628c6d3ea70816a23f56b2c2"
+    },
+    {
+      "path": "spec/profiles/change-impact-revalidation/v0.1/README.md",
+      "size": 7464,
+      "sha256": "2ad4723d5183d6fb30927a3e6548951e6dfb99f0fce7553b83eb9f070fcc2cc6"
+    },
+    {
+      "path": "spec/profiles/change-impact-revalidation/v0.1/README.zh-CN.md",
+      "size": 3133,
+      "sha256": "10f0c56ba5f22a326208111c47dd763cdedfbeb4e70dd0649bcc6d34c172c6f1"
+    },
+    {
+      "path": "spec/profiles/contextual-applicability/v0.1/applicability-assessment.schema.json",
+      "size": 10814,
+      "sha256": "9a6b231dca4cb310b3aeb0faf7c4d28e58d5390091ab1854b69f0e7647fbdf5c"
+    },
+    {
+      "path": "spec/profiles/contextual-applicability/v0.1/README.md",
+      "size": 11654,
+      "sha256": "94c4396b3823f449865287ab1f1b91be528e18bb8a99a9f40c223171ed43f641"
+    },
+    {
+      "path": "spec/profiles/contextual-applicability/v0.1/README.zh-CN.md",
+      "size": 10252,
+      "sha256": "9233ce26ba47ee2be9e23bd8d25611db275984b35e7501b5aeacdbc0ef3f6df0"
+    },
+    {
+      "path": "spec/profiles/cross-agent-work-composition/v0.1/README.md",
+      "size": 6371,
+      "sha256": "1df52b458f78f0320f8178db58c8e14b2dadcae98ca448961fa68431ef433535"
+    },
+    {
+      "path": "spec/profiles/cross-agent-work-composition/v0.1/README.zh-CN.md",
+      "size": 2318,
+      "sha256": "30e14b9db053b3627b6e7494017a79724a479cfdebe477ece8e15185bcdb3ee3"
+    },
+    {
+      "path": "spec/profiles/cross-agent-work-composition/v0.1/work-composition-assessment.schema.json",
+      "size": 1334,
+      "sha256": "3ead3ce9d44ada816e2ee4f8c4a5362a7fe1e5ee4bfc4581604a697d8c30b0c2"
+    },
+    {
+      "path": "spec/profiles/cross-agent-work-composition/v0.1/work-composition-plan.schema.json",
+      "size": 2082,
+      "sha256": "9076a073eee3971edf6a84805049da0ce5725cd6f38540bcae462beb3a28b06b"
+    },
+    {
+      "path": "spec/profiles/cross-agent-work-composition/v0.1/work-slot-assignment.schema.json",
+      "size": 1165,
+      "sha256": "91296f675d70f8f861481dce86f8f5ea467da155ed98250ea9cebca60c729af7"
+    },
+    {
+      "path": "spec/profiles/deliberation-closure/v0.1/deliberation-closure-assessment.schema.json",
+      "size": 4355,
+      "sha256": "8483a25c51607cfb094f40b1aa401a6a07efba63ca77f6b25f1060278b7ce77d"
+    },
+    {
+      "path": "spec/profiles/deliberation-closure/v0.1/README.md",
+      "size": 6393,
+      "sha256": "f14bacb1a10dd0062e8e20b28471d7a1c3ba9946df2530155cada204010cd23d"
+    },
+    {
+      "path": "spec/profiles/deliberation-closure/v0.1/README.zh-CN.md",
+      "size": 5197,
+      "sha256": "db9205af8ba63142f591bbe3ceb7b8a8fc5b0a4ce5a73a869079dd805487825d"
+    },
+    {
+      "path": "spec/profiles/deliberation-eligibility/v0.1/deliberation-eligibility-assessment.schema.json",
+      "size": 5436,
+      "sha256": "aedfa87ac29ad016fa1b72b90af3e90df5fb2ba05b5399a9b83c1f7f33cb72ae"
+    },
+    {
+      "path": "spec/profiles/deliberation-eligibility/v0.1/README.md",
+      "size": 6605,
+      "sha256": "c8eded3cd97bc63c89e7c1b452fcf5ed6fbd3411c487155ae918954cca7a53e4"
+    },
+    {
+      "path": "spec/profiles/deliberation-eligibility/v0.1/README.zh-CN.md",
+      "size": 5382,
+      "sha256": "1647419f87c8e23fe3f1fc33bc56d1ad1c2f8f8f9746f0c21897cfe9f6932cfd"
+    },
+    {
+      "path": "spec/profiles/effect-realization-attribution/v0.1/causal-contribution-assessment.schema.json",
+      "size": 2470,
+      "sha256": "62b1621cdff339d75a1c2a3f7dae3eb20f0a6b5c1bac40383464375b4a93afec"
+    },
+    {
+      "path": "spec/profiles/effect-realization-attribution/v0.1/effect-realization-assessment.schema.json",
+      "size": 2712,
+      "sha256": "f32132e85741c92fd431fcfa838d5fb704911babff008ac798d5b7f98242878b"
+    },
+    {
+      "path": "spec/profiles/effect-realization-attribution/v0.1/README.md",
+      "size": 5508,
+      "sha256": "40d60af87804acf46d139c485c4c2c9b67356636c6a66f5c3273790d70ea39d4"
+    },
+    {
+      "path": "spec/profiles/effect-realization-attribution/v0.1/README.zh-CN.md",
+      "size": 2370,
+      "sha256": "ae112f0603a26ff341e4c599c8feb50ef9992d1939420e967c224adee07afa20"
+    },
+    {
+      "path": "spec/profiles/entity-identity-alignment/v0.1/identity-alignment-assessment.schema.json",
+      "size": 3405,
+      "sha256": "743cd92520886bd3f77ce5a9acc3a5a99cdba6efc9ee82c5f0cd166412c16a0d"
+    },
+    {
+      "path": "spec/profiles/entity-identity-alignment/v0.1/identity-alignment-request.schema.json",
+      "size": 2197,
+      "sha256": "932dce2ef42e19e1e940c9b794ae299b220c228df6b69ba15a9dbdce7aa85d05"
+    },
+    {
+      "path": "spec/profiles/entity-identity-alignment/v0.1/identity-evidence-bundle.schema.json",
+      "size": 2687,
+      "sha256": "ac9df2611f613c6a4e57c02235fae44c7d135c591212d1c626a4af63126a4952"
+    },
+    {
+      "path": "spec/profiles/entity-identity-alignment/v0.1/README.md",
+      "size": 8194,
+      "sha256": "2fc9c7a78c92c50d5828599dcaef06c917d12f5b806b3fe32df4e6b01cb40087"
+    },
+    {
+      "path": "spec/profiles/entity-identity-alignment/v0.1/README.zh-CN.md",
+      "size": 2548,
+      "sha256": "38c5e9987017aa0f16744da10793748bb99bbc1c647be5c9d009ab80079003b8"
+    },
+    {
+      "path": "spec/profiles/evidence-standing/v0.1/evidence-standing-decision-set.schema.json",
+      "size": 643,
+      "sha256": "63c9748eab8c1179a106db668099395824f5315c34f6de4cac32f5c41f4b5494"
+    },
+    {
+      "path": "spec/profiles/evidence-standing/v0.1/evidence-standing-decision.schema.json",
+      "size": 3729,
+      "sha256": "095098ee0ffe3b0b161e2b02bef9fd908bc1b8f5d5cc50323ed8b30cbc97e852"
+    },
+    {
+      "path": "spec/profiles/evidence-standing/v0.1/evidence-standing-policy.schema.json",
+      "size": 6559,
+      "sha256": "bfab6f202b1ac704b062f11a8f0f6641651b82a78c524f9e452726802ea81cd3"
+    },
+    {
+      "path": "spec/profiles/evidence-standing/v0.1/README.md",
+      "size": 9851,
+      "sha256": "2c8571f40fa2457c35fc950dc59085b9540abe570a3f0d380054520d79c4c2d3"
+    },
+    {
+      "path": "spec/profiles/evidence-standing/v0.1/README.zh-CN.md",
+      "size": 8854,
+      "sha256": "e16e3bbde7e47d2057a16fc91ada463c652a6c019f6218de60a606768788bac1"
+    },
+    {
+      "path": "spec/profiles/household-commissioning-experiment/v0.1/commissioning-experiment-plan.schema.json",
+      "size": 1431,
+      "sha256": "8b018fc2da9c1249eb8ad94d52dba254b8f2a658fecbd43555fffc734fdce164"
+    },
+    {
+      "path": "spec/profiles/household-commissioning-experiment/v0.1/experiment-objective.schema.json",
+      "size": 1141,
+      "sha256": "f3034492121b608a1a9e3ff834ffc44f1233aea094e3a98cbf278df7333cb9ed"
+    },
+    {
+      "path": "spec/profiles/household-commissioning-experiment/v0.1/experiment-run-assessment.schema.json",
+      "size": 1446,
+      "sha256": "0869dcf61f4d714a883830abf5517647c5b0481a65c7cb7363e173e0f7c0f140"
+    },
+    {
+      "path": "spec/profiles/household-commissioning-experiment/v0.1/README.md",
+      "size": 7491,
+      "sha256": "c24e349779d074bf48d329d55c15ef9ffc746e134efaf78cfa80a8f87c768254"
+    },
+    {
+      "path": "spec/profiles/household-commissioning-experiment/v0.1/README.zh-CN.md",
+      "size": 1539,
+      "sha256": "fc20f4e9a375b3be0447720938575074d7b1617f165c17570983bdd54d76b1d9"
+    },
+    {
+      "path": "spec/profiles/impact-procedure-mapping/v0.1/mapping-policy.schema.json",
+      "size": 5169,
+      "sha256": "279d4cf22cdc55217502af273acd89eebd75c10825f948c87fd16449ca09d7dd"
+    },
+    {
+      "path": "spec/profiles/impact-procedure-mapping/v0.1/README.md",
+      "size": 8366,
+      "sha256": "713c4dc69e1037a624fbc605bef3ef460b21f68eb38786e1687e5e532b172ec9"
+    },
+    {
+      "path": "spec/profiles/impact-procedure-mapping/v0.1/README.zh-CN.md",
+      "size": 5644,
+      "sha256": "d202c0430fd6a0db62a1a863f22eaa4142419c121bc4066dbc1cec315fc7038a"
+    },
+    {
+      "path": "spec/profiles/installed-influence-model/v0.1/installed-influence-model.schema.json",
+      "size": 4214,
+      "sha256": "1cb26ba4566958a47894bc9aaf1adb2278467f80762d8b22af4144603d9ae8e3"
+    },
+    {
+      "path": "spec/profiles/installed-influence-model/v0.1/model-update-assessment.schema.json",
+      "size": 2204,
+      "sha256": "e3a0ac96320cc59584da17020e28f88b91cb89a9b8738c885e046ae410e345e0"
+    },
+    {
+      "path": "spec/profiles/installed-influence-model/v0.1/README.md",
+      "size": 6277,
+      "sha256": "14188d4b625d03742634e14cb9ba096ba4d12310268611b7575a493272aa1d8e"
+    },
+    {
+      "path": "spec/profiles/installed-influence-model/v0.1/README.zh-CN.md",
+      "size": 2278,
+      "sha256": "aa9d30be344ad5055ba3f39c78234b868fc7fb7a9f6a7bbb29acb64b19363bb0"
+    },
+    {
+      "path": "spec/profiles/intent-commitment/v0.1/intent-definition.schema.json",
+      "size": 5921,
+      "sha256": "8b0d5ba54b54c397b1603244dcb8181be6422b8692b6a7c888f1ae50ae0812bc"
+    },
+    {
+      "path": "spec/profiles/intent-commitment/v0.1/intent-state.schema.json",
+      "size": 4681,
+      "sha256": "03a2083caf59becd5673a8b8d3f34578751186bbb14cb1f60334894fb83f3107"
+    },
+    {
+      "path": "spec/profiles/intent-commitment/v0.1/README.md",
+      "size": 8927,
+      "sha256": "9492e27a2435508a182b9990e71fa9f7a59583274e8bdd99afe79b5b7901c2a1"
+    },
+    {
+      "path": "spec/profiles/intent-commitment/v0.1/README.zh-CN.md",
+      "size": 7024,
+      "sha256": "ba038c50cc7d2fcc99f4c572c3c155221460254a7bf0ed987397d6106ffde24a"
+    },
+    {
+      "path": "spec/profiles/interactive-evidence/v0.1/interactive-evidence-binding.schema.json",
+      "size": 3626,
+      "sha256": "72432325b7a363f2ad2d6cd1cbbca16f02e55da03e456e6865caad92fb652ae2"
+    },
+    {
+      "path": "spec/profiles/interactive-evidence/v0.1/README.md",
+      "size": 7243,
+      "sha256": "917288019fb297a90a9f73e7f2d380ab1b301633553d2a2115a0aa8d13b07557"
+    },
+    {
+      "path": "spec/profiles/interactive-evidence/v0.1/README.zh-CN.md",
+      "size": 6261,
+      "sha256": "fba4a89cbe699d1b9c9a58c4df2e7ce407155e3e874541d237b9960ac08139c8"
+    },
+    {
+      "path": "spec/profiles/joint-environmental-influence/v0.1/composition-model-specification.schema.json",
+      "size": 1419,
+      "sha256": "716ae7d83df8b2ae54599b341e12d22c118ab7dc00ba5fd355642d625e74966b"
+    },
+    {
+      "path": "spec/profiles/joint-environmental-influence/v0.1/joint-influence-scenario.schema.json",
+      "size": 1495,
+      "sha256": "0f98156573ad7e37fe40c1ef181f38bd86f251f69c4db697fd6735c5e1fcb4dd"
+    },
+    {
+      "path": "spec/profiles/joint-environmental-influence/v0.1/joint-prediction-assessment.schema.json",
+      "size": 1449,
+      "sha256": "473face939356f4db8b5a2357772640b834e0500260749ad7cc26bcd14aef8d9"
+    },
+    {
+      "path": "spec/profiles/joint-environmental-influence/v0.1/README.md",
+      "size": 7671,
+      "sha256": "5155aeafc426c1401dd99697bb76027b5d942db60a7e305da37fdb3c651628f5"
+    },
+    {
+      "path": "spec/profiles/joint-environmental-influence/v0.1/README.zh-CN.md",
+      "size": 1520,
+      "sha256": "cfadd5ba2abd23c161a0a016748f3aa22a31c0589e6577cae06d3e9576e02bce"
+    },
+    {
+      "path": "spec/profiles/model-contribution-admission/v0.1/contribution-admission-assessment.schema.json",
+      "size": 1323,
+      "sha256": "ba51ef744b674838c455f1d201c6456d13dd668572b345803ceb32e05da1d712"
+    },
+    {
+      "path": "spec/profiles/model-contribution-admission/v0.1/contribution-publication-receipt.schema.json",
+      "size": 1076,
+      "sha256": "09e23a1af57042e1fe3efdbd1ccc27f998fbcd708df8d4edddecaa5e21f387e8"
+    },
+    {
+      "path": "spec/profiles/model-contribution-admission/v0.1/contribution-submission.schema.json",
+      "size": 1635,
+      "sha256": "817643c5b73e8f9825cd4bad26da4c69b62a5cea39bc228767150848e7b41bbb"
+    },
+    {
+      "path": "spec/profiles/model-contribution-admission/v0.1/README.md",
+      "size": 7027,
+      "sha256": "10a400012cfe877b798032257278456530e9de20ee22434097077ad37c7a3ad9"
+    },
+    {
+      "path": "spec/profiles/model-contribution-admission/v0.1/README.zh-CN.md",
+      "size": 1545,
+      "sha256": "5e3025d8f6d57f696e02a5b782c22f486649e1b0c83922b16183b3c730c5c207"
+    },
+    {
+      "path": "spec/profiles/multi-target-option-comparison/v0.1/option-comparison-assessment.schema.json",
+      "size": 3081,
+      "sha256": "29da01c96fd309d214f1d240604aaa5b212180751199684be57f219183664b00"
+    },
+    {
+      "path": "spec/profiles/multi-target-option-comparison/v0.1/option-outcome-matrix.schema.json",
+      "size": 3443,
+      "sha256": "681b6ed49cb6077e5c8c8398a0fb6cdb4d2b82d8a29d2d802912c6597e9853d0"
+    },
+    {
+      "path": "spec/profiles/multi-target-option-comparison/v0.1/README.md",
+      "size": 7046,
+      "sha256": "5fcb1685d78f5d30b5963ff767ae507199e95e2b7cbe59dad6447e8412fbb665"
+    },
+    {
+      "path": "spec/profiles/multi-target-option-comparison/v0.1/README.zh-CN.md",
+      "size": 3597,
+      "sha256": "a628653da029a5543de666abcac16bf1cbd1b7d3e6ee0216b0f6dc7fc837c7ba"
+    },
+    {
+      "path": "spec/profiles/outcome-work-closure/v0.1/outcome-work-closure-assessment.schema.json",
+      "size": 3920,
+      "sha256": "81f381b6e4600a49d00e0ea5c9786047a9cb09177b701764278295bfa833c7c4"
+    },
+    {
+      "path": "spec/profiles/outcome-work-closure/v0.1/README.md",
+      "size": 5135,
+      "sha256": "2529c1ec93ac02c83848dc9b82f7dde0dcadd02c7d8896433e8cf6d2524eb49a"
+    },
+    {
+      "path": "spec/profiles/outcome-work-closure/v0.1/README.zh-CN.md",
+      "size": 2179,
+      "sha256": "352974ad83cdd7cfff7d110fbc6b3350fbf86c4ee8709b26449d53b278a21c35"
+    },
+    {
+      "path": "spec/profiles/physical-asset-onboarding/v0.1/acquisition-event-record.schema.json",
+      "size": 1208,
+      "sha256": "23014be9d5d7e3445365d83992dd00f7d8689d14cdbdd77b967e57e3d366c027"
+    },
+    {
+      "path": "spec/profiles/physical-asset-onboarding/v0.1/asset-onboarding-assessment.schema.json",
+      "size": 2244,
+      "sha256": "5f6f32cdff5e1150e4d8e6ffd755d570edf0b5e0086ad16c5677f3102849643c"
+    },
+    {
+      "path": "spec/profiles/physical-asset-onboarding/v0.1/asset-onboarding-bundle.schema.json",
+      "size": 1954,
+      "sha256": "16fbdfdba6cbb140a889419b121f4957529c0e5d0252b24fc520f661cbadee6c"
+    },
+    {
+      "path": "spec/profiles/physical-asset-onboarding/v0.1/README.md",
+      "size": 9170,
+      "sha256": "63c676fa998ac754d0bdf7fe6918e6f83bb320f5aa7064b04d4b5468113791f4"
+    },
+    {
+      "path": "spec/profiles/physical-asset-onboarding/v0.1/README.zh-CN.md",
+      "size": 6671,
+      "sha256": "bed1ca2209d02634bb71b799a86279e35746668f3e0d3d9220005067d82fef14"
+    },
+    {
+      "path": "spec/profiles/plan-materialization/v0.1/plan-materialization-assessment.schema.json",
+      "size": 5364,
+      "sha256": "f0ea8d57145e4ddd024c7bb41f015ce5661bd68f78d9d1e2adfee0e633074dbd"
+    },
+    {
+      "path": "spec/profiles/plan-materialization/v0.1/portable-plan.schema.json",
+      "size": 4283,
+      "sha256": "0d30ba5922a9d42daafa9a3437b245f33f2c63d18eb792b73b7102bf93a7e7d8"
+    },
+    {
+      "path": "spec/profiles/plan-materialization/v0.1/README.md",
+      "size": 6808,
+      "sha256": "dad7d8b0b15dcc26e39e8f5a84343ccb92f5e1a278f48ed47fd37853754c6ffa"
+    },
+    {
+      "path": "spec/profiles/plan-materialization/v0.1/README.zh-CN.md",
+      "size": 5493,
+      "sha256": "0a5ade437e0504fe6659f5384ba7b0d5bcd4efa59e3a021c74af10cb85e8a80e"
+    },
+    {
+      "path": "spec/profiles/planning-prediction-qualification/v0.1/planning-prediction.schema.json",
+      "size": 3410,
+      "sha256": "13093977706c22667b507a3e1200ec4b9a9abf7792d5011410169bb8f7cac4d4"
+    },
+    {
+      "path": "spec/profiles/planning-prediction-qualification/v0.1/prediction-qualification-assessment.schema.json",
+      "size": 3038,
+      "sha256": "17c6f48af8e98d22f4cafa46c5d76209518cbcc793c1a07301b209201cde0f3b"
+    },
+    {
+      "path": "spec/profiles/planning-prediction-qualification/v0.1/README.md",
+      "size": 5731,
+      "sha256": "0d1783b4cc3e2ffa4681299c520725ba981950aead9e44541de3641735399e09"
+    },
+    {
+      "path": "spec/profiles/planning-prediction-qualification/v0.1/README.zh-CN.md",
+      "size": 3111,
+      "sha256": "51ac573c462a1da516ea4e76e1cbbb939501c04a7b45aa45b3a64eceb821f3e6"
+    },
+    {
+      "path": "spec/profiles/procedure-fulfilment/v0.1/fulfilment-assessment.schema.json",
+      "size": 2916,
+      "sha256": "77a4d97b92bd53cb81ee500f7c56fbd16af45cc6258158861c455fa4994c583b"
+    },
+    {
+      "path": "spec/profiles/procedure-fulfilment/v0.1/README.md",
+      "size": 6634,
+      "sha256": "48b67d7500c4c855b9d56e0ad925b2e85c2d6ec658c4e19de725de08674caafa"
+    },
+    {
+      "path": "spec/profiles/procedure-fulfilment/v0.1/README.zh-CN.md",
+      "size": 3511,
+      "sha256": "b40b9ca05a0c5b85c935cd661928976d3f4d31a258191c176e7b435fa3dda1e1"
+    },
+    {
+      "path": "spec/profiles/procedure-fulfilment/v0.1/requirement-set.schema.json",
+      "size": 3646,
+      "sha256": "239812a1f2ffce48cde98cb5e129d155402031f886a962806794e3d82aca4319"
+    },
+    {
+      "path": "spec/profiles/procurement-offer-qualification/v0.1/commercial-offer-snapshot.schema.json",
+      "size": 1325,
+      "sha256": "38e47cdbbabec7abd108118dc58f8d42c2c02e64669b6268d586c547e42f47db"
+    },
+    {
+      "path": "spec/profiles/procurement-offer-qualification/v0.1/procurement-bundle-requirement.schema.json",
+      "size": 1385,
+      "sha256": "77083c8b330edac33f4bd42790115874f8e45673b784454ba722671d1bce7772"
+    },
+    {
+      "path": "spec/profiles/procurement-offer-qualification/v0.1/procurement-candidate-assessment.schema.json",
+      "size": 1444,
+      "sha256": "3610625c5b4688a4fa6a714ac33329d8782017462f9cb22d4dc71d6ac2eb0a58"
+    },
+    {
+      "path": "spec/profiles/procurement-offer-qualification/v0.1/README.md",
+      "size": 8095,
+      "sha256": "1dca20a191db31fe515e7600fff7fb0beb580781c0ffbd7652f9d257a37d4b9c"
+    },
+    {
+      "path": "spec/profiles/procurement-offer-qualification/v0.1/README.zh-CN.md",
+      "size": 1874,
+      "sha256": "bff56b5387c9dc951f3b227a6d073e21220f5b8d040cba0df6a844e8bb6e8620"
+    },
+    {
+      "path": "spec/profiles/profile-composition-conformance/v0.1/composition-assessment.schema.json",
+      "size": 1646,
+      "sha256": "82721375e928e2a3933eb676aa68dc10a299709b66f01c10f2c79d0c4a0055a1"
+    },
+    {
+      "path": "spec/profiles/profile-composition-conformance/v0.1/conformance-set.schema.json",
+      "size": 2093,
+      "sha256": "b82b2d900ae8288c23042533813905f2d8e9d8bd5dcdaea1a01eaf824ea8598f"
+    },
+    {
+      "path": "spec/profiles/profile-composition-conformance/v0.1/profile-descriptor.schema.json",
+      "size": 2136,
+      "sha256": "652f7016b047d47403ddefab5277c2df7400c39d45bf861251766835e837dc73"
+    },
+    {
+      "path": "spec/profiles/profile-composition-conformance/v0.1/README.md",
+      "size": 9022,
+      "sha256": "07b4777dac6223f41da3fad8f5e519c7dcdfbf7fc59a61d6e9c653b486690e7f"
+    },
+    {
+      "path": "spec/profiles/profile-composition-conformance/v0.1/README.zh-CN.md",
+      "size": 5647,
+      "sha256": "8c9ef3c439dbd1f7cd00a5d0c862993f69775b0b4d601c71d2ae826dac376b8d"
+    },
+    {
+      "path": "spec/profiles/purpose-bound-disclosure/v0.1/disclosure-minimization-assessment.schema.json",
+      "size": 1257,
+      "sha256": "09e78c7600e489e6fa9b328bffcb2d18dfdb0e57f699504a390c8b0bc3917bc6"
+    },
+    {
+      "path": "spec/profiles/purpose-bound-disclosure/v0.1/disclosure-package-manifest.schema.json",
+      "size": 1692,
+      "sha256": "080f33d59d6a93a9a82d3cf30ffd0c5c97962ee6bc9d56a52f28bb0dd25a578c"
+    },
+    {
+      "path": "spec/profiles/purpose-bound-disclosure/v0.1/disclosure-requirement-set.schema.json",
+      "size": 1577,
+      "sha256": "f44a1c250d74b3b3a328f0dcd643b3e0a4beed26e4edfc7bed2f5237bc667116"
+    },
+    {
+      "path": "spec/profiles/purpose-bound-disclosure/v0.1/README.md",
+      "size": 6558,
+      "sha256": "d02ae62ec2ad63bd28ed11349b38120f4fb3ed6eb2d8ab3ee84ac96f9682bf92"
+    },
+    {
+      "path": "spec/profiles/purpose-bound-disclosure/v0.1/README.zh-CN.md",
+      "size": 2072,
+      "sha256": "5dec7356f50e93170367fd09f151c8154f6a38a065afcd1320c8eddc5a547481"
+    },
+    {
+      "path": "spec/profiles/renovation-planning/v0.1/README.md",
+      "size": 13640,
+      "sha256": "23d06093cf92191cafd7b2d3fef52a85e62893be13a6b89ed319ca2599361701"
+    },
+    {
+      "path": "spec/profiles/renovation-planning/v0.1/README.zh-CN.md",
+      "size": 11960,
+      "sha256": "1ec4accd08ad79f163e91a5e54b83821ee8f0b357afa00896151722113340769"
+    },
+    {
+      "path": "spec/profiles/requirement-operationalization/v0.1/operationalization-proposal.schema.json",
+      "size": 4597,
+      "sha256": "7796f467312aae05141fc3f24ff537a4d26ddad8ff6c48679e8ec37b142a97b7"
+    },
+    {
+      "path": "spec/profiles/requirement-operationalization/v0.1/operationalization-review.schema.json",
+      "size": 2799,
+      "sha256": "caf0d68f4bfd96b7a5338bb518605539d633185a62107763e2f40ecda878cf79"
+    },
+    {
+      "path": "spec/profiles/requirement-operationalization/v0.1/README.md",
+      "size": 6102,
+      "sha256": "e62163931642e608067ab64a586973653fe50970947f6ae946642717b5a5362d"
+    },
+    {
+      "path": "spec/profiles/requirement-operationalization/v0.1/README.zh-CN.md",
+      "size": 3029,
+      "sha256": "4953e8c40926a3c8633b338d06dfd43186441f2a64809c887ab60ef0bcaaf295"
+    },
+    {
+      "path": "spec/profiles/reusable-value-rule/v0.1/README.md",
+      "size": 7623,
+      "sha256": "8e4532c55a5de07f7622991c6e57af2318e861addf369ab3798d4c9f598203b2"
+    },
+    {
+      "path": "spec/profiles/reusable-value-rule/v0.1/README.zh-CN.md",
+      "size": 3629,
+      "sha256": "dbccfc76db2849d919e88baf9b3e1eb9bbdef6dbe474cfa13859f2c16cca1d06"
+    },
+    {
+      "path": "spec/profiles/reusable-value-rule/v0.1/value-rule-definition.schema.json",
+      "size": 3001,
+      "sha256": "6968386a0e261889b44b42608ad404834f0ba7f7275e0aaf3e7a66405f0cc55a"
+    },
+    {
+      "path": "spec/profiles/reusable-value-rule/v0.1/value-rule-state.schema.json",
+      "size": 2463,
+      "sha256": "2d3eece3b3ddd5ed2a327c67d7644f123d75284fe181d7811fdc64b844a8f8ca"
+    },
+    {
+      "path": "spec/profiles/reusable-value-rule/v0.1/value-rule-use-assessment.schema.json",
+      "size": 3111,
+      "sha256": "2f76b8ed5cf3b03a551653219bbae5969fb84b260c3f4f870bdcfe10ac4df2c3"
+    },
+    {
+      "path": "spec/profiles/ro-crate/v0.1/hwm-ro-crate-profile.schema.json",
+      "size": 3745,
+      "sha256": "cae4093541b62ce88a87e826f397155663f61731a688db8eead8768b49b04b44"
+    },
+    {
+      "path": "spec/profiles/ro-crate/v0.1/README.md",
+      "size": 7967,
+      "sha256": "d381bdb50c01bf1b79d0c793ae94b7b3733b5d0c3d276d6d5e871b652078bc7f"
+    },
+    {
+      "path": "spec/profiles/ro-crate/v0.1/README.zh-CN.md",
+      "size": 6675,
+      "sha256": "5c5a894533f3eda0cbab5e352c122344d5a64c6ae35194ca041fbebc6d0c5d6d"
+    },
+    {
+      "path": "spec/profiles/ro-crate/v0.1/validate.mjs",
+      "size": 8097,
+      "sha256": "ccb5ebf3c860097fdc2eabd9b8bf807ebcaf1d0c585114d12c3de44b85d8b076"
+    },
+    {
+      "path": "spec/profiles/routine-instantiation/v0.1/instantiation-decision.schema.json",
+      "size": 5831,
+      "sha256": "1d9fbcc1e446e154b0e540946aba0de333bb8975b7caf12641a936057d265ef7"
+    },
+    {
+      "path": "spec/profiles/routine-instantiation/v0.1/README.md",
+      "size": 11263,
+      "sha256": "498bb4151065906e012ea77da6c210dbb4eff4f75ea63cbc4ef51e17f27244db"
+    },
+    {
+      "path": "spec/profiles/routine-instantiation/v0.1/README.zh-CN.md",
+      "size": 9881,
+      "sha256": "59309f9ec20f82e89092087874e607913870673f43967edb8673bffe85393dcf"
+    },
+    {
+      "path": "spec/profiles/routine-instantiation/v0.1/routine-definition.schema.json",
+      "size": 7526,
+      "sha256": "ac6107d290589466d12850cf1f1ee67c92836569929283649b597daf225042af"
+    },
+    {
+      "path": "spec/profiles/routine-instantiation/v0.1/routine-state.schema.json",
+      "size": 3347,
+      "sha256": "c55244c84d9002c4070e1aef9e793eb66464b162a255b29a111be15db23a30b6"
+    },
+    {
+      "path": "spec/profiles/semantic-capability-negotiation/v0.1/capability-offer.schema.json",
+      "size": 3768,
+      "sha256": "905e06a54b2a74e973e3f4cf03b2c54ed9c13ad938aaf59a29be03ee623e4459"
+    },
+    {
+      "path": "spec/profiles/semantic-capability-negotiation/v0.1/capability-qualification-assessment.schema.json",
+      "size": 4168,
+      "sha256": "c04d8b790379a502ce25f7eee897058c78f457252620d148176339e76da82e26"
+    },
+    {
+      "path": "spec/profiles/semantic-capability-negotiation/v0.1/capability-requirement-set.schema.json",
+      "size": 3425,
+      "sha256": "c4b050f1d2acea1dc729d2c1c5d53e11e7987a9209a7bcd152cb2fe55cb6465a"
+    },
+    {
+      "path": "spec/profiles/semantic-capability-negotiation/v0.1/README.md",
+      "size": 8396,
+      "sha256": "08783b435a28dcef16978a51fa3f689adf94a0e40ed2db3035b134e42d06d1f6"
+    },
+    {
+      "path": "spec/profiles/semantic-capability-negotiation/v0.1/README.zh-CN.md",
+      "size": 3635,
+      "sha256": "40d2786108fc2990473ce31a8a848d0f375e6dfe4471cee2aa14bb3fe5b74e05"
+    },
+    {
+      "path": "spec/profiles/shared-action-coordination/v0.1/coordination-policy.schema.json",
+      "size": 5345,
+      "sha256": "f35b234274c2f2d38a1bd6e74d542881c29b156e6555ef89d3827345bbdea6d2"
+    },
+    {
+      "path": "spec/profiles/shared-action-coordination/v0.1/README.md",
+      "size": 8500,
+      "sha256": "c4a2551a24a1da00a213984eab44dab1c693c5cbdbecaa4b199519e049c5c581"
+    },
+    {
+      "path": "spec/profiles/shared-action-coordination/v0.1/README.zh-CN.md",
+      "size": 7488,
+      "sha256": "affa34d0fbe1421dd0238e35caf09b09b7ae4bf59a3f6e436f8e17dcbcd45907"
+    },
+    {
+      "path": "spec/profiles/situational-context/v0.1/README.md",
+      "size": 10917,
+      "sha256": "9429e17f871256f52bd3b8863ac2bf172b0527677028656ea1fa5d07c67144bd"
+    },
+    {
+      "path": "spec/profiles/situational-context/v0.1/README.zh-CN.md",
+      "size": 9722,
+      "sha256": "4a03fc87b0fd540f8f1d9dc84e444b1da5ee9b6a8780434a59c69ffcde01ba4a"
+    },
+    {
+      "path": "spec/profiles/situational-context/v0.1/situation-use-assessment.schema.json",
+      "size": 7117,
+      "sha256": "458373b72b5bf4b9da3d06618c8c07b80d21335a40e2b63828097182d4c29811"
+    },
+    {
+      "path": "spec/profiles/spatial-registration-localization/v0.1/README.md",
+      "size": 7436,
+      "sha256": "409f3c1a80bd1da90a0ffddf4030a0c6cb3421dde0cab954f9e4e682e3a4365f"
+    },
+    {
+      "path": "spec/profiles/spatial-registration-localization/v0.1/README.zh-CN.md",
+      "size": 1920,
+      "sha256": "6113aa00611b920a57b5eceedb81d2379e8bcdd55322fb9bf5b478da91bba190"
+    },
+    {
+      "path": "spec/profiles/spatial-registration-localization/v0.1/spatial-frame-definition.schema.json",
+      "size": 1261,
+      "sha256": "d835aee8768c78079397d2d11d8319cad66a98a364a0d8e257753108060b7366"
+    },
+    {
+      "path": "spec/profiles/spatial-registration-localization/v0.1/spatial-registration.schema.json",
+      "size": 1328,
+      "sha256": "87b66c5323417eb7b55a98ecf2f34db6014dc9d2af4758e68d43d88379e64537"
+    },
+    {
+      "path": "spec/profiles/spatial-registration-localization/v0.1/spatial-use-assessment.schema.json",
+      "size": 1603,
+      "sha256": "b8eada97ee677925e356ddb3798f9f51f7be55585f0ad5da2a27a5c501e41907"
+    },
+    {
+      "path": "spec/profiles/target-fit/v0.1/README.md",
+      "size": 7621,
+      "sha256": "484ac96c65cebfe464ef86cfa4013035952e310c03bd6370f84f89dfeba06057"
+    },
+    {
+      "path": "spec/profiles/target-fit/v0.1/README.zh-CN.md",
+      "size": 6372,
+      "sha256": "40c676a176712a4f8e4b5bc37a8090c11ffbb108569e9fad9cd8973cc88f340c"
+    },
+    {
+      "path": "spec/profiles/target-fit/v0.1/target-fit-assessment.schema.json",
+      "size": 7662,
+      "sha256": "e8162a0b1d0d0dc790804301703aa79e24712e68b7dfa95170e031c943d465c7"
+    },
+    {
+      "path": "spec/profiles/task-lineage/v0.1/README.md",
+      "size": 7671,
+      "sha256": "42c3450bae8be1cd3edb4229c552288567bec09e60dc076cf583fe3c2c9f6de7"
+    },
+    {
+      "path": "spec/profiles/task-lineage/v0.1/README.zh-CN.md",
+      "size": 5705,
+      "sha256": "387dd5be5f060d3165721101fe796f8cacc21fb171d5967897a5457111c9fe88"
+    },
+    {
+      "path": "spec/profiles/task-lineage/v0.1/task-definition.schema.json",
+      "size": 7119,
+      "sha256": "3acfe88dddddd87233f05a280db00ee9c77bd7101c70d355c2a210b54b19816b"
+    },
+    {
+      "path": "spec/profiles/task-lineage/v0.1/task-state.schema.json",
+      "size": 4802,
+      "sha256": "31f64a7a54c18de50eb5b1f577eefefc8b7dbe42d9f11191d23e4bfc25b202a9"
+    },
+    {
+      "path": "spec/profiles/value-clarification-dialogue/v0.1/clarification-question-proposal.schema.json",
+      "size": 3215,
+      "sha256": "98e84c6f069143c1170e0d20edda21e8d1a2b863b50c4a297e14f48359b86abd"
+    },
+    {
+      "path": "spec/profiles/value-clarification-dialogue/v0.1/README.md",
+      "size": 6699,
+      "sha256": "7744659a86c5437cd781a8333be3dcdf172d6e4234904d2cbabdabb504c89af7"
+    },
+    {
+      "path": "spec/profiles/value-clarification-dialogue/v0.1/README.zh-CN.md",
+      "size": 3181,
+      "sha256": "703a84b5066433d90d1ffc29768b81b3b6ee25ef2715c1bc45485c7aa0e84bfd"
+    },
+    {
+      "path": "spec/profiles/value-clarification-dialogue/v0.1/value-response-interpretation.schema.json",
+      "size": 3540,
+      "sha256": "409cc3b7bafc149b5092e956107fb47e9bc7542e9805a7ea3b5212c2ee2750dc"
+    },
+    {
+      "path": "spec/profiles/work-realization-routing/v0.1/README.md",
+      "size": 7032,
+      "sha256": "1e56c2a1b4ec44ba9c5b1300b3b3a5a7e47677a581d4ddfb47561ceb05715a27"
+    },
+    {
+      "path": "spec/profiles/work-realization-routing/v0.1/README.zh-CN.md",
+      "size": 5819,
+      "sha256": "4dfade9f9a16a7d742f96242cf9ecec23c495444eda95d38ceee313926911751"
+    },
+    {
+      "path": "spec/profiles/work-realization-routing/v0.1/work-routing-assessment.schema.json",
+      "size": 6166,
+      "sha256": "a4d561a0f29ea20a24125ff9563b54275c31522921f6f6c41aa524558cb2ece2"
+    },
+    {
+      "path": "spec/registry/base-exchange/v0.1/offline-registry.json",
+      "size": 8913,
+      "sha256": "0d201761bbd6c950aa7953ff053effde23ad743626f96845196814cffd085d9f"
+    },
+    {
+      "path": "spec/registry/base-exchange/v0.1/offline-registry.schema.json",
+      "size": 1112,
+      "sha256": "45e54cb2bd144a84efeb0106cdb038252cee83d1789c15e15b0aad857526e706"
+    },
+    {
+      "path": "spec/registry/base-exchange/v0.1/README.md",
+      "size": 1443,
+      "sha256": "f371d01d4f1c2b40ee49353e8058574a3245c9815cefcdac41a4e5b41e6ce69d"
+    },
+    {
+      "path": "spec/registry/base-exchange/v0.1/README.zh-CN.md",
+      "size": 1091,
+      "sha256": "f057418591f5dae54f751425a4d554b98c9a8273504f249308447de47091637b"
+    },
+    {
+      "path": "spec/registry/base-exchange/v0.1/resolution-cases.json",
+      "size": 2882,
+      "sha256": "cb0f48f80c0cd080b922dad79291b776c9d1414d1dc93e223101efa2956f4350"
+    },
+    {
+      "path": "spec/registry/base-exchange/v0.1/validate.mjs",
+      "size": 4703,
+      "sha256": "596c05875450ae0f41b9d16efd6171146c21a89304d307aef7791a89175cdc51"
+    }
+  ]
+}

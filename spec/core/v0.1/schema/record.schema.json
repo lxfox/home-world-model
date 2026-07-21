@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/core/v0.1/schema/record.schema.json",
+  "title": "HWM Record v0.1",
+  "type": "object",
+  "required": [
+    "record_id",
+    "record_type",
+    "attributed_to",
+    "recorded_at",
+    "payload",
+    "integrity",
+    "extensions"
+  ],
+  "properties": {
+    "record_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "record_type": {
+      "enum": ["declaration", "observation", "action", "attestation", "authorization", "revision", "deletion"]
+    },
+    "attributed_to": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "recorded_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "observed_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "procedure": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "payload": {},
+    "integrity": {
+      "type": "object",
+      "required": ["mode"],
+      "properties": {
+        "mode": { "enum": ["unsigned", "digest", "signature"] },
+        "algorithm": { "type": "string" },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "view_id":"hwm-synthetic-deployment-outcome-fixture",
+  "deployment":{"deployment_ref":"urn:hwm:deployment:synthetic-fixture","release_sha256":"74c7873de0d06ed5d79d5a82ba414c096720058ddede9b05617495e8d34e91af","configuration_digest":"0000000000000000000000000000000000000000000000000000000000000000"},
+  "population":"one synthetic deployment controller; no household population inferred",
+  "baseline":"not evaluated",
+  "evaluation_window":{"from":"2026-07-01T00:00:00Z","through":"2026-07-07T00:00:00Z"},
+  "as_of":"2026-07-19T00:00:00Z",
+  "evidence_policy":"hwm-deployment-outcome-evaluation-v0.1",
+  "axes":{
+    "usage":{"result":"observed","evidence_sha256":["57ed03d6318aeaadd7cadd73717c6bd822b0068cba7d70571201fbae5b5ce0fc"],"method":"synthetic bounded interaction log fixture","coverage":"one controller","limitations":["not a household count"]},
+    "target_outcomes":{"result":"not_evaluated","evidence_sha256":[],"method":"none","coverage":"none","limitations":["no accepted target assessment"]},
+    "experience":{"result":"not_evaluated","evidence_sha256":[],"method":"none","coverage":"none","limitations":["no subject attestation"]},
+    "adverse_impacts":{"result":"not_evaluated","evidence_sha256":[],"method":"none","coverage":"no declared channel closure","limitations":["absence of reports is not absence of harm"]},
+    "distribution":{"result":"not_evaluated","evidence_sha256":[],"method":"none","coverage":"no governed strata","limitations":["no population comparison"]},
+    "exit_reversibility":{"result":"not_evaluated","evidence_sha256":[],"method":"none","coverage":"no exit trial","limitations":["documentation was not treated as demonstration"]}
+  },
+  "coverage":{"eligible_unit":"synthetic deployment controller","eligible_count_status":"one fixture controller","observed_count_status":"one fixture controller","attrition_status":"not applicable to synthetic fixture"},
+  "limitations":["synthetic usage evidence only","no claim about real households or benefit"],
+  "must_not_infer":["household_count","benefit","consent","satisfaction","target_realization","no_adverse_impact","fairness","reversibility","overall_success","continuation_authority","household_trust","access","action_authority"]
+}

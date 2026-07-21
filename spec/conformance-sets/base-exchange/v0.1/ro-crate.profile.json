@@ -1,0 +1,17 @@
+{
+  "profile_id":"https://homeworldmodel.org/spec/profiles/ro-crate/v0.1",
+  "version":"0.1.0",
+  "status":"Binding Candidate",
+  "normative_document":"https://homeworldmodel.org/spec/profiles/ro-crate/v0.1",
+  "normative_document_path":"spec/profiles/ro-crate/v0.1/README.md",
+  "document_digest":"sha256:d381bdb50c01bf1b79d0c793ae94b7b3733b5d0c3d276d6d5e871b652078bc7f",
+  "artifacts":[{"artifact_type":"HWMROCrate","schema_refs":["spec/profiles/ro-crate/v0.1/hwm-ro-crate-profile.schema.json"]}],
+  "roles":["preserve","consume"],
+  "dependencies":[{"profile_id":"https://homeworldmodel.org/spec/core/v0.1","version":"0.1.0","kind":"required","activation_condition":null}],
+  "incompatibilities":[],
+  "invariants":["one_household_scope","exactly_one_claim_set_and_record_set","resource_integrity_is_bound","conforms_to_order_has_no_semantics"],
+  "offline_resource_refs":["spec/profiles/ro-crate/v0.1/hwm-ro-crate-profile.schema.json"],
+  "unknown_extension_behavior":"preserve",
+  "issued_at":"2026-07-19T00:00:00Z",
+  "proof_refs":[]
+}

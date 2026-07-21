@@ -1,0 +1,46 @@
+[
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:new-asset-fulfills-slot",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T09:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-new",
+        "predicate": "hwm-lifecycle:fulfills",
+        "object": "urn:hwm:slot:lifecycle-reading-light"
+      },
+      "valid_time": { "from": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:new-asset-fulfills-slot",
+      "issuer": "urn:hwm:subject:untrusted-import",
+      "issued_at": "2026-07-18T09:01:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-new",
+        "predicate": "hwm-lifecycle:fulfills",
+        "object": "urn:hwm:slot:kitchen-pendant"
+      },
+      "valid_time": { "from": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  }
+]

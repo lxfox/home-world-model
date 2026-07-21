@@ -1,0 +1,9 @@
+{
+  "proposal_id":"hwm-example-clarify-evidence-language",
+  "revision":1,
+  "title":"Clarify that empirical reproduction is not adoption",
+  "normative_delta":"Add an explicit non-inference boundary to the Base Exchange evidence text.",
+  "affected_artifacts":["interop/challenges/base-exchange-v0.1/EVIDENCE-PORTFOLIO.md"],
+  "compatibility_claim":"editorial clarification; no machine contract change",
+  "known_tradeoffs":["adds governance text without expanding the household model"]
+}

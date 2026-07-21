@@ -1,0 +1,20 @@
+{
+  "cases":[
+    {"id":"exact-core-document","input":"https://homeworldmodel.org/spec/core/v0.1","expected":"resolved","must_not_infer":["online_available_from_offline_resolution"]},
+    {"id":"exact-schema","input":"https://homeworldmodel.org/spec/core/v0.1/schema/claim-envelope.schema.json","expected":"resolved","must_not_infer":["schema_validity_from_registry_presence"]},
+    {"id":"relative-core-ref","base":"https://homeworldmodel.org/spec/core/v0.1/schema/claim-envelope.schema.json","input":"common.schema.json#/$defs/Identifier","expected":"resolved","must_not_infer":["relative_ref_from_working_directory"]},
+    {"id":"relative-authority-ref","base":"https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-lease.schema.json","input":"authority-profile.schema.json#/$defs/Lease","expected":"resolved","must_not_infer":["relative_ref_from_file_path"]},
+    {"id":"local-fragment","base":"https://homeworldmodel.org/spec/core/v0.1/schema/common.schema.json","input":"#/$defs/Timestamp","expected":"resolved","must_not_infer":["fragment_is_registry_resource"]},
+    {"id":"unknown-uri","input":"https://homeworldmodel.org/spec/profiles/not-published/v9","expected":"unavailable","must_not_infer":["unknown_uri_is_false_semantics"]},
+    {"id":"optional-profile-unlisted","input":"https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1","expected":"unavailable","must_not_infer":["optional_profile_is_base_dependency"]},
+    {"id":"network-disabled","input":"https://homeworldmodel.org/spec/profiles/authority/v0.1","network":false,"expected":"resolved","must_not_infer":["network_required_for_offline_registry"]},
+    {"id":"digest-mismatch","mutation":"wrong_digest","expected":"reject","must_not_infer":["path_presence_proves_integrity"]},
+    {"id":"duplicate-uri","mutation":"duplicate_uri","expected":"reject","must_not_infer":["last_registry_entry_wins"]},
+    {"id":"path-traversal","mutation":"path_escape","expected":"reject","must_not_infer":["registry_path_may_escape_bundle"]},
+    {"id":"schema-id-mismatch","mutation":"schema_id_mismatch","expected":"reject","must_not_infer":["registry_uri_overrides_schema_id"]},
+    {"id":"media-type-mismatch","mutation":"wrong_media_type","expected":"reject","must_not_infer":["file_extension_proves_media_type"]},
+    {"id":"document-schema-distinct","input":"https://homeworldmodel.org/spec/profiles/ro-crate/v0.1","expected":"resolved","must_not_infer":["profile_document_is_schema"]},
+    {"id":"canonical-not-path-identity","input":"https://homeworldmodel.org/spec/core/v0.1","expected":"resolved","must_not_infer":["canonical_uri_equals_local_path"]},
+    {"id":"resolution-no-authority","input":"https://homeworldmodel.org/spec/profiles/authority/v0.1","expected":"resolved","must_not_infer":["resolution_grants_trust","resolution_grants_access","resolution_grants_action_authority"]}
+  ]
+}

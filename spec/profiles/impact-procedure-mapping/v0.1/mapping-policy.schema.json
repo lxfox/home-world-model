@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/impact-procedure-mapping/v0.1/mapping-policy.schema.json",
+  "title": "HWM Impact Procedure Mapping Policy v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "document_id", "household_id", "authority_id", "authority_epoch", "issued_at", "policy_combining_strategy", "mapping_rules", "proof", "extensions"],
+  "properties": {
+    "contract": { "const": "hwm-procedure:MappingPolicyDocument" },
+    "contract_version": { "const": "0.1.0-fixture" },
+    "document_id": { "type": "string", "minLength": 1 },
+    "household_id": { "type": "string", "minLength": 1 },
+    "authority_id": { "type": "string", "minLength": 1 },
+    "authority_epoch": { "type": "integer", "minimum": 0 },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "policy_combining_strategy": { "const": "only_one_applicable_per_impact" },
+    "mapping_rules": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/MappingRule" } },
+    "proof": { "$ref": "#/$defs/Proof" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "NonEmptyUniqueStrings": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "Validity": {
+      "type": "object", "required": ["from", "to"],
+      "properties": { "from": { "type": "string", "format": "date-time" }, "to": { "type": "string", "format": "date-time" } },
+      "additionalProperties": false
+    },
+    "RequirementTemplate": {
+      "type": "object",
+      "required": ["template_id", "kind", "timing", "route_mode", "route_role_ids", "completion_signal", "failure_effect", "negative_signal_effect", "extensions"],
+      "properties": {
+        "template_id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["affirmative_response", "consultation_opportunity", "objection_window", "notification", "qualified_review", "audit", "none"] },
+        "timing": { "enum": ["before_authorization", "before_dispatch", "after_execution", "not_applicable"] },
+        "route_mode": { "enum": ["affected_subject", "authority_resolved_representative", "authority_role", "authority_internal", "not_applicable"] },
+        "route_role_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "completion_signal": { "enum": ["affirmative_response", "opportunity_delivered", "window_expired_without_objection", "notice_delivered", "review_accepted", "audit_recorded", "not_applicable"] },
+        "failure_effect": { "enum": ["confirmation_required", "denied", "indeterminate", "post_action_noncompliance", "no_gate"] },
+        "negative_signal_effect": { "enum": ["blocks", "requires_replan", "record_only", "not_applicable"] },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "route_mode": { "const": "authority_role" } }, "required": ["route_mode"] },
+          "then": { "properties": { "route_role_ids": { "type": "array", "minItems": 1 } } },
+          "else": { "properties": { "route_role_ids": { "type": "array", "maxItems": 0 } } }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "none" } }, "required": ["kind"] },
+          "then": {
+            "properties": {
+              "timing": { "const": "not_applicable" },
+              "route_mode": { "const": "not_applicable" },
+              "completion_signal": { "const": "not_applicable" },
+              "failure_effect": { "const": "no_gate" },
+              "negative_signal_effect": { "const": "not_applicable" }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "MappingRule": {
+      "type": "object",
+      "required": ["rule_id", "action_types", "purposes", "channel_ids", "entity_kinds", "impact_statuses", "requirement_templates", "validity", "extensions"],
+      "properties": {
+        "rule_id": { "type": "string", "minLength": 1 },
+        "action_types": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "purposes": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "channel_ids": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "entity_kinds": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "impact_statuses": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["material", "possible", "not_material", "indeterminate"] } },
+        "requirement_templates": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/RequirementTemplate" } },
+        "validity": { "$ref": "#/$defs/Validity" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object", "required": ["mode", "verification_method"],
+      "properties": { "mode": { "enum": ["unsigned_fixture", "digest", "signature", "vc"] }, "verification_method": { "type": "string", "minLength": 1 }, "value": { "type": "string" } },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

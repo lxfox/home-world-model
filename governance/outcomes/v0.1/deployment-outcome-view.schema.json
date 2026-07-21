@@ -1,0 +1,32 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/outcomes/v0.1/deployment-outcome-view.schema.json",
+  "title":"HWM Deployment Outcome View",
+  "type":"object",
+  "required":["view_id","deployment","population","baseline","evaluation_window","as_of","evidence_policy","axes","coverage","limitations","must_not_infer"],
+  "properties":{
+    "view_id":{"type":"string"},
+    "deployment":{"type":"object","required":["deployment_ref","release_sha256","configuration_digest"],"properties":{"deployment_ref":{"type":"string"},"release_sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"configuration_digest":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "population":{"type":"string"},
+    "baseline":{"type":"string"},
+    "evaluation_window":{"type":"object","required":["from","through"],"properties":{"from":{"type":"string","format":"date-time"},"through":{"type":"string","format":"date-time"}},"additionalProperties":false},
+    "as_of":{"type":"string","format":"date-time"},
+    "evidence_policy":{"type":"string"},
+    "axes":{"type":"object","required":["usage","target_outcomes","experience","adverse_impacts","distribution","exit_reversibility"],"properties":{
+      "usage":{"$ref":"#/$defs/usage"},"target_outcomes":{"$ref":"#/$defs/target"},"experience":{"$ref":"#/$defs/experience"},"adverse_impacts":{"$ref":"#/$defs/impact"},"distribution":{"$ref":"#/$defs/distribution"},"exit_reversibility":{"$ref":"#/$defs/exit"}
+    },"additionalProperties":false},
+    "coverage":{"type":"object","required":["eligible_unit","eligible_count_status","observed_count_status","attrition_status"],"properties":{"eligible_unit":{"type":"string"},"eligible_count_status":{"type":"string"},"observed_count_status":{"type":"string"},"attrition_status":{"type":"string"}},"additionalProperties":false},
+    "limitations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "$defs":{
+    "base":{"type":"object","required":["result","evidence_sha256","method","coverage","limitations"],"properties":{"result":{"type":"string"},"evidence_sha256":{"type":"array","items":{"type":"string","pattern":"^[0-9a-f]{64}$"},"uniqueItems":true},"method":{"type":"string"},"coverage":{"type":"string"},"limitations":{"type":"array","items":{"type":"string"}}}},
+    "usage":{"allOf":[{"$ref":"#/$defs/base"},{"properties":{"result":{"enum":["observed","not_observed","mixed","indeterminate","not_evaluated"]}}}]},
+    "target":{"allOf":[{"$ref":"#/$defs/base"},{"properties":{"result":{"enum":["realized","partially_realized","not_realized","mixed","indeterminate","not_evaluated"]}}}]},
+    "experience":{"allOf":[{"$ref":"#/$defs/base"},{"properties":{"result":{"enum":["favorable","unfavorable","mixed","indeterminate","not_evaluated"]}}}]},
+    "impact":{"allOf":[{"$ref":"#/$defs/base"},{"properties":{"result":{"enum":["none_observed","observed","mixed","indeterminate","not_evaluated"]}}}]},
+    "distribution":{"allOf":[{"$ref":"#/$defs/base"},{"properties":{"result":{"enum":["no_material_difference_observed","material_difference_observed","mixed","indeterminate","not_evaluated"]}}}]},
+    "exit":{"allOf":[{"$ref":"#/$defs/base"},{"properties":{"result":{"enum":["demonstrated","partially_demonstrated","not_demonstrated","indeterminate","not_evaluated"]}}}]}
+  },
+  "additionalProperties":false
+}

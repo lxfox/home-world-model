@@ -1,0 +1,28 @@
+{
+  "contract": "hwm-task:StateAssessment",
+  "contract_version": "0.1.0-fixture",
+  "state_id": "urn:hwm:task-state:morning-bedroom-comfort-1",
+  "task_id": "urn:hwm:task:morning-bedroom-comfort-1",
+  "state_revision": 1,
+  "previous_state_binding": null,
+  "task_definition_binding": {
+    "task_id": "urn:hwm:task:morning-bedroom-comfort-1",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "dc3704ad4c7192357b4c6257ad53df441619beb08f8f3467dc5b00740c277c42"
+  },
+  "assessed_at": "2026-07-19T06:10:00Z",
+  "as_of": "2026-07-19T06:09:30Z",
+  "authority_epoch": 7,
+  "lifecycle_status": "active",
+  "criterion_results": [
+    {"criterion_id": "bedroom-ready-goal", "result": "unsatisfied", "evidence_bindings": [{"artifact_id": "urn:hwm:goal-evaluation:bedroom-ready:1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "5555555555555555555555555555555555555555555555555555555555555555"}]},
+    {"criterion_id": "hvac-terminal", "result": "unsatisfied", "evidence_bindings": [{"artifact_id": "urn:hwm:proposal-state:bedroom-hvac-r2:active", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "6666666666666666666666666666666666666666666666666666666666666666"}]}
+  ],
+  "open_attempt_bindings": [{"artifact_id": "urn:hwm:attempt:bedroom-hvac:1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "7777777777777777777777777777777777777777777777777777777777777777"}],
+  "terminal": {"kind": "not_applicable", "transition_record_binding": null, "authority_decision_binding": null, "related_task_bindings": []},
+  "reopen": {"prior_terminal_state_binding": null, "authority_decision_binding": null},
+  "proof": {"mode": "unsigned_fixture", "verification_method": "fixture-task-state-resolver", "value": "fixture:task-state-proof"},
+  "extensions": {}
+}

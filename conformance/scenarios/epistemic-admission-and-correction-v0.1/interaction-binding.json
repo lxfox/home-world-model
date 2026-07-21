@@ -1,0 +1,41 @@
+{
+  "contract": "hwm:InteractiveEvidenceBinding",
+  "contract_version": "0.1.0-fixture",
+  "challenge_id": "urn:challenge:night-light-visible-change-1",
+  "episode_id": "urn:episode:night-light-challenge-1",
+  "requester": "urn:hwm:agent:commissioning-assistant",
+  "purpose": "urn:hwm:purpose:spatial-commissioning",
+  "authority_epoch": 1,
+  "target": {
+    "claim_id": "urn:claim:endpoint-affects-bedroom-light",
+    "proposition_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scope": {
+      "subject": "urn:endpoint:night-light",
+      "predicate": "sosa:actsOn",
+      "competence_ceiling": "endpoint_zone_association_in_this_challenge"
+    }
+  },
+  "question": {
+    "record_id": "urn:record:question-night-light-challenge-1",
+    "presented_text": "I turned on the bedroom night-light endpoint. Did you observe a visible light change in the bedroom during this challenge?",
+    "response_options": [
+      {"value": "yes", "meaning": "confirms"},
+      {"value": "no", "meaning": "refutes"},
+      {"value": "cannot_tell", "meaning": "cannot_tell"},
+      {"value": "wrong_target", "meaning": "corrects"}
+    ]
+  },
+  "response": {
+    "record_id": "urn:record:resident-saw-light-1",
+    "attributed_to": "urn:resident:a",
+    "recorded_at": "2026-07-19T10:04:50Z",
+    "selected_value": "yes",
+    "meaning": "confirms"
+  },
+  "evidence": {
+    "origin_ids": ["urn:origin:endpoint-ack-1", "urn:origin:resident-a-response-3"],
+    "observation_record_ids": [],
+    "action_trace_ids": ["urn:hwm:trace:night-light-challenge-1"]
+  },
+  "extensions": {}
+}

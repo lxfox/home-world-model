@@ -1,0 +1,67 @@
+{
+  "contract": "hwm:HouseholdManifest",
+  "contract_version": "0.1.0",
+  "package_id": "urn:hwm:package:renovation-planning-package-v0.1",
+  "household_id": "urn:hwm:household:fixture-004",
+  "created_at": "2026-07-18T10:07:00Z",
+  "profiles": [
+    { "id": "hwm:core", "version": "0.1.0", "required": true },
+    { "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:renovation-planning", "version": "0.1.0-fixture", "required": true }
+  ],
+  "authority": {
+    "authority_id": "urn:hwm:authority:fixture-004",
+    "epoch": 1
+  },
+  "resources": [
+    {
+      "id": "claims.json",
+      "media_type": "application/json",
+      "role": "claims",
+      "integrity": { "algorithm": "sha-256", "digest": "4f608f6d26d2ac8297c337261a0a71a35f64e6913603aa179d17f8391822aeb6" }
+    },
+    {
+      "id": "records.json",
+      "media_type": "application/json",
+      "role": "records",
+      "integrity": { "algorithm": "sha-256", "digest": "9ef7c6b10e8e4b26cb3501d7fdcdfc1a3c12c2d4527b999263d993d91884f2f3" }
+    },
+    {
+      "id": "design/spatial-model.jsonld",
+      "media_type": "application/ld+json",
+      "role": "other",
+      "integrity": { "algorithm": "sha-256", "digest": "5bd913b08a25a4f466d1e370f6ac9be75126f3b2f66d767ab9435cf7ad952c1d" }
+    },
+    {
+      "id": "design/electrical-plan.json",
+      "media_type": "application/json",
+      "role": "other",
+      "integrity": { "algorithm": "sha-256", "digest": "f6b529e738bbe24f96a57b5b8b7c1711373cc308a533bb73373d76c99f434256" }
+    },
+    {
+      "id": "catalog/candidate-products.jsonld",
+      "media_type": "application/ld+json",
+      "role": "other",
+      "integrity": { "algorithm": "sha-256", "digest": "0d5bba3f2a8640ef4fd44555bdc742010c3306e9c04772e62e24d601a2b1414d" }
+    },
+    {
+      "id": "simulation/lighting.csv",
+      "media_type": "text/csv",
+      "role": "other",
+      "integrity": { "algorithm": "sha-256", "digest": "6c649e038c89b3ff7d5d55d21250ef5c087983b3b486f05b77d9893e05d9415c" }
+    },
+    {
+      "id": "comparison/options.json",
+      "media_type": "application/json",
+      "role": "other",
+      "integrity": { "algorithm": "sha-256", "digest": "7183918a692cc9c560212cf622e7f3c12ee6e50e4f4d2c12de0e689faa45c6bd" }
+    }
+  ],
+  "extensions": {
+    "https://example.org/hwm/renovation-roundtrip-sentinel": {
+      "must_survive": true,
+      "fixture": "renovation-planning-package-v0.1"
+    }
+  }
+}

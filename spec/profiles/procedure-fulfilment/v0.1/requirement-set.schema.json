@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/procedure-fulfilment/v0.1/requirement-set.schema.json",
+  "title": "HWM Procedural Requirement Set v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "requirement_set_id", "household_id", "authority_id", "authority_epoch", "mapping_assessment_id", "mapping_status", "proposal", "requirements", "proof", "extensions"],
+  "properties": {
+    "contract": { "const": "hwm-fulfilment:RequirementSet" },
+    "contract_version": { "const": "0.1.0-fixture" },
+    "requirement_set_id": { "type": "string", "minLength": 1 },
+    "household_id": { "type": "string", "minLength": 1 },
+    "authority_id": { "type": "string", "minLength": 1 },
+    "authority_epoch": { "type": "integer", "minimum": 0 },
+    "mapping_assessment_id": { "type": "string", "minLength": 1 },
+    "mapping_status": { "const": "mapped_for_declared_impacts" },
+    "proposal": {
+      "type": "object",
+      "required": ["proposal_id", "revision"],
+      "properties": {
+        "proposal_id": { "type": "string", "minLength": 1 },
+        "revision": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Requirement" }
+    },
+    "proof": { "$ref": "#/$defs/Proof" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "Requirement": {
+      "type": "object",
+      "required": ["requirement_id", "source_impact_ids", "kind", "timing", "participation_slot_id", "completion_signal", "failure_effect", "negative_signal_effect", "opens_at", "due_at", "extensions"],
+      "properties": {
+        "requirement_id": { "type": "string", "minLength": 1 },
+        "source_impact_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "kind": { "enum": ["affirmative_response", "consultation_opportunity", "objection_window", "notification", "qualified_review", "audit"] },
+        "timing": { "enum": ["before_authorization", "before_dispatch", "after_execution"] },
+        "participation_slot_id": { "type": ["string", "null"] },
+        "completion_signal": { "enum": ["affirmative_response", "opportunity_delivered", "window_expired_without_objection", "notice_delivered", "review_accepted", "audit_recorded"] },
+        "failure_effect": { "enum": ["confirmation_required", "denied", "indeterminate", "post_action_noncompliance"] },
+        "negative_signal_effect": { "enum": ["blocks", "requires_replan", "record_only", "not_applicable"] },
+        "opens_at": { "type": "string", "format": "date-time" },
+        "due_at": { "type": "string", "format": "date-time" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "audit" } }, "required": ["kind"] },
+          "then": { "properties": { "participation_slot_id": { "type": "null" } } },
+          "else": { "properties": { "participation_slot_id": { "type": "string", "minLength": 1 } } }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method"],
+      "properties": {
+        "mode": { "enum": ["unsigned_fixture", "digest", "signature", "vc"] },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,56 @@
+{
+  "contract": "hwm:ActionTrace",
+  "contract_version": "0.1.0",
+  "trace_id": "urn:hwm:trace:lifecycle-new-lamp-level-60",
+  "trace_revision": 2,
+  "household_id": "urn:hwm:household:fixture-003",
+  "generated_at": "2026-07-18T09:20:01Z",
+  "known_through": "2026-07-18T09:20:00Z",
+  "based_on_view_id": "urn:hwm:view:lifecycle-after-replacement",
+  "intent": {
+    "intent_id": "urn:hwm:intent:lifecycle-reading-ready",
+    "requested_by": "urn:hwm:subject:resident-lifecycle",
+    "goal_claim_ids": ["urn:hwm:claim:lifecycle-reading-requirement"]
+  },
+  "proposal": {
+    "proposal_id": "urn:hwm:proposal:new-lamp-level-60",
+    "proposed_by": "urn:hwm:subject:lifecycle-planner",
+    "action": {
+      "action_type": "matter:MoveToLevel",
+      "target_endpoint_id": "urn:hwm:endpoint:matter-lamp-new",
+      "parameters": { "level_percent": 60 }
+    },
+    "effect_claim_ids": ["urn:hwm:claim:new-endpoint-effect"]
+  },
+  "authorization": {
+    "decision": "allowed",
+    "authority_epoch": 4,
+    "record_id": "urn:hwm:record:lifecycle-action-authorization"
+  },
+  "execution": {
+    "status": "dispatched",
+    "dispatch_record_id": "urn:hwm:record:lifecycle-action-dispatch",
+    "acknowledgement": {
+      "status": "acknowledged",
+      "record_id": "urn:hwm:record:lifecycle-action-acknowledgement"
+    },
+    "reason_codes": ["authorization_allowed"]
+  },
+  "observation_record_ids": ["urn:hwm:record:lifecycle-late-observation"],
+  "effect_assessments": [{
+    "effect_claim_id": "urn:hwm:claim:new-endpoint-effect",
+    "status": "consistent",
+    "observation_record_ids": ["urn:hwm:record:lifecycle-late-observation"],
+    "reason_codes": ["late_observation_within_expected_range"]
+  }],
+  "goal_evaluations": [{
+    "goal_claim_id": "urn:hwm:claim:lifecycle-reading-requirement",
+    "status": "satisfied",
+    "observation_record_ids": ["urn:hwm:record:lifecycle-late-observation"],
+    "reason_codes": ["late_observation_meets_minimum"]
+  }],
+  "resource_assessments": [],
+  "user_attestation_record_ids": [],
+  "recovery_record_ids": [],
+  "extensions": {}
+}

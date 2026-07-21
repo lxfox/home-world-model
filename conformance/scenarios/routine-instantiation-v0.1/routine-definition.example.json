@@ -1,0 +1,84 @@
+{
+  "contract": "hwm-routine:Definition",
+  "contract_version": "0.1.0-fixture",
+  "routine_id": "urn:hwm:routine:weekday-morning-hot-water-1",
+  "definition_revision": 1,
+  "previous_definition_binding": null,
+  "identity_basis": {
+    "household_id": "urn:hwm:household:1",
+    "target_intent_id": "urn:hwm:intent:weekday-morning-hot-water-readiness-1",
+    "purpose": "urn:hwm:purpose:morning-hot-water-readiness",
+    "scope_refs": [
+      "urn:hwm:function-position:hot-water-loop",
+      "urn:hwm:space:bathroom"
+    ]
+  },
+  "identity_basis_digest": "cb1b06226b0478c2a3467dfefe238be14d3283e8d346dfc252fac507347d1d33",
+  "target_intent_binding": {
+    "intent_id": "urn:hwm:intent:weekday-morning-hot-water-readiness-1",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "47df3ada98b4a55bf35d36222dbbd7c5e7d07d8a01ce0da7070ea580545c2a88"
+  },
+  "trigger_contract": {
+    "kind": "temporal_recurrence",
+    "trigger_spec_binding": {
+      "artifact_id": "urn:hwm:routine-trigger:weekday-morning-hot-water-1",
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "94e11eccedd542c42a856b1ab09ee3588668660232aa83c9eb9f2fa4943e4057"
+    },
+    "eligibility_spec_binding": {
+      "artifact_id": "urn:hwm:routine-eligibility:weekday-morning-hot-water-1",
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "10c0c12954a0692b77cf7be148c4cdc7402a8e27631f995e6ba667110df828b9"
+    },
+    "occurrence_key_policy_binding": {
+      "artifact_id": "urn:hwm:routine-occurrence-policy:weekday-morning-hot-water-1",
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "f2a7885b2f11e39eb760e3dce0d582372d251f6a577fc81ec0f21926604d50c0"
+    },
+    "semantics_uri": "https://www.rfc-editor.org/rfc/rfc8984.html"
+  },
+  "task_template": {
+    "purpose": "urn:hwm:purpose:morning-hot-water-readiness",
+    "scope_refs": [
+      "urn:hwm:function-position:hot-water-loop",
+      "urn:hwm:space:bathroom"
+    ],
+    "exit_criteria": [
+      {
+        "criterion_id": "hot-water-ready-goal",
+        "kind": "goal_evaluation",
+        "mandatory": true,
+        "target_binding": {
+          "artifact_id": "urn:hwm:goal:hot-water-ready",
+          "digest_algorithm": "sha-256",
+          "canonicalization": "RFC8785",
+          "digest": "4444444444444444444444444444444444444444444444444444444444444444"
+        }
+      }
+    ]
+  },
+  "instantiation_policy": {
+    "late_mode": "latest_only",
+    "max_lateness_seconds": 7200,
+    "catch_up_limit": 1,
+    "overlap_mode": "suppress_while_active"
+  },
+  "revision": {
+    "relation": "genesis",
+    "continuity_decision_binding": null
+  },
+  "created_at": "2026-07-19T04:45:00Z",
+  "created_by_subject": "urn:hwm:subject:resident-a",
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-routine-registry",
+    "value": "fixture:routine-definition-proof"
+  },
+  "extensions": {}
+}

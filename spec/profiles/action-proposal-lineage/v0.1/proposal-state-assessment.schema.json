@@ -1,0 +1,24 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/action-proposal-lineage/v0.1/proposal-state-assessment.schema.json",
+  "title":"HWM Proposal State Assessment v0.1",
+  "type":"object",
+  "required":["contract","contract_version","assessment_id","proposal_binding","as_of","authority_epoch","status","successor_bindings","transition_record_bindings","reason_codes","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-proposal:StateAssessment"},"contract_version":{"const":"0.1.0"},
+    "assessment_id":{"type":"string","minLength":1},"proposal_binding":{"$ref":"#/$defs/Binding"},
+    "as_of":{"type":"string","format":"date-time"},"authority_epoch":{"type":"integer","minimum":0},
+    "status":{"enum":["current","superseded","withdrawn","contested","indeterminate"]},
+    "successor_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},
+    "transition_record_bindings":{"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/ArtifactBinding"}},
+    "reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false},
+    "extensions":{"type":"object"}
+  },
+  "$defs":{
+    "Digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "Binding":{"type":"object","required":["proposal_id","proposal_revision","digest_algorithm","canonicalization","digest"],"properties":{"proposal_id":{"type":"string","minLength":1},"proposal_revision":{"type":"integer","minimum":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false},
+    "ArtifactBinding":{"type":"object","required":["artifact_id","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"$ref":"#/$defs/Digest"}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

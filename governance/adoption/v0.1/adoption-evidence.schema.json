@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/adoption/v0.1/adoption-evidence.schema.json",
+  "title":"HWM Adoption Evidence",
+  "type":"object",
+  "required":["evidence_id","kind","release","subject_ref","scope","issuer_ref","issued_at","validity","method","lineage_ref","privacy_class","applicability","limitations","must_not_infer"],
+  "properties":{
+    "evidence_id":{"type":"string","minLength":1},
+    "kind":{"enum":["adoption_declaration","implementation_assessment","deployment_observation","dependency_declaration","longitudinal_operation","market_estimate"]},
+    "release":{"type":"object","required":["release_id","sha256"],"properties":{"release_id":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "subject_ref":{"type":"string"},
+    "scope":{"type":"object"},
+    "issuer_ref":{"type":"string"},
+    "issued_at":{"type":"string","format":"date-time"},
+    "validity":{"type":"object","required":["from","through"],"properties":{"from":{"type":"string","format":"date-time"},"through":{"type":"string","format":"date-time"}},"additionalProperties":false},
+    "method":{"type":"object"},
+    "lineage_ref":{"type":"string"},
+    "privacy_class":{"enum":["public_attributed","organization_confidential","aggregate_non_identifying","restricted_sensitive"]},
+    "applicability":{"enum":["current","withdrawn","superseded","expired"]},
+    "count":{"type":"object","required":["value","unit","population_frame","coverage"],"properties":{"value":{"type":"number","minimum":0},"unit":{"type":"string"},"population_frame":{"type":"string"},"coverage":{"type":"string"},"denominator":{"type":"number","exclusiveMinimum":0},"uncertainty":{"type":"string"}},"additionalProperties":false},
+    "limitations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "additionalProperties":false
+}

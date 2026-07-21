@@ -1,0 +1,22 @@
+{
+  "profile_id":"https://homeworldmodel.org/spec/core/v0.1",
+  "version":"0.1.0",
+  "status":"Discussion Candidate",
+  "normative_document":"https://homeworldmodel.org/spec/core/v0.1",
+  "normative_document_path":"docs/00_context/home-world-model-core-v0.1.md",
+  "document_digest":"sha256:ffb2d045b16c442dde05efbfa4d08147429aa8d36225ad75b10f924c95091c27",
+  "artifacts":[
+    {"artifact_type":"ClaimEnvelopeSet","schema_refs":["spec/core/v0.1/schema/claim-envelope.schema.json","spec/core/v0.1/schema/claim-set.schema.json"]},
+    {"artifact_type":"RecordSet","schema_refs":["spec/core/v0.1/schema/record.schema.json","spec/core/v0.1/schema/record-set.schema.json"]},
+    {"artifact_type":"WorldView","schema_refs":["spec/core/v0.1/schema/world-view.schema.json"]},
+    {"artifact_type":"ActionTrace","schema_refs":["spec/core/v0.1/schema/action-trace.schema.json"]}
+  ],
+  "roles":["preserve","consume"],
+  "dependencies":[],
+  "incompatibilities":[],
+  "invariants":["kernel_is_entityref_claim_record_authority","claims_and_records_are_immutable","unknown_is_not_false","proposal_is_not_authorization"],
+  "offline_resource_refs":["spec/core/v0.1/schema/common.schema.json","spec/core/v0.1/schema/claim-envelope.schema.json","spec/core/v0.1/schema/claim-set.schema.json","spec/core/v0.1/schema/record.schema.json","spec/core/v0.1/schema/record-set.schema.json","spec/core/v0.1/schema/world-view.schema.json","spec/core/v0.1/schema/action-trace.schema.json"],
+  "unknown_extension_behavior":"preserve",
+  "issued_at":"2026-07-19T00:00:00Z",
+  "proof_refs":[]
+}

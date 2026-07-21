@@ -1,0 +1,9 @@
+{
+  "evidence_id":"synthetic-usage-fixture-2026-07-19",
+  "deployment_ref":"urn:hwm:deployment:synthetic-fixture",
+  "method":"synthetic bounded interaction log fixture",
+  "window":{"from":"2026-07-01T00:00:00Z","through":"2026-07-07T00:00:00Z"},
+  "result":"usage_observed",
+  "coverage":"one synthetic deployment controller; household and person counts not inferred",
+  "limitations":["synthetic fixture","interaction does not establish benefit, consent or satisfaction"]
+}

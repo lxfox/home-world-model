@@ -1,0 +1,42 @@
+{
+  "contract": "hwm-continuity:Checkpoint",
+  "contract_version": "0.1.0-fixture",
+  "checkpoint_id": "urn:hwm:continuity-checkpoint:morning-task-r1-agent-b",
+  "task_id": "urn:hwm:task:morning-bedroom-comfort-1",
+  "task_revision": 1,
+  "task_definition_binding": {"task_id": "urn:hwm:task:morning-bedroom-comfort-1", "definition_revision": 1, "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "dc3704ad4c7192357b4c6257ad53df441619beb08f8f3467dc5b00740c277c42"},
+  "mode": "successor",
+  "generated_at": "2026-07-19T12:00:00Z",
+  "valid_until": "2026-07-19T12:15:00Z",
+  "authority_epoch": 11,
+  "source_context": {
+    "subject_id": "urn:hwm:subject:admitted-agent-a",
+    "admission_decision_binding": {"artifact_id": "urn:hwm:admission-decision:agent-a-1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "1111111111111111111111111111111111111111111111111111111111111111"},
+    "world_view_binding": {"artifact_id": "urn:hwm:view:morning-agent-a-r2", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "2222222222222222222222222222222222222222222222222222222222222222"}
+  },
+  "target_context": {
+    "subject_id": "urn:hwm:subject:admitted-agent-b",
+    "admission_decision_binding": {"artifact_id": "urn:hwm:admission-decision:agent-b-1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "3333333333333333333333333333333333333333333333333333333333333333"},
+    "purpose": "urn:hwm:purpose:morning-preparation",
+    "audience": "urn:hwm:resolver:household-1",
+    "world_view_binding": {"artifact_id": "urn:hwm:view:morning-agent-b-r1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "4444444444444444444444444444444444444444444444444444444444444444"}
+  },
+  "durable_artifacts": [
+    {"artifact_id": "urn:hwm:plan:morning-r2", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "5555555555555555555555555555555555555555555555555555555555555555", "role": "plan"},
+    {"artifact_id": "urn:hwm:trace:hot-water-r1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "6666666666666666666666666666666666666666666666666666666666666666", "role": "action_trace"}
+  ],
+  "open_work": [
+    {
+      "work_item_id": "urn:hwm:work-item:await-bedroom-temperature",
+      "kind": "await_observation",
+      "status": "open",
+      "artifact_bindings": [{"artifact_id": "urn:hwm:proposal:bedroom-hvac-r2", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "7777777777777777777777777777777777777777777777777777777777777777"}],
+      "reason_codes": ["physical_outcome_not_observed"]
+    }
+  ],
+  "uncertainty_items": [
+    {"item_id": "urn:hwm:uncertainty:occupancy-forecast", "proposition_ref": "urn:hwm:proposition:bedroom-occupied-at-0630", "epistemic_status": "unknown", "reason_codes": ["forecast_not_observation"]}
+  ],
+  "proof": {"mode": "unsigned_fixture", "verification_method": "fixture-continuity-resolver", "value": "fixture:checkpoint-proof"},
+  "extensions": {}
+}

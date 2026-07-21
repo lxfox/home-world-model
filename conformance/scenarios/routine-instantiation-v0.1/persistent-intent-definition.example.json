@@ -1,0 +1,66 @@
+{
+  "contract": "hwm-intent:Definition",
+  "contract_version": "0.1.0-fixture",
+  "intent_id": "urn:hwm:intent:weekday-morning-hot-water-readiness-1",
+  "definition_revision": 1,
+  "previous_definition_binding": null,
+  "identity_basis": {
+    "household_id": "urn:hwm:household:1",
+    "purpose": "urn:hwm:purpose:morning-hot-water-readiness",
+    "lifecycle_kind": "persistent",
+    "beneficiary_refs": [
+      "urn:hwm:subject:resident-a",
+      "urn:hwm:subject:resident-b"
+    ],
+    "scope_refs": [
+      "urn:hwm:function-position:hot-water-loop",
+      "urn:hwm:space:bathroom"
+    ]
+  },
+  "identity_basis_digest": "92143b8539e0ac9864dfc4bbc45f9d59948537162ceb14bdfbfcd87fb00094aa",
+  "expectations": [
+    {
+      "expectation_id": "hot-water-ready",
+      "kind": "goal",
+      "mandatory": true,
+      "target_binding": {
+        "artifact_id": "urn:hwm:claim:hot-water-ready-before-morning-use",
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "digest": "1111111111111111111111111111111111111111111111111111111111111111"
+      }
+    },
+    {
+      "expectation_id": "circulation-energy-bounded",
+      "kind": "constraint",
+      "mandatory": true,
+      "target_binding": {
+        "artifact_id": "urn:hwm:claim:morning-hot-water-energy-limit",
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "digest": "2222222222222222222222222222222222222222222222222222222222222222"
+      }
+    }
+  ],
+  "basis_bindings": [
+    {
+      "artifact_id": "urn:hwm:view:morning-pattern-review-r1",
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "3333333333333333333333333333333333333333333333333333333333333333"
+    }
+  ],
+  "revision": {
+    "relation": "genesis",
+    "continuity_decision_binding": null,
+    "expectation_lineage": []
+  },
+  "created_at": "2026-07-19T04:30:00Z",
+  "created_by_subject": "urn:hwm:subject:resident-a",
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-intent-registry",
+    "value": "fixture:persistent-intent-definition-proof"
+  },
+  "extensions": {}
+}

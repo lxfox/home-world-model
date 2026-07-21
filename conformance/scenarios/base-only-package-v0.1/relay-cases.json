@@ -1,0 +1,20 @@
+{
+  "cases":[
+    {"id":"empty-sets-are-valid","facts":["claims-empty","records-empty"],"expected":"base_conformant","must_not_infer":["household_has_no_facts"]},
+    {"id":"no-domain-profile-required","facts":["exact-base-profiles","no-domain-profile"],"expected":"base_conformant","must_not_infer":["domain_profile_required"]},
+    {"id":"authority-reference-not-document","facts":["authority-state-reference","no-authority-document"],"expected":"base_conformant","must_not_infer":["authority_document_required_in_every_package"]},
+    {"id":"reference-is-not-access","facts":["authority-state-reference"],"expected":"base_conformant","must_not_infer":["authority_document_access_from_reference"]},
+    {"id":"unknown-no-profile","facts":["unknown-artifact","no-governing-profile"],"expected":"reject","must_not_infer":["semantics_from-media-type"]},
+    {"id":"unknown-profile-not-locked","facts":["unknown-artifact","profile-declared-in-crate","profile-not-in-set"],"expected":"reject","must_not_infer":["root-declaration-closes-composition"]},
+    {"id":"opaque-allowed-content-bound","facts":["unsupported-profile-exact","artifact-digest-valid","opaque-relay-allowed"],"expected":"opaque_preserved","must_not_infer":["opaque_relay_understands_artifact"]},
+    {"id":"opaque-not-allowed","facts":["unsupported-profile-exact","opaque-relay-not-allowed"],"expected":"reject","must_not_infer":["relay_default_allowed"]},
+    {"id":"opaque-digest-mismatch","facts":["unsupported-profile-exact","artifact-digest-invalid","opaque-relay-allowed"],"expected":"reject","must_not_infer":["opaque_content_valid_without_integrity"]},
+    {"id":"opaque-byte-preservation","facts":["unsupported-profile-exact","opaque-relay-allowed","roundtrip-byte-identical"],"expected":"opaque_preserved","must_not_infer":["preservation_is-schema-validation"]},
+    {"id":"opaque-no-derived-claim","facts":["opaque-preserved"],"expected":"opaque_preserved","must_not_infer":["derived_claim_from_opaque_artifact"]},
+    {"id":"opaque-no-authority","facts":["opaque-preserved"],"expected":"opaque_preserved","must_not_infer":["authority_from_opaque_artifact"]},
+    {"id":"base-consume-is-not-domain-consume","facts":["base-consume-qualified","unsupported-domain-artifact"],"expected":"opaque_preserved","must_not_infer":["base_consume_implies_domain_consume"]},
+    {"id":"hidden-is-not-empty","facts":["claims-empty","purpose-bound-package"],"expected":"base_conformant","must_not_infer":["undisclosed_claims_do_not_exist"]},
+    {"id":"package-is-not-world-view","facts":["base-package-valid"],"expected":"base_conformant","must_not_infer":["package_possession_grants_disclosure"]},
+    {"id":"valid-is-not-truth-or-power","facts":["base-package-valid"],"expected":"base_conformant","must_not_infer":["package_validity_proves_claim_truth","package_validity_grants_action_authority"]}
+  ]
+}

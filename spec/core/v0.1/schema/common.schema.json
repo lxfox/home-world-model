@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/core/v0.1/schema/common.schema.json",
+  "title": "HWM Core v0.1 common definitions",
+  "$defs": {
+    "Identifier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "Timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ProfileRef": {
+      "type": "object",
+      "required": ["id", "version", "required"],
+      "properties": {
+        "id": { "$ref": "#/$defs/Identifier" },
+        "version": { "type": "string", "minLength": 1 },
+        "required": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "TimeInterval": {
+      "type": "object",
+      "description": "Either an exact instant (`at`) or a half-open interval [`from`, `to`). An omitted bound is open-ended.",
+      "properties": {
+        "at": { "$ref": "#/$defs/Timestamp" },
+        "from": { "$ref": "#/$defs/Timestamp" },
+        "to": { "$ref": "#/$defs/Timestamp" }
+      },
+      "oneOf": [
+        {
+          "required": ["at"],
+          "properties": {
+            "at": { "$ref": "#/$defs/Timestamp" },
+            "from": false,
+            "to": false
+          }
+        },
+        {
+          "minProperties": 1,
+          "properties": {
+            "at": false,
+            "from": { "$ref": "#/$defs/Timestamp" },
+            "to": { "$ref": "#/$defs/Timestamp" }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "Quantity": {
+      "type": "object",
+      "required": ["value", "unit"],
+      "properties": {
+        "value": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "Range": {
+      "type": "object",
+      "required": ["minimum", "maximum", "unit"],
+      "properties": {
+        "minimum": { "type": "number" },
+        "maximum": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "Extensions": {
+      "type": "object",
+      "description": "Implementations MUST preserve every member during a lossless round trip.",
+      "additionalProperties": true
+    }
+  }
+}

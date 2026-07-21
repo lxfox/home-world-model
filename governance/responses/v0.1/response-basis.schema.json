@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/responses/v0.1/response-basis.schema.json",
+  "title":"HWM Deployment Response Basis",
+  "type":"object",
+  "required":["basis_id","response_class","signals","policy_binding","scope","timing","fallback","post_response_duties","eligibility","authority_status","execution_status","limitations","must_not_infer"],
+  "properties":{
+    "basis_id":{"type":"string"},
+    "response_class":{"enum":["precautionary_hold","emergency_stop","ordinary_exit","remediation","retirement"]},
+    "signals":{"type":"array","items":{"type":"object","required":["ref","sha256","standing"],"properties":{"ref":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"standing":{"enum":["admitted","not_admitted","indeterminate"]}},"additionalProperties":false},"minItems":1},
+    "policy_binding":{"type":"object","required":["policy_ref","revision","sha256","authority_epoch"],"properties":{"policy_ref":{"type":"string"},"revision":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"authority_epoch":{"type":"integer","minimum":0}},"additionalProperties":false},
+    "scope":{"type":"object","required":["targets","actions","spaces","excluded"],"properties":{"targets":{"type":"array","items":{"type":"string"},"minItems":1},"actions":{"type":"array","items":{"type":"string"},"minItems":1},"spaces":{"type":"array","items":{"type":"string"}},"excluded":{"type":"array","items":{"type":"string"}}},"additionalProperties":false},
+    "timing":{"type":"object","required":["as_of","starts_at","review_or_expires_at"],"properties":{"as_of":{"type":"string","format":"date-time"},"starts_at":{"type":"string","format":"date-time"},"review_or_expires_at":{"type":"string","format":"date-time"}},"additionalProperties":false},
+    "fallback":{"type":"object","required":["safe_state","proportionality_rationale","restoration_rule"],"properties":{"safe_state":{"type":"string"},"proportionality_rationale":{"type":"string"},"restoration_rule":{"type":"string"}},"additionalProperties":false},
+    "post_response_duties":{"type":"array","items":{"type":"string"}},
+    "eligibility":{"enum":["no_response_basis","assessment_required","proposal_required","precautionary_hold_eligible","emergency_stop_eligible","ordinary_exit_eligible","remediation_required","retirement_preparation_required","denied","indeterminate"]},
+    "authority_status":{"enum":["not_evaluated","allowed","denied","confirmation_required","requirements_pending","indeterminate","local_safety_mandate"]},
+    "execution_status":{"enum":["not_proposed","not_authorized","authorized_not_dispatched","attempt_open","effect_unverified","safe_state_verified","failed","indeterminate"]},
+    "limitations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "additionalProperties":false
+}

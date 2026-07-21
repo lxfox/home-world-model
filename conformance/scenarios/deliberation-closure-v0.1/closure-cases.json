@@ -1,0 +1,28 @@
+{
+  "cases":[
+    {"case_id":"intent-adopted","facts":{"effects":["intent_adoption"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"candidate-rejected","facts":{"effects":["candidate_rejection"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"current-gap-tolerated","facts":{"effects":["tolerance_claim"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"deliberation-deferred","facts":{"effects":["deferral_policy"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"raising-suppressed","facts":{"effects":["raising_policy_revision"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"target-corrected","facts":{"effects":["target_correction"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"intent-revised","facts":{"effects":["intent_revision"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"correction-and-suppression","facts":{"effects":["target_correction","raising_policy_revision"]},"expected":{"status":"resolved","reason":"all_disclosed_effects_verified"}},
+    {"case_id":"one-effect-indeterminate","facts":{"effects":["target_correction","raising_policy_revision"],"effect_statuses":["verified","indeterminate"]},"expected":{"status":"indeterminate","reason":"disclosed_effect_indeterminate"}},
+    {"case_id":"one-effect-not-effective","facts":{"effects":["target_correction"],"effect_statuses":["not_effective"]},"expected":{"status":"indeterminate","reason":"disclosed_effect_not_effective"}},
+    {"case_id":"partial-effect-coverage","facts":{"effects":["tolerance_claim"],"coverage":"partial"},"expected":{"status":"indeterminate","reason":"effect_coverage_not_complete"}},
+    {"case_id":"closed-no-decision","facts":{"effects":[],"end":"closed"},"expected":{"status":"closed_without_decision","reason":"interaction_closed_without_normative_effect"}},
+    {"case_id":"expired-no-decision","facts":{"effects":[],"end":"expired"},"expected":{"status":"expired","reason":"deliberation_window_expired_without_effect"}},
+    {"case_id":"silence-is-no-decision","facts":{"effects":[],"end":"silence"},"expected":{"status":"closed_without_decision","reason":"silence_has_no_normative_effect"}},
+    {"case_id":"ui-dismissal-is-no-decision","facts":{"effects":[],"end":"dismissed"},"expected":{"status":"closed_without_decision","reason":"dismissal_has_no_normative_effect"}},
+    {"case_id":"superseded-thread","facts":{"superseding":"match"},"expected":{"status":"superseded","reason":"explicit_superseding_deliberation_bound"}},
+    {"case_id":"superseding-binding-missing","facts":{"superseding":"missing"},"expected":{"status":"indeterminate","reason":"superseding_deliberation_binding_missing"}},
+    {"case_id":"issue-binding-mismatch","facts":{"issue":"mismatch"},"expected":{"status":"indeterminate","reason":"issue_basis_binding_mismatch"}},
+    {"case_id":"interaction-record-missing","facts":{"interaction":"missing"},"expected":{"status":"indeterminate","reason":"interaction_record_missing"}},
+    {"case_id":"authority-epoch-stale","facts":{"epoch":"stale"},"expected":{"status":"indeterminate","reason":"authority_epoch_stale"}},
+    {"case_id":"origin-rewritten","facts":{"origin":"rewritten"},"expected":{"status":"indeterminate","reason":"issue_origin_mismatch"}},
+    {"case_id":"agent-summary-only","facts":{"effects":["tolerance_claim"],"authority":"agent_summary"},"expected":{"status":"indeterminate","reason":"effect_not_independently_authorized"}},
+    {"case_id":"correction-without-lineage","facts":{"effects":["target_correction"],"lineage":"missing"},"expected":{"status":"indeterminate","reason":"target_correction_lineage_missing"}}
+  ],
+  "must_not_infer":["closure_is_authority_source","yes_means_intent_adopted","no_rejects_target_claim","candidate_rejection_rejects_future_candidates","tolerance_means_target_satisfied","tolerance_retracts_target","deferral_means_rejection","deferral_means_indefinite_suppression","raising_suppression_erases_gap","target_correction_mutates_history","silence_is_consent","silence_is_rejection","timeout_is_rejection","dismissal_is_tolerance","agent_summary_makes_effect_effective","indeterminate_closure_rolls_back_verified_effect","closure_authorizes_notification","closure_creates_plan","closure_creates_proposal","closure_authorizes_action"]
+}

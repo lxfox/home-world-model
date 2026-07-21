@@ -1,0 +1,44 @@
+{
+  "@context": {
+    "schema": "https://schema.org/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:choice:homeowner-reading-light-1",
+      "@type": "schema:ChooseAction",
+      "schema:agent": {"@id": "urn:hwm:subject:homeowner"},
+      "schema:actionOption": [
+        {"@id": "urn:hwm:design-option:reading-light-a"},
+        {"@id": "urn:hwm:design-option:reading-light-b"}
+      ],
+      "schema:object": {"@id": "urn:hwm:design-option:reading-light-a"},
+      "schema:actionStatus": {"@id": "https://schema.org/CompletedActionStatus"},
+      "prov:generated": {"@id": "urn:hwm:claim:homeowner-selects-option-a"}
+    },
+    {
+      "@id": "urn:hwm:claim:homeowner-selects-option-a",
+      "@type": "prov:Entity",
+      "prov:generatedAtTime": {"@value": "2026-07-18T10:08:00Z", "@type": "http://www.w3.org/2001/XMLSchema#dateTime"}
+    },
+    {
+      "@id": "urn:hwm:choice:homeowner-reading-light-2",
+      "@type": "schema:ChooseAction",
+      "schema:agent": {"@id": "urn:hwm:subject:homeowner"},
+      "schema:actionOption": [
+        {"@id": "urn:hwm:design-option:reading-light-a"},
+        {"@id": "urn:hwm:design-option:reading-light-b"}
+      ],
+      "schema:object": {"@id": "urn:hwm:design-option:reading-light-b"},
+      "schema:actionStatus": {"@id": "https://schema.org/CompletedActionStatus"},
+      "prov:generated": {"@id": "urn:hwm:claim:homeowner-selects-option-b-revision-1"}
+    },
+    {
+      "@id": "urn:hwm:claim:homeowner-selects-option-b-revision-1",
+      "@type": "prov:Entity",
+      "dcterms:replaces": {"@id": "urn:hwm:claim:homeowner-selects-option-a"},
+      "prov:generatedAtTime": {"@value": "2026-07-18T12:00:00Z", "@type": "http://www.w3.org/2001/XMLSchema#dateTime"}
+    }
+  ]
+}

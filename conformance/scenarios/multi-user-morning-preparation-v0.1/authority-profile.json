@@ -1,0 +1,250 @@
+{
+  "contract": "hwm-authority:ProfileDocument",
+  "contract_version": "0.1.0",
+  "document_id": "urn:hwm:authority-document:morning-fixture-epoch-11",
+  "authority_id": "urn:hwm:authority:morning-fixture-001",
+  "household_id": "urn:hwm:household:morning-fixture-001",
+  "authority_epoch": 11,
+  "issued_at": "2026-07-18T06:49:00Z",
+  "trust_root_binding": {
+    "lineage_id": "urn:hwm:authority-lineage:morning-fixture",
+    "root_id": "urn:hwm:trust-root:morning-fixture:v1",
+    "root_version": 1,
+    "authority_epoch_floor": 11
+  },
+  "trust_anchors": [
+    {
+      "anchor_id": "urn:hwm:trust-anchor:morning-fixture-owner",
+      "anchor_type": "fixture",
+      "controller": "urn:hwm:subject:homeowner",
+      "verification_method": "urn:hwm:verification-method:unsigned-fixture-only",
+      "extensions": {}
+    }
+  ],
+  "policies": [
+    {
+      "policy_id": "urn:hwm:policy:morning-view-disclosure",
+      "assigner": "urn:hwm:subject:homeowner",
+      "conflict_strategy": "deny_overrides",
+      "permissions": [
+        {
+          "rule_id": "urn:hwm:rule:disclose-purpose-view",
+          "assignees": ["urn:hwm:subject:morning-planner-agent"],
+          "action": "hwm-authority:resolveView",
+          "targets": [
+            {
+              "selector_type": "predicate",
+              "values": [
+                "hwm-forecast:probability",
+                "hwm-preference:preferredRange",
+                "hwm-resource:maximumConsumption",
+                "hwm-effect:maximumRequirement",
+                "hwm-effect:minimumRequirement",
+                "hwm-goal:desiredCondition",
+                "hwm-effect:predictsOutcome"
+              ]
+            }
+          ],
+          "constraints": [
+            {
+              "constraint_id": "urn:hwm:constraint:morning-purpose",
+              "operator": "eq",
+              "left_operand": "purpose",
+              "right_operand": "hwm:purpose:morning-preparation",
+              "extensions": {}
+            }
+          ],
+          "duties": [],
+          "extensions": {}
+        }
+      ],
+      "prohibitions": [
+        {
+          "rule_id": "urn:hwm:rule:hide-person-level-future-activity",
+          "assignees": ["urn:hwm:subject:morning-planner-agent"],
+          "action": "hwm-authority:resolveView",
+          "targets": [
+            {
+              "selector_type": "predicate",
+              "values": ["hwm-forecast:expectedSubject"]
+            }
+          ],
+          "constraints": [
+            {
+              "constraint_id": "urn:hwm:constraint:morning-purpose-prohibition",
+              "operator": "eq",
+              "left_operand": "purpose",
+              "right_operand": "hwm:purpose:morning-preparation",
+              "extensions": {}
+            }
+          ],
+          "duties": [],
+          "extensions": {}
+        },
+        {
+          "rule_id": "urn:hwm:rule:hide-raw-activity-evidence",
+          "assignees": ["urn:hwm:subject:morning-planner-agent"],
+          "action": "hwm-authority:resolveView",
+          "targets": [
+            {
+              "selector_type": "resource_role",
+              "values": ["external_evidence"]
+            }
+          ],
+          "constraints": [
+            {
+              "constraint_id": "urn:hwm:constraint:raw-evidence-purpose-prohibition",
+              "operator": "eq",
+              "left_operand": "purpose",
+              "right_operand": "hwm:purpose:morning-preparation",
+              "extensions": {}
+            }
+          ],
+          "duties": [],
+          "extensions": {}
+        }
+      ],
+      "extensions": {}
+    },
+    {
+      "policy_id": "urn:hwm:policy:morning-water-preparation",
+      "assigner": "urn:hwm:subject:homeowner",
+      "conflict_strategy": "deny_overrides",
+      "permissions": [
+        {
+          "rule_id": "urn:hwm:rule:allow-circulation-pump",
+          "assignees": ["urn:hwm:subject:morning-planner-agent"],
+          "action": "hwm-authority:dispatchAction",
+          "targets": [
+            {
+              "selector_type": "action_type",
+              "values": ["hwm-action:StartCirculation"]
+            }
+          ],
+          "constraints": [
+            {
+              "constraint_id": "urn:hwm:constraint:pump-purpose",
+              "operator": "eq",
+              "left_operand": "purpose",
+              "right_operand": "hwm:purpose:morning-preparation",
+              "extensions": {}
+            },
+            {
+              "constraint_id": "urn:hwm:constraint:pump-energy-budget",
+              "operator": "lte",
+              "left_operand": "resource_observation",
+              "right_operand": {
+                "claim_id": "urn:hwm:claim:morning-energy-constraint"
+              },
+              "extensions": {}
+            },
+            {
+              "constraint_id": "urn:hwm:constraint:pump-lease-active",
+              "operator": "eq",
+              "left_operand": "lease_status",
+              "right_operand": "active",
+              "extensions": {}
+            }
+          ],
+          "duties": [],
+          "extensions": {}
+        }
+      ],
+      "prohibitions": [],
+      "extensions": {}
+    },
+    {
+      "policy_id": "urn:hwm:policy:shared-zone-preference-conflict",
+      "assigner": "urn:hwm:subject:homeowner",
+      "conflict_strategy": "deny_overrides",
+      "permissions": [
+        {
+          "rule_id": "urn:hwm:rule:conditional-shared-bedroom-hvac",
+          "assignees": ["urn:hwm:subject:morning-planner-agent"],
+          "action": "hwm-authority:dispatchAction",
+          "targets": [
+            {
+              "selector_type": "action_type",
+              "values": ["matter:SetOccupiedHeatingSetpoint"]
+            }
+          ],
+          "constraints": [
+            {
+              "constraint_id": "urn:hwm:constraint:hvac-purpose",
+              "operator": "eq",
+              "left_operand": "purpose",
+              "right_operand": "hwm:purpose:morning-preparation",
+              "extensions": {}
+            },
+            {
+              "constraint_id": "urn:hwm:constraint:hvac-lease-active",
+              "operator": "eq",
+              "left_operand": "lease_status",
+              "right_operand": "active",
+              "extensions": {}
+            }
+          ],
+          "duties": [
+            {
+              "duty_id": "urn:hwm:duty:confirm-shared-bedroom-conflict",
+              "action": "hwm-authority:obtainConfirmation",
+              "assignees": [
+                "urn:hwm:subject:resident-a",
+                "urn:hwm:subject:resident-b"
+              ],
+              "threshold": { "mode": "all" },
+              "condition": {
+                "condition_type": "applicability_conflict",
+                "selector": {
+                  "selector_type": "predicate",
+                  "values": ["hwm-preference:preferredRange"]
+                }
+              },
+              "extensions": {}
+            }
+          ],
+          "extensions": {}
+        }
+      ],
+      "prohibitions": [],
+      "extensions": {}
+    }
+  ],
+  "leases": [
+    {
+      "lease_id": "urn:hwm:lease:morning-planner-epoch-11",
+      "subject": "urn:hwm:subject:morning-planner-agent",
+      "audiences": [
+        "urn:hwm:service:evidence-resolver",
+        "urn:hwm:service:policy-evaluator",
+        "urn:hwm:service:execution-gateway"
+      ],
+      "policy_ids": [
+        "urn:hwm:policy:morning-view-disclosure",
+        "urn:hwm:policy:morning-water-preparation",
+        "urn:hwm:policy:shared-zone-preference-conflict"
+      ],
+      "authority_epoch": 11,
+      "not_before": "2026-07-18T06:50:00Z",
+      "expires_at": "2026-07-18T07:15:00Z",
+      "proof_of_possession": {
+        "binding_type": "fixture",
+        "value": "fixture:morning-planner-agent-key"
+      },
+      "proof": {
+        "mode": "unsigned_fixture",
+        "verification_method": "urn:hwm:verification-method:unsigned-fixture-only"
+      },
+      "extensions": {}
+    }
+  ],
+  "safety_policy_refs": [
+    "urn:hwm:safety-policy:anti-scald",
+    "urn:hwm:safety-policy:hvac-equipment-limits"
+  ],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "urn:hwm:verification-method:unsigned-fixture-only"
+  },
+  "extensions": {}
+}

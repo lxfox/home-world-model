@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/v0.1/release-record.schema.json",
+  "title":"HWM Specification Release Record",
+  "type":"object",
+  "required":["release_id","release_line","decision_bindings","content_manifest","checks","publisher","released_at","publisher_signature","publication_receipts","limitations","must_not_infer"],
+  "properties":{
+    "release_id":{"type":"string","minLength":1},
+    "release_line":{"type":"string","minLength":1},
+    "decision_bindings":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"object","required":["decision_id","decision_record_sha256","conclusion"],"properties":{"decision_id":{"type":"string","minLength":1},"decision_record_sha256":{"$ref":"#/$defs/sha256"},"conclusion":{"const":"accept"}},"additionalProperties":false}},
+    "content_manifest":{"type":"object","required":["manifest_id","sha256","entries"],"properties":{"manifest_id":{"type":"string","minLength":1},"sha256":{"$ref":"#/$defs/sha256"},"entries":{"type":"array","minItems":1,"items":{"type":"object","required":["path","canonical_uri","media_type","sha256"],"properties":{"path":{"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},"canonical_uri":{"type":"string","format":"uri"},"media_type":{"type":"string","minLength":1},"sha256":{"$ref":"#/$defs/sha256"}},"additionalProperties":false}}},"additionalProperties":false},
+    "checks":{"type":"object","required":["integrity","licensing","canonical_uri","release"],"properties":{"integrity":{"$ref":"#/$defs/passed_check"},"licensing":{"$ref":"#/$defs/passed_check"},"canonical_uri":{"$ref":"#/$defs/passed_check"},"release":{"$ref":"#/$defs/passed_check"}},"additionalProperties":false},
+    "publisher":{"type":"object","required":["actor_ref","role","conflict_disclosure"],"properties":{"actor_ref":{"type":"string","minLength":1},"role":{"const":"publisher"},"conflict_disclosure":{"type":"string","minLength":1}},"additionalProperties":false},
+    "released_at":{"type":"string","format":"date-time"},
+    "publisher_signature":{"type":"object","required":["payload_ref","release_payload_sha256","signer_ref","algorithm","public_key_pem","signature_base64","verification_status","verification_evidence_ref"],"properties":{"payload_ref":{"type":"string","minLength":1,"pattern":"^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},"release_payload_sha256":{"$ref":"#/$defs/sha256"},"signer_ref":{"type":"string","minLength":1},"algorithm":{"const":"Ed25519"},"public_key_pem":{"type":"string","pattern":"^-----BEGIN PUBLIC KEY-----"},"signature_base64":{"type":"string","minLength":1},"verification_status":{"const":"verified"},"verification_evidence_ref":{"type":"string","minLength":1}},"additionalProperties":false},
+    "publication_receipts":{"type":"array","minItems":1,"items":{"type":"object","required":["channel","public_uri","observed_at","content_manifest_sha256"],"properties":{"channel":{"type":"string","minLength":1},"public_uri":{"type":"string","format":"uri","pattern":"^https://"},"observed_at":{"type":"string","format":"date-time"},"content_manifest_sha256":{"$ref":"#/$defs/sha256"}},"additionalProperties":false}},
+    "limitations":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "must_not_infer":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}
+  },
+  "$defs":{
+    "sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "passed_check":{"type":"object","required":["status","evidence_refs"],"properties":{"status":{"const":"passed"},"evidence_refs":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

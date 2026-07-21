@@ -1,0 +1,79 @@
+{
+  "artifact": "hwm:ElectricalDesignBoundaryCases",
+  "version": "0.1.0",
+  "status": "mapping_candidate",
+  "normative_language": "en",
+  "quantity_roles": [
+    "product_nameplate_power",
+    "planned_load_allocation",
+    "installed_load",
+    "estimated_maximum_demand",
+    "design_current",
+    "current_carrying_capacity",
+    "protective_device_rated_current",
+    "authorized_maximum_demand",
+    "derived_margin"
+  ],
+  "cases": [
+    {
+      "case_id": "candidate-within-allocation-is-catalog-screening-only",
+      "facts": ["product_nameplate_power_12_w", "planned_load_allocation_100_w"],
+      "must_preserve": ["catalog_screening_passed", "planned_state"],
+      "must_not_infer": ["circuit_capacity_adequate", "protection_coordinated", "installation_verified"]
+    },
+    {
+      "case_id": "planned-allocation-is-not-installed-load",
+      "facts": ["planned_load_allocation_100_w", "no_asset_installed"],
+      "must_preserve": ["planned_load_allocation", "installed_load_unknown"],
+      "must_not_infer": ["installed_load_100_w"]
+    },
+    {
+      "case_id": "installed-load-is-not-maximum-demand",
+      "facts": ["installed_load_3000_w", "demand_basis_missing"],
+      "must_preserve": ["installed_load_3000_w", "maximum_demand_indeterminate"],
+      "must_not_infer": ["maximum_demand_3000_w"]
+    },
+    {
+      "case_id": "demand-factor-needs-period-and-system-level",
+      "facts": ["demand_factor_0_6", "period_missing", "system_level_missing"],
+      "must_preserve": ["demand_factor_unusable"],
+      "must_not_infer": ["estimated_maximum_demand"]
+    },
+    {
+      "case_id": "active-power-does-not-determine-current",
+      "facts": ["active_power_2300_w", "voltage_or_topology_or_power_factor_missing"],
+      "must_preserve": ["active_power_2300_w", "design_current_indeterminate"],
+      "must_not_infer": ["design_current_10_a"]
+    },
+    {
+      "case_id": "three-phase-total-is-not-per-phase-limit",
+      "facts": ["three_phase_total_power", "phase_allocation_missing"],
+      "must_preserve": ["phase_imbalance_unknown"],
+      "must_not_infer": ["equal_per_phase_current", "per_phase_capacity_adequate"]
+    },
+    {
+      "case_id": "ampacity-depends-on-installation-conditions",
+      "facts": ["conductor_type_known", "installation_conditions_missing"],
+      "must_preserve": ["current_carrying_capacity_indeterminate"],
+      "must_not_infer": ["conductor_capacity_from_cross_section_only"]
+    },
+    {
+      "case_id": "protective-rating-is-not-conductor-ampacity",
+      "facts": ["protective_device_rated_current_16_a", "conductor_ampacity_unknown"],
+      "must_preserve": ["protective_device_rating", "current_carrying_capacity_indeterminate"],
+      "must_not_infer": ["conductor_ampacity_16_a", "protection_coordinated"]
+    },
+    {
+      "case_id": "design-is-not-verification",
+      "facts": ["design_assessment_passed", "inspection_and_testing_absent"],
+      "must_preserve": ["design_assessment", "verification_not_performed"],
+      "must_not_infer": ["installation_verified", "permission_to_energize"]
+    },
+    {
+      "case_id": "engineering-check-is-not-jurisdictional-compliance",
+      "facts": ["engineering_arithmetic_passed", "jurisdiction_or_code_edition_missing"],
+      "must_preserve": ["engineering_assessment", "compliance_indeterminate"],
+      "must_not_infer": ["code_compliant"]
+    }
+  ]
+}

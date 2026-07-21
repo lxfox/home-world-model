@@ -1,0 +1,77 @@
+{
+  "contract": "hwm-routine:InstantiationDecision",
+  "contract_version": "0.1.0-fixture",
+  "decision_id": "urn:hwm:routine-instantiation:weekday-morning-hot-water:2026-07-20:1",
+  "routine_definition_binding": {
+    "routine_id": "urn:hwm:routine:weekday-morning-hot-water-1",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "5cf7a717ed9ef3061eb101e9c9f1d66d0aa367d9c1af211387558b1b278b6794"
+  },
+  "routine_state_binding": {
+    "artifact_id": "urn:hwm:routine-state:weekday-morning-hot-water-1:1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "85d8e20a7e863479a1c4b47d3701136a0c85c844fcad2a0991818fc4e5317661"
+  },
+  "target_intent_state_binding": {
+    "artifact_id": "urn:hwm:intent-state:weekday-morning-hot-water-readiness-1:1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "6a4e7d0d2280a9d75f316ab262fb038afe11b2dab75fc108727cb32766d7ae0a"
+  },
+  "occurrence": {
+    "kind": "temporal",
+    "occurrence_key": "Asia/Shanghai/2026-07-20T06:30:00",
+    "original_local_time": "2026-07-20T06:30:00",
+    "time_zone": "Asia/Shanghai",
+    "nominal_instant": "2026-07-19T22:30:00Z",
+    "trigger_time": "2026-07-19T22:30:00Z"
+  },
+  "materialization_key_digest": "faa884c72d5d52189119ec3a216c7fec85f65b96e8d0b29592a92233d7033024",
+  "evaluated_at": "2026-07-19T22:30:05Z",
+  "as_of": "2026-07-19T22:30:00Z",
+  "authority_epoch": 11,
+  "world_view_binding": {
+    "artifact_id": "urn:hwm:view:morning-hot-water-instantiation-r1",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "8888888888888888888888888888888888888888888888888888888888888888"
+  },
+  "trigger_evidence_bindings": [
+    {
+      "artifact_id": "urn:hwm:record:scheduler-tick:2026-07-20T06:30:00+08:00",
+      "digest_algorithm": "sha-256",
+      "canonicalization": "RFC8785",
+      "digest": "9999999999999999999999999999999999999999999999999999999999999999"
+    }
+  ],
+  "condition_assessment_binding": {
+    "artifact_id": "urn:hwm:assessment:morning-hot-water-eligibility:2026-07-20",
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "trigger_status": "matched",
+  "condition_status": "satisfied",
+  "lateness_status": "on_time",
+  "overlap_status": "clear",
+  "deduplication_status": "new",
+  "decision_status": "materialized",
+  "task_definition_binding": {
+    "task_id": "urn:hwm:task:weekday-morning-hot-water:2026-07-20",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "cd167bbcb7a3f60a290307cf491a800048de764d27c99998eb6db564fe49f7e3"
+  },
+  "conflicting_task_bindings": [],
+  "reason_codes": ["active_routine_materialized_exact_occurrence"],
+  "proof": {
+    "mode": "unsigned_fixture",
+    "verification_method": "fixture-routine-instantiation-registry",
+    "value": "fixture:instantiation-decision-proof"
+  },
+  "extensions": {}
+}

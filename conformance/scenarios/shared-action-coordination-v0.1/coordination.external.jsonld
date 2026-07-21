@@ -1,0 +1,69 @@
+{
+  "@context": {
+    "as": "https://www.w3.org/ns/activitystreams#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+      "@type": ["prov:Plan", "schema:Action"],
+      "schema:identifier": "urn:hwm:proposal:shared-bedroom-hvac-1",
+      "schema:version": 1,
+      "schema:actionStatus": { "@id": "https://schema.org/PotentialActionStatus" }
+    },
+    {
+      "@id": "urn:hwm:question:coordinate-hvac-1",
+      "@type": "as:Question",
+      "as:object": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "as:anyOf": [
+        { "@id": "urn:hwm:response-option:confirm" },
+        { "@id": "urn:hwm:response-option:reject" }
+      ],
+      "as:closed": { "@value": "2026-07-19T08:15:00Z", "@type": "xsd:dateTime" }
+    },
+    {
+      "@id": "urn:hwm:response:a-confirm",
+      "@type": "as:Accept",
+      "as:actor": { "@id": "urn:hwm:person:resident-a" },
+      "as:object": { "@id": "urn:hwm:question:coordinate-hvac-1" },
+      "as:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "prov:generatedAtTime": { "@value": "2026-07-19T08:10:00Z", "@type": "xsd:dateTime" }
+    },
+    {
+      "@id": "urn:hwm:response:b-confirm",
+      "@type": "as:Accept",
+      "as:actor": { "@id": "urn:hwm:person:resident-b" },
+      "as:object": { "@id": "urn:hwm:question:coordinate-hvac-1" },
+      "as:target": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "prov:generatedAtTime": { "@value": "2026-07-19T08:11:00Z", "@type": "xsd:dateTime" }
+    },
+    {
+      "@id": "urn:hwm:delegation:b-to-c",
+      "@type": "prov:Delegation",
+      "prov:agent": { "@id": "urn:hwm:person:delegate-c" },
+      "prov:hadActivity": { "@id": "urn:hwm:activity:coordinate-hvac-1" },
+      "prov:hadRole": { "@id": "urn:hwm:role:comfort-delegate" },
+      "prov:influencer": { "@id": "urn:hwm:person:resident-b" }
+    },
+    {
+      "@id": "urn:hwm:activity:coordinate-hvac-1",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+        { "@id": "urn:hwm:response:a-confirm" },
+        { "@id": "urn:hwm:response:b-confirm" }
+      ],
+      "prov:wasAssociatedWith": { "@id": "urn:hwm:authority:alpha" },
+      "prov:generated": { "@id": "urn:hwm:assessment:coordinate-hvac-1" }
+    },
+    {
+      "@id": "urn:hwm:assessment:coordinate-hvac-1",
+      "@type": "schema:CreativeWork",
+      "dcterms:conformsTo": { "@id": "https://homeworldmodel.org/spec/profiles/shared-action-coordination/v0.1" },
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:coordinate-hvac-1" }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "contract": "hwm-intent:StateAssessment",
+  "contract_version": "0.1.0-fixture",
+  "state_id": "urn:hwm:intent-state:shared-bedroom-morning-comfort-1",
+  "intent_id": "urn:hwm:intent:shared-bedroom-morning-comfort-1",
+  "state_revision": 1,
+  "previous_state_binding": null,
+  "intent_definition_binding": {
+    "intent_id": "urn:hwm:intent:shared-bedroom-morning-comfort-1",
+    "definition_revision": 1,
+    "digest_algorithm": "sha-256",
+    "canonicalization": "RFC8785",
+    "digest": "8ed227a14cd787357c83633b56d014192aea91ae4ad00a1ea64c2c8086c52d18"
+  },
+  "assessed_at": "2026-07-19T06:02:00Z",
+  "as_of": "2026-07-19T06:01:30Z",
+  "authority_epoch": 7,
+  "commitment_status": "adopted",
+  "fulfillment_status": "ongoing",
+  "commitment_decision_binding": {"artifact_id": "urn:hwm:intent-decision:shared-bedroom-morning-comfort-1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "4444444444444444444444444444444444444444444444444444444444444444"},
+  "expectation_results": [
+    {"expectation_id": "bedroom-ready", "result": "unsatisfied", "evidence_bindings": [{"artifact_id": "urn:hwm:goal-evaluation:bedroom-ready:1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "5555555555555555555555555555555555555555555555555555555555555555"}]},
+    {"expectation_id": "energy-limit", "result": "satisfied", "evidence_bindings": [{"artifact_id": "urn:hwm:resource-assessment:morning-energy:1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "6666666666666666666666666666666666666666666666666666666666666666"}]}
+  ],
+  "active_task_bindings": [{"task_id": "urn:hwm:task:morning-bedroom-comfort-1", "definition_revision": 1, "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "dc3704ad4c7192357b4c6257ad53df441619beb08f8f3467dc5b00740c277c42"}],
+  "transition_record_binding": {"artifact_id": "urn:hwm:record:intent-adopted:shared-bedroom-morning-comfort-1", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "7777777777777777777777777777777777777777777777777777777777777777"},
+  "related_intent_bindings": [],
+  "proof": {"mode": "unsigned_fixture", "verification_method": "fixture-intent-state-resolver", "value": "fixture:intent-state-proof"},
+  "extensions": {}
+}

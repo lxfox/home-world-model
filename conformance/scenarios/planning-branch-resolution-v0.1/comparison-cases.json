@@ -1,0 +1,127 @@
+{
+  "profile": "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1",
+  "contract_version": "0.1.0-fixture",
+  "cases": [
+    {
+      "case_id": "complete-two-branch-comparison",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "unbounded", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "ready", "emitted_recommendation_ids": ["urn:hwm:recommendation:a"], "reason_codes": []}
+    },
+    {
+      "case_id": "complete-three-branch-comparison",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b", "urn:hwm:design-option:c"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:c", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "ready", "emitted_recommendation_ids": ["urn:hwm:recommendation:a"], "reason_codes": []}
+    },
+    {
+      "case_id": "missing-declared-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "emitted_recommendation_ids": [], "reason_codes": ["declared_input_missing"]}
+    },
+    {
+      "case_id": "source-unavailable-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "source_unavailable", "epistemic_status": "not_evaluated", "freshness_status": "unknown", "temporal_status": "indeterminate", "applicability_status": "not_available"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "emitted_recommendation_ids": [], "reason_codes": ["input_not_available"]}
+    },
+    {
+      "case_id": "stale-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "stale", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "emitted_recommendation_ids": [], "reason_codes": ["input_not_current"]}
+    },
+    {
+      "case_id": "contested-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "contested", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "emitted_recommendation_ids": [], "reason_codes": ["input_not_accepted"]}
+    },
+    {
+      "case_id": "expired-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "expired", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "emitted_recommendation_ids": [], "reason_codes": ["input_not_in_effect"]}
+    },
+    {
+      "case_id": "conflicting-applicability",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "conflicting"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "indeterminate", "emitted_recommendation_ids": [], "reason_codes": ["input_not_applicable"]}
+    },
+    {
+      "case_id": "wrong-context-kind",
+      "context_kind": "design_option",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "invalid_context", "emitted_recommendation_ids": [], "reason_codes": ["cross_branch_use_outside_comparison"]}
+    },
+    {
+      "case_id": "duplicate-declared-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:a"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "invalid_context", "emitted_recommendation_ids": [], "reason_codes": ["duplicate_declared_input"]}
+    },
+    {
+      "case_id": "undeclared-extra-input",
+      "context_kind": "comparison",
+      "input_context_ids": ["urn:hwm:design-option:a", "urn:hwm:design-option:b"],
+      "input_resolutions": [
+        {"context_id": "urn:hwm:design-option:a", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:b", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"},
+        {"context_id": "urn:hwm:design-option:c", "availability_status": "available", "epistemic_status": "accepted", "freshness_status": "current", "temporal_status": "in_effect", "applicability_status": "applicable"}
+      ],
+      "proposed_recommendation_id": "urn:hwm:recommendation:a",
+      "expected": {"status": "invalid_context", "emitted_recommendation_ids": [], "reason_codes": ["undeclared_input_present"]}
+    }
+  ]
+}

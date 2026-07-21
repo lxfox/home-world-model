@@ -1,0 +1,296 @@
+{
+  "artifact": "hwm:RenovationPlanningTermMappingAudit",
+  "version": "0.1.0",
+  "status": "mapping_candidate",
+  "normative_language": "en",
+  "sources": [
+    {
+      "source_id": "rdf11",
+      "title": "RDF 1.1 Concepts and Abstract Syntax — RDF Datasets",
+      "url": "https://www.w3.org/TR/rdf11-concepts/#section-dataset",
+      "version_or_date": "W3C Recommendation 2014-02-25",
+      "maturity": "W3C Recommendation"
+    },
+    {
+      "source_id": "prov-o",
+      "title": "PROV-O: The PROV Ontology",
+      "url": "https://www.w3.org/TR/prov-o/",
+      "version_or_date": "W3C Recommendation 2013-04-30",
+      "maturity": "W3C Recommendation"
+    },
+    {
+      "source_id": "schema30",
+      "title": "Schema.org ChooseAction, Recommendation, and BuyAction",
+      "url": "https://schema.org/ChooseAction",
+      "version_or_date": "Development vocabulary v30.0, 2026-03-19",
+      "maturity": "Community vocabulary; Recommendation is in the new area"
+    },
+    {
+      "source_id": "dcmi",
+      "title": "DCMI Metadata Terms — replaces",
+      "url": "https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/replaces/",
+      "version_or_date": "DCMI Metadata Terms, accessed 2026-07-18",
+      "maturity": "DCMI term"
+    },
+    {
+      "source_id": "earl10",
+      "title": "Evaluation and Report Language 1.0 Schema",
+      "url": "https://www.w3.org/TR/EARL10-Schema/",
+      "version_or_date": "W3C Working Group Note 2017-02-02",
+      "maturity": "W3C Working Group Note; insufficient implementations for Recommendation"
+    },
+    {
+      "source_id": "saref411",
+      "title": "SAREF Core 4.1.1",
+      "url": "https://saref.etsi.org/core/v4.1.1/",
+      "version_or_date": "ETSI TS 103 264 V4.1.1, published 2024-10-31",
+      "maturity": "ETSI Technical Specification"
+    },
+    {
+      "source_id": "ifc432-placement",
+      "title": "IFC 4.3.2.0 IfcLocalPlacement",
+      "url": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcLocalPlacement.htm",
+      "version_or_date": "IFC4X3_ADD2 official",
+      "maturity": "buildingSMART official specification"
+    },
+    {
+      "source_id": "ifc432-circuit",
+      "title": "IFC 4.3.2.0 IfcDistributionCircuit",
+      "url": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcDistributionCircuit.htm",
+      "version_or_date": "IFC4X3_ADD2 official",
+      "maturity": "buildingSMART official specification; entity is not in a standardized schema subset"
+    },
+    {
+      "source_id": "iso81346-10",
+      "title": "ISO 81346-10 — Power supply systems",
+      "url": "https://www.iso.org/standard/75471.html",
+      "version_or_date": "ISO 81346-10:2022; official public abstract accessed 2026-07-19",
+      "maturity": "International Standard; ISO stage 90.92 to be revised"
+    },
+    {
+      "source_id": "iso81346-101",
+      "title": "ISO/TS 81346-101 — Modelling concepts, guidelines and requirements for power supply systems",
+      "url": "https://www.iso.org/standard/81285.html",
+      "version_or_date": "ISO/TS 81346-101:2025; official public abstract accessed 2026-07-19",
+      "maturity": "ISO Technical Specification; stage 90.92 to be revised"
+    },
+    {
+      "source_id": "iec60364-1",
+      "title": "IEC 60364-1 — Fundamental principles, assessment of general characteristics, and definitions",
+      "url": "https://webstore.iec.ch/en/publication/63699",
+      "version_or_date": "IEC 60364-1:2025; official public scope accessed 2026-07-19",
+      "maturity": "IEC International Standard; safety standard"
+    },
+    {
+      "source_id": "iec60364-4-43",
+      "title": "IEC 60364-4-43 — Protection against overcurrent",
+      "url": "https://webstore.iec.ch/en/publication/28432",
+      "version_or_date": "IEC 60364-4-43:2023; official public scope accessed 2026-07-19",
+      "maturity": "IEC International Standard; safety standard"
+    },
+    {
+      "source_id": "iec60364-5-52",
+      "title": "IEC 60364-5-52 — Wiring systems",
+      "url": "https://webstore.iec.ch/en/publication/1878",
+      "version_or_date": "IEC 60364-5-52:2009+AMD1:2024 CSV; official public scope accessed 2026-07-19",
+      "maturity": "IEC International Standard; selection and erection of wiring systems"
+    },
+    {
+      "source_id": "iec60364-6",
+      "title": "IEC 60364-6 — Verification",
+      "url": "https://webstore.iec.ch/en/publication/24656",
+      "version_or_date": "IEC 60364-6:2016 including 2017 corrigendum; official public scope accessed 2026-07-19",
+      "maturity": "IEC International Standard; initial and periodic verification; revision under development"
+    },
+    {
+      "source_id": "iev826-design-current",
+      "title": "IEC Electropedia area 826 — design current of an electric circuit",
+      "url": "https://www.electropedia.org/iev/iev.nsf/index?openform=&part=826",
+      "version_or_date": "IEV 826-11-10; official terminology index accessed 2026-07-19",
+      "maturity": "IEC International Electrotechnical Vocabulary"
+    },
+    {
+      "source_id": "iev826-ampacity",
+      "title": "IEC Electropedia — current-carrying capacity",
+      "url": "https://www.electropedia.org/iev/iev.nsf/display?ievref=826-11-13&openform=",
+      "version_or_date": "IEV 826-11-13, publication date 2022-08",
+      "maturity": "IEC International Electrotechnical Vocabulary"
+    },
+    {
+      "source_id": "iev691-load-demand",
+      "title": "IEC Electropedia — installed load and demand factor",
+      "url": "https://www.electropedia.org/iev/iev.nsf/index?openform=&part=691",
+      "version_or_date": "IEV 691-02-03 and 691-10-05; official terminology accessed 2026-07-19",
+      "maturity": "IEC International Electrotechnical Vocabulary"
+    },
+    {
+      "source_id": "odrl22",
+      "title": "ODRL Information Model 2.2",
+      "url": "https://www.w3.org/TR/odrl-model/",
+      "version_or_date": "W3C Recommendation 2018-02-15",
+      "maturity": "W3C Recommendation"
+    },
+    {
+      "source_id": "xacml30",
+      "title": "XACML 3.0 Core Specification",
+      "url": "https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html",
+      "version_or_date": "OASIS Standard 2013-01-22",
+      "maturity": "OASIS Standard"
+    }
+  ],
+  "terms": [
+    {
+      "term_id": "hwm-planning:DesignOption",
+      "layer": "domain_role",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "prov:Plan", "uri": "http://www.w3.org/ns/prov#Plan", "coverage": "strong_partial" },
+        { "source_id": "prov-o", "term": "prov:wasRevisionOf / invalidatedAtTime", "uri": "http://www.w3.org/ns/prov#wasRevisionOf", "coverage": "strong_partial" },
+        { "source_id": "schema30", "term": "schema:actionOption", "uri": "https://schema.org/actionOption", "coverage": "partial" }
+      ],
+      "residual_gap": "prov:Plan covers intended actions or steps toward goals; wasRevisionOf and invalidation preserve version lineage. They do not require exactly one base root, closed dependency resolution, explicit rebase, or regeneration of downstream simulation and evaluation outputs.",
+      "normative_action": "retain_profile_constraint",
+      "publication_rule": "Type a Design Option as prov:Plan; use prov:wasRevisionOf for a revised base or option and prov:invalidatedAtTime when an old entity becomes unusable. Do not publish a competing HWM ontology class or carry downstream outputs across revisions without regeneration.",
+      "confidence": "high",
+      "fixture_evidence": ["two-options-derived-from-one-base", "explicit-rebase-regenerates-output", "superseded-base-historical-only"]
+    },
+    {
+      "term_id": "hwm-planning:candidateFor",
+      "layer": "relationship",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "schema30", "term": "schema:actionOption", "uri": "https://schema.org/actionOption", "coverage": "partial" },
+        { "source_id": "prov-o", "term": "prov:Plan", "uri": "http://www.w3.org/ns/prov#Plan", "coverage": "partial" }
+      ],
+      "residual_gap": "A Product Model under consideration and the IEC-bound function-position role are inputs to a planning context. That composition needs branch and lifecycle constraints, but it does not justify a globally reusable binary candidateFor predicate.",
+      "normative_action": "retain_profile_constraint",
+      "publication_rule": "Represent consideration inside a prov:Plan or a scoped ChooseAction and bind the function-position role through the lifecycle Profile. Keep hwm-planning:candidateFor only as a compatibility projection; never interpret it as installation, realization, ownership, compatibility proof, or household selection.",
+      "confidence": "high",
+      "fixture_evidence": ["candidate-model-not-installed-asset"]
+    },
+    {
+      "term_id": "hwm-planning:mountingPlan",
+      "layer": "relationship",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "prov:Plan", "uri": "http://www.w3.org/ns/prov#Plan", "coverage": "strong_partial" },
+        { "source_id": "ifc432-placement", "term": "IfcLocalPlacement", "uri": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcLocalPlacement.htm", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "IFC placement describes an occurrence of IfcProduct in a coordinate system; this fixture plans a Product Model before any occurrence exists. The Profile must preserve planned-versus-installed identity and bind the placement to a prov:Plan.",
+      "normative_action": "retain_profile_constraint",
+      "publication_rule": "Use prov:Plan plus an IFC/BOT-compatible placement artifact. Treat hwm-planning:mountingPlan as a compatibility projection, not a new geometry relation.",
+      "confidence": "high",
+      "fixture_evidence": ["planned-mounting-not-installed-location"]
+    },
+    {
+      "term_id": "hwm-planning:reservedLoad",
+      "layer": "relationship",
+      "decision": "do_not_standardize",
+      "external_terms": [
+        { "source_id": "ifc432-circuit", "term": "IfcDistributionCircuit", "uri": "https://standards.buildingsmart.org/IFC/RELEASE/IFC4_3/HTML/lexical/IfcDistributionCircuit.htm", "coverage": "strong_partial" },
+        { "source_id": "saref411", "term": "saref:PropertyValue / hasPropertyValue", "uri": "https://saref.etsi.org/core/hasPropertyValue", "coverage": "strong_partial" },
+        { "source_id": "iso81346-10", "term": "power-supply system and space classes with reference-designation rules", "uri": "https://www.iso.org/standard/75471.html", "coverage": "partial" },
+        { "source_id": "iso81346-101", "term": "power-supply RDS modelling guidance and best practice", "uri": "https://www.iso.org/standard/81285.html", "coverage": "partial" },
+        { "source_id": "iev826-design-current", "term": "design current of an electric circuit", "uri": "https://www.electropedia.org/iev/iev.nsf/index?openform=&part=826", "coverage": "strong_partial" },
+        { "source_id": "iev826-ampacity", "term": "current-carrying capacity under specified conditions", "uri": "https://www.electropedia.org/iev/iev.nsf/display?ievref=826-11-13&openform=", "coverage": "strong_partial" },
+        { "source_id": "iev691-load-demand", "term": "installed load and demand factor", "uri": "https://www.electropedia.org/iev/iev.nsf/index?openform=&part=691", "coverage": "partial" },
+        { "source_id": "iec60364-4-43", "term": "coordination of protection against overcurrent", "uri": "https://webstore.iec.ch/en/publication/28432", "coverage": "binding_specific" },
+        { "source_id": "iec60364-5-52", "term": "selection and erection of wiring systems", "uri": "https://webstore.iec.ch/en/publication/1878", "coverage": "binding_specific" },
+        { "source_id": "iec60364-6", "term": "initial and periodic verification", "uri": "https://webstore.iec.ch/en/publication/24656", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "The scalar predicate conflates a product-selection budget, planned future load allocation, installed load, expected demand, design current, conductor current-carrying capacity, protective-device rating, upstream authorized demand, remaining margin, and verified compliance. Those quantities have different subjects, assumptions, units, lifecycle states, and authorities; no safe global binary predicate remains after they are separated.",
+      "normative_action": "reject_term",
+      "publication_rule": "Use IFC or an IEC 81346 RDS for circuit identity; express each quantity with SAREF/QUDT and an explicit quantity role, design context, basis, phase/topology, assumptions, provenance, and validity. Treat hwm-planning:reservedLoad only as a catalog-screening compatibility projection. Never infer installed capacity, protection coordination, verification, or code compliance from it.",
+      "confidence": "high",
+      "fixture_evidence": ["planned-allocation-is-catalog-screening-only", "ten-electrical-boundary-cases"]
+    },
+    {
+      "term_id": "hwm-planning:requirementStatus",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "earl10", "term": "earl:Assertion / TestResult / outcome", "uri": "http://www.w3.org/ns/earl#outcome", "coverage": "strong_partial" },
+        { "source_id": "earl10", "term": "earl:passed / failed / cantTell / inapplicable / untested", "uri": "http://www.w3.org/ns/earl#passed", "coverage": "exact" }
+      ],
+      "residual_gap": "EARL supplies the subject-criterion-result-outcome structure. HWM Claim epistemic basis and provenance still distinguish a simulated threshold evaluation from observed physical conformance, and the binding must pin the 2017 Note version.",
+      "normative_action": "remove_hwm_vocabulary",
+      "publication_rule": "Replace the HWM predicate with an EARL Assertion and TestResult in semantic bindings; retain a compatibility projection only during fixture migration.",
+      "confidence": "medium",
+      "fixture_evidence": ["option-a-passed-option-b-failed"]
+    },
+    {
+      "term_id": "hwm-planning:recommends",
+      "layer": "relationship",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "schema30", "term": "schema:Recommendation / itemReviewed", "uri": "https://schema.org/Recommendation", "coverage": "strong_partial" },
+        { "source_id": "prov-o", "term": "prov:Activity / used / generated", "uri": "http://www.w3.org/ns/prov#used", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "Schema.org Recommendation captures suggesting a best option, while PROV captures inputs and output. Schema.org marks Recommendation as a new term, and neither vocabulary enforces exhaustive comparison inputs or the advisory-not-authorization boundary.",
+      "normative_action": "retain_profile_constraint",
+      "publication_rule": "Use schema:Recommendation and PROV lineage in the external projection, but do not make the unstable Schema.org type the sole normative encoding in v0.1.",
+      "confidence": "medium",
+      "fixture_evidence": ["comparison-recommends-a-only"]
+    },
+    {
+      "term_id": "hwm-planning:selectedOption",
+      "layer": "relationship",
+      "decision": "external_reuse",
+      "external_terms": [
+        { "source_id": "schema30", "term": "schema:ChooseAction", "uri": "https://schema.org/ChooseAction", "coverage": "exact" },
+        { "source_id": "schema30", "term": "schema:agent / object / actionOption / actionStatus", "uri": "https://schema.org/actionOption", "coverage": "exact" },
+        { "source_id": "dcmi", "term": "dcterms:replaces", "uri": "http://purl.org/dc/terms/replaces", "coverage": "strong_partial" },
+        { "source_id": "schema30", "term": "schema:BuyAction", "uri": "https://schema.org/BuyAction", "coverage": "binding_specific" }
+      ],
+      "residual_gap": "ChooseAction represents each historical preference event. dcterms:replaces links a later selection-state Claim to the state it supersedes, but HWM Profile resolution still defines as-of filtering, fork and cycle handling, immutable attestation provenance, and planning-only scope. BuyAction remains a different type and is absent.",
+      "normative_action": "remove_hwm_vocabulary",
+      "publication_rule": "Replace selectedOption with a completed schema:ChooseAction. Preserve every action; when current selection changes, emit a new selection-state Claim linked to the prior state with dcterms:replaces. A consumer must not infer schema:BuyAction, ownership, installation, authorization, or dispatch.",
+      "confidence": "high",
+      "fixture_evidence": ["homeowner-selection-planning-only", "selection-revision-with-history", "selection-fork-and-cycle", "no-buy-action"]
+    },
+    {
+      "term_id": "hwm-planning:designContext",
+      "layer": "wire_field",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "rdf11", "term": "RDF Dataset named graph", "uri": "https://www.w3.org/TR/rdf11-concepts/#section-dataset", "coverage": "partial" },
+        { "source_id": "prov-o", "term": "prov:Bundle", "uri": "http://www.w3.org/ns/prov#Bundle", "coverage": "partial" },
+        { "source_id": "prov-o", "term": "prov:Plan / Activity", "uri": "http://www.w3.org/ns/prov#Plan", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "Named graphs provide grouping without branch meaning; prov:Bundle is a named set of provenance descriptions; prov:Plan and Activity type contexts but do not require closed branch membership, exactly one base root, or current-versus-historical dependency admission.",
+      "normative_action": "retain_wire_only",
+      "publication_rule": "Retain the Claim extension as a Profile wire binding, not an ontology predicate. A semantic projection should type the referenced context with PROV and may serialize it as a named graph.",
+      "confidence": "high",
+      "fixture_evidence": ["base-option-a-option-b-comparison-isolation", "missing-base-link-invalid", "base-unavailable-indeterminate", "mixed-base-comparison-rejected"]
+    },
+    {
+      "term_id": "hwm-planning:input_context_ids",
+      "layer": "wire_field",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "prov-o", "term": "prov:used", "uri": "http://www.w3.org/ns/prov#used", "coverage": "exact" },
+        { "source_id": "prov-o", "term": "prov:generated / wasGeneratedBy", "uri": "http://www.w3.org/ns/prov#generated", "coverage": "exact" }
+      ],
+      "residual_gap": "PROV represents actual usage and generation but uses open-world semantics; it does not assert that the listed inputs are exhaustive or share one current base-design root. The HWM comparison Profile requires both before crossing branches.",
+      "normative_action": "retain_profile_constraint",
+      "publication_rule": "Express comparison lineage with PROV. Retain closed-input validation as a Profile rule; a compatibility JSON binding may carry input_context_ids.",
+      "confidence": "high",
+      "fixture_evidence": ["comparison-consumes-two-branch-results-only", "comparison-inputs-share-current-base-root"]
+    },
+    {
+      "term_id": "hwm-planning:recommendation-selection-authorization-boundary",
+      "layer": "behavioral_boundary",
+      "decision": "hwm_application_profile",
+      "external_terms": [
+        { "source_id": "schema30", "term": "schema:Recommendation / ChooseAction / BuyAction", "uri": "https://schema.org/ChooseAction", "coverage": "strong_partial" },
+        { "source_id": "odrl22", "term": "Permission / Prohibition / Duty", "uri": "http://www.w3.org/ns/odrl/2/permission", "coverage": "strong_partial" },
+        { "source_id": "xacml30", "term": "authorization decision", "uri": "https://docs.oasis-open.org/xacml/3.0/xacml-3.0-core-spec-en.html", "coverage": "strong_partial" }
+      ],
+      "residual_gap": "The external vocabularies distinguish content recommendation, preference action, trade action, and authorization. HWM still needs a conformance rule forbidding automatic promotion across those categories and into installation or device dispatch.",
+      "normative_action": "retain_profile_constraint",
+      "publication_rule": "Do not publish a new boundary predicate. Publish the prohibition as a Profile invariant and test absence of BuyAction, Authorization Record, installed asset, endpoint, and Action Trace.",
+      "confidence": "high",
+      "fixture_evidence": ["selection-boundary-ok", "unselected-option-retained"]
+    }
+  ]
+}

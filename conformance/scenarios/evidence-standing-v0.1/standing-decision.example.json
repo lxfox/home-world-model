@@ -1,0 +1,19 @@
+{
+  "contract": "hwm-standing:Decision",
+  "contract_version": "0.1.0-fixture",
+  "decision_id": "urn:hwm:standing-decision:affirm-confirm",
+  "record_binding": { "record_id": "urn:hwm:record:affirm-confirm", "digest_algorithm": "sha-256", "canonicalization": "RFC8785", "digest": "9082fbddb1686295368137d2983cfa83f26491c6f3e355a4de86bd513f49ad0b" },
+  "purpose": "procedure_fulfilment",
+  "authority_epoch": 7,
+  "decided_at": "2026-07-19T12:03:30Z",
+  "result": "admitted",
+  "source_binding_status": "verified",
+  "proof_verification": { "status": "verified", "verification_method": "fixture-record-proof-verifier" },
+  "evidence_use": { "decision_id": "urn:hwm:evidence-use:affirm-confirm", "result": "allowed" },
+  "matched_grant_ids": ["urn:hwm:standing-grant:procedure-response"],
+  "qualification_evidence_ids": [],
+  "admitted_assertions": ["response_meaning"],
+  "reason_codes": ["matching_standing_grant"],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "fixture-only" },
+  "extensions": {}
+}

@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/core/v0.1/schema/world-view.schema.json",
+  "title": "HWM World View v0.1",
+  "type": "object",
+  "required": [
+    "contract",
+    "contract_version",
+    "view_id",
+    "household_id",
+    "requester",
+    "purpose",
+    "generated_at",
+    "as_of",
+    "known_through",
+    "freshness",
+    "coverage",
+    "authority_epoch",
+    "profiles",
+    "resolutions",
+    "conflicts",
+    "limitations",
+    "extensions"
+  ],
+  "properties": {
+    "contract": { "const": "hwm:WorldView" },
+    "contract_version": { "const": "0.1.0" },
+    "view_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "household_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "requester": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "purpose": { "$ref": "common.schema.json#/$defs/Identifier" },
+    "generated_at": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "as_of": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "known_through": { "$ref": "common.schema.json#/$defs/Timestamp" },
+    "freshness": {
+      "type": "object",
+      "required": ["maximum_age_seconds", "status"],
+      "properties": {
+        "maximum_age_seconds": { "type": "integer", "minimum": 0 },
+        "status": { "enum": ["current", "partially_stale", "stale", "not_applicable"] }
+      },
+      "additionalProperties": false
+    },
+    "coverage": {
+      "type": "object",
+      "required": ["entity_refs", "claim_kinds"],
+      "properties": {
+        "entity_refs": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "uniqueItems": true
+        },
+        "claim_kinds": {
+          "type": "array",
+          "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "authority_epoch": { "type": "integer", "minimum": 0 },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "common.schema.json#/$defs/ProfileRef" }
+    },
+    "resolutions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["resolution_id", "subject", "predicate", "availability_status", "epistemic_status", "freshness_status", "temporal_status", "candidates", "reason_codes"],
+        "properties": {
+          "resolution_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "subject": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "predicate": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "availability_status": {
+            "enum": ["available", "not_observed", "source_unavailable", "access_denied"]
+          },
+          "epistemic_status": {
+            "enum": ["accepted", "contested", "unknown", "not_verified", "not_evaluated"]
+          },
+          "freshness_status": {
+            "enum": ["current", "stale", "not_applicable", "unknown"]
+          },
+          "temporal_status": {
+            "description": "Whether the resolved proposition applies at World View as_of. This is independent of when the evidence was synchronized or observed.",
+            "enum": ["in_effect", "not_yet_in_effect", "expired", "unbounded", "mixed", "indeterminate"]
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["candidate_id", "object", "claim_ids", "evidence_record_ids", "extensions"],
+              "properties": {
+                "candidate_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+                "object": {},
+                "claim_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+                  "uniqueItems": true
+                },
+                "evidence_record_ids": {
+                  "type": "array",
+                  "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+                  "uniqueItems": true
+                },
+                "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "applicability": {
+            "type": "object",
+            "required": ["status", "context_claim_ids", "conflict_ids", "reason_codes"],
+            "properties": {
+              "status": {
+                "description": "Core v0.1 lossy compatibility projection. Contextual Applicability Profile consumers use separate three-valued applicability and conflict axes; conflicting projects applicable + conflict present.",
+                "enum": ["applicable", "conflicting", "out_of_scope", "not_available"]
+              },
+              "context_claim_ids": {
+                "type": "array",
+                "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+                "uniqueItems": true
+              },
+              "conflict_ids": {
+                "type": "array",
+                "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+                "uniqueItems": true
+              },
+              "reason_codes": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": false
+          },
+          "reason_codes": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "epistemic_status": { "enum": ["accepted", "not_verified"] }
+              }
+            },
+            "then": {
+              "properties": {
+                "candidates": { "type": "array", "minItems": 1 }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "epistemic_status": { "const": "contested" }
+              }
+            },
+            "then": {
+              "properties": {
+                "candidates": {
+                  "description": "A contested result may have one candidate challenged by refuting evidence, or multiple incompatible candidates.",
+                  "type": "array",
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "availability_status": { "enum": ["not_observed", "source_unavailable", "access_denied"] }
+              }
+            },
+            "then": {
+              "properties": {
+                "epistemic_status": { "const": "not_evaluated" },
+                "freshness_status": { "enum": ["not_applicable", "unknown"] },
+                "temporal_status": { "const": "indeterminate" },
+                "candidates": { "type": "array", "maxItems": 0 }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "availability_status": { "const": "available" }
+              }
+            },
+            "then": {
+              "properties": {
+                "epistemic_status": { "enum": ["accepted", "contested", "unknown", "not_verified"] }
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["conflict_id", "claim_ids", "reason_code"],
+        "properties": {
+          "conflict_id": { "$ref": "common.schema.json#/$defs/Identifier" },
+          "claim_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "uniqueItems": true
+          },
+          "evidence_record_ids": {
+            "description": "Refuting or otherwise conflicting Records when a conflict is not represented by a second Claim.",
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "common.schema.json#/$defs/Identifier" },
+            "uniqueItems": true
+          },
+          "reason_code": { "type": "string", "minLength": 1 }
+        },
+        "anyOf": [
+          { "properties": { "claim_ids": { "type": "array", "minItems": 2 } } },
+          {
+            "required": ["evidence_record_ids"],
+            "properties": { "evidence_record_ids": { "type": "array" } }
+          }
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "description"],
+        "properties": {
+          "code": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "extensions": { "$ref": "common.schema.json#/$defs/Extensions" }
+  },
+  "additionalProperties": false
+}

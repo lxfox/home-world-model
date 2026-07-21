@@ -1,0 +1,241 @@
+[
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:lifecycle-slot-type",
+      "issuer": "urn:hwm:subject:homeowner",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:slot:lifecycle-reading-light",
+        "predicate": "rdf:type",
+        "object": "hwm:FunctionalSlot"
+      },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-initial-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:lifecycle-reading-requirement",
+      "issuer": "urn:hwm:subject:homeowner",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:slot:lifecycle-reading-light",
+        "predicate": "hwm-effect:minimumRequirement",
+        "object": {
+          "affected_feature_id": "urn:hwm:zone:lifecycle-reading",
+          "property": "saref:Light",
+          "threshold": { "value": 300, "unit": "lx" },
+          "comparator": ">="
+        }
+      },
+      "scope": {
+        "household_id": "urn:hwm:household:fixture-003",
+        "space_ids": ["urn:hwm:space:lifecycle-bedroom"],
+        "purposes": ["hwm:purpose:reading"]
+      },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-initial-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:old-asset-fulfills-slot",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-old",
+        "predicate": "hwm-lifecycle:fulfills",
+        "object": "urn:hwm:slot:lifecycle-reading-light"
+      },
+      "valid_time": { "from": "2026-01-01T00:00:00Z", "to": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-initial-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [
+      {
+        "link_id": "urn:hwm:evidence-link:old-fulfillment-ended",
+        "relation": "retracts",
+        "record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+        "asserted_by": "urn:hwm:subject:installer",
+        "created_at": "2026-07-18T09:00:00Z",
+        "extensions": {}
+      }
+    ],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:old-asset-exposes-endpoint",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-old",
+        "predicate": "hwm-lifecycle:exposes",
+        "object": "urn:hwm:endpoint:matter-lamp-old"
+      },
+      "valid_time": { "from": "2026-01-01T00:00:00Z", "to": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-initial-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:old-endpoint-effect",
+      "issuer": "urn:hwm:subject:commissioning-agent",
+      "issued_at": "2026-07-18T08:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:endpoint:matter-lamp-old",
+        "predicate": "hwm-effect:predictsOutcome",
+        "object": {
+          "when": { "action_type": "matter:MoveToLevel", "parameters": { "level_percent": 60 } },
+          "affected_feature_id": "urn:hwm:zone:lifecycle-reading",
+          "property": "saref:Light",
+          "expected_range": { "minimum": 280, "maximum": 315, "unit": "lx" },
+          "observation_window_seconds": 10,
+          "measurement_procedure": "urn:hwm:procedure:lifecycle-lux-v1",
+          "model_version": "old-lamp-v1"
+        }
+      },
+      "valid_time": { "from": "2026-01-01T00:00:00Z", "to": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "learned", "method": "commissioning summary", "confidence": 0.76 },
+      "profiles": [{ "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-initial-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:new-asset-replaces-old",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T09:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-new",
+        "predicate": "http://purl.org/dc/terms/replaces",
+        "object": "urn:hwm:asset:lamp-old"
+      },
+      "valid_time": { "from": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:new-asset-fulfills-slot",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T09:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-new",
+        "predicate": "hwm-lifecycle:fulfills",
+        "object": "urn:hwm:slot:lifecycle-reading-light"
+      },
+      "valid_time": { "from": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:new-asset-exposes-endpoint",
+      "issuer": "urn:hwm:subject:installer",
+      "issued_at": "2026-07-18T09:00:00Z",
+      "proposition": {
+        "subject": "urn:hwm:asset:lamp-new",
+        "predicate": "hwm-lifecycle:exposes",
+        "object": "urn:hwm:endpoint:matter-lamp-new"
+      },
+      "valid_time": { "from": "2026-07-18T09:00:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "declared" },
+      "profiles": [{ "id": "hwm:space-lifecycle", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:lifecycle-replacement-declaration",
+      "extensions": {}
+    },
+    "evidence_links": [],
+    "extensions": {}
+  },
+  {
+    "contract": "hwm:ClaimEnvelope",
+    "contract_version": "0.1.0",
+    "claim": {
+      "claim_id": "urn:hwm:claim:new-endpoint-effect",
+      "issuer": "urn:hwm:subject:commissioning-agent",
+      "issued_at": "2026-07-18T09:05:00Z",
+      "proposition": {
+        "subject": "urn:hwm:endpoint:matter-lamp-new",
+        "predicate": "hwm-effect:predictsOutcome",
+        "object": {
+          "when": { "action_type": "matter:MoveToLevel", "parameters": { "level_percent": 60 } },
+          "affected_feature_id": "urn:hwm:zone:lifecycle-reading",
+          "property": "saref:Light",
+          "expected_range": { "minimum": 320, "maximum": 360, "unit": "lx" },
+          "observation_window_seconds": 10,
+          "measurement_procedure": "urn:hwm:procedure:lifecycle-lux-v1",
+          "model_version": "new-lamp-v1"
+        }
+      },
+      "valid_time": { "from": "2026-07-18T09:05:00Z" },
+      "scope": { "household_id": "urn:hwm:household:fixture-003" },
+      "epistemic_basis": { "mode": "learned", "method": "privacy-preserving commissioning summary", "confidence": 0.82 },
+      "profiles": [{ "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }],
+      "creation_record_id": "urn:hwm:record:new-lamp-calibration-summary",
+      "extensions": {}
+    },
+    "evidence_links": [
+      {
+        "link_id": "urn:hwm:evidence-link:new-effect-summary-support",
+        "relation": "supports",
+        "record_id": "urn:hwm:record:new-lamp-calibration-summary",
+        "asserted_by": "urn:hwm:subject:commissioning-agent",
+        "created_at": "2026-07-18T09:05:00Z",
+        "extensions": {}
+      }
+    ],
+    "extensions": {}
+  }
+]

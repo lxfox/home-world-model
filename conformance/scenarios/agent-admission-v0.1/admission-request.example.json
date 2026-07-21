@@ -1,0 +1,22 @@
+{
+  "contract": "hwm-admission:Request",
+  "contract_version": "0.1.0-fixture",
+  "request_id": "urn:hwm:admission-request:agent-a-1",
+  "agent_instance_handle": "urn:hwm:untrusted-agent-instance:agent-a",
+  "audience": "urn:hwm:resolver:household-1",
+  "issued_at": "2026-07-19T11:00:00Z",
+  "expires_at": "2026-07-19T11:10:00Z",
+  "nonce": "nonce-agent-a-0001",
+  "supported_profiles": [
+    { "id": "hwm:core", "versions": ["0.1.0"] },
+    { "id": "hwm:authority", "versions": ["0.1.0"] },
+    { "id": "hwm:agent-admission", "versions": ["0.1.0-fixture"] }
+  ],
+  "supported_canonicalizations": ["RFC8785"],
+  "supported_proof_suites": ["fixture-proof-suite"],
+  "instance_key_binding": { "binding_type": "fixture", "value": "fixture:agent-a-key" },
+  "requested_purposes": ["urn:hwm:purpose:morning-preparation"],
+  "requested_actions": ["resolve_view", "propose_action"],
+  "proof": { "mode": "unsigned_fixture", "verification_method": "fixture-agent-proof-adapter", "value": "fixture:agent-a-request-proof" },
+  "extensions": {}
+}

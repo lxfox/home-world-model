@@ -1,0 +1,54 @@
+{
+  "contract": "hwm:HouseholdManifest",
+  "contract_version": "0.1.0",
+  "package_id": "urn:hwm:package:bedroom-reading-light-v0.1",
+  "household_id": "urn:hwm:household:fixture-001",
+  "created_at": "2026-07-18T08:00:00Z",
+  "profiles": [
+    {
+      "id": "hwm:core",
+      "version": "0.1.0",
+      "required": true
+    },
+    {
+      "id": "hwm:space-lifecycle",
+      "version": "0.1.0-fixture",
+      "required": true
+    },
+    {
+      "id": "hwm:simple-action-effect",
+      "version": "0.1.0-fixture",
+      "required": true
+    }
+  ],
+  "authority": {
+    "authority_id": "urn:hwm:authority:fixture-001",
+    "epoch": 7
+  },
+  "resources": [
+    {
+      "id": "claims.json",
+      "media_type": "application/json",
+      "role": "claims",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "0c9b3d8ec563fe5492207e9d8fe729d26b1354512d01e37de8049dec3471a2b1"
+      }
+    },
+    {
+      "id": "records.json",
+      "media_type": "application/json",
+      "role": "records",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "65974d1df0dda81231c5096bb5bc86417b00eb610f94cedd8d4e619eedf204ef"
+      }
+    }
+  ],
+  "extensions": {
+    "https://example.org/hwm/roundtrip-sentinel": {
+      "must_survive": true,
+      "opaque_value": "fixture-extension-001"
+    }
+  }
+}

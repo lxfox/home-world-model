@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/evidence-standing/v0.1/evidence-standing-policy.schema.json",
+  "title": "HWM Evidence Standing Policy v0.1",
+  "type": "object",
+  "required": [
+    "contract", "contract_version", "document_id", "household_id", "authority_id",
+    "authority_epoch", "issued_at", "standing_grants", "proof", "extensions"
+  ],
+  "properties": {
+    "contract": { "const": "hwm-standing:PolicyDocument" },
+    "contract_version": { "const": "0.1.0-fixture" },
+    "document_id": { "type": "string", "minLength": 1 },
+    "household_id": { "type": "string", "minLength": 1 },
+    "authority_id": { "type": "string", "minLength": 1 },
+    "authority_epoch": { "type": "integer", "minimum": 0 },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "standing_grants": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/StandingGrant" }
+    },
+    "proof": { "$ref": "#/$defs/Proof" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "NonEmptyUniqueStrings": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ScopeSelector": {
+      "type": "object",
+      "required": ["mode", "values"],
+      "properties": {
+        "mode": { "enum": ["all", "listed"] },
+        "values": {
+          "type": "array", "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "allOf": [
+        { "if": { "properties": { "mode": { "const": "all" } } }, "then": { "properties": { "values": { "type": "array", "maxItems": 0 } } } },
+        { "if": { "properties": { "mode": { "const": "listed" } } }, "then": { "properties": { "values": { "type": "array", "minItems": 1 } } } }
+      ],
+      "additionalProperties": false
+    },
+    "PrincipalSelector": {
+      "type": "object",
+      "required": ["actor_ids", "role_ids"],
+      "properties": {
+        "actor_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "role_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "anyOf": [
+        { "properties": { "actor_ids": { "type": "array", "minItems": 1 } } },
+        { "properties": { "role_ids": { "type": "array", "minItems": 1 } } }
+      ],
+      "additionalProperties": false
+    },
+    "PropositionSelector": {
+      "type": "object",
+      "required": ["predicates", "subject_mode", "subject_ids"],
+      "properties": {
+        "predicates": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "subject_mode": { "enum": ["self", "listed", "any"] },
+        "subject_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "allOf": [
+        { "if": { "properties": { "subject_mode": { "const": "listed" } } }, "then": { "properties": { "subject_ids": { "type": "array", "minItems": 1 } } } },
+        { "if": { "properties": { "subject_mode": { "enum": ["self", "any"] } } }, "then": { "properties": { "subject_ids": { "type": "array", "maxItems": 0 } } } }
+      ],
+      "additionalProperties": false
+    },
+    "Requirements": {
+      "type": "object",
+      "required": ["direct_experience", "exact_question_binding"],
+      "properties": {
+        "direct_experience": { "type": "boolean" },
+        "exact_question_binding": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "Validity": {
+      "type": "object",
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "type": "string", "format": "date-time" },
+        "to": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "Qualification": {
+      "type": "object",
+      "required": ["mode", "credential_types", "trusted_issuers", "jurisdictions"],
+      "properties": {
+        "mode": { "enum": ["none", "credential_required"] },
+        "credential_types": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "trusted_issuers": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "jurisdictions": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "allOf": [
+        { "if": { "properties": { "mode": { "const": "none" } } }, "then": { "properties": { "credential_types": { "type": "array", "maxItems": 0 }, "trusted_issuers": { "type": "array", "maxItems": 0 }, "jurisdictions": { "type": "array", "maxItems": 0 } } } },
+        { "if": { "properties": { "mode": { "const": "credential_required" } } }, "then": { "properties": { "credential_types": { "type": "array", "minItems": 1 }, "trusted_issuers": { "type": "array", "minItems": 1 }, "jurisdictions": { "type": "array", "minItems": 1 } } } }
+      ],
+      "additionalProperties": false
+    },
+    "StandingGrant": {
+      "type": "object",
+      "required": [
+        "grant_id", "principal", "evidence_kinds", "relations", "purposes", "target",
+        "space_scope", "procedures", "requirements", "validity", "qualification", "extensions"
+      ],
+      "properties": {
+        "grant_id": { "type": "string", "minLength": 1 },
+        "principal": { "$ref": "#/$defs/PrincipalSelector" },
+        "evidence_kinds": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "relations": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["supports", "confirms", "refutes", "retracts"] } },
+        "purposes": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "target": { "$ref": "#/$defs/PropositionSelector" },
+        "space_scope": { "$ref": "#/$defs/ScopeSelector" },
+        "procedures": { "$ref": "#/$defs/ScopeSelector" },
+        "requirements": { "$ref": "#/$defs/Requirements" },
+        "validity": { "$ref": "#/$defs/Validity" },
+        "qualification": { "$ref": "#/$defs/Qualification" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method"],
+      "properties": {
+        "mode": { "enum": ["unsigned_fixture", "digest", "signature", "vc"] },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

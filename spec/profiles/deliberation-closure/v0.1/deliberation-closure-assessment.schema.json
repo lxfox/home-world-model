@@ -1,0 +1,40 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/deliberation-closure/v0.1/deliberation-closure-assessment.schema.json",
+  "title":"HWM Deliberation Closure Assessment v0.1",
+  "type":"object",
+  "required":["contract","contract_version","closure_id","deliberation_id","household_id","purpose","origin","opened_at","assessed_at","closed_at","authority_epoch","issue_basis_binding","interaction_record_bindings","effect_coverage","effects","closure_status","reason_codes","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-deliberation:ClosureAssessment"},
+    "contract_version":{"const":"0.1.0-fixture"},
+    "closure_id":{"type":"string","minLength":1},
+    "deliberation_id":{"type":"string","minLength":1},
+    "household_id":{"type":"string","minLength":1},
+    "purpose":{"type":"string","minLength":1},
+    "origin":{"enum":["agent_detected_gap","explicit_user_request","existing_intent_review","manual_household_deliberation"]},
+    "opened_at":{"type":"string","format":"date-time"},
+    "assessed_at":{"type":"string","format":"date-time"},
+    "closed_at":{"type":"string","format":"date-time"},
+    "authority_epoch":{"type":"integer","minimum":0},
+    "issue_basis_binding":{"$ref":"#/$defs/Binding"},
+    "interaction_record_bindings":{"type":"array","minItems":1,"uniqueItems":true,"items":{"$ref":"#/$defs/Binding"}},
+    "effect_coverage":{"enum":["complete","partial","indeterminate"]},
+    "effects":{"type":"array","items":{"$ref":"#/$defs/Effect"}},
+    "superseding_deliberation_binding":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/Binding"}]},
+    "closure_status":{"enum":["resolved","closed_without_decision","expired","superseded","indeterminate"]},
+    "reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "proof":{"$ref":"#/$defs/Proof"},
+    "extensions":{"type":"object","additionalProperties":true}
+  },
+  "allOf":[
+    {"if":{"properties":{"closure_status":{"const":"resolved"}}},"then":{"properties":{"effect_coverage":{"const":"complete"},"effects":{"type":"array","minItems":1,"items":{"type":"object","properties":{"qualification_status":{"const":"verified"}},"required":["qualification_status"]}},"superseding_deliberation_binding":{"type":"null"}}}},
+    {"if":{"properties":{"closure_status":{"enum":["closed_without_decision","expired"]}}},"then":{"properties":{"effect_coverage":{"const":"complete"},"effects":{"type":"array","maxItems":0},"superseding_deliberation_binding":{"type":"null"}}}},
+    {"if":{"properties":{"closure_status":{"const":"superseded"}}},"then":{"properties":{"superseding_deliberation_binding":{"$ref":"#/$defs/Binding"}}}}
+  ],
+  "$defs":{
+    "Binding":{"type":"object","required":["artifact_id","content_scope","digest_algorithm","canonicalization","digest"],"properties":{"artifact_id":{"type":"string","minLength":1},"content_scope":{"enum":["artifact","claim_body"]},"digest_algorithm":{"const":"sha-256"},"canonicalization":{"const":"RFC8785"},"digest":{"type":"string","pattern":"^[0-9a-f]{64}$"}},"additionalProperties":false},
+    "Effect":{"type":"object","required":["effect_id","kind","primary_artifact_binding","authority_decision_binding","qualification_status","valid_from","valid_to","reason_codes"],"properties":{"effect_id":{"type":"string","minLength":1},"kind":{"enum":["intent_adoption","candidate_rejection","tolerance_claim","deferral_policy","raising_policy_revision","target_correction","intent_revision"]},"primary_artifact_binding":{"$ref":"#/$defs/Binding"},"authority_decision_binding":{"oneOf":[{"type":"null"},{"$ref":"#/$defs/Binding"}]},"qualification_status":{"enum":["verified","not_effective","indeterminate"]},"valid_from":{"oneOf":[{"type":"null"},{"type":"string","format":"date-time"}]},"valid_to":{"oneOf":[{"type":"null"},{"type":"string","format":"date-time"}]},"reason_codes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}},"additionalProperties":false},
+    "Proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

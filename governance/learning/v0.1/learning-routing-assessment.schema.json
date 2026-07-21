@@ -1,0 +1,25 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/governance/learning/v0.1/learning-routing-assessment.schema.json",
+  "title":"HWM Learning Routing Assessment",
+  "type":"object",
+  "required":["assessment_id","sources","source_scope","destination","proposition","purpose","permissions","method","generalization","privacy","as_of","routing_result","downstream_status","limitations","must_not_infer"],
+  "properties":{
+    "assessment_id":{"type":"string"},
+    "sources":{"type":"array","items":{"type":"object","required":["ref","sha256","standing","lineage_ref"],"properties":{"ref":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"},"standing":{"enum":["admitted","not_admitted","indeterminate"]},"lineage_ref":{"type":"string"}},"additionalProperties":false},"minItems":1},
+    "source_scope":{"type":"object","required":["household_or_population","unit","coverage","time_window"],"properties":{"household_or_population":{"type":"string"},"unit":{"type":"string"},"coverage":{"type":"string"},"time_window":{"type":"string"}},"additionalProperties":false},
+    "destination":{"enum":["household_instance_candidate","product_default_candidate","population_hypothesis","specification_change_proposal"]},
+    "proposition":{"type":"string"},
+    "purpose":{"type":"string"},
+    "permissions":{"type":"object","required":["source_use","boundary_crossing","logging","retention","training","model_update_release","onward_disclosure"],"properties":{"source_use":{"enum":["allowed","denied","indeterminate"]},"boundary_crossing":{"enum":["allowed","denied","not_required","indeterminate"]},"logging":{"enum":["allowed","denied","indeterminate"]},"retention":{"enum":["allowed","denied","indeterminate"]},"training":{"enum":["allowed","denied","not_requested","indeterminate"]},"model_update_release":{"enum":["allowed","denied","not_requested","indeterminate"]},"onward_disclosure":{"enum":["allowed","denied","not_requested","indeterminate"]}},"additionalProperties":false},
+    "method":{"type":"string"},
+    "generalization":{"type":"object","required":["transport_status","population_frame","denominator_status","dependence_status","validation_status","distribution_status","confounder_limits"],"properties":{"transport_status":{"type":"string"},"population_frame":{"type":"string"},"denominator_status":{"type":"string"},"dependence_status":{"type":"string"},"validation_status":{"type":"string"},"distribution_status":{"type":"string"},"confounder_limits":{"type":"string"}},"additionalProperties":false},
+    "privacy":{"type":"object","required":["qualification","linkage_risk","membership_risk","output_review"],"properties":{"qualification":{"type":"string"},"linkage_risk":{"type":"string"},"membership_risk":{"type":"string"},"output_review":{"type":"string"}},"additionalProperties":false},
+    "as_of":{"type":"string","format":"date-time"},
+    "routing_result":{"enum":["household_candidate_eligible","product_experiment_candidate_eligible","population_study_candidate_eligible","specification_proposal_candidate_eligible","disclosure_required","validation_required","not_eligible","quarantined","indeterminate"]},
+    "downstream_status":{"enum":["not_started","submitted","admitted","rejected","indeterminate"]},
+    "limitations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "must_not_infer":{"type":"array","items":{"type":"string"},"minItems":1,"uniqueItems":true}
+  },
+  "additionalProperties":false
+}

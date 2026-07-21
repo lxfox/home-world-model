@@ -1,0 +1,118 @@
+{
+  "contract": "hwm:WorldView",
+  "contract_version": "0.1.0",
+  "view_id": "urn:hwm:view:after-set-level-60",
+  "household_id": "urn:hwm:household:fixture-001",
+  "requester": "urn:hwm:subject:assessment-agent-001",
+  "purpose": "hwm:purpose:commissioning-assessment",
+  "generated_at": "2026-07-18T08:05:10Z",
+  "as_of": "2026-07-18T08:05:10Z",
+  "known_through": "2026-07-18T08:05:09Z",
+  "freshness": {
+    "maximum_age_seconds": 30,
+    "status": "current"
+  },
+  "coverage": {
+    "entity_refs": [
+      "urn:hwm:endpoint:matter-lamp-001",
+      "urn:hwm:zone:bedroom-reading"
+    ],
+    "claim_kinds": ["requirement", "predicted_effect", "observation"]
+  },
+  "authority_epoch": 7,
+  "profiles": [
+    { "id": "hwm:core", "version": "0.1.0", "required": true },
+    { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+  ],
+  "resolutions": [
+    {
+      "resolution_id": "urn:hwm:resolution:reading-zone-requirement-after",
+      "subject": "urn:hwm:zone:bedroom-reading",
+      "predicate": "hwm-effect:minimumRequirement",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:reading-zone-requirement-after",
+          "object": {
+            "property": "saref:Light",
+            "threshold": { "value": 300, "unit": "lx" },
+            "comparator": ">="
+          },
+          "claim_ids": ["urn:hwm:claim:reading-zone-requirement"],
+          "evidence_record_ids": ["urn:hwm:record:setup-declaration"],
+          "extensions": {}
+        }
+      ],
+      "applicability": {
+        "status": "applicable",
+        "context_claim_ids": [],
+        "conflict_ids": [],
+        "reason_codes": ["commissioning_goal_in_scope"]
+      },
+      "reason_codes": ["authorized_household_requirement"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:set-level-60-effect-after",
+      "subject": "urn:hwm:endpoint:matter-lamp-001",
+      "predicate": "hwm-effect:predictsOutcome",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "unbounded",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:set-level-60-effect-after",
+          "object": {
+            "when": {
+              "action_type": "matter:MoveToLevel",
+              "parameters": { "level_percent": 60 }
+            },
+            "affected_feature_id": "urn:hwm:zone:bedroom-reading",
+            "property": "saref:Light",
+            "expected_range": { "minimum": 285, "maximum": 335, "unit": "lx" },
+            "context_claim_ids": [],
+            "observation_window_seconds": 10,
+            "measurement_procedure": "urn:hwm:procedure:reading-zone-lux-v1",
+            "tolerance": { "value": 0, "unit": "lx" },
+            "uncertainty": { "kind": "bounded_interval", "confidence": 0.8 },
+            "model_version": "commissioning-sample-1"
+          },
+          "claim_ids": ["urn:hwm:claim:set-level-60-effect"],
+          "evidence_record_ids": ["urn:hwm:record:effect-model-declaration"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["commissioning_model_in_scope"]
+    },
+    {
+      "resolution_id": "urn:hwm:resolution:observed-illuminance-295",
+      "subject": "urn:hwm:zone:bedroom-reading",
+      "predicate": "sosa:hasSimpleResult",
+      "availability_status": "available",
+      "epistemic_status": "accepted",
+      "freshness_status": "current",
+      "temporal_status": "expired",
+      "candidates": [
+        {
+          "candidate_id": "urn:hwm:candidate:observed-illuminance-295",
+          "object": { "value": 295, "unit": "lx" },
+          "claim_ids": ["urn:hwm:claim:observed-illuminance-295"],
+          "evidence_record_ids": ["urn:hwm:record:observation-295-lux"],
+          "extensions": {}
+        }
+      ],
+      "reason_codes": ["valid_observation_in_window"]
+    }
+  ],
+  "conflicts": [],
+  "limitations": [
+    {
+      "code": "fixture_unsigned_records",
+      "description": "Fixture Records are unsigned and must not be treated as production trust evidence."
+    }
+  ],
+  "extensions": {}
+}

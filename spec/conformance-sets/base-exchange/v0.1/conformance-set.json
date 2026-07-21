@@ -1,0 +1,28 @@
+{
+  "set_id":"https://homeworldmodel.org/spec/conformance-sets/base-exchange/v0.1",
+  "revision":1,
+  "purpose":"portable_household_knowledge_exchange",
+  "audience":"authorized_hwm_reader_or_relay",
+  "exchange_operation":"inventory_verify_preserve_and_consume_kernel",
+  "base_exchange_set":"hwm-base-exchange-set-v0.1",
+  "profile_locks":[
+    {"profile_id":"https://homeworldmodel.org/spec/core/v0.1","version":"0.1.0","descriptor_digest":"sha256:feee5381a3f9a1a0dc46b335e7248fa01dfdac1d16088b66238ee7adb46de943"},
+    {"profile_id":"https://homeworldmodel.org/spec/profiles/ro-crate/v0.1","version":"0.1.0","descriptor_digest":"sha256:8dfdaa14e14f2ee889b0683309871b6a3183609b4ca4f7ff53995f9873c0ecc1"},
+    {"profile_id":"https://homeworldmodel.org/spec/profiles/authority/v0.1","version":"0.1.0","descriptor_digest":"sha256:3f9b4e07aa75bbc69f679a27268a4ab77c156ea9f86d9f5caa3aa01a12dd363e"}
+  ],
+  "required_artifacts":["HWMROCrate","ClaimEnvelopeSet","RecordSet","AuthorityStateReference"],
+  "required_roles":[
+    {"profile_id":"https://homeworldmodel.org/spec/core/v0.1","version":"0.1.0","role":"preserve"},
+    {"profile_id":"https://homeworldmodel.org/spec/core/v0.1","version":"0.1.0","role":"consume"},
+    {"profile_id":"https://homeworldmodel.org/spec/profiles/ro-crate/v0.1","version":"0.1.0","role":"preserve"},
+    {"profile_id":"https://homeworldmodel.org/spec/profiles/ro-crate/v0.1","version":"0.1.0","role":"consume"},
+    {"profile_id":"https://homeworldmodel.org/spec/profiles/authority/v0.1","version":"0.1.0","role":"preserve"},
+    {"profile_id":"https://homeworldmodel.org/spec/profiles/authority/v0.1","version":"0.1.0","role":"consume"}
+  ],
+  "minimum_evidence_level":"implementation_tested",
+  "offline_policy":"required",
+  "unknown_extension_policy":"preserve",
+  "allowed_degradation":["opaque_relay","refuse_unsupported_operation"],
+  "valid_from":"2026-07-19T00:00:00Z",
+  "valid_through":null
+}

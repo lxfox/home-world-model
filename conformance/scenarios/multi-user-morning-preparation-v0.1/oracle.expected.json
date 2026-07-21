@@ -1,0 +1,35 @@
+{
+  "preference_conflict": {
+    "conflict_id": "urn:hwm:conflict:shared-bedroom-temperature",
+    "epistemic_statuses": ["accepted", "accepted"],
+    "applicability_statuses": ["conflicting", "conflicting"]
+  },
+  "privacy": {
+    "resolution_id": "urn:hwm:resolution:future-hot-water-user-identity",
+    "availability_status": "access_denied",
+    "epistemic_status": "not_evaluated",
+    "candidate_count": 0
+  },
+  "pump": {
+    "authorization": "allowed",
+    "execution": "dispatched",
+    "acknowledgement": "acknowledged",
+    "effect_assessments": ["consistent", "consistent", "consistent"],
+    "goal_evaluations": ["satisfied", "satisfied"],
+    "resource_assessments": ["within_limit"]
+  },
+  "hvac": {
+    "authorization": "confirmation_required",
+    "execution": "not_dispatched",
+    "device_failure": false,
+    "goal_evaluations": ["indeterminate"]
+  },
+  "hindsight": {
+    "forecast_probability": 0.78,
+    "realization": "not_observed",
+    "forecast_relation": "calibration_sample_not_refutation",
+    "pump_effect_assessments_remain": ["consistent", "consistent", "consistent"],
+    "pump_goal_evaluations_remain": ["satisfied", "satisfied"],
+    "resource_cost": { "value": 0.18, "unit": "kWh" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "contract": "hwm-routine:OccurrenceKeyPolicyFixture",
+  "temporal_key_basis": ["routine_id", "time_zone", "original_local_time"],
+  "reschedule_rule": "preserve_original_local_time",
+  "revision_scope": "routine_lineage",
+  "event_rule": "authority_approved_correlation_key_required",
+  "cloud_event_rule": "source_plus_id_detects_delivery_replay_but_not_logical_occurrence_equivalence"
+}

@@ -1,0 +1,12 @@
+{
+  "payload_id":"hwm-governance-release-payload-fixture-v0.1",
+  "release_id":"hwm-governance-release-fixture-v0.1",
+  "release_line":"fixture-only",
+  "decision_bindings":[{"decision_id":"hwm-example-decision-2026-07-19","decision_record_sha256":"b241816d1954c90f5a3f2e7e03c94c715a01ac5178837ef10009db353a742ad8","conclusion":"accept"}],
+  "content_manifest":{"manifest_id":"urn:hwm:manifest:fixture","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","entries":[{"path":"fixture/specification.json","canonical_uri":"https://example.invalid/hwm/fixture/specification.json","media_type":"application/json","sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}]},
+  "checks":{"integrity":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-integrity"]},"licensing":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-license"]},"canonical_uri":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-uri"]},"release":{"status":"passed","evidence_refs":["urn:hwm:evidence:fixture-release-check"]}},
+  "publisher":{"actor_ref":"urn:hwm:actor:fixture-publisher","role":"publisher","conflict_disclosure":"synthetic same-project fixture"},
+  "released_at":"2026-07-19T00:00:00Z",
+  "limitations":["synthetic schema fixture only","does not assert an actual publication or production key custody"],
+  "must_not_infer":["truth","community_consensus","standard_adoption","external_adoption","production_readiness","household_trust","access","action_authority"]
+}

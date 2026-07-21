@@ -1,0 +1,41 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:base:r2",
+      "@type": ["prov:Entity", "prov:Plan"],
+      "prov:invalidatedAtTime": {"@value": "2026-07-18T12:00:00Z", "@type": "xsd:dateTime"}
+    },
+    {
+      "@id": "urn:hwm:base:r3",
+      "@type": ["prov:Entity", "prov:Plan"],
+      "prov:wasRevisionOf": {"@id": "urn:hwm:base:r2"}
+    },
+    {
+      "@id": "urn:hwm:design-option:a-r1",
+      "@type": ["prov:Entity", "prov:Plan"],
+      "prov:wasDerivedFrom": {"@id": "urn:hwm:base:r2"},
+      "prov:invalidatedAtTime": {"@value": "2026-07-18T12:00:00Z", "@type": "xsd:dateTime"}
+    },
+    {
+      "@id": "urn:hwm:design-option:a-r2",
+      "@type": ["prov:Entity", "prov:Plan"],
+      "prov:wasRevisionOf": {"@id": "urn:hwm:design-option:a-r1"},
+      "prov:wasDerivedFrom": {"@id": "urn:hwm:base:r3"}
+    },
+    {
+      "@id": "urn:hwm:simulation-activity:a-r2",
+      "@type": "prov:Activity",
+      "prov:used": {"@id": "urn:hwm:design-option:a-r2"},
+      "prov:generated": {"@id": "urn:hwm:simulation:a-r2"}
+    },
+    {
+      "@id": "urn:hwm:simulation:a-r2",
+      "@type": "prov:Entity",
+      "prov:wasGeneratedBy": {"@id": "urn:hwm:simulation-activity:a-r2"}
+    }
+  ]
+}

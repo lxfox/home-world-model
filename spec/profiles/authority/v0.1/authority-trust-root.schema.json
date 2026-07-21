@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/authority/v0.1/authority-trust-root.schema.json",
+  "title": "HWM Authority Trust Root v0.1",
+  "type": "object",
+  "required": ["contract", "contract_version", "signed", "proofs", "extensions"],
+  "properties": {
+    "contract": { "const": "hwm-authority:TrustRoot" },
+    "contract_version": { "const": "0.1.0-fixture" },
+    "signed": { "$ref": "#/$defs/SignedRoot" },
+    "proofs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Proof" }
+    },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "UniqueIdentifiers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "Role": {
+      "type": "object",
+      "required": ["threshold", "method_ids"],
+      "properties": {
+        "threshold": { "type": "integer", "minimum": 1 },
+        "method_ids": { "$ref": "#/$defs/UniqueIdentifiers" }
+      },
+      "additionalProperties": false
+    },
+    "VerificationMethod": {
+      "type": "object",
+      "required": ["method_id", "controller", "method_type", "verification_material_ref", "purposes", "extensions"],
+      "properties": {
+        "method_id": { "type": "string", "minLength": 1 },
+        "controller": { "type": "string", "minLength": 1 },
+        "method_type": { "enum": ["raw_public_key", "platform_identity", "vc_issuer", "fixture"] },
+        "verification_material_ref": { "type": "string", "minLength": 1 },
+        "purposes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["root", "authority_document", "recovery"] }
+        },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "PreviousRootBinding": {
+      "type": "object",
+      "required": ["root_id", "root_version", "digest_algorithm", "canonicalization", "signed_digest"],
+      "properties": {
+        "root_id": { "type": "string", "minLength": 1 },
+        "root_version": { "type": "integer", "minimum": 1 },
+        "digest_algorithm": { "const": "sha-256" },
+        "canonicalization": { "const": "RFC8785" },
+        "signed_digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "RecoveryPolicy": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["mode", "method_ids"],
+          "properties": {
+            "mode": { "const": "none" },
+            "method_ids": { "type": "array", "maxItems": 0 }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": ["mode", "threshold", "method_ids"],
+          "properties": {
+            "mode": { "const": "precommitted" },
+            "threshold": { "type": "integer", "minimum": 1 },
+            "method_ids": { "$ref": "#/$defs/UniqueIdentifiers" }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SignedRoot": {
+      "type": "object",
+      "required": ["root_id", "lineage_id", "authority_id", "household_id", "root_version", "authority_epoch_floor", "issued_at", "expires_at", "transition_kind", "previous_root_binding", "verification_methods", "roles", "recovery_policy"],
+      "properties": {
+        "root_id": { "type": "string", "minLength": 1 },
+        "lineage_id": { "type": "string", "minLength": 1 },
+        "authority_id": { "type": "string", "minLength": 1 },
+        "household_id": { "type": "string", "minLength": 1 },
+        "root_version": { "type": "integer", "minimum": 1 },
+        "authority_epoch_floor": { "type": "integer", "minimum": 0 },
+        "issued_at": { "type": "string", "format": "date-time" },
+        "expires_at": { "type": "string", "format": "date-time" },
+        "transition_kind": { "enum": ["genesis", "rotation", "recovery"] },
+        "previous_root_binding": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/PreviousRootBinding" }
+          ]
+        },
+        "verification_methods": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/VerificationMethod" }
+        },
+        "roles": {
+          "type": "object",
+          "required": ["root", "authority_document"],
+          "properties": {
+            "root": { "$ref": "#/$defs/Role" },
+            "authority_document": { "$ref": "#/$defs/Role" }
+          },
+          "additionalProperties": false
+        },
+        "recovery_policy": { "$ref": "#/$defs/RecoveryPolicy" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "transition_kind": { "const": "genesis" } }, "required": ["transition_kind"] },
+          "then": { "properties": { "previous_root_binding": { "type": "null" } } },
+          "else": { "properties": { "previous_root_binding": { "$ref": "#/$defs/PreviousRootBinding" } } }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["proof_id", "authorization_role", "signer_method_id", "mode", "verification_method", "value"],
+      "properties": {
+        "proof_id": { "type": "string", "minLength": 1 },
+        "authorization_role": { "enum": ["current_root", "next_root", "recovery"] },
+        "signer_method_id": { "type": "string", "minLength": 1 },
+        "mode": { "enum": ["unsigned_fixture", "signature", "vc", "cwt"] },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "value": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

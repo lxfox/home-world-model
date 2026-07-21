@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "bot": "https://w3id.org/bot#",
+    "dpv": "https://w3id.org/dpv#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/"
+  },
+  "@graph": [
+    {
+      "@id": "urn:hwm:space:shared-bedroom",
+      "@type": "bot:Space",
+      "dcterms:title": "Shared bedroom"
+    },
+    {
+      "@id": "urn:hwm:feature:shared-bedroom-air",
+      "@type": "sosa:FeatureOfInterest",
+      "prov:atLocation": { "@id": "urn:hwm:space:shared-bedroom" }
+    },
+    {
+      "@id": "urn:hwm:property:shared-bedroom-air-temperature",
+      "@type": "sosa:Property",
+      "sosa:isPropertyOf": { "@id": "urn:hwm:feature:shared-bedroom-air" }
+    },
+    {
+      "@id": "urn:hwm:procedure:thermal-impact-v1",
+      "@type": ["sosa:Procedure", "prov:Plan"],
+      "sosa:forProperty": { "@id": "urn:hwm:property:shared-bedroom-air-temperature" }
+    },
+    {
+      "@id": "urn:hwm:proposal:shared-bedroom-hvac-1",
+      "@type": ["prov:Plan", "schema:Action"],
+      "schema:actionStatus": { "@id": "schema:PotentialActionStatus" },
+      "schema:location": { "@id": "urn:hwm:space:shared-bedroom" },
+      "dcterms:hasVersion": 1
+    },
+    {
+      "@id": "urn:hwm:impact-report:thermal-current",
+      "@type": ["prov:Entity", "schema:Report"],
+      "prov:wasDerivedFrom": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "prov:hadPrimarySource": { "@id": "urn:hwm:procedure:thermal-impact-v1" }
+    },
+    {
+      "@id": "urn:hwm:impact-report:privacy-current",
+      "@type": ["prov:Entity", "dpv:ImpactAssessment"],
+      "prov:wasDerivedFrom": { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+      "dpv:hasDataSubject": { "@id": "urn:hwm:opaque:authority-7:9f2" }
+    },
+    {
+      "@id": "urn:hwm:opaque:authority-7:9f2",
+      "@type": "dpv:DataSubject"
+    },
+    {
+      "@id": "urn:hwm:activity:evaluate-impact-coverage-1",
+      "@type": "prov:Activity",
+      "prov:used": [
+        { "@id": "urn:hwm:proposal:shared-bedroom-hvac-1" },
+        { "@id": "urn:hwm:impact-report:thermal-current" },
+        { "@id": "urn:hwm:impact-report:privacy-current" }
+      ],
+      "prov:generated": { "@id": "urn:hwm:assessment:impact-coverage-1" }
+    },
+    {
+      "@id": "urn:hwm:assessment:impact-coverage-1",
+      "@type": ["prov:Entity", "schema:Report"],
+      "prov:wasGeneratedBy": { "@id": "urn:hwm:activity:evaluate-impact-coverage-1" },
+      "dcterms:conformsTo": { "@id": "https://homeworldmodel.org/spec/profiles/bounded-impact-closure/v0.1" }
+    }
+  ]
+}
+

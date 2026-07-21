@@ -1,0 +1,51 @@
+{
+  "contract": "hwm:ActionTrace",
+  "contract_version": "0.1.0",
+  "trace_id": "urn:hwm:trace:shared-bedroom-hvac-proposal",
+  "trace_revision": 1,
+  "household_id": "urn:hwm:household:morning-fixture-001",
+  "generated_at": "2026-07-18T07:00:02Z",
+  "known_through": "2026-07-18T07:00:01Z",
+  "based_on_view_id": "urn:hwm:view:morning-preparation-before-actions",
+  "intent": {
+    "intent_id": "urn:hwm:intent:prepare-home-for-morning",
+    "requested_by": "urn:hwm:subject:morning-planner-agent",
+    "goal_claim_ids": ["urn:hwm:claim:shared-bedroom-comfort-goal"]
+  },
+  "proposal": {
+    "proposal_id": "urn:hwm:proposal:set-shared-bedroom-21",
+    "proposed_by": "urn:hwm:subject:morning-planner-agent",
+    "action": {
+      "action_type": "matter:SetOccupiedHeatingSetpoint",
+      "target_endpoint_id": "urn:hwm:endpoint:shared-bedroom-thermostat",
+      "parameters": {
+        "setpoint": { "value": 21, "unit": "Cel" }
+      }
+    },
+    "effect_claim_ids": []
+  },
+  "authorization": {
+    "decision": "confirmation_required",
+    "authority_epoch": 11,
+    "record_id": "urn:hwm:record:hvac-authorization",
+    "policy_ids": ["urn:hwm:policy:shared-zone-preference-conflict"]
+  },
+  "execution": {
+    "status": "not_dispatched",
+    "reason_codes": ["awaiting_required_confirmation"]
+  },
+  "observation_record_ids": [],
+  "effect_assessments": [],
+  "goal_evaluations": [
+    {
+      "goal_claim_id": "urn:hwm:claim:shared-bedroom-comfort-goal",
+      "status": "indeterminate",
+      "observation_record_ids": [],
+      "reason_codes": ["proposal_not_dispatched"]
+    }
+  ],
+  "resource_assessments": [],
+  "user_attestation_record_ids": [],
+  "recovery_record_ids": [],
+  "extensions": {}
+}

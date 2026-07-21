@@ -1,0 +1,82 @@
+{
+  "@context": { "@vocab": "https://schema.org/" },
+  "@graph": [
+    {
+      "@id": "urn:product-model:synthetic-reading-luminaire-a",
+      "@type": "ProductModel",
+      "name": "Synthetic Reading Luminaire A",
+      "model": "SRL-A",
+      "manufacturer": { "@id": "urn:organization:synthetic-vendor" },
+      "additionalProperty": [
+        { "@id": "#luminous-flux" },
+        { "@id": "#maximum-power" },
+        { "@id": "#dimming-capability" }
+      ]
+    },
+    {
+      "@id": "urn:product-model:synthetic-reading-luminaire-b",
+      "@type": "ProductModel",
+      "name": "Synthetic Reading Luminaire B",
+      "model": "SRL-B",
+      "manufacturer": {
+        "@id": "urn:organization:synthetic-vendor"
+      },
+      "additionalProperty": [
+        {
+          "@id": "#luminous-flux-b"
+        },
+        {
+          "@id": "#maximum-power-b"
+        },
+        {
+          "@id": "#dimming-capability-b"
+        }
+      ]
+    },
+    {
+      "@id": "urn:organization:synthetic-vendor",
+      "@type": "Organization",
+      "name": "Synthetic Vendor"
+    },
+    {
+      "@id": "#luminous-flux",
+      "@type": "PropertyValue",
+      "name": "Rated luminous flux",
+      "value": 800,
+      "unitText": "lm"
+    },
+    {
+      "@id": "#maximum-power",
+      "@type": "PropertyValue",
+      "name": "Maximum power",
+      "value": 12,
+      "unitText": "W"
+    },
+    {
+      "@id": "#dimming-capability",
+      "@type": "PropertyValue",
+      "name": "Dimming capability",
+      "value": true
+    },
+    {
+      "@id": "#luminous-flux-b",
+      "@type": "PropertyValue",
+      "name": "Rated luminous flux",
+      "value": 560,
+      "unitText": "lm"
+    },
+    {
+      "@id": "#maximum-power-b",
+      "@type": "PropertyValue",
+      "name": "Maximum power",
+      "value": 8,
+      "unitText": "W"
+    },
+    {
+      "@id": "#dimming-capability-b",
+      "@type": "PropertyValue",
+      "name": "Dimming capability",
+      "value": true
+    }
+  ]
+}

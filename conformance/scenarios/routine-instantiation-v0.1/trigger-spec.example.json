@@ -1,0 +1,13 @@
+{
+  "@type": "Task",
+  "uid": "weekday-morning-hot-water-1",
+  "title": "Evaluate weekday morning hot-water readiness",
+  "start": "2026-07-20T06:30:00",
+  "timeZone": "Asia/Shanghai",
+  "recurrenceRules": [
+    {
+      "frequency": "weekly",
+      "byDay": ["mo", "tu", "we", "th", "fr"]
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://homeworldmodel.org/spec/profiles/shared-action-coordination/v0.1/coordination-policy.schema.json",
+  "title": "HWM Shared Action Coordination Policy v0.1",
+  "type": "object",
+  "required": [
+    "contract", "contract_version", "document_id", "household_id", "authority_id",
+    "authority_epoch", "issued_at", "policy_combining_strategy", "coordination_rules", "proof", "extensions"
+  ],
+  "properties": {
+    "contract": { "const": "hwm-coordination:PolicyDocument" },
+    "contract_version": { "const": "0.1.0-fixture" },
+    "document_id": { "type": "string", "minLength": 1 },
+    "household_id": { "type": "string", "minLength": 1 },
+    "authority_id": { "type": "string", "minLength": 1 },
+    "authority_epoch": { "type": "integer", "minimum": 0 },
+    "issued_at": { "type": "string", "format": "date-time" },
+    "policy_combining_strategy": { "const": "only_one_applicable" },
+    "coordination_rules": {
+      "type": "array", "minItems": 1,
+      "items": { "$ref": "#/$defs/CoordinationRule" }
+    },
+    "proof": { "$ref": "#/$defs/Proof" },
+    "extensions": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "NonEmptyUniqueStrings": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ScopeSelector": {
+      "type": "object",
+      "required": ["mode", "values"],
+      "properties": {
+        "mode": { "enum": ["all", "listed"] },
+        "values": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "allOf": [
+        { "if": { "properties": { "mode": { "const": "all" } } }, "then": { "properties": { "values": { "type": "array", "maxItems": 0 } } } },
+        { "if": { "properties": { "mode": { "const": "listed" } } }, "then": { "properties": { "values": { "type": "array", "minItems": 1 } } } }
+      ],
+      "additionalProperties": false
+    },
+    "ResponseRule": {
+      "type": "object",
+      "required": ["mode", "count", "rejection_effect", "validity_seconds"],
+      "properties": {
+        "mode": { "enum": ["none", "all", "any", "count"] },
+        "count": { "type": "integer", "minimum": 0 },
+        "rejection_effect": { "enum": ["blocks", "threshold_only"] },
+        "validity_seconds": { "type": "integer", "minimum": 1 }
+      },
+      "allOf": [
+        { "if": { "properties": { "mode": { "const": "count" } } }, "then": { "properties": { "count": { "type": "integer", "minimum": 1 } } } },
+        { "if": { "properties": { "mode": { "enum": ["none", "all", "any"] } } }, "then": { "properties": { "count": { "const": 0 } } } }
+      ],
+      "additionalProperties": false
+    },
+    "DelegationRule": {
+      "type": "object",
+      "required": ["allowed", "delegate_role_ids"],
+      "properties": {
+        "allowed": { "type": "boolean" },
+        "delegate_role_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      },
+      "allOf": [
+        { "if": { "properties": { "allowed": { "const": false } } }, "then": { "properties": { "delegate_role_ids": { "type": "array", "maxItems": 0 } } } },
+        { "if": { "properties": { "allowed": { "const": true } } }, "then": { "properties": { "delegate_role_ids": { "type": "array", "minItems": 1 } } } }
+      ],
+      "additionalProperties": false
+    },
+    "Validity": {
+      "type": "object",
+      "required": ["from", "to"],
+      "properties": {
+        "from": { "type": "string", "format": "date-time" },
+        "to": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+    "CoordinationRule": {
+      "type": "object",
+      "required": [
+        "rule_id", "action_types", "purposes", "effect_domains", "space_scope", "risk_levels",
+        "emergency_requirement", "response_rule", "delegation", "post_action_duties", "validity", "extensions"
+      ],
+      "properties": {
+        "rule_id": { "type": "string", "minLength": 1 },
+        "action_types": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "purposes": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "effect_domains": { "$ref": "#/$defs/NonEmptyUniqueStrings" },
+        "space_scope": { "$ref": "#/$defs/ScopeSelector" },
+        "risk_levels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "enum": ["low", "moderate", "high", "emergency"] } },
+        "emergency_requirement": { "enum": ["none", "verified"] },
+        "response_rule": { "$ref": "#/$defs/ResponseRule" },
+        "delegation": { "$ref": "#/$defs/DelegationRule" },
+        "post_action_duties": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "validity": { "$ref": "#/$defs/Validity" },
+        "extensions": { "type": "object", "additionalProperties": true }
+      },
+      "additionalProperties": false
+    },
+    "Proof": {
+      "type": "object",
+      "required": ["mode", "verification_method"],
+      "properties": {
+        "mode": { "enum": ["unsigned_fixture", "digest", "signature", "vc"] },
+        "verification_method": { "type": "string", "minLength": 1 },
+        "value": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

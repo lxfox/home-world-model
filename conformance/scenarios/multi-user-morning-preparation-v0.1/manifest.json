@@ -1,0 +1,53 @@
+{
+  "contract": "hwm:HouseholdManifest",
+  "contract_version": "0.1.0",
+  "package_id": "urn:hwm:package:multi-user-morning-preparation-v0.1",
+  "household_id": "urn:hwm:household:morning-fixture-001",
+  "created_at": "2026-07-18T06:50:00Z",
+  "profiles": [
+    { "id": "hwm:core", "version": "0.1.0", "required": true },
+    { "id": "hwm:forecast", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:preference-context", "version": "0.1.0-fixture", "required": true },
+    { "id": "hwm:simple-action-effect", "version": "0.1.0-fixture", "required": true }
+  ],
+  "authority": {
+    "authority_id": "urn:hwm:authority:morning-fixture-001",
+    "epoch": 11,
+    "policy_resource": "authority-profile.json"
+  },
+  "resources": [
+    {
+      "id": "claims.json",
+      "media_type": "application/json",
+      "role": "claims",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "541ff5e63f7eef07538074a1ad3c71a3326e78e4a9de55eeec0affb8be4b1b98"
+      }
+    },
+    {
+      "id": "records.json",
+      "media_type": "application/json",
+      "role": "records",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "db32c6db536c4ad3a03133e49c00355c4c6592949848f44cdbb1d051e3d0dcab"
+      }
+    },
+    {
+      "id": "authority-profile.json",
+      "media_type": "application/json",
+      "role": "authority",
+      "integrity": {
+        "algorithm": "sha-256",
+        "digest": "fbdb9f7308aa180f027049e507279f59466e3d8336953946d58cb504d68f4660"
+      }
+    }
+  ],
+  "extensions": {
+    "https://example.org/hwm/roundtrip-sentinel": {
+      "must_survive": true,
+      "opaque_value": "morning-fixture-extension-001"
+    }
+  }
+}

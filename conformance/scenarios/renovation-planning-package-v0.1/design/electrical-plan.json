@@ -1,0 +1,52 @@
+{
+  "profile": "https://homeworldmodel.org/spec/profiles/renovation-planning/v0.1#ElectricalPlan",
+  "revision": "design-r2",
+  "status": "planned_not_installed",
+  "circuits": [
+    {
+      "circuit_id": "urn:hwm:planned-circuit:bedroom-lighting",
+      "space_id": "urn:hwm:space:planned-bedroom",
+      "supply": { "voltage": 230, "unit": "V" },
+      "planned_load_allocation": {
+        "allocation_id": "urn:hwm:electrical-allocation:bedroom-reading-light",
+        "quantity_role": "planned_load_allocation",
+        "quantity": { "kind": "active_power", "value": 100, "unit": "W" },
+        "applies_to_function_position_id": "urn:hwm:slot:planned-reading-light",
+        "assessment_use": "catalog_screening_only",
+        "assumptions": {
+          "simultaneity": "not_assessed",
+          "power_factor": "not_used_for_catalog_power_comparison",
+          "duty": "not_assessed"
+        },
+        "not_evidence_of": [
+          "installed_load",
+          "estimated_maximum_demand",
+          "design_current",
+          "current_carrying_capacity",
+          "protection_coordination",
+          "installation_verification",
+          "jurisdictional_compliance"
+        ]
+      },
+      "electrical_design_assessment": {
+        "status": "incomplete_catalog_screening_only",
+        "missing_inputs": [
+          "design_current",
+          "protective_device_rated_current",
+          "current_carrying_capacity",
+          "voltage_drop_assessment",
+          "fault_protection_assessment",
+          "verification_record",
+          "jurisdiction_and_code_edition"
+        ]
+      },
+      "controlled_points": [
+        {
+          "function_position_id": "urn:hwm:slot:planned-reading-light",
+          "mounting_point": { "x": 0.9, "y": 1.0, "z": 1.65, "unit": "m" },
+          "neutral_conductor_required": true
+        }
+      ]
+    }
+  ]
+}

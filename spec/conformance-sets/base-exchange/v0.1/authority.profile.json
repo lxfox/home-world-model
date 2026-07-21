@@ -1,0 +1,22 @@
+{
+  "profile_id":"https://homeworldmodel.org/spec/profiles/authority/v0.1",
+  "version":"0.1.0",
+  "status":"Profile Discussion Candidate",
+  "normative_document":"https://homeworldmodel.org/spec/profiles/authority/v0.1",
+  "normative_document_path":"spec/profiles/authority/v0.1/README.md",
+  "document_digest":"sha256:534475e87eb72be2c2721ad142c765b77a7f68a6cf89c502a3726574d310052a",
+  "artifacts":[
+    {"artifact_type":"AuthorityStateReference","schema_refs":[]},
+    {"artifact_type":"AuthorityProfileDocument","schema_refs":["spec/profiles/authority/v0.1/authority-profile.schema.json"]},
+    {"artifact_type":"AuthorityTrustRoot","schema_refs":["spec/profiles/authority/v0.1/authority-trust-root.schema.json"]},
+    {"artifact_type":"AuthorityLease","schema_refs":["spec/profiles/authority/v0.1/authority-lease.schema.json"]}
+  ],
+  "roles":["preserve","consume"],
+  "dependencies":[{"profile_id":"https://homeworldmodel.org/spec/core/v0.1","version":"0.1.0","kind":"required","activation_condition":null}],
+  "incompatibilities":[],
+  "invariants":["ordinary_claims_cannot_grant_authority","authority_is_purpose_subject_audience_target_time_epoch_bound","missing_permission_is_denial","missing_evaluation_input_is_indeterminate"],
+  "offline_resource_refs":["spec/profiles/authority/v0.1/authority-profile.schema.json","spec/profiles/authority/v0.1/authority-trust-root.schema.json","spec/profiles/authority/v0.1/authority-lease.schema.json"],
+  "unknown_extension_behavior":"preserve",
+  "issued_at":"2026-07-19T00:00:00Z",
+  "proof_refs":[]
+}

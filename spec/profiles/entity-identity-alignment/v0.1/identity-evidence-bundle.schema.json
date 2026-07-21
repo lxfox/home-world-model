@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://homeworldmodel.org/spec/profiles/entity-identity-alignment/v0.1/identity-evidence-bundle.schema.json",
+  "title":"HWM Identity Evidence Bundle v0.1",
+  "type":"object",
+  "required":["contract","contract_version","bundle_id","request_digest","evidence","origin_groups","namespace_registry_digest","coverage","assembled_at","proof","extensions"],
+  "properties":{
+    "contract":{"const":"hwm-identity:EvidenceBundle"},"contract_version":{"const":"0.1.0"},
+    "bundle_id":{"type":"string","minLength":1},"request_digest":{"$ref":"#/$defs/Digest"},
+    "evidence":{"type":"array","minItems":1,"items":{"type":"object","required":["evidence_id","record_digest","standing_decision_digest","origin_id","kind","valid_time","namespace_scope","assertion"],"properties":{"evidence_id":{"type":"string","minLength":1},"record_digest":{"$ref":"#/$defs/Digest"},"standing_decision_digest":{"$ref":"#/$defs/Digest"},"origin_id":{"type":"string","minLength":1},"kind":{"enum":["identifier_binding","physical_challenge","commissioning_record","installation_record","replacement_record","cryptographic_attestation","user_attestation","topology","visual_similarity","declared_distinction"]},"valid_time":{"type":"object","minProperties":1},"namespace_scope":{"type":"string","minLength":1},"assertion":{"type":"object"},"collision_risk":{"enum":["bounded","present","unknown","not_applicable"]},"reassignment_risk":{"enum":["bounded","present","unknown","not_applicable"]}},"additionalProperties":false}},
+    "origin_groups":{"type":"array","minItems":1,"items":{"type":"object","required":["origin_id","evidence_ids"],"properties":{"origin_id":{"type":"string","minLength":1},"evidence_ids":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}}},"additionalProperties":false}},
+    "namespace_registry_digest":{"$ref":"#/$defs/Digest"},
+    "coverage":{"type":"object","required":["status","limitations"],"properties":{"status":{"enum":["complete_for_request","partial","indeterminate"]},"limitations":{"type":"array","items":{"type":"string","minLength":1}}},"additionalProperties":false},
+    "assembled_at":{"type":"string","format":"date-time"},"proof":{"$ref":"#/$defs/Proof"},"extensions":{"type":"object"}
+  },
+  "$defs":{"Digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},"Proof":{"type":"object","required":["mode","verification_method","value"],"properties":{"mode":{"enum":["unsigned_fixture","jws","cose","vc"]},"verification_method":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}},
+  "additionalProperties":false
+}

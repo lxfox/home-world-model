@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "oa": "http://www.w3.org/ns/oa#",
+    "as": "https://www.w3.org/ns/activitystreams#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "urn:record:camera-frame-1",
+      "@type": ["sosa:Observation", "prov:Entity"],
+      "sosa:hasFeatureOfInterest": {"@id": "urn:asset:night-light"},
+      "sosa:observedProperty": {"@id": "urn:property:spatial-association"},
+      "sosa:hasResult": {"@id": "urn:space:bedroom"},
+      "sosa:resultTime": {"@value": "2026-07-19T09:19:30Z", "@type": "xsd:dateTime"},
+      "sosa:usedProcedure": {"@id": "urn:procedure:authorized-visual-review-v1"},
+      "prov:hadPrimarySource": {"@id": "urn:origin:camera-frame-1"}
+    },
+    {
+      "@id": "urn:record:night-light-actuation-1",
+      "@type": ["sosa:Actuation", "prov:Activity"],
+      "sosa:hasFeatureOfInterest": {"@id": "urn:endpoint:night-light"},
+      "sosa:actsOnProperty": {"@id": "urn:property:switch-state"},
+      "sosa:hasInputValue": true,
+      "sosa:resultTime": {"@value": "2026-07-19T10:04:30Z", "@type": "xsd:dateTime"}
+    },
+    {
+      "@id": "urn:question:night-light-challenge-1",
+      "@type": "as:Question",
+      "as:actor": {"@id": "urn:hwm:agent:commissioning-assistant"},
+      "as:object": {"@id": "urn:claim:endpoint-affects-bedroom-light"},
+      "as:oneOf": [
+        {"@id": "urn:answer:confirms"},
+        {"@id": "urn:answer:refutes"},
+        {"@id": "urn:answer:cannot-tell"}
+      ],
+      "as:published": {"@value": "2026-07-19T10:04:35Z", "@type": "xsd:dateTime"},
+      "prov:wasInformedBy": {"@id": "urn:record:night-light-actuation-1"}
+    },
+    {
+      "@id": "urn:record:resident-saw-light-1",
+      "@type": ["as:Accept", "prov:Entity"],
+      "as:actor": {"@id": "urn:resident:a"},
+      "as:object": {"@id": "urn:question:night-light-challenge-1"},
+      "as:target": {"@id": "urn:claim:endpoint-affects-bedroom-light"},
+      "as:published": {"@value": "2026-07-19T10:04:50Z", "@type": "xsd:dateTime"},
+      "prov:wasAttributedTo": {"@id": "urn:resident:a"}
+    },
+    {
+      "@id": "urn:annotation:resident-reply-1",
+      "@type": "oa:Annotation",
+      "oa:motivatedBy": {"@id": "oa:replying"},
+      "oa:hasBody": {"@id": "urn:record:resident-saw-light-1"},
+      "oa:hasTarget": {"@id": "urn:claim:endpoint-affects-bedroom-light"}
+    }
+  ]
+}

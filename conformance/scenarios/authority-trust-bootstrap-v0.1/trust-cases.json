@@ -1,0 +1,151 @@
+{
+  "artifact": "hwm-authority:TrustBootstrapOracleCases",
+  "artifact_version": "0.1.0-fixture",
+  "assessment_time": "2026-07-19T12:00:00Z",
+  "genesis_root": {
+    "contract": "hwm-authority:TrustRoot",
+    "contract_version": "0.1.0-fixture",
+    "signed": {
+      "root_id": "urn:hwm:trust-root:household-1:v1",
+      "lineage_id": "urn:hwm:authority-lineage:household-1",
+      "authority_id": "urn:hwm:authority:household-1",
+      "household_id": "urn:hwm:household:1",
+      "root_version": 1,
+      "authority_epoch_floor": 10,
+      "issued_at": "2026-07-01T00:00:00Z",
+      "expires_at": "2027-07-01T00:00:00Z",
+      "transition_kind": "genesis",
+      "previous_root_binding": null,
+      "verification_methods": [
+        { "method_id": "root-a", "controller": "urn:hwm:controller:household-1:a", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-a", "purposes": ["root"], "extensions": {} },
+        { "method_id": "root-b", "controller": "urn:hwm:controller:household-1:b", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-b", "purposes": ["root"], "extensions": {} },
+        { "method_id": "authority-online-a", "controller": "urn:hwm:service:authority-1", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:authority-online-a", "purposes": ["authority_document"], "extensions": {} },
+        { "method_id": "recovery-a", "controller": "urn:hwm:recovery-custodian:a", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-a", "purposes": ["recovery"], "extensions": {} },
+        { "method_id": "recovery-b", "controller": "urn:hwm:recovery-custodian:b", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-b", "purposes": ["recovery"], "extensions": {} }
+      ],
+      "roles": {
+        "root": { "threshold": 2, "method_ids": ["root-a", "root-b"] },
+        "authority_document": { "threshold": 1, "method_ids": ["authority-online-a"] }
+      },
+      "recovery_policy": { "mode": "precommitted", "threshold": 2, "method_ids": ["recovery-a", "recovery-b"] }
+    },
+    "proofs": [
+      { "proof_id": "genesis-next-a", "authorization_role": "next_root", "signer_method_id": "root-a", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:genesis-next-a" },
+      { "proof_id": "genesis-next-b", "authorization_role": "next_root", "signer_method_id": "root-b", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:genesis-next-b" }
+    ],
+    "extensions": {}
+  },
+  "rotation_root": {
+    "contract": "hwm-authority:TrustRoot",
+    "contract_version": "0.1.0-fixture",
+    "signed": {
+      "root_id": "urn:hwm:trust-root:household-1:v2",
+      "lineage_id": "urn:hwm:authority-lineage:household-1",
+      "authority_id": "urn:hwm:authority:household-1",
+      "household_id": "urn:hwm:household:1",
+      "root_version": 2,
+      "authority_epoch_floor": 11,
+      "issued_at": "2026-07-19T10:00:00Z",
+      "expires_at": "2027-07-19T10:00:00Z",
+      "transition_kind": "rotation",
+      "previous_root_binding": {
+        "root_id": "urn:hwm:trust-root:household-1:v1",
+        "root_version": 1,
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "signed_digest": "c5e196c467143d199d886297711b3a8e4226dab81203a0f1b75ff362c3b431ea"
+      },
+      "verification_methods": [
+        { "method_id": "root-b", "controller": "urn:hwm:controller:household-1:b", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-b", "purposes": ["root"], "extensions": {} },
+        { "method_id": "root-c", "controller": "urn:hwm:controller:household-1:c", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-c", "purposes": ["root"], "extensions": {} },
+        { "method_id": "authority-online-b", "controller": "urn:hwm:service:authority-1", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:authority-online-b", "purposes": ["authority_document"], "extensions": {} },
+        { "method_id": "recovery-a", "controller": "urn:hwm:recovery-custodian:a", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-a", "purposes": ["recovery"], "extensions": {} },
+        { "method_id": "recovery-b", "controller": "urn:hwm:recovery-custodian:b", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-b", "purposes": ["recovery"], "extensions": {} }
+      ],
+      "roles": {
+        "root": { "threshold": 2, "method_ids": ["root-b", "root-c"] },
+        "authority_document": { "threshold": 1, "method_ids": ["authority-online-b"] }
+      },
+      "recovery_policy": { "mode": "precommitted", "threshold": 2, "method_ids": ["recovery-a", "recovery-b"] }
+    },
+    "proofs": [
+      { "proof_id": "rotate-current-a", "authorization_role": "current_root", "signer_method_id": "root-a", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:rotate-current-a" },
+      { "proof_id": "rotate-current-b", "authorization_role": "current_root", "signer_method_id": "root-b", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:rotate-current-b" },
+      { "proof_id": "rotate-next-b", "authorization_role": "next_root", "signer_method_id": "root-b", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:rotate-next-b" },
+      { "proof_id": "rotate-next-c", "authorization_role": "next_root", "signer_method_id": "root-c", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:rotate-next-c" }
+    ],
+    "extensions": {}
+  },
+  "recovery_root": {
+    "contract": "hwm-authority:TrustRoot",
+    "contract_version": "0.1.0-fixture",
+    "signed": {
+      "root_id": "urn:hwm:trust-root:household-1:v2-recovery",
+      "lineage_id": "urn:hwm:authority-lineage:household-1",
+      "authority_id": "urn:hwm:authority:household-1",
+      "household_id": "urn:hwm:household:1",
+      "root_version": 2,
+      "authority_epoch_floor": 12,
+      "issued_at": "2026-07-19T10:30:00Z",
+      "expires_at": "2027-07-19T10:30:00Z",
+      "transition_kind": "recovery",
+      "previous_root_binding": {
+        "root_id": "urn:hwm:trust-root:household-1:v1",
+        "root_version": 1,
+        "digest_algorithm": "sha-256",
+        "canonicalization": "RFC8785",
+        "signed_digest": "c5e196c467143d199d886297711b3a8e4226dab81203a0f1b75ff362c3b431ea"
+      },
+      "verification_methods": [
+        { "method_id": "root-d", "controller": "urn:hwm:controller:household-1:d", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-d", "purposes": ["root"], "extensions": {} },
+        { "method_id": "root-e", "controller": "urn:hwm:controller:household-1:e", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:root-e", "purposes": ["root"], "extensions": {} },
+        { "method_id": "authority-online-c", "controller": "urn:hwm:service:authority-1", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:authority-online-c", "purposes": ["authority_document"], "extensions": {} },
+        { "method_id": "recovery-c", "controller": "urn:hwm:recovery-custodian:c", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-c", "purposes": ["recovery"], "extensions": {} },
+        { "method_id": "recovery-d", "controller": "urn:hwm:recovery-custodian:d", "method_type": "fixture", "verification_material_ref": "urn:hwm:key:recovery-d", "purposes": ["recovery"], "extensions": {} }
+      ],
+      "roles": {
+        "root": { "threshold": 2, "method_ids": ["root-d", "root-e"] },
+        "authority_document": { "threshold": 1, "method_ids": ["authority-online-c"] }
+      },
+      "recovery_policy": { "mode": "precommitted", "threshold": 2, "method_ids": ["recovery-c", "recovery-d"] }
+    },
+    "proofs": [
+      { "proof_id": "recover-old-a", "authorization_role": "recovery", "signer_method_id": "recovery-a", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:recover-old-a" },
+      { "proof_id": "recover-old-b", "authorization_role": "recovery", "signer_method_id": "recovery-b", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:recover-old-b" },
+      { "proof_id": "recover-next-d", "authorization_role": "next_root", "signer_method_id": "root-d", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:recover-next-d" },
+      { "proof_id": "recover-next-e", "authorization_role": "next_root", "signer_method_id": "root-e", "mode": "unsigned_fixture", "verification_method": "fixture-proof-adapter", "value": "fixture:recover-next-e" }
+    ],
+    "extensions": {}
+  },
+  "cases": [
+    { "case_id": "genesis-requires-exact-out-of-band-pin", "mode": "genesis", "candidate": "genesis", "pin_digest": "c5e196c467143d199d886297711b3a8e4226dab81203a0f1b75ff362c3b431ea", "expected": { "result": "accepted", "reason": "out_of_band_pin_matched" }, "must_not_infer": ["self_signature_bootstraps_trust", "controller_claim_proves_ownership"] },
+    { "case_id": "self-presented-genesis-is-not-trusted", "mode": "genesis", "candidate": "genesis", "pin_digest": null, "expected": { "result": "rebootstrap_required", "reason": "trusted_genesis_pin_missing" }, "must_not_infer": ["artifact_can_pin_itself", "agent_can_create_trust_anchor"] },
+    { "case_id": "wrong-genesis-pin-is-rejected", "mode": "genesis", "candidate": "genesis", "pin_digest": "0000000000000000000000000000000000000000000000000000000000000000", "expected": { "result": "rejected", "reason": "genesis_pin_digest_mismatch" }, "must_not_infer": ["near_match_is_identity", "self_signature_repairs_pin_mismatch"] },
+    { "case_id": "valid-sequential-rotation", "mode": "update", "trusted": "genesis", "candidate": "rotation", "expected": { "result": "accepted", "reason": "sequential_rotation_accepted" }, "must_not_infer": ["root_acceptance_is_action_authorization", "new_controller_is_legal_owner"] },
+    { "case_id": "current-root-threshold-missing", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "proofs": ["rotate-current-a", "rotate-next-b", "rotate-next-c"] }, "expected": { "result": "rejected", "reason": "current_root_threshold_not_met" }, "must_not_infer": ["one_signature_meets_two_key_threshold", "next_root_self_authorizes_rotation"] },
+    { "case_id": "next-root-threshold-missing", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "proofs": ["rotate-current-a", "rotate-current-b", "rotate-next-b"] }, "expected": { "result": "rejected", "reason": "next_root_threshold_not_met" }, "must_not_infer": ["old_root_alone_defines_future_root", "threshold_is_optional"] },
+    { "case_id": "duplicate-signer-counts-once", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "duplicate_proof": "rotate-current-a", "remove_proof": "rotate-current-b" }, "expected": { "result": "rejected", "reason": "current_root_threshold_not_met" }, "must_not_infer": ["duplicate_signature_counts_twice", "proof_count_equals_signer_count"] },
+    { "case_id": "previous-root-digest-mismatch", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.previous_root_binding.signed_digest": "0000000000000000000000000000000000000000000000000000000000000000" }, "expected": { "result": "rejected", "reason": "previous_root_digest_mismatch" }, "must_not_infer": ["root_id_is_content_identity", "version_is_content_identity"] },
+    { "case_id": "root-version-skip-needs-intermediate", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.root_version": 3 }, "expected": { "result": "indeterminate", "reason": "sequential_root_update_required" }, "must_not_infer": ["highest_version_always_wins", "missing_intermediate_is_safe"] },
+    { "case_id": "root-version-rollback-rejected", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.root_version": 1 }, "expected": { "result": "rejected", "reason": "root_version_not_newer" }, "must_not_infer": ["signed_rollback_is_current", "issued_at_overrides_version"] },
+    { "case_id": "lineage-mismatch-rejected", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.lineage_id": "urn:hwm:authority-lineage:attacker" }, "expected": { "result": "rejected", "reason": "authority_lineage_mismatch" }, "must_not_infer": ["same_household_id_proves_continuity", "key_signature_merges_lineages"] },
+    { "case_id": "epoch-floor-must-advance", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.authority_epoch_floor": 10 }, "expected": { "result": "rejected", "reason": "authority_epoch_floor_not_advanced" }, "must_not_infer": ["root_rotation_preserves_old_leases", "root_version_equals_authority_epoch"] },
+    { "case_id": "future-root-is-indeterminate", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.issued_at": "2026-07-20T00:00:00Z" }, "expected": { "result": "indeterminate", "reason": "candidate_root_from_future" }, "must_not_infer": ["future_metadata_is_current", "clock_uncertainty_is_denial"] },
+    { "case_id": "latest-root-expiry-detects-freeze", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "signed.expires_at": "2026-07-19T11:00:00Z" }, "expected": { "result": "indeterminate", "reason": "candidate_root_expired_or_freeze_possible" }, "must_not_infer": ["expired_root_is_false", "freeze_detection_proves_attack"] },
+    { "case_id": "proof-verifier-unavailable", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "proof_status": { "rotate-current-b": "unavailable" } }, "expected": { "result": "indeterminate", "reason": "root_proof_verification_unavailable" }, "must_not_infer": ["unavailable_signature_is_invalid", "unavailable_signature_is_valid"] },
+    { "case_id": "valid-precommitted-recovery", "mode": "update", "trusted": "genesis", "candidate": "recovery", "expected": { "result": "accepted", "reason": "precommitted_recovery_accepted" }, "must_not_infer": ["recovery_is_ordinary_rotation", "recovery_keys_authorize_actions"] },
+    { "case_id": "recovery-threshold-missing", "mode": "update", "trusted": "genesis", "candidate": "recovery", "overrides": { "remove_proof": "recover-old-b" }, "expected": { "result": "rejected", "reason": "recovery_threshold_not_met" }, "must_not_infer": ["single_custodian_is_quorum", "next_root_self_authorizes_recovery"] },
+    { "case_id": "recovery-not-precommitted-requires-new-lineage", "mode": "update", "trusted": "genesis", "candidate": "recovery", "overrides": { "trusted_recovery_none": true }, "expected": { "result": "rebootstrap_required", "reason": "recovery_not_precommitted" }, "must_not_infer": ["social_claim_creates_recovery_authority", "new_root_continues_old_lineage_without_proof"] },
+    { "case_id": "two-valid-successors-are-contested", "mode": "fork", "trusted": "genesis", "candidates": ["rotation", "recovery"], "expected": { "result": "contested", "reason": "multiple_valid_successor_roots" }, "must_not_infer": ["latest_issued_root_wins", "recovery_always_overrides_rotation"] },
+    { "case_id": "expired-current-root-can-authorize-current-successor", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "trusted_expires_at": "2026-07-18T00:00:00Z" }, "expected": { "result": "accepted", "reason": "sequential_rotation_accepted" }, "must_not_infer": ["expired_current_root_cannot_verify_update", "expired_current_root_authorizes_runtime_actions"] },
+    { "case_id": "aliased-root-material-does-not-create-threshold", "mode": "update", "trusted": "genesis", "candidate": "rotation", "overrides": { "method_material": { "root-c": "urn:hwm:key:root-b" } }, "expected": { "result": "rejected", "reason": "duplicate_verification_material_in_root_role" }, "must_not_infer": ["different_method_ids_are_independent_keys", "two_keys_mean_two_people"] },
+    { "case_id": "root-and-recovery-material-must-be-separated", "mode": "update", "trusted": "genesis", "candidate": "recovery", "overrides": { "method_material": { "recovery-c": "urn:hwm:key:root-d" } }, "expected": { "result": "rejected", "reason": "root_and_recovery_material_not_separated" }, "must_not_infer": ["different_key_purposes_guarantee_distinct_material", "recovery_shares_root_failure_domain"] }
+  ],
+  "model_boundary_cases": [
+    { "case_id": "threshold-compromise-boundary", "input": "attacker_controls_threshold_of_current_root_keys", "expected": { "protocol_result": "cryptographically_indistinguishable", "required_response": "out_of_band_recovery_or_rebootstrap" }, "must_not_infer": ["threshold_security_is_infallible", "valid_signature_proves_benign_intent"] },
+    { "case_id": "no-precommit-recovery-boundary", "input": "all_continuity_credentials_lost_without_recovery_policy", "expected": { "continuity": "not_provable", "next_state": "new_lineage" }, "must_not_infer": ["identity_claim_restores_old_lineage", "cloud_account_automatically_owns_household"] },
+    { "case_id": "expiry-boundary", "input": "trusted_root_expired_without_reachable_successor", "expected": { "status": "indeterminate", "inference": "freeze_possible_not_proven" }, "must_not_infer": ["expiry_is_revocation", "expiry_proves_compromise"] },
+    { "case_id": "authority-boundary", "input": "trust_root_accepted", "expected": { "authority_documents_may_be_verified": true, "action_authorized": false }, "must_not_infer": ["root_acceptance_is_action_authorization", "root_key_is_device_safety"] },
+    { "case_id": "ownership-boundary", "input": "controller_key_controls_root", "expected": { "technical_control": true, "legal_ownership": "not_inferred" }, "must_not_infer": ["key_control_proves_legal_ownership", "key_control_resolves_household_dispute"] }
+  ]
+}

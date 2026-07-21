@@ -1,0 +1,18 @@
+{
+  "contract": "hwm-routine:EligibilitySpecFixture",
+  "predicate_mode": "all",
+  "requirements": [
+    {
+      "requirement_id": "expected-morning-demand",
+      "kind": "forecast_assessment",
+      "target_ref": "urn:hwm:claim:morning-hot-water-demand-forecast",
+      "required_result": "qualified_positive"
+    },
+    {
+      "requirement_id": "loop-available",
+      "kind": "world_view_resolution",
+      "target_ref": "urn:hwm:function-position:hot-water-loop",
+      "required_result": "available"
+    }
+  ]
+}

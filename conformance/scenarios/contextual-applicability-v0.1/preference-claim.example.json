@@ -1,0 +1,31 @@
+{
+  "contract": "hwm:ClaimEnvelope",
+  "contract_version": "0.1.0",
+  "claim": {
+    "claim_id": "urn:hwm:claim:resident-a-sleep-temperature-preference",
+    "issuer": "urn:hwm:person:resident-a",
+    "issued_at": "2026-07-19T20:00:00Z",
+    "proposition": {
+      "subject": "urn:hwm:person:resident-a",
+      "predicate": "hwm-preference:preferredRange",
+      "object": {
+        "property": "https://saref.etsi.org/core/Temperature",
+        "range": {"minimum": 19, "maximum": 21, "unit": "Cel"}
+      }
+    },
+    "valid_time": {"from": "2026-07-19T20:00:00Z"},
+    "scope": {
+      "household_id": "urn:hwm:household:fixture-situation-001",
+      "space_ids": ["urn:hwm:space:bedroom-a"],
+      "purposes": ["urn:hwm:purpose:night-comfort-eligibility"]
+    },
+    "epistemic_basis": {"mode": "declared"},
+    "profiles": [
+      {"id": "https://homeworldmodel.org/spec/profiles/contextual-applicability/v0.1", "version": "0.1.0-fixture", "required": true}
+    ],
+    "creation_record_id": "urn:hwm:record:resident-a-sleep-temperature-preference",
+    "extensions": {}
+  },
+  "evidence_links": [],
+  "extensions": {}
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "within-model-and-goal",
+    "observation": { "value": 312, "unit": "lx" },
+    "expected_effect_assessment": "consistent",
+    "expected_goal_evaluation": "satisfied"
+  },
+  {
+    "case_id": "within-model-below-goal",
+    "observation": { "value": 295, "unit": "lx" },
+    "expected_effect_assessment": "consistent",
+    "expected_goal_evaluation": "not_satisfied"
+  },
+  {
+    "case_id": "outside-model-below-goal",
+    "observation": { "value": 120, "unit": "lx" },
+    "expected_effect_assessment": "inconsistent",
+    "expected_goal_evaluation": "not_satisfied"
+  },
+  {
+    "case_id": "no-valid-observation",
+    "observation": null,
+    "expected_effect_assessment": "insufficient_evidence",
+    "expected_goal_evaluation": "indeterminate"
+  }
+]

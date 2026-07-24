@@ -81,11 +81,12 @@ Publication fails when:
 - a CTA points to a closed or nonexistent participation surface;
 - a legacy draft is treated as canonical without the required language pair.
 
-`narrative-v0.1.md` is currently an unpaired historical Chinese draft despite
-its unsuffixed filename. It is not eligible to control public surfaces until an
-accepted English canonical document and version-matched `zh-CN` mirror exist.
-The bilingual Model Thesis and this contract control the current public
-explanatory surfaces.
+The former unpaired Chinese draft has been preserved as
+`narrative-v0.1.zh-CN.md`, and the approved English canonical source now exists
+at `narrative-v0.1.md`. ProductOS accepted both as
+`approved_public_source` under ADR-100. The Model Thesis remains the compact
+public explanation; the approved pair controls the website's long-form
+narrative while exact technical artifacts retain normative authority.
 
 ## Surface responsibilities
 

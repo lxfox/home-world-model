@@ -1,7 +1,7 @@
 {
   "manifest_id": "hwm-public-repository-projection-v0.1",
   "generated_from": "internal allowlist; source history intentionally not exposed",
-  "file_count": 733,
+  "file_count": 739,
   "files": [
     {
       "path": ".gitignore",
@@ -1444,6 +1444,16 @@
       "sha256": "3cff6373bf2486fd129e79882a3c1ea16e6b03e2413b8842809b3c044c3d3930"
     },
     {
+      "path": "docs/00_context/narrative-governance-v0.1.md",
+      "size": 4868,
+      "sha256": "45533365d546ba641d03ed9327f1279473e4f5914dd3fda2a0c6f83a3e41a868"
+    },
+    {
+      "path": "docs/00_context/narrative-surface-contract-v0.1.json",
+      "size": 3053,
+      "sha256": "66d19de1f5c1daf703e88c2d62999d56e8f771e20692be9bfd63f0384eb94720"
+    },
+    {
       "path": "docs/00_context/narrative-v0.1.md",
       "size": 21600,
       "sha256": "0843865fd51e02ec253c510e3cbb690641e31b3614fae0dc2812dd1ad14cf946"
@@ -2274,6 +2284,26 @@
       "sha256": "63040308ef7451988ac2f4c404eee53a50d1ecbea508a543a970196ca1f52ae1"
     },
     {
+      "path": "docs/05_decision/ADR-097-publish-one-falsifiable-model-thesis-without-making-narrative-normative.md",
+      "size": 2204,
+      "sha256": "214a31f437620cf0b85188b0f2304f4a66f00c68418243a3caf540cf75fa55e5"
+    },
+    {
+      "path": "docs/05_decision/ADR-097-publish-one-falsifiable-model-thesis-without-making-narrative-normative.zh-CN.md",
+      "size": 1831,
+      "sha256": "e2d1938b485026ff2fda4e902eb526b1817c3ac3e021cc6a4a0686b55df1bb17"
+    },
+    {
+      "path": "docs/05_decision/ADR-099-govern-public-narrative-as-derived-surfaces.md",
+      "size": 1812,
+      "sha256": "4bf775e4a8d687f5b39ec8642578a3b7c9fb86e3855069d1af4745e9d36b7793"
+    },
+    {
+      "path": "docs/05_decision/ADR-099-govern-public-narrative-as-derived-surfaces.zh-CN.md",
+      "size": 1451,
+      "sha256": "6da0126bdbd08ac6d53f46bf468c6628b7b59f16c672bb5499c85c2e80034a09"
+    },
+    {
       "path": "governance/adoption/v0.1/adoption-cases.json",
       "size": 6770,
       "sha256": "ecfbd30a58267b28c8a2a4ee1ddcde0ae309a7acbf39cdb4acd6c6e4659864c5"
@@ -2540,13 +2570,13 @@
     },
     {
       "path": "README.md",
-      "size": 3369,
-      "sha256": "4c39efa16099fc9fd5bd711d7faa0469cc0a36ef395c33aada702faeda4b3ae0"
+      "size": 5400,
+      "sha256": "6e3bf9ff8f3963807ac54e60062d2792ef02f9bc15a5bdf5834cdd1ffe90b782"
     },
     {
       "path": "README.zh-CN.md",
-      "size": 2975,
-      "sha256": "af4101a2c6c19acdc883591c88001aec016c7cb95531684c0ee9f6480bfdb13c"
+      "size": 4816,
+      "sha256": "c90079243dec9d30a57cbdf62848987cdb8458c938bb02416da4169f50a77499"
     },
     {
       "path": "spec/conformance-sets/base-exchange/v0.1/authority.profile.json",

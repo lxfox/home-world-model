@@ -1,0 +1,65 @@
+{
+  "contract_id": "hwm-narrative-surface-contract-v0.1",
+  "version": "0.1.0",
+  "date": "2026-07-24",
+  "status": "active_public_narrative_contract",
+  "canonical_language": "en",
+  "authority": {
+    "technical_meaning": [
+      "docs/00_context/home-world-model-core-v0.1.md",
+      "spec/profiles",
+      "spec/conformance-sets"
+    ],
+    "public_explanation": "docs/00_context/model-thesis-v0.1.md",
+    "translation_mirror": "docs/00_context/model-thesis-v0.1.zh-CN.md",
+    "normative_firewall": "Narrative surfaces explain the project but never override exact Core, Profile, or Conformance Set documents."
+  },
+  "anchors": {
+    "en": {
+      "project_name": "Home World Model",
+      "hero_title": "From connected devices to a home understood",
+      "lead_question": "What must an Agent know to truly understand a home?",
+      "stage": "This is an early public discussion, not a finished standard or product.",
+      "gap": "Connected does not mean understood",
+      "ownership": "The home model belongs to the household.",
+      "continuity": "A home should outlast devices, platforms, and AI models.",
+      "epistemic_boundary": "Facts, inferences, and predictions must remain distinguishable.",
+      "ecosystem_boundary": "Not a replacement for Matter, KNX, or Home Assistant.",
+      "participation": "Disagreement is useful evidence."
+    },
+    "zh-CN": {
+      "project_name": "Home World Model",
+      "hero_title": "从连接设备到理解家庭",
+      "lead_question": "一个真正理解家庭的 Agent，需要认识什么？",
+      "stage": "这是一项早期公开讨论，不是已完成标准或产品。",
+      "gap": "连接设备，不等于理解家庭",
+      "ownership": "家庭模型属于家庭。",
+      "continuity": "家庭应比设备、平台和 AI 模型存在得更久。",
+      "epistemic_boundary": "事实、推断和预测必须保持区别。",
+      "ecosystem_boundary": "不取代 Matter、KNX 或 Home Assistant。",
+      "participation": "反对意见也是有价值的证据。"
+    }
+  },
+  "surfaces": [
+    {
+      "surface_id": "github-readme-en",
+      "path": "public-repo/README.md",
+      "language": "en",
+      "required_anchors": ["project_name", "hero_title", "lead_question", "stage", "gap", "ownership", "continuity", "epistemic_boundary", "ecosystem_boundary", "participation"]
+    },
+    {
+      "surface_id": "github-readme-zh-CN",
+      "path": "public-repo/README.zh-CN.md",
+      "language": "zh-CN",
+      "required_anchors": ["project_name", "hero_title", "lead_question", "stage", "gap", "ownership", "continuity", "epistemic_boundary", "ecosystem_boundary", "participation"]
+    },
+    {
+      "surface_id": "website-home",
+      "path": "src/content.js",
+      "root_env": "HWM_WEBSITE_ROOT",
+      "default_root": "../ai_home_site",
+      "languages": ["en", "zh-CN"],
+      "required_anchors": ["project_name", "hero_title", "lead_question", "stage", "gap", "ownership", "continuity", "epistemic_boundary", "ecosystem_boundary", "participation"]
+    }
+  ]
+}

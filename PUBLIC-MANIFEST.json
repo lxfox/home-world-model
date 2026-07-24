@@ -1,7 +1,7 @@
 {
   "manifest_id": "hwm-public-repository-projection-v0.1",
   "generated_from": "internal allowlist; source history intentionally not exposed",
-  "file_count": 739,
+  "file_count": 742,
   "files": [
     {
       "path": ".gitignore",
@@ -1445,8 +1445,8 @@
     },
     {
       "path": "docs/00_context/narrative-governance-v0.1.md",
-      "size": 4868,
-      "sha256": "45533365d546ba641d03ed9327f1279473e4f5914dd3fda2a0c6f83a3e41a868"
+      "size": 4943,
+      "sha256": "608dcb811c9b1f00547dbc749c085e02bb23a221ffe3850f09230a89b1b874ed"
     },
     {
       "path": "docs/00_context/narrative-surface-contract-v0.1.json",
@@ -1455,8 +1455,13 @@
     },
     {
       "path": "docs/00_context/narrative-v0.1.md",
-      "size": 21600,
-      "sha256": "0843865fd51e02ec253c510e3cbb690641e31b3614fae0dc2812dd1ad14cf946"
+      "size": 20160,
+      "sha256": "7d1a55f1a1aeb0b6a45d7e8eac2c5b88ca1132e11be5dd1babf76db3f1820f2d"
+    },
+    {
+      "path": "docs/00_context/narrative-v0.1.zh-CN.md",
+      "size": 21936,
+      "sha256": "af1488a732e82cd0fb2e288a4315a09c424d42079b90d60bb862a458f461dcc4"
     },
     {
       "path": "docs/00_context/project-overview.md",
@@ -2302,6 +2307,16 @@
       "path": "docs/05_decision/ADR-099-govern-public-narrative-as-derived-surfaces.zh-CN.md",
       "size": 1451,
       "sha256": "6da0126bdbd08ac6d53f46bf468c6628b7b59f16c672bb5499c85c2e80034a09"
+    },
+    {
+      "path": "docs/05_decision/ADR-100-establish-the-bilingual-narrative-fact-source.md",
+      "size": 2074,
+      "sha256": "8c863af74b5c0fb44018c1ba2df8c413739b42786bd5209798da99a1265912e7"
+    },
+    {
+      "path": "docs/05_decision/ADR-100-establish-the-bilingual-narrative-fact-source.zh-CN.md",
+      "size": 1723,
+      "sha256": "e9fb1dbe01f740b55c866654718f9f0a16887b345a7617d32c59e9a447df90ae"
     },
     {
       "path": "governance/adoption/v0.1/adoption-cases.json",

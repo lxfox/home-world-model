@@ -1,233 +1,388 @@
-# 从连接设备到理解家庭
-
-> 开放家庭世界模型叙事讨论稿 v0.1  
-> 状态：公开讨论草案  
-> 日期：2026-07-16
-
-这不是一份已经完成的标准，也不是一个产品发布。
-
-它提出一个希望与业主、开发者、设计师、设备厂商、集成商和研究者共同回答的问题：
-
-> 一个真正理解家庭的 Agent，需要认识什么？
-
-## 一、今天的智能家居为什么仍然不理解家庭
-
-过去十多年，智能家居解决了大量设备连接和控制问题。
-
-灯、窗帘、空调、门锁、摄像头和传感器开始接入网络；用户可以通过手机、语音和自动化规则控制它们；Matter、KNX、Home Assistant 等技术也在持续改善不同设备之间的互联。
-
-这些进步让家庭拥有了越来越多可以被软件控制的设备。
-
-但连接设备，并不等于理解家庭。
-
-今天的大多数智能家居系统认识的是设备及其状态。它们知道某盏灯已经打开、空调设定为二十六度、门窗传感器检测到开启，却很少真正理解这些状态在一个具体家庭中意味着什么。
-
-系统可能知道一盏灯属于“客厅”，却不知道它安装在哪里、朝向哪里、能够照亮哪些区域，也不知道当前亮度是否适合正在沙发上阅读的人。
-
-系统可能知道某个房间检测到人体移动，却不知道出现的是哪位家庭成员、宠物还是访客，不知道他正在经过、休息还是准备进行某项活动。
-
-系统可以在晚上十点启动热水循环，却不知道今天家里是否有人、谁可能准备洗澡，以及提前多久启动才能在舒适与节能之间取得平衡。
-
-在现有系统中，空间通常只是设备的分组标签，设备通常只是可以调用的功能集合，人通常只是“在家”或“不在家”的状态，时间通常只是自动化规则中的触发条件。
-
-然而，真实的家庭并不是这些孤立元素的简单集合。
-
-家庭是一个持续变化的空间、物理和生活世界。
-
-房间之间相互连接，光线、温度、声音和空气会穿过空间传播；设备的位置、朝向和功率会改变实际效果；家庭成员和宠物拥有不同的习惯、偏好、权限和状态；一天中的时间不仅代表钟表刻度，也代表起床、出门、回家、用餐、洗澡和休息等生活阶段。
-
-传统自动化通常绕过这些认识过程，直接把某个信号和某个动作连接起来：如果发生 A，就执行 B。
-
-这种方式可以完成明确、固定的任务，却很难面对真实家庭中的变化、不确定性和例外。一旦人员习惯改变、家具移动、设备被替换，或者多个条件同时出现，原本有效的自动化就可能失效。
-
-大语言模型和 Agent 带来了新的可能。系统开始能够理解自然语言、分解任务、调用工具、保存记忆，并尝试从用户表达中推断需求。
-
-但更强的语言能力不会自动带来对家庭的理解。
-
-如果 Agent 不知道房子的结构，不知道设备的位置和实际作用，不知道家庭成员当前的状态，也不知道自己的判断来自事实还是推测，那么它仍然只是在用更自然的语言操作一套缺少上下文的设备系统。
-
-当 Agent 开始主动行动，这个问题会更加重要。主动服务不能只建立在语言理解、用户画像和历史记忆之上，还需要建立在对真实家庭的持续观察和可验证认识之上。
-
-这种认识也不能从入住以后才开始。在新房尚未装修时，许多影响未来智能能力的决定已经发生：线路如何部署、设备安装在哪里、传感器覆盖哪些区域、网络和供电怎样预留、候选设备能否在实际空间中达到预期效果。
-
-因此，我们面对的核心问题，已经不再只是如何连接更多设备，或者如何让 Agent 调用这些设备。
-
-真正的问题是：Agent 需要如何认识一套房子，才能参与这个家庭的设计、建设和长期生活？
-
-## 二、家庭是一个怎样的世界
-
-真实家庭首先是一个空间世界。
-
-它由房间、走廊、门窗、墙体、家具和各种功能区域组成。空间之间存在连接、遮挡、距离和方向关系。设备、人、宠物以及环境变化，都发生在这个空间中。
-
-“客厅”不只是一个名称。它有形状、尺寸、朝向、材质和出入口；阳光从某个方向进入，声音可能传到相邻房间，空调气流会受到家具和门窗影响。人在沙发、餐桌或通道上，对灯光、温度和安静程度的需要也不相同。
-
-家庭 Agent 需要的不只是一张户型图，而是一个能够承载家庭事物及其关系的空间基础。这个基础可以来自建筑图纸、装修设计模型、用户标注、手机摄像头、空间扫描和现场测量。它不必一开始就绝对精确，但应允许不同来源的信息逐步汇合，并在家庭变化时持续更新。
-
-家庭同时是一个物理世界。
-
-灯光会照亮空间，也可能造成眩光；空调会改变温度，但效果受到房间体积、门窗状态、人员数量和室外环境影响；窗帘会改变采光、隐私和热量进入；音箱产生声音，净化器影响空气，路由器和无线设备形成信号覆盖。
-
-设备的动作不会只改变一个数字状态，而是在真实空间中产生影响。因此，对设备的认识不能止于“支持哪些指令”，还需要逐渐认识它安装在哪里、以怎样的方式安装、影响能够到达哪里、不同工作状态会产生什么效果，以及实际结果是否符合家庭预期。
-
-这种认识可以从产品资料开始，通过模拟形成初步预测，再通过手机、摄像头、传感器和人的反馈进行现场校准。设备能力不再只是固定参数，而是随使用逐渐接近真实效果的模型。
-
-家庭也是一个有生命参与其中的世界。
-
-家庭成员、宠物、访客和服务人员都会进入空间，但他们不是普通设备实体。每个人拥有不同的身份、习惯、偏好、身体状态和权限。同一个人也会因为正在睡觉、工作、运动、休息或生病，对环境产生不同需要。
-
-检测到卧室有人，可能是观察；判断这个人是某位家庭成员，可能是识别；认为他准备睡觉，是推断；认为接下来应该调暗灯光，则是预测和行动建议。
-
-这些认识不能混在一起。一个负责任的家庭 Agent 应该知道自己掌握了什么、推断了什么、还不知道什么，以及每个判断有多大把握。
-
-家庭还是一个具有时间和节律的世界。
-
-时间不仅是几点几分，也包含家庭正在经历的生活阶段：起床前、准备出门、陆续回家、用餐、洗澡、休息、短期离家或特殊家庭事件。
-
-但这些生活阶段不应被压成一个全屋 `home／away／sleep／guest` 开关。同一时刻，一位家人可能已经睡觉，另一位仍在工作，访客尚未离开，宠物在走动，安静时段策略已经生效，而报警器又被误设成离家模式。它们是不同主体、空间、时间和来源下可以并存的认识；报警器 mode 是控制状态，不是家庭现实。
-
-Agent 只有在具名用途下，把有来源的 Observation 解析成带主体与时间的情境 Claim，并确认其仍然新鲜、适用且覆盖了查询所需主体后，才能说“这个条件现在可以使用”。没有检测到事件、相机不可用或访问被拒绝，都不能被说成“家里没人”。即便条件成立，它也只是 Routine 的一个 eligibility 输入，仍不等于激活规则、创建任务或授权设备行动。
-
-情境成立也不等于 Agent 已经知道人的“需求”。“A 正在睡觉”“A 睡觉时偏好 19–21 °C”“卧室现在 25 °C”“这条偏好当前未满足”“家庭决定降温”必须分别成立。Agent 可以用一条经家庭接受、可解释的适用规则判断某项偏好当前是否值得考虑，但适用、满足、冲突、优先级、家庭意图与行动权限仍是不同判断。这样，Agent 才能说清楚“我为什么把这条偏好带入当前决策”，而不是把一次模型推测包装成“你现在需要什么”。
-
-Agent 可以从历史中认识习惯，但习惯不是必须执行的规则。某个家庭通常晚上十点洗澡，不代表每晚十点都应该启动热水循环。今天是否有人在家、是否刚刚运动、浴室是否被使用，都可能让今天与平时不同。
-
-家庭还是一个不断被建设和改变的世界。
-
-在新房阶段，家庭可能只有图纸、设计方案和生活预期。随着装修推进，电路、网络、灯光、暖通和传感器逐步进入空间；设备安装后，设计假设开始接受真实环境检验；入住以后，家具会移动，设备会替换，家庭成员会成长，生活习惯也会改变。
-
-家庭模型因此不应只描述当前状态，还需要保留设计意图、施工结果、设备选择依据、现场测量、调试记录、运行偏差和后续变化。
-
-Agent 也不是这个世界中无所不知的管理者。它只是家庭中的一个智能参与者：通过图纸、传感器、设备、用户表达和历史记录观察家庭；通过模型形成理解；通过推演评估结果；在获得授权后采取行动；再通过测量和反馈判断行动是否有效。
-
-一个真正理解家庭的 Agent，不是永远正确的 Agent，而是知道自己可能错误、能够说明判断依据，并愿意通过观察和人的反馈持续修正的 Agent。
-
-我们所说的家庭世界，因此不是一份静态三维模型，也不是某个平台内部的设备数据库。
-
-它是一个持续生长的共同认识：以空间为基础，以真实物理效果为约束，以家庭生活为中心，以时间和变化为背景，并通过持续观察、行动与验证逐渐接近真实。
-
-## 三、一个开放家庭世界应遵循什么原则
-
-以下原则是共同讨论的起点，而不是已经完成的规范。
-
-### 1. 家庭模型属于家庭
-
-无论信息由用户输入、设备生成、Agent 推断还是专业人员交付，家庭都应拥有查看、导出、修改、删除和迁移它们的能力。服务商可以帮助管理家庭模型，但不应借助封闭格式、云端账号或设备生态将家庭锁定在某个平台中。
-
-### 2. 家庭应当比设备、平台和 AI 模型存在得更久
-
-家庭世界模型应独立于具体设备、通信协议、运行平台和大模型存在。设备可以更新，平台可以迁移，Agent 可以更换，但家庭积累的空间、习惯、规则、测量结果和安装记录不应因此消失。
-
-这种连续性不应只保存“家庭知道什么”，还应保存“家庭决定持续推进什么”“何时允许再次生成工作”以及“哪些工作仍未完成”。一句抱怨、一个个人偏好、一次 Agent 推测与家庭正式采纳的生活目标不是同一件事；观察到每天相似的生活节律，也不代表 Agent 可以把它变成自动执行规则。家庭应分别持有长期意图、经激活的 Routine 与任务血缘；Routine 只决定何时评估创建工作，目标被采纳或 Task 被创建都不等于某个具体动作已经获准。
-
-### 3. 家庭效果比设备指令更重要
-
-家庭成员真正关心的是阅读区域是否足够明亮、卧室温度是否舒适、浴室是否及时有热水、老人夜间行走是否安全，而不只是某个设备是否收到了指令。Agent 不仅要知道命令是否执行，还应在条件允许时判断家庭是否达到预期效果。
-
-### 4. 事实、推断和预测必须有所区分
-
-家庭模型应保留信息来源、时间、可信程度和推理关系。Agent 不应把自己的猜测伪装成已经确认的事实。
-
-这里的“确认”也不意味着给某条数据盖上永久、全局的真理印章。更稳妥的表达是：在明确用途、时间、家庭权限和证据规则下，当前 Agent 可以依赖这条认识；原始图纸、视觉判断、用户回答与后续纠正仍分别保留。用户说“不是这样”会让认识进入争议或触发新 Claim，而不会迫使系统虚构一个相反答案。这样，新 Agent 才能重新判断它为什么曾被接受，以及现在是否仍应被接受。
-
-### 5. 主动服务必须建立在权限之上
-
-理解家庭并不天然赋予 Agent 行动权。越涉及安全、隐私、健康、财务或不可逆影响的行为，越需要明确授权。Agent 应能够说明行动原因、依据、预期效果、不确定性，以及如何阻止、撤销或恢复。
-
-### 6. 隐私是家庭模型的基础结构
-
-家庭应该知道哪些信息被采集、存放在哪里、由谁处理、用于什么目的，以及何时删除。在可能的情况下，家庭模型和推断应优先在本地完成；使用云端服务时，应尽量只发送完成任务所需的最少信息。
-
-### 7. 家庭模型应允许不完整、不确定和持续修正
-
-图纸可能与现场不一致，设备资料可能缺失，传感器可能识别错误，人的偏好也会改变。开放模型不应为了显得完整而隐藏这些问题，而应允许信息处于待确认、存在冲突、精度不足或已经过期的状态。
-
-### 8. 设计、施工、调试和运行应共享同一个家庭模型
-
-设计阶段形成的空间与需求，可以转化为电力、网络和设备规划；施工结果可以更新模型；调试数据可以校准设备效果；入住后的反馈又可以反过来修正原本的设计假设。
-
-### 9. 开放模型应与现有生态协作
-
-Matter、KNX、Zigbee、Thread 等解决不同层面的连接与通信，Home Assistant 等平台提供设备接入和自动化，BIM、Brick、W3C WoT 等体系描述建筑、设备和交互能力。开放家庭世界模型不应取代它们，而应明确自己缺失的那一层，并建立可维护的映射。
-
-### 10. 标准必须由真实家庭和可运行案例验证
-
-任何概念都应接受真实案例检验。参考实现不是为了抢先做成产品，而是为了暴露叙事和标准中的错误。标准应通过公开讨论、真实案例、跨平台实现和可重复测试逐步形成共识。
-
-## 四、一套房子如何获得自己的认识
-
-想象一个普通家庭，准备装修一套尚未交付的新房。
-
-家庭中有两位成年人、一个孩子和一只猫，老人偶尔来居住。他们并不熟悉设备协议，但知道自己希望怎样生活：清晨起床时灯光不要突然变亮，在家工作时需要安静和稳定温度，孩子夜间经过走廊时需要安全照明，猫不应频繁触发人体自动化，老人来住时仍能使用简单明确的物理开关。
-
-这些生活需要，是家庭智能最初的来源。
-
-Agent 可以把这些表达整理为候选目标，指出冲突、遗漏和实现条件，但不能因为听见一句话、观察到重复习惯或生成了一个合理推测，就宣称家庭已经作出承诺或激活 Routine。哪些结果值得持续追求，需要由家庭在明确范围内采纳；哪些时间、事件和条件可以产生下一次 Task，需要由家庭另行激活并保持可暂停；是否已经达到结果，需要由证据持续检验；Task、Plan 和具体行动继续接受各自的权限与安全判断。
-
-家庭向 Agent 提供户型图、装修设计方案和现场照片。Agent 从中建立初步空间模型，再通过对话了解生活方式、预算、隐私边界、断网要求和未来计划。
-
-Agent 首先帮助家庭识别装修完成后难以低成本修改的条件：开关零线、回路划分、吊顶和窗帘供电、网线和 PoE、无线覆盖、传感器位置、空调与新风控制接口、设备柜、备用供电和物理控制保底方式。
-
-它提供建议、冲突检查和选择依据，正式电气设计与施工仍由专业人员确认。
-
-选择设备时，Agent 不只比较价格和宣传参数，而是把候选设备放回具体房屋中判断：供电与安装条件是否满足，是否依赖云端或专用网关，在计划位置能够覆盖哪里，实际效果是否可能满足需求，以及以后是否存在可替换方案。
-
-随着施工推进，线路、设备和家具的实际位置进入模型。与原设计不一致的部分、改变原因和可能影响得到记录。过去容易随着施工结束而消失的信息，开始成为房屋长期记录的一部分。
-
-安装完成后，家庭可以通过手机、摄像头、传感器或专业工具测量不同自然光、窗帘状态和设备功率下的空间表现。Agent 将结果映射回空间，校准灯光、温度、空气和无线覆盖等影响模型。
-
-验收不再只是确认设备在线、按钮可用，而是检查家庭最初表达的需要是否真正实现。
-
-入住后，Agent 继续通过获得授权的观察和反馈认识家庭。它逐渐了解生活节律，却不会把习惯直接当成命令。它区分事实、识别、推断和预测，并根据行动风险决定等待、询问、进行低成本准备或直接执行。
-
-每一次行动也成为新的观察机会。家庭成员可以纠正 Agent：今天只是例外，这个推断不正确，这个偏好已经改变，在这个空间不要主动行动，或者以后遇到这种情况先询问。
-
-几年后，房间用途、家庭成员、宠物、设备和 Agent 服务都可能发生变化。开放家庭模型仍然保存空间、历史测量、生活约束、安装记录和经过确认的偏好。新的设备可以重新映射，新的 Agent 可以在授权后读取已有认识，新的运行平台也可以继续实现原有家庭效果。
-
-家庭不需要因为技术更换而重新解释自己。
-
-这个故事描述的不是一个无所不能的 AI 管家，而是一套房子如何从图纸开始，逐步获得关于空间、设备、环境和生活的结构化认识；又如何在设计、施工、调试和长期运行中，让这份认识不断接受真实世界验证。
-
-## 五、为什么这需要成为一项开放协作
-
-没有任何一家企业能够独自定义所有家庭。
-
-不同地区拥有不同的住宅结构、电气规范、生活方式和设备生态；不同年龄、身体条件和家庭关系，也会形成不同需求。
-
-设备厂商擅长描述产品能力，却不一定理解完整家庭生活；AI 公司擅长语言与推理，却不一定理解建筑、电气、照明、暖通和现场交付；设计师理解空间和人的体验，但可能缺少设备运行知识；集成商掌握实际安装经验，但这些经验通常分散在个人和企业中；家庭成员最了解自己的生活，却缺少将这种认识转化为机器可理解信息的工具。
-
-一个真正可用的家庭世界模型，需要这些角色共同参与。
-
-我们目前提出的不是一个完成的标准。“开放家庭世界模型”首先是一项提议，来自一个简单判断：
-
-> 下一代智能家居不能只让 Agent 获得更多设备控制权，还必须让它对家庭形成可验证、可修正、由家庭拥有的认识。
-
-我们尚未决定模型最终使用什么格式，也尚未确定所有概念和边界。三维空间需要怎样的精度、设备影响如何表达、家庭成员信息的最小必要范围是什么、不同 Agent 如何共享认识而不过量共享隐私、哪些内容应进入共同标准，这些问题都需要公开讨论和真实案例验证。
-
-开放也不只是公开代码。
-
-家庭用户可以贡献生活案例，设计师可以检验空间表达，工程人员可以验证施工和设备约束，设备厂商可以提供真实能力与安装信息，平台开发者可以构建映射，隐私和安全研究者可以挑战不合理假设，不同地区的参与者可以补充本地差异。
-
-一份照明影响模型、一个新房装修案例、一段关于老人夜间活动的讨论，或者一次失败的设备替换记录，都可能比新增一个软件功能更有价值。
-
-为了保持边界清晰，我们目前不准备发明新的设备通信协议，不准备取代 Matter、KNX 或 Home Assistant，不规定所有家庭应怎样生活，不建立由单一公司控制的家庭云平台，不让 Agent 在没有权限和解释的情况下自主行动，也不把某个 LLM 或 Agent 框架变成标准的一部分。
-
-我们的目标不是控制家庭，而是让家庭能够拥有并表达关于自己的认识。
-
-## 六、一次共同定义未来家庭基础的邀请
-
-智能家居行业已经拥有更多设备、更好的连接、更强的模型和越来越自然的交互。
-
-下一步可能不是继续增加一个控制入口，而是建立一份关于家庭本身的共同认识。
-
-这份认识应从房屋还在图纸上时开始，在施工和安装中获得现实内容，在家庭生活中不断被验证，并在设备、平台和 AI 模型更换后继续存在。
-
-我们希望它最终成为一种开放基础：让家庭拥有自己的数字连续性，让 Agent 在行动前真正认识环境，让设计和运行不再割裂，让设备以实际效果而不只是功能参数被理解，让不同生态能够围绕同一个家庭协作，也让主动智能建立在事实、权限和责任之上。
-
-我们尚未拥有完整答案。
-
-但我们相信，在 Agent 开始进入家庭的今天，关于家庭本身的开放模型不应继续缺席。
-
-这不是一个产品发布。
-
-这是一次共同定义下一代智能家居基础的邀请。
+---
+version: v0.1
+date: 2026-07-24
+language: en
+status: approved_public_source
+canonical: true
+translation_mirror: narrative-v0.1.zh-CN.md
+license: CC-BY-4.0
+---
+# From connected devices to a home understood
+
+> Open Home World Model narrative candidate v0.1  
+> Status: Approved public narrative source  
+> Date: 2026-07-24
+
+This is an early public discussion, not a finished standard or product.
+
+It begins with a question for households, developers, designers, device makers,
+integrators, and researchers:
+
+> What must an Agent know to truly understand a home?
+
+## 1. Why today’s smart home still does not understand the home
+
+Over the past decade, smart-home systems have solved many connection and control
+problems. Lights, blinds, HVAC systems, locks, cameras, and sensors can be
+networked and controlled through apps, voice interfaces, and automation rules.
+Matter, KNX, Home Assistant, and other ecosystems continue to improve how
+devices interoperate.
+
+These advances have given homes more devices that software can control.
+Connected does not mean understood.
+
+Most systems know devices and their states. They may know that a lamp is on,
+that an air conditioner is set to 26°C, or that a contact sensor is open. They
+rarely know what those states mean in one particular home.
+
+A system may know that a lamp belongs to the living room without knowing where
+it is installed, which direction it faces, which surfaces it illuminates, or
+whether the person reading on the sofa has enough light. It may detect motion
+without knowing whether the source is a family member, a visitor, or a pet—or
+whether that subject is passing through, resting, or preparing for an activity.
+It may start hot-water circulation at 10 p.m. without knowing whether anyone is
+home, who may be preparing to bathe, or how far in advance preparation is useful.
+
+In many existing systems, space is a grouping label, a device is a callable
+capability, a person is reduced to home or away, and time is only a trigger.
+Real homes are not a simple collection of those isolated elements. They are
+changing spatial, physical, social, and temporal worlds.
+
+Rooms connect to one another. Light, heat, sound, air, and radio signals travel
+through space. Device position, orientation, installation, and power change
+real effects. Family members and pets have different roles, states, preferences,
+and permissions. Time represents not only a clock value but life stages such as
+waking, leaving, returning, eating, bathing, resting, traveling, or handling an
+exception.
+
+Traditional automation often bypasses understanding and links a signal directly
+to an action: if A happens, do B. That can serve fixed tasks, but it becomes
+fragile when habits change, furniture moves, devices are replaced, evidence is
+missing, or several conditions conflict.
+
+Language models and Agents create new possibilities. They can understand
+natural language, decompose tasks, call tools, and propose what a user may want.
+But stronger language ability does not automatically create spatial, physical,
+social, temporal, or evidential understanding.
+
+If an Agent does not know the structure of the home, the installed position and
+actual influence of a device, the state of relevant people, or whether its
+belief comes from observation or inference, it is still operating a device
+system without sufficient context. As Agents become proactive, that gap becomes
+a safety and accountability problem.
+
+Understanding must also begin before move-in. While a new home is still being
+designed, decisions about circuits, controls, networking, sensing, installation
+positions, and replaceability already shape what future intelligence can do.
+
+The central question is therefore no longer only how to connect more devices or
+let an Agent call them. It is how an Agent can form a verifiable, correctable
+understanding of a home before participating in its design, construction, and
+long-term life.
+
+## 2. What kind of world is a home?
+
+A home is first a spatial world. It contains rooms, corridors, walls, openings,
+furniture, and functional zones. These have relationships of connection,
+distance, direction, containment, and obstruction. Devices, people, pets, and
+environmental changes all occur within this space.
+
+“Living room” is not only a name. It has shape, dimensions, orientation,
+materials, openings, and use areas. Daylight enters from a direction; sound
+travels to adjacent rooms; airflow is changed by doors and furniture; a person
+at a sofa, table, or passage may need different lighting, temperature, or quiet.
+
+An Agent needs more than one floor plan. It needs a spatial foundation that can
+hold entities, relationships, coordinate frames, registrations, uncertainty,
+and change. Drawings, BIM, design models, user annotations, phone cameras,
+spatial scans, and site measurements may all contribute. None must be treated as
+the house itself. Each is a representation with provenance, time, procedure,
+and a bounded fitness for use.
+
+A home is also a physical world. A light may illuminate a task surface or create
+glare. HVAC changes temperature, but the result depends on room volume, openings,
+occupancy, furniture, and outdoor conditions. Blinds affect daylight, privacy,
+and heat gain. Speakers produce sound; purifiers affect air; wireless equipment
+creates coverage that varies with material space.
+
+A device action does not merely change a state value. It produces—or fails to
+produce—effects in the real environment. Device understanding must therefore
+extend beyond supported commands to installed position, installation method,
+reachable influence, operating conditions, uncertainty, and whether the
+observed result satisfies a household target.
+
+Manufacturer declarations can provide a starting point. Simulation can provide
+a qualified prediction. Phone measurements, sensors, professional instruments,
+and human feedback can calibrate installed effects. These evidence bases remain
+distinct; a product specification must not silently become an installed fact.
+
+A home is a world with living participants. Family members, pets, visitors, and
+service workers are not ordinary device entities. They have identities, roles,
+states, preferences, privacy interests, and authority boundaries. The same
+person may have different needs while sleeping, working, exercising, resting,
+or recovering.
+
+Motion in a bedroom may be an observation. Identifying a particular person is a
+different claim. Inferring that they intend to sleep is another. Predicting that
+the light should dim is still another, and none of these grants permission to
+act. A responsible Agent must distinguish what it observed, what was identified,
+what was accepted for a purpose, what it inferred, what it predicts, and what
+remains unknown.
+
+A home is also temporal. Time includes clock values, valid intervals, freshness,
+life stages, routines, exceptions, and anticipated events. These must not be
+collapsed into one global `home`, `away`, `sleep`, or `guest` mode. One person
+may be asleep while another works, a visitor remains, a pet moves, a quiet-hours
+policy applies, and an alarm is incorrectly set. These are different claims with
+different subjects, spaces, sources, and times.
+
+Absence of a detection is not proof that a home is empty. A denied camera, an
+offline sensor, and no recent event are not equivalent. A habit is not an
+Intent. A Forecast is not a trigger. A Routine is not permission to perform a
+device action. An Agent may use qualified knowledge to prepare a proposal or
+plan, but each later transition remains separately governed.
+
+A home is continually built and changed. It may begin as drawings, design
+options, and household expectations. Construction adds circuits, networks,
+lighting, HVAC, sensors, and substitutions. Commissioning tests assumptions
+against reality. Later, furniture moves, rooms change use, devices are replaced,
+people grow older, and household practices evolve.
+
+The model should therefore preserve design intent, construction reality,
+selection rationale, commissioning measurements, operational deviations, and
+later corrections—not only the current device state.
+
+An Agent is not an all-knowing manager of this world. It is one participant. It
+observes through drawings, sensors, devices, household statements, and history;
+forms attributed assessments; proposes options; acts only under applicable
+authority; and then checks reports, observations, physical effects, and household
+acceptance without collapsing them into one success flag.
+
+A truly home-aware Agent is not one that is always right. It is one that knows
+it may be wrong, can explain the basis and limits of its conclusions, and can
+accept correction without rewriting history.
+
+## 3. Principles for an open home world
+
+These principles are a starting point for public discussion, not a completed
+specification.
+
+### 1. The home model belongs to the household
+
+Whether information is entered by a person, produced by a device, proposed by an
+Agent, or delivered by a professional, the household should be able to inspect,
+export, correct, delete, and migrate it subject to legitimate rights and safety
+constraints. A service may help operate the model but should not lock the home
+into a proprietary account, format, or ecosystem.
+
+### 2. A home should outlast devices, platforms, and AI models
+
+The model should remain independent of one device, protocol, automation
+platform, or model provider. Devices may be replaced, platforms migrated, and
+Agents changed without erasing spatial knowledge, measurements, installation
+history, accepted preferences, or the lineage of ongoing work.
+
+### 3. Household effects matter more than device commands
+
+People care whether a reading area is bright enough, a bedroom is comfortable,
+hot water is ready, or a passage is safe—not only whether a command was sent or
+acknowledged. Authorization, dispatch, acknowledgement, observation, physical
+effect, target satisfaction, resource use, and household acceptance must remain
+separate.
+
+### 4. Facts, inferences, and predictions must remain distinguishable
+
+The model should preserve source, time, scope, epistemic basis, and derivation.
+An Agent must not present its inference as an observed fact. Acceptance for one
+purpose and time is not a permanent global truth, and correction should append a
+new attributed artifact rather than erase what was previously relied on.
+
+### 5. Proactive service must be bounded by authority
+
+Understanding does not grant a right to act. Actions involving safety, privacy,
+health, money, shared resources, or irreversible consequences require
+appropriate authority and procedure. An Agent should state its reason, evidence,
+expected effect, uncertainty, and available means to prevent, reverse, or
+recover.
+
+### 6. Privacy is structural
+
+The household should know what is collected, where it is processed, who can use
+it, for which purpose, and when it is deleted. Local processing should be
+preferred where proportionate. External disclosure should be purpose-bound and
+limited to what the exact task requires.
+
+### 7. The model must admit incompleteness, uncertainty, and correction
+
+Drawings differ from sites, product information is incomplete, sensors fail,
+identification can be wrong, and preferences change. The model should preserve
+unknown, contested, stale, and insufficient states instead of manufacturing
+completeness.
+
+### 8. Design, construction, commissioning, and operation should share continuity
+
+Spatial and household requirements formed during design can inform electrical,
+network, sensing, and device plans. Construction results update those plans.
+Commissioning calibrates predicted effects. Lived feedback then corrects earlier
+assumptions through the same household-controlled history.
+
+### 9. The model should collaborate with existing ecosystems
+
+Matter, KNX, Zigbee, Thread, and other technologies address connectivity;
+Home Assistant and similar platforms integrate devices and automation; BIM,
+IFC, Brick, W3C Web of Things, SOSA/SSN, and PROV-O address buildings,
+capabilities, observations, and provenance. HWM should reuse and map to this
+work. It is not a replacement for Matter, KNX, or Home Assistant.
+
+### 10. Real homes and repeatable implementations must test the proposal
+
+Concepts should survive household cases, professional constraints, independent
+implementations, and repeatable tests. Project-owned tests show internal
+consistency; they do not establish community consensus, production security,
+real-household validity, interoperability, or adoption.
+
+## 4. How a home gains its own understanding
+
+Imagine a family preparing a home that has not yet been completed. Two adults,
+a child, and a cat will live there; an older relative sometimes stays. They do
+not begin with protocol names or product SKUs. They begin with how they want to
+live: gentle light at night, stable temperature while working, fewer false
+triggers from the cat, clear physical controls for visitors, and basic operation
+when the network is unavailable.
+
+These household targets are the beginning of intelligence. An Agent may help
+turn them into candidate requirements, expose conflicts and omissions, and
+propose measurable criteria. It must not treat one sentence, a repeated habit,
+or a plausible inference as an adopted household commitment.
+
+The family provides drawings, design options, site photographs, budget,
+privacy boundaries, offline requirements, and future plans. The Agent helps
+identify decisions that become expensive to change after construction: neutral
+wires, circuit boundaries, blind and ceiling power, Ethernet and PoE, wireless
+coverage, sensor positions, HVAC and ventilation interfaces, equipment spaces,
+backup power, and dependable physical controls.
+
+The Agent can provide options, conflict checks, and rationale. Formal electrical
+design, code compliance, review, construction, and acceptance remain the work
+of qualified people under applicable rules.
+
+When comparing devices, the Agent returns each candidate to the actual home:
+whether supply and installation conditions are satisfied; whether it depends on
+a cloud or gateway; what influence is predicted from the intended position;
+whether it may meet the household target; and whether a replaceable path exists.
+Product model, offer, order, delivered asset, installed asset, endpoint, and
+commissioned function remain different identities.
+
+As construction proceeds, actual routes, installed positions, substitutions,
+reasons, and known impacts enter the household record. Information that once
+disappeared with the end of a project can become part of the home’s durable
+history.
+
+After installation, the household may use phones, cameras, sensors, or
+professional instruments to measure performance under different daylight,
+blind, power, occupancy, and environmental conditions. Results are mapped back
+to space and used to calibrate lighting, temperature, air, sound, energy, or
+coverage models.
+
+Commissioning is no longer only “the device is online and the button works.” It
+asks whether the original household target is met, under which conditions, with
+which uncertainty and remaining exceptions.
+
+After move-in, an authorized Agent continues to learn from observation and
+feedback without turning patterns into commands. It distinguishes facts,
+identifications, inferences, predictions, proposals, and permissions. According
+to purpose and risk, it may wait, ask a bounded question, prepare a reversible
+plan, or act under explicit authority.
+
+Every action creates another opportunity to observe and correct. A household
+member can say: this was an exception; that identity was wrong; the preference
+changed; do not act proactively in this space; next time ask first. Corrections
+are appended with their own provenance rather than silently rewriting the past.
+
+Years later, rooms, family members, pets, devices, and Agent services may have
+changed. The household can still retain spatial relationships, measurements,
+constraints, installation records, permissions, and accepted preferences.
+Replacement devices can be remapped; a new Agent can read a purpose-bound view
+after admission; a new platform can continue to pursue household effects.
+
+The household should not have to explain itself again whenever technology
+changes.
+
+This is not a story about an omnipotent AI but about how a home can gradually
+gain a structured, household-owned understanding that begins with drawings,
+absorbs construction and commissioning reality, and remains open to correction
+through long-term life.
+
+## 5. Why this must be an open collaboration
+
+No single company can define every home. Housing, electrical practice, climate,
+culture, accessibility, family structure, and device ecosystems differ across
+regions and households.
+
+Device makers understand products but not every household. AI companies
+understand language and inference but may not understand architecture,
+electrical work, lighting, HVAC, or site delivery. Designers understand space
+and experience but may lack operational device evidence. Integrators know what
+happens in the field, but that knowledge is often fragmented. Households know
+their own lives, but lack tools to express that knowledge in portable,
+machine-readable form.
+
+A useful Home World Model requires these groups to work together.
+
+This is not a completed standard. The proposal begins with a smaller claim:
+
+> The next smart home must not merely give Agents more device control. It must
+> give the household a verifiable, correctable understanding that it owns.
+
+Many questions remain open: appropriate spatial precision; representation of
+installed influence; the minimum necessary information about people and pets;
+how Agents share knowledge without excessive disclosure; which semantics belong
+in a shared Base; and which should remain optional Profiles or external
+vocabularies.
+
+Open collaboration means more than publishing code. A household can contribute
+a lived case. A designer can test spatial expression. An engineer can challenge
+installation assumptions. A device maker can provide qualified capability and
+installation evidence. A platform developer can build mappings. Privacy and
+safety researchers can reject unjustified assumptions. Regional contributors
+can expose local differences.
+
+A lighting influence model, a failed device replacement, a renovation
+constraint, a privacy objection, or a household correction may reveal more than
+another feature.
+
+Disagreement is useful evidence. It should be retained, classified, and used to
+test the proposal rather than treated as a score the project must defeat.
+
+The current boundary is deliberate. HWM does not invent a new device
+communication protocol, replace Matter, KNX, or Home Assistant, mandate how
+households live, create a single-company home cloud, grant action power without
+authority, or make one LLM or Agent framework part of the standard.
+
+The goal is not to control homes. It is to let households own, inspect, transfer,
+contest, and correct what their homes know about themselves.
+
+## 6. An invitation to define the foundation together
+
+The smart-home industry already has more devices, better connectivity, stronger
+models, and more natural interfaces. The next step may be a shared understanding
+of the home itself.
+
+That understanding should begin while the home is still a drawing, gain reality
+during construction and commissioning, remain accountable in daily life, and
+survive replacement of devices, platforms, and AI models.
+
+It may become an open foundation through which households preserve digital
+continuity; Agents understand context before acting; design and operation remain
+connected; devices are understood by installed effects rather than only feature
+claims; and different ecosystems can collaborate around the same home while
+respecting purpose, privacy, and authority.
+
+We do not yet have the complete answer.
+
+But as Agents begin to enter homes, an open model of the home itself should no
+longer be missing.
+
+This is not a product launch.
+
+It is an invitation to define the next foundation of the smart home together.
